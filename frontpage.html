@@ -1,0 +1,219 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SickSense</title>
+  <link rel="stylesheet" href="/bower_components/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="/bower_components/typicons/src/font/typicons.min.css" />
+  <link rel="stylesheet" href="/bower_components/nouislider/jquery.nouislider.css" />
+  <link rel="stylesheet" href="/css/app.css" />
+  <script src="/bower_components/modernizr/modernizr.js"></script>
+</head>
+
+<body ng-app>
+  <div class="contain-to-grid">
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#">SickSense</a></h1>
+        </li>
+      </ul>
+
+      <section class="top-bar-section">
+        <ul class="right">
+          <li><a href="#">About Us</a></li>
+        </ul>
+      </section>
+    </nav>
+  </div>
+
+  <div id="map"></div>
+
+  <div id="week-selector" ng-controller="WeekSelector">
+    <div class="row">
+
+      <div class="large-2 columns">
+
+        <div id="year-selector">
+          <a href="#" class="button" data-dropdown="year-drop" title="Year">{{ year + 543 }} <span class="typcn typcn-arrow-sorted-down"></span></a>
+          <ul id="year-drop" class="large f-dropdown" data-dropdown-content>
+            <li ng-repeat="value in years">
+              <a ng-click="setYear(value)" data-year="{{ value }}">{{ value + 543 }}</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="large-10 columns">
+
+        <!-- <div id="week-slider">
+
+        </div> -->
+
+        <div id="week-line">
+          <div id="week-month-name">
+          </div>
+          <div id="week-knots" class="knots knots-ui">
+            <div class="knot-box" ng-repeat="week in weeks">
+              <time class="knot-pin" datetime="{{ week.toString() }}" ng-click="setWeek(week)">
+              </time>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div><!-- top row -->
+
+
+    <div id="week-quarters">
+      <div id="week-quarter-1" class="week-quarter" data-quarter="1" ng-click="setQuarter(1)">
+        <div class="row">
+          <div class="large-4 columns text-center">
+            <div class="week-month-name">
+              {{ monthNames[0] }}
+            </div>
+            <div class="knots knots-static">
+              <span class="typcn typcn-media-record"></span>
+            </div>
+          </div>
+
+          <div class="large-4 columns text-center">
+            <div class="week-month-name">
+              {{ monthNames[1] }}
+            </div>
+            <div class="knots knots-static">
+              <span class="typcn typcn-media-record"></span>
+            </div>
+          </div>
+
+          <div class="large-4 columns text-center">
+            <div class="week-month-name">
+              {{ monthNames[2] }}
+            </div>
+            <div class="knots knots-static">
+              <span class="typcn typcn-media-record"></span>
+            </div>
+          </div>
+
+          <hr class="ghost-line" />
+        </div>
+      </div><!-- /#week-quarter-1 -->
+
+      <div id="week-quarter-2" class="week-quarter" data-quarter="2" ng-click="setQuarter(2)">
+        <div class="row">
+          <div class="large-4 columns text-center">
+            <div class="week-month-name">
+              {{ monthNames[3] }}
+            </div>
+            <div class="knots knots-static">
+              <span class="typcn typcn-media-record"></span>
+            </div>
+          </div>
+
+          <div class="large-4 columns text-center">
+            <div class="week-month-name">
+              {{ monthNames[4] }}
+            </div>
+            <div class="knots knots-static">
+              <span class="typcn typcn-media-record"></span>
+            </div>
+          </div>
+
+          <div class="large-4 columns text-center">
+            <div class="week-month-name">
+              {{ monthNames[5] }}
+            </div>
+            <div class="knots knots-static">
+              <span class="typcn typcn-media-record"></span>
+            </div>
+          </div>
+
+          <hr class="ghost-line" />
+        </div>
+      </div><!-- /#week-quarter-2 -->
+
+      <div id="week-quarter-3" class="week-quarter" data-quarter="3" ng-click="setQuarter(3)">
+        <div class="row">
+          <div class="large-4 columns text-center">
+            <div class="week-month-name">
+              {{ monthNames[6] }}
+            </div>
+            <div class="knots knots-static">
+              <span class="typcn typcn-media-record"></span>
+            </div>
+          </div>
+
+          <div class="large-4 columns text-center">
+            <div class="week-month-name">
+              {{ monthNames[7] }}
+            </div>
+            <div class="knots knots-static">
+              <span class="typcn typcn-media-record"></span>
+            </div>
+          </div>
+
+          <div class="large-4 columns text-center">
+            <div class="week-month-name">
+              {{ monthNames[8] }}
+            </div>
+            <div class="knots knots-static">
+              <span class="typcn typcn-media-record"></span>
+            </div>
+          </div>
+
+          <hr class="ghost-line" />
+        </div>
+      </div><!-- /#week-quarter-3 -->
+
+      <div id="week-quarter-4" class="week-quarter" data-quarter="4" ng-click="setQuarter(4)">
+        <div class="row">
+          <div class="large-4 columns text-center">
+            <div class="week-month-name">
+              {{ monthNames[9] }}
+            </div>
+            <div class="knots knots-static">
+              <span class="typcn typcn-media-record"></span>
+            </div>
+          </div>
+
+          <div class="large-4 columns text-center">
+            <div class="week-month-name">
+              {{ monthNames[10] }}
+            </div>
+            <div class="knots knots-static">
+              <span class="typcn typcn-media-record"></span>
+            </div>
+          </div>
+
+          <div class="large-4 columns text-center">
+            <div class="week-month-name">
+              {{ monthNames[11] }}
+            </div>
+            <div class="knots knots-static">
+              <span class="typcn typcn-media-record"></span>
+            </div>
+          </div>
+
+          <hr class="ghost-line" />
+        </div>
+      </div><!-- /#week-quarter-4 -->
+    </div>
+  </div><!-- /#week-selector -->
+
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/bower_components/lodash/dist/lodash.js"></script>
+  <script src="/bower_components/foundation/js/foundation.min.js"></script>
+  <script src="/bower_components/leaflet/dist/leaflet.js"></script>
+  <script src="/bower_components/nouislider/Link.js"></script>
+  <script src="/bower_components/nouislider/jquery.nouislider.js"></script>
+  <script src="/bower_components/momentjs/moment.js"></script>
+  <script src="/bower_components/moment-recur/moment-recur.js"></script>
+  <script src="/bower_components/momentjs/lang/th.js"></script>
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="/js/app.js"></script>
+
+</body>
+</html>

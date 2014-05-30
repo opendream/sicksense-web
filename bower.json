@@ -1,6 +1,9 @@
 {
   "name": "foundation-libsass-template",
   "dependencies": {
-    "foundation": "zurb/bower-foundation"
+    "foundation": "zurb/bower-foundation",
+    "momentjs": "~2.6.0",
+    "lodash": "~2.4.1",
+    "moment-recur": "~1.0.0"
   }
 }
