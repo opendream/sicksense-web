@@ -56,10 +56,15 @@
           <div id="week-month-name">
           </div>
           <div id="week-knots" class="knots knots-ui">
-            <div class="knot-box" ng-repeat="week in weeks">
-              <time class="knot-pin" datetime="{{ week.toString() }}" ng-click="setWeek(week)">
+            <div class="knot-box" ng-repeat="date in weeks">
+              <time  class="knot-pin" ng-class="{ selected: isSelectedWeek(date) }" datetime="{{ date.toString() }}" ng-click="setWeek(date)">
               </time>
             </div>
+          </div>
+
+          <div class="week-knots-quarter-button right" ng-click="toggleQuartersUI()">
+            <span class="typcn typcn-arrow-sorted-down" ng-show="quarterExpand"></span>
+            <span class="typcn typcn-arrow-sorted-up" ng-hide="quarterExpand"></span>
           </div>
         </div>
 
@@ -68,7 +73,7 @@
     </div><!-- top row -->
 
 
-    <div id="week-quarters">
+    <div id="week-quarters" ng-show="quarterExpand">
       <div id="week-quarter-1" class="week-quarter" data-quarter="1" ng-click="setQuarter(1)">
         <div class="row">
           <div class="large-4 columns text-center">
