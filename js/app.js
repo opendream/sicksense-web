@@ -25,7 +25,7 @@ app.factory('dashboard', [ '$rootScope', function($rootScope) {
     options = _.defaults(options || {}, {
       latitude: 13.751690,
       longitude: 100.491882,
-      zoom: 13
+      zoom: 10
     });
 
     this.map = L.map('map').setView([options.latitude, options.longitude], options.zoom);
@@ -191,7 +191,7 @@ app.controller('CitySelector', [ '$scope', 'dashboard', 'data', function($scope,
     $scope.city = city;
 
     // Set map center by city.
-    dashboard.map.setView([ city.latitude, city.longitude ], 9, {
+    dashboard.map.setView([ city.latitude, city.longitude ], 10, {
       animate: true,
       duration: 1
     });
@@ -220,6 +220,13 @@ app.controller('ILIController', [ '$scope', 'data', function($scope, data) {
     $scope.delta = response.ILI.delta;
     $scope.numberOfReporters = response.numberOfReporters;
 
+    $scope.$digest();
+  });
+}]);
+
+app.controller('SymptomsController', [ '$scope', function($scope) {
+  $scope.$on('data.refresh', function(event, data) {
+    $scope.symptoms = data.response.topSymptoms;
     $scope.$digest();
   });
 }]);

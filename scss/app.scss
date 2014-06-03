@@ -55,9 +55,18 @@
   font-style: normal;
 }
 
+#top-nav-bar {
+  background-color: #dc0028;
+
+  * {
+    background-color: inherit;
+  }
+}
+
 #map {
   width: 100%;
   height: 40%;
+  min-height: 280px;
 }
 
 #week-selector {
@@ -81,10 +90,10 @@
 
   .knot-pin {
     display: inline-block;
-    width: 8px;
-    height: 8px;
-    background-color: #222;
-    border-radius: 4px;
+    width: 12px;
+    height: 12px;
+    background-color: #2b3c46;
+    border-radius: 6px;
     margin-left: 4%;
 
     &:first-child {
@@ -92,7 +101,19 @@
     }
   }
 
+  .ghost-line {
+    left: 3.5%;
+    width: 91%;
+    display: block;
+    position: relative;
+    top: -1.7em;
+    border-color: #2b3c46;
+  }
+
   &.knots-ui .knot-pin {
+    -moz-transition: all .1s ease-out;
+    -webkit-transition: all .1s ease-out;
+    -o-transition: all .1s ease-out;
     transition: all .1s ease-out;
 
     &:hover {
@@ -100,6 +121,9 @@
     }
 
     &.selected {
+      -moz-transform: scale(2);
+      -webkit-transform: scale(2);
+      -o-transform: scale(2);
       transform: scale(2);
       background-color: green;
     }
@@ -166,4 +190,132 @@
   border-radius: 4px;
   color: #5e8095;
   cursor: pointer;
+}
+
+#map-legend {
+  display: block;
+  position: absolute;
+  top: 212px;
+  left: 80px;
+  padding: 2px 16px;
+  background-color: #ffffff;
+  opacity: 0.9;
+  z-index: 9998;
+
+  ul {
+    margin-bottom: 0;
+
+    li.legend-fine {
+      .typcn {
+        color: #00aeaf;
+        font-size: 1.4em;
+      }
+    }
+
+    li.legend-sick {
+      .typcn {
+        color: #dc0028;
+        font-size: 1.4em;
+      }
+    }
+  }
+}
+
+#city-ili-floating-box {
+  display: block;
+  position: absolute;
+  top: 56px;
+  left: 80px;
+  min-width: 365px;
+  background-color: #ffffff;
+  opacity: 0.9;
+  z-index: 9999;
+}
+
+#city-selector {
+  .button {
+    display: block;
+    font-size: 1.4em;
+  }
+}
+
+#city-drop {
+  z-index: 9999;
+
+  tbody {
+    td {
+      vertical-align: top;
+
+      .province-name {
+        margin-bottom: 4px;
+        cursor: pointer;
+        box-sizing: border-box;
+
+        > span {
+          padding-bottom: 3px;
+        }
+
+        &:hover {
+          > span {
+            border-bottom: 2px solid #008c8a;
+          }
+        }
+      }
+    }
+  }
+}
+
+#ili-stat {
+  margin-bottom: 1em;
+
+  .ili-stat_label {
+    font-size: 0.8em;
+    margin-bottom: 0.4em;
+  }
+  .ili-stat_value {
+    font-size: 2em;
+  }
+}
+
+.progress {
+  padding-right: 60px;
+  .meter {
+    position: relative;
+
+    .meter-number {
+      display: block;
+      position: absolute;
+      top: 0px;
+      right: -50px;
+      font-size: 0.8em;
+    }
+  }
+}
+
+#symptoms-stat {
+  margin-top: 3em;
+
+  .symptom-list-index {
+    float: left;
+    padding: 0px 10px;
+
+    span {
+      width: 2em;
+      height: 2em;
+      display: inline-block;
+      text-align: center;
+      background-color: #989898;
+      color: #FFF;
+      border-radius: 2em;
+      line-height: 2em;
+      font-size: 1.2em;
+    }
+  }
+
+  .symptom-bar {
+    float: left;
+    width: 100%;
+    padding: 0px 0px 0px 4em;
+    position: absolute;
+  }
 }
