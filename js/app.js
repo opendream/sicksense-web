@@ -1,4 +1,4 @@
-var API_BASEPATH = "//localhost:1337";
+var API_BASEPATH = "//opendream.in.th:3320";
 
 sickconsole = function(message) {
   if (console) {

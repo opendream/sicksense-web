@@ -269,15 +269,17 @@
 
         <ul class="no-bullet" ng-show="symptoms">
           <li ng-repeat="symptom in symptoms">
-            <div class="symptom-list-index"><span>{{ $index + 1 }}</span></div>
-            <div class="symptom-bar">
-              <div class="progress radius">
-                <span class="meter" style="width:{{ symptom.percentOfReports }}%">
-                  <span class="meter-number">{{ symptom.percentOfReports }}%</span>
-                </span>
-              </div>
+            <div class="row">
+              <div class="large-2 columns text-center symptom-list-index"><span>{{ $index + 1 }}</span></div>
+              <div class="large-10 columns symptom-bar">
+                <div class="progress radius">
+                  <span class="meter" style="width:{{ symptom.percentOfReports }}%">
+                    <span class="meter-number">{{ symptom.percentOfReports }}%</span>
+                  </span>
+                </div>
 
-              {{ symptom.name }}
+                {{ symptom.name }}
+              </div>
             </div>
           </li>
         </ul>

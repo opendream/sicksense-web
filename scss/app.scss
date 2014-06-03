@@ -295,10 +295,13 @@
 #symptoms-stat {
   margin-top: 3em;
 
-  .symptom-list-index {
-    float: left;
-    padding: 0px 10px;
+  li > .row {
+    background-color: #f5f4f2;
+    padding: 10px 0;
+    margin-bottom: 10px;
+  }
 
+  .symptom-list-index {
     span {
       width: 2em;
       height: 2em;
@@ -310,12 +313,5 @@
       line-height: 2em;
       font-size: 1.2em;
     }
-  }
-
-  .symptom-bar {
-    float: left;
-    width: 100%;
-    padding: 0px 0px 0px 4em;
-    position: absolute;
   }
 }
