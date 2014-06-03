@@ -4,6 +4,9 @@
     "foundation": "zurb/bower-foundation",
     "momentjs": "~2.6.0",
     "lodash": "~2.4.1",
-    "moment-recur": "~1.0.0"
+    "moment-recur": "~1.0.0",
+    "leaflet": "~0.7.3",
+    "angular": "~1.2.16",
+    "typicons": "~2.0.4"
   }
 }

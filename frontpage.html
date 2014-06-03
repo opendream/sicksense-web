@@ -11,7 +11,7 @@
   <script src="/bower_components/modernizr/modernizr.js"></script>
 </head>
 
-<body ng-app>
+<body ng-app="sicksense">
   <div class="contain-to-grid">
     <nav class="top-bar" data-topbar>
       <ul class="title-area">
@@ -29,6 +29,48 @@
   </div>
 
   <div id="map"></div>
+
+  <div id="city-ili-floating-box">
+    <div id="city-selector" ng-controller="CitySelector">
+      <a href="#" class="button" data-dropdown="city-drop" title="City">{{ city.th }} <span class="typcn typcn-arrow-sorted-down"></span></a>
+      <ul id="city-drop" class="large f-dropdown" data-dropdown-content>
+        <li ng-repeat="region in regions">
+          <div class="region-name">
+            {{ region.name }}
+          </div>
+          <ul class="provinces-list">
+            <li ng-repeat="province in region.provinces">
+              <span class="province-name" ng-click="setCity(province)">{{ province.th }}</span>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div id="ili-stat" ng-controller="ILIController">
+      <div class="row">
+        <div id="ili-stat-ili-thisweek" class="large-2 columns">
+          <span class="ili-stat_labal">ILI</span>
+          <span class="ili-stat_value">{{ thisWeek }}%</span>
+        </div>
+        <div id="ili-stat-ili-delta" class="large-5 columns">
+          <span class="ili-stat_labal">Last week</span>
+          <span class="ili-stat_value">{{ delta }}%</span>
+        </div>
+        <div id="ili-stat-ili-reporternumbers" class="large-5 columns">
+          <span class="ili-stat_labal">Number of reporters</span>
+          <span class="ili-stat_value">{{ numberOfReporters }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="map-legend">
+    <ul>
+      <li><span class="typcn typcn-media-record"></span> Fine</li>
+      <li><span class="typcn typcn-media-record"></span> Sick</li>
+    </ul>
+  </div>
 
   <div id="week-selector" ng-controller="WeekSelector">
     <div class="row">
@@ -209,15 +251,14 @@
   </div><!-- /#week-selector -->
 
   <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/bower_components/async/lib/async.js"></script>
   <script src="/bower_components/lodash/dist/lodash.js"></script>
   <script src="/bower_components/foundation/js/foundation.min.js"></script>
   <script src="/bower_components/leaflet/dist/leaflet.js"></script>
-  <script src="/bower_components/nouislider/Link.js"></script>
-  <script src="/bower_components/nouislider/jquery.nouislider.js"></script>
   <script src="/bower_components/momentjs/moment.js"></script>
-  <script src="/bower_components/moment-recur/moment-recur.js"></script>
   <script src="/bower_components/momentjs/lang/th.js"></script>
   <script src="/bower_components/angular/angular.js"></script>
+  <script src="/js/runonce.js"></script>
   <script src="/js/app.js"></script>
 
 </body>
