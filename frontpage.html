@@ -128,7 +128,7 @@
 
 
     <div id="week-quarters" ng-show="quarterExpand">
-      <div id="week-quarter-1" class="week-quarter" data-quarter="1" ng-click="setQuarter(1)">
+      <div id="week-quarter-1" class="week-quarter" ng-class="{ selected: quarter == 1 }" data-quarter="1" ng-click="setQuarter(1)">
         <div class="row">
           <div class="large-4 columns text-center">
             <div class="week-month-name">
@@ -161,7 +161,7 @@
         </div>
       </div><!-- /#week-quarter-1 -->
 
-      <div id="week-quarter-2" class="week-quarter" data-quarter="2" ng-click="setQuarter(2)">
+      <div id="week-quarter-2" class="week-quarter" ng-class="{ selected: quarter == 2 }" data-quarter="2" ng-click="setQuarter(2)">
         <div class="row">
           <div class="large-4 columns text-center">
             <div class="week-month-name">

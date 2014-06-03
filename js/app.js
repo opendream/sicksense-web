@@ -1,4 +1,4 @@
-var API_BASEPATH = "//opendream.in.th:3320";
+var API_BASEPATH = "//localhost:1337";
 
 sickconsole = function(message) {
   if (console) {
@@ -125,6 +125,7 @@ app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope,
   };
 
   $scope.setQuarter = function(quarter) {
+    $scope.quarterExpand = false;
     $scope.quarter = quarter;
     $scope.weeks = getWeeks($scope.year, $scope.quarter);
   };

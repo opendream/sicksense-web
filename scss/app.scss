@@ -130,7 +130,20 @@
   }
 }
 
+#year-selector {
+  .button {
+    font-size: 1.4em;
+    margin-bottom: 0;
+  }
+}
+
 #year-drop {
+  z-index: 999;
+}
+
+#week-quarters {
+  position: absolute;
+  width: 100%;
   z-index: 999;
 }
 
@@ -159,19 +172,17 @@
     position: relative;
   }
 
-  &:nth-child(odd) {
-    background-color: #2a3b44;
+  background-color: #2a3b44;
 
-    .typcn-media-record {
-      color: #3a4e5a;
-    }
-
-    .ghost-line {
-      border-color: #3a4e5a;
-    }
+  .typcn-media-record {
+    color: #3a4e5a;
   }
 
-  &:nth-child(even) {
+  .ghost-line {
+    border-color: #3a4e5a;
+  }
+
+  &:hover, &.selected {
     background-color: #3a4e5a;
 
     .typcn-media-record {
@@ -185,6 +196,11 @@
 }
 
 .week-knots-quarter-button {
+  position: absolute;
+  top: 35%;
+  right: 0px;
+  bottom: 40%;
+
   background-color: #2b3b44;
   padding: 3px;
   border-radius: 4px;
