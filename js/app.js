@@ -42,8 +42,16 @@ app.factory('dashboard', [ '$rootScope', function($rootScope) {
     });
   };
 
-  Dashboard.prototype.addMarker = function(latitude, longitude) {
-    this.markers.push( L.marker([latitude, longitude]).addTo(this.map) );
+  Dashboard.prototype.addMarker = function(item) {
+    //this.markers.push( L.marker([latitude, longitude]).addTo(this.map) );
+    var color = (item.fineCount > item.sickCount) ? '#2ca8af' : '#da1338';
+
+    this.markers.push( L.circleMarker([item.latitude, item.longitude], {
+      opacity: 1,
+      color: color,
+      fillOpacity: 0.8,
+      fillColor: color
+    }).addTo(this.map) );
   };
 
   // ----
@@ -54,7 +62,7 @@ app.factory('dashboard', [ '$rootScope', function($rootScope) {
     dashboard.clearMarkers();
 
     _.each(data.response.reports.items, function(item) {
-      dashboard.addMarker(item.latitude, item.longitude);
+      dashboard.addMarker(item);
     });
   });
 
