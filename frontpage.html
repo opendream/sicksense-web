@@ -108,11 +108,11 @@
           <div id="week-month-name">
           </div>
           <div id="week-knots" class="knots knots-ui">
+            <hr class="ghost-line">
             <div class="knot-box" ng-repeat="date in weeks">
               <time  class="knot-pin" ng-class="{ selected: isSelectedWeek(date) }" datetime="{{ date.toString() }}" ng-click="setWeek(date)">
               </time>
             </div>
-            <hr class="ghost-line">
           </div>
 
 

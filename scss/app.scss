@@ -106,8 +106,9 @@
     width: 91%;
     display: block;
     position: relative;
-    top: -1.7em;
+    top: 0.5em;
     border-color: #2b3c46;
+    margin: 0;
   }
 
   &.knots-ui .knot-pin {
@@ -197,9 +198,8 @@
 
 .week-knots-quarter-button {
   position: absolute;
-  top: 35%;
+  top: 1.8em;
   right: 0px;
-  bottom: 40%;
 
   background-color: #2b3b44;
   padding: 3px;
