@@ -7,6 +7,7 @@
     "moment-recur": "~1.0.0",
     "leaflet": "~0.7.3",
     "angular": "~1.2.16",
-    "typicons": "~2.0.4"
+    "typicons": "~2.0.4",
+    "async": "~0.9.0"
   }
 }
