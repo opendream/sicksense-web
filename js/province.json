@@ -1,464 +1,541 @@
 [
   {
-    "en":"Krabi",
-    "th":"กระบี่",
-    "longitude":99.0022188148148,
-    "latitude":8.11461222222222
+    "en": "Krabi",
+    "th": "กระบี่",
+    "code": 81,
+    "longtitude": 99.0234154266,
+    "latitude": 8.14927908798
   },
   {
-    "en":"Bangkok",
-    "th":"กรุงเทพมหานคร",
-    "longitude":100.554839227273,
-    "latitude":13.7573042207792
+    "en": "Bangkok",
+    "th": "กรุงเทพมหานคร",
+    "code": 10,
+    "longtitude": 100.624217432,
+    "latitude": 13.7704211463
   },
   {
-    "en":"Kanchanaburi",
-    "th":"กาญจนบุรี",
-    "longitude":99.4407398989899,
-    "latitude":14.2371427272727
+    "en": "Kanchanaburi",
+    "th": "กาญจนบุรี",
+    "code": 71,
+    "longtitude": 99.0467935509,
+    "latitude": 14.5873851516
   },
   {
-    "en":"Kalasin",
-    "th":"กาฬสินธุ์",
-    "longitude":103.612924081481,
-    "latitude":16.5905069037037
+    "en": "Kalasin",
+    "th": "กาฬสินธุ์",
+    "code": 46,
+    "longtitude": 103.624741053,
+    "latitude": 16.6274506277
   },
   {
-    "en":"Kamphaeng Phet",
-    "th":"กำแพงเพชร",
-    "longitude":99.6531610769231,
-    "latitude":16.3685191410256
+    "en": "Kamphaeng Phet",
+    "th": "กำแพงเพชร",
+    "code": 62,
+    "longtitude": 99.5346039639,
+    "latitude": 16.3321477661
   },
   {
-    "en":"Khon Kaen",
-    "th":"ขอนแก่น",
-    "longitude":102.595359964824,
-    "latitude":16.3565918040201
+    "en": "Khon Kaen",
+    "th": "ขอนแก่น",
+    "code": 40,
+    "longtitude": 102.579094719,
+    "latitude": 16.4060610092
   },
   {
-    "en":"Chanthaburi",
-    "th":"จันทบุรี",
-    "longitude":102.115037881579,
-    "latitude":12.7167294736842
+    "en": "Chanthaburi",
+    "th": "จันทบุรี",
+    "code": 22,
+    "longtitude": 102.128709757,
+    "latitude": 12.8786827084
   },
   {
-    "en":"Chachoengsao",
-    "th":"ฉะเชิงเทรา",
-    "longitude":101.145058010753,
-    "latitude":13.6819040860215
+    "en": "Chachoengsao",
+    "th": "ฉะเชิงเทรา",
+    "code": 24,
+    "longtitude": 101.441746248,
+    "latitude": 13.6082875786
   },
   {
-    "en":"Chonburi",
-    "th":"ชลบุรี",
-    "longitude":101.114534478261,
-    "latitude":13.2773354347826
+    "en": "Chonburi",
+    "th": "ชลบุรี",
+    "code": 20,
+    "longtitude": 101.200921889,
+    "latitude": 13.1915114213
   },
   {
-    "en":"Chainat",
-    "th":"ชัยนาท",
-    "longitude":100.074899851852,
-    "latitude":15.152747037037
+    "en": "Chainat",
+    "th": "ชัยนาท",
+    "code": 18,
+    "longtitude": 100.024823653,
+    "latitude": 15.1284939665
   },
   {
-    "en":"Chaiyaphum",
-    "th":"ชัยภูมิ",
-    "longitude":101.93779375,
-    "latitude":15.9763613064516
+    "en": "Chaiyaphum",
+    "th": "ชัยภูมิ",
+    "code": 36,
+    "longtitude": 101.81693049,
+    "latitude": 16.0328502803
   },
   {
-    "en":"Chumphon",
-    "th":"ชุมพร",
-    "longitude":99.1066648732394,
-    "latitude":10.2992122535211
+    "en": "Chumphon",
+    "th": "ชุมพร",
+    "code": 86,
+    "longtitude": 99.0649447033,
+    "latitude": 10.3487948788
   },
   {
-    "en":"Trang",
-    "th":"ตรัง",
-    "longitude":99.6047911046511,
-    "latitude":7.55898790697674
+    "en": "Trang",
+    "th": "ตรัง",
+    "code": 92,
+    "longtitude": 99.608640677,
+    "latitude": 7.53366281025
   },
   {
-    "en":"Trat",
-    "th":"ตราด",
-    "longitude":102.523678578947,
-    "latitude":12.2434865789474
+    "en": "Trat",
+    "th": "ตราด",
+    "code": 23,
+    "longtitude": 102.525030361,
+    "latitude": 12.316817634
   },
   {
-    "en":"Tak",
-    "th":"ตาก",
-    "longitude":98.8446048387097,
-    "latitude":16.8409194677419
+    "en": "Tak",
+    "th": "ตาก",
+    "code": 63,
+    "longtitude": 98.7919508529,
+    "latitude": 16.7159364431
   },
   {
-    "en":"Nakhon Nayok",
-    "th":"นครนายก",
-    "longitude":101.139269690476,
-    "latitude":14.1863104761905
+    "en": "Nakhon Nayok",
+    "th": "นครนายก",
+    "code": 26,
+    "longtitude": 101.171889379,
+    "latitude": 14.2160505642
   },
   {
-    "en":"Nakhon Pathom",
-    "th":"นครปฐม",
-    "longitude":100.122835858491,
-    "latitude":13.8750752830189
+    "en": "Nakhon Pathom",
+    "th": "นครปฐม",
+    "code": 73,
+    "longtitude": 100.103553087,
+    "latitude": 13.9267213069
   },
   {
-    "en":"Nakhon Phanom",
-    "th":"นครพนม",
-    "longitude":104.485442555555,
-    "latitude":17.3239020909091
+    "en": "Nakhon Phanom",
+    "th": "นครพนม",
+    "code": 48,
+    "longtitude": 104.431242591,
+    "latitude": 17.3870187342
   },
   {
-    "en":"Nakhon Ratchasima",
-    "th":"นครราชสีมา",
-    "longitude":102.194435515571,
-    "latitude":15.084664982699
+    "en": "Nakhon Ratchasima",
+    "th": "นครราชสีมา",
+    "code": 30,
+    "longtitude": 102.109731383,
+    "latitude": 14.9631115333
   },
   {
-    "en":"Nakhon Sri Thammarat",
-    "th":"นครศรีธรรมราช",
-    "longitude":99.8626154705883,
-    "latitude":8.34344105882353
+    "en": "Nakhon Sri Thammarat",
+    "th": "นครศรีธรรมราช",
+    "code": 80,
+    "longtitude": 99.7825364329,
+    "latitude": 8.38363674763
   },
   {
-    "en":"Nakhon Sawan",
-    "th":"นครสวรรค์",
-    "longitude":100.189504115385,
-    "latitude":15.6807797615385
+    "en": "Nakhon Sawan",
+    "th": "นครสวรรค์",
+    "code": 60,
+    "longtitude": 100.149013312,
+    "latitude": 15.6837285795
   },
   {
-    "en":"Nonthaburi",
-    "th":"นนทบุรี",
-    "longitude":100.432291192308,
-    "latitude":13.8942290384615
+    "en": "Nonthaburi",
+    "th": "นนทบุรี",
+    "code": 12,
+    "longtitude": 100.392991859,
+    "latitude": 13.9199658499
   },
   {
-    "en":"Narathiwat",
-    "th":"นราธิวาส",
-    "longitude":101.751054480519,
-    "latitude":6.23563454545454
+    "en": "Narathiwat",
+    "th": "นราธิวาส",
+    "code": 96,
+    "longtitude": 101.722063659,
+    "latitude": 6.1788203881
   },
   {
-    "en":"Nan",
-    "th":"น่าน",
-    "longitude":100.815026020202,
-    "latitude":18.8799865151515
+    "en": "Nan",
+    "th": "น่าน",
+    "code": 55,
+    "longtitude": 100.832841715,
+    "latitude": 18.8511094995
   },
   {
-    "en":"Bueng Kan",
-    "th":"บึงกาฬ",
-    "longitude":103.683608150943,
-    "latitude":18.1548640566038
+    "en": "Bueng Kan",
+    "th": "บึงกาฬ",
+    "code": 97,
+    "longtitude": 103.683608150943,
+    "latitude": 18.1548640566038
   },
   {
-    "en":"Buri Ram",
-    "th":"บุรีรัมย์",
-    "longitude":102.973558243386,
-    "latitude":14.8916376190476
+    "en": "Buri Ram",
+    "th": "บุรีรัมย์",
+    "code": 31,
+    "longtitude": 102.949962009,
+    "latitude": 14.8163305624
   },
   {
-    "en":"Pathumthani",
-    "th":"ปทุมธานี",
-    "longitude":100.6291154,
-    "latitude":14.050188
+    "en": "Pathumthani",
+    "th": "ปทุมธานี",
+    "code": 13,
+    "longtitude": 100.679530249,
+    "latitude": 14.0659237362
   },
   {
-    "en":"Prachaubkirikhan",
-    "th":"ประจวบคีรีขันธ์",
-    "longitude":99.6791081875,
-    "latitude":11.8851841666667
+    "en": "Prachaubkirikhan",
+    "th": "ประจวบคีรีขันธ์",
+    "code": 77,
+    "longtitude": 99.6371591462,
+    "latitude": 11.9386756867
   },
   {
-    "en":"Prachinburi",
-    "th":"ปราจีนบุรี",
-    "longitude":101.531040015625,
-    "latitude":14.00875765625
+    "en": "Prachinburi",
+    "th": "ปราจีนบุรี",
+    "code": 25,
+    "longtitude": 101.646307028,
+    "latitude": 14.0666569506
   },
   {
-    "en":"Pattani",
-    "th":"ปัตตานี",
-    "longitude":101.357507104348,
-    "latitude":6.75881973913044
+    "en": "Pattani",
+    "th": "ปัตตานี",
+    "code": 94,
+    "longtitude": 101.342990534,
+    "latitude": 6.73401359561
   },
   {
-    "en":"Phra Nakhon Sri Ayutthaya",
-    "th":"พระนครศรีอยุธยา",
-    "longitude":100.529889574163,
-    "latitude":14.3716741626794
+    "en": "Phra Nakhon Sri Ayutthaya",
+    "th": "พระนครศรีอยุธยา",
+    "code": 14,
+    "longtitude": 100.524527588,
+    "latitude": 14.346580519
   },
   {
-    "en":"Phayao",
-    "th":"พะเยา",
-    "longitude":100.088703426471,
-    "latitude":19.2837069705882
+    "en": "Phayao",
+    "th": "พะเยา",
+    "code": 56,
+    "longtitude": 100.189764833,
+    "latitude": 19.2347565873
   },
   {
-    "en":"Phangnga",
-    "th":"พังงา",
-    "longitude":98.4392883333334,
-    "latitude":8.575386875
+    "en": "Phangnga",
+    "th": "พังงา",
+    "code": 82,
+    "longtitude": 98.4143044081,
+    "latitude": 8.67518125272
   },
   {
-    "en":"Phatthalung",
-    "th":"พัทลุง",
-    "longitude":100.065151738461,
-    "latitude":7.54372246153846
+    "en": "Phatthalung",
+    "th": "พัทลุง",
+    "code": 93,
+    "longtitude": 100.060956477,
+    "latitude": 7.5187950306
   },
   {
-    "en":"Phichit",
-    "th":"พิจิตร",
-    "longitude":100.355683797753,
-    "latitude":16.2562090224719
+    "en": "Phichit",
+    "th": "พิจิตร",
+    "code": 66,
+    "longtitude": 100.342161389,
+    "latitude": 16.260150662
   },
   {
-    "en":"Phitsanulok",
-    "th":"พิษณุโลก",
-    "longitude":100.388792602151,
-    "latitude":16.8775462580645
+    "en": "Phitsanulok",
+    "th": "พิษณุโลก",
+    "code": 65,
+    "longtitude": 100.544485127,
+    "latitude": 16.9785434493
   },
   {
-    "en":"Phuket",
-    "th":"ภูเก็ต",
-    "longitude":98.3436418823529,
-    "latitude":7.94150588235294
+    "en": "Phuket",
+    "th": "ภูเก็ต",
+    "code": 83,
+    "longtitude": 98.3465762633,
+    "latitude": 7.96506258518
   },
   {
-    "en":"Maha Sarakham",
-    "th":"มหาสารคาม",
-    "longitude":103.184779651515,
-    "latitude":15.9959011893939
+    "en": "Maha Sarakham",
+    "th": "มหาสารคาม",
+    "code": 44,
+    "longtitude": 103.167964137,
+    "latitude": 15.9995918852
   },
   {
-    "en":"Mukdahan",
-    "th":"มุกดาหาร",
-    "longitude":104.563385,
-    "latitude":16.5403559056604
+    "en": "Mukdahan",
+    "th": "มุกดาหาร",
+    "code": 49,
+    "longtitude": 104.513806163,
+    "latitude": 16.5699132506
   },
   {
-    "en":"Yala",
-    "th":"ยะลา",
-    "longitude":101.258342413793,
-    "latitude":6.38427379310345
+    "en": "Yala",
+    "th": "ยะลา",
+    "code": 95,
+    "longtitude": 101.227785205,
+    "latitude": 6.19534680861
   },
   {
-    "en":"Yasothon",
-    "th":"ยโสธร",
-    "longitude":104.307297632911,
-    "latitude":15.8383446962025
+    "en": "Yasothon",
+    "th": "ยโสธร",
+    "code": 35,
+    "longtitude": 104.341497077,
+    "latitude": 15.9009566806
   },
   {
-    "en":"Ranong",
-    "th":"ระนอง",
-    "longitude":98.7007683333333,
-    "latitude":9.98416833333333
+    "en": "Ranong",
+    "th": "ระนอง",
+    "code": 85,
+    "longtitude": 98.7054598875,
+    "latitude": 9.97552873808
   },
   {
-    "en":"Rayong",
-    "th":"ระยอง",
-    "longitude":101.408949,
-    "latitude":12.803244137931
+    "en": "Rayong",
+    "th": "ระยอง",
+    "code": 21,
+    "longtitude": 101.428804673,
+    "latitude": 12.854277935
   },
   {
-    "en":"Ratchburi",
-    "th":"ราชบุรี",
-    "longitude":99.7966720192308,
-    "latitude":13.6015039423077
+    "en": "Ratchburi",
+    "th": "ราชบุรี",
+    "code": 70,
+    "longtitude": 99.5773455438,
+    "latitude": 13.5383454452
   },
   {
-    "en":"Roi Et",
-    "th":"ร้อยเอ็ด",
-    "longitude":103.799967030928,
-    "latitude":15.9374914329897
+    "en": "Roi Et",
+    "th": "ร้อยเอ็ด",
+    "code": 45,
+    "longtitude": 103.814088451,
+    "latitude": 15.9177713869
   },
   {
-    "en":"Lopburi",
-    "th":"ลพบุรี",
-    "longitude":100.798201577236,
-    "latitude":15.0301503252033
+    "en": "Lopburi",
+    "th": "ลพบุรี",
+    "code": 16,
+    "longtitude": 100.900891163,
+    "latitude": 15.0943437793
   },
   {
-    "en":"Lamphang",
-    "th":"ลำปาง",
-    "longitude":99.50518234,
-    "latitude":18.33827201
+    "en": "Lamphang",
+    "th": "ลำปาง",
+    "code": 52,
+    "longtitude": 99.5128434334,
+    "latitude": 18.3268218167
   },
   {
-    "en":"Lamphun",
-    "th":"ลำพูน",
-    "longitude":98.9538963076924,
-    "latitude":18.3317670384615
+    "en": "Lamphun",
+    "th": "ลำพูน",
+    "code": 51,
+    "longtitude": 98.9548382101,
+    "latitude": 18.1178638688
   },
   {
-    "en":"Si Sa Ket",
-    "th":"ศรีสะเกษ",
-    "longitude":104.33123292233,
-    "latitude":14.9409876213592
+    "en": "Si Sa Ket",
+    "th": "ศรีสะเกษ",
+    "code": 33,
+    "longtitude": 104.370498372,
+    "latitude": 14.8541114835
   },
   {
-    "en":"Sakon Nakhon",
-    "th":"สกลนคร",
-    "longitude":103.828387888,
-    "latitude":17.398666768
+    "en": "Sakon Nakhon",
+    "th": "สกลนคร",
+    "code": 47,
+    "longtitude": 103.82309138,
+    "latitude": 17.3886525958
   },
   {
-    "en":"Songkhla",
-    "th":"สงขลา",
-    "longitude":100.536787330709,
-    "latitude":7.07497031496063
+    "en": "Songkhla",
+    "th": "สงขลา",
+    "code": 90,
+    "longtitude": 100.537686985,
+    "latitude": 6.95389029639
   },
   {
-    "en":"Satun",
-    "th":"สตูล",
-    "longitude":99.93422725,
-    "latitude":6.8202575
+    "en": "Satun",
+    "th": "สตูล",
+    "code": 91,
+    "longtitude": 99.9339957855,
+    "latitude": 6.82906172227
   },
   {
-    "en":"Samut Prakarn",
-    "th":"สมุทรปราการ",
-    "longitude":100.65987506,
-    "latitude":13.6177798
+    "en": "Samut Prakarn",
+    "th": "สมุทรปราการ",
+    "code": 11,
+    "longtitude": 100.708412768,
+    "latitude": 13.597603176
   },
   {
-    "en":"Samut Songkram",
-    "th":"สมุทรสงคราม",
-    "longitude":99.9549699166667,
-    "latitude":13.4294183333333
+    "en": "Samut Songkram",
+    "th": "สมุทรสงคราม",
+    "code": 75,
+    "longtitude": 99.9554962269,
+    "latitude": 13.3971094417
   },
   {
-    "en":"Samut Sakhon",
-    "th":"สมุทรสาคร",
-    "longitude":100.216335675,
-    "latitude":13.58927125
+    "en": "Samut Sakhon",
+    "th": "สมุทรสาคร",
+    "code": 74,
+    "longtitude": 100.210156139,
+    "latitude": 13.5708002664
   },
   {
-    "en":"Saraburi",
-    "th":"สระบุรี",
-    "longitude":100.888851855856,
-    "latitude":14.5589703603604
+    "en": "Saraburi",
+    "th": "สระบุรี",
+    "code": 19,
+    "longtitude": 101.014953495,
+    "latitude": 14.6264241005
   },
   {
-    "en":"Srakaeo",
-    "th":"สระแก้ว",
-    "longitude":102.336544898305,
-    "latitude":13.7274210169492
+    "en": "Srakaeo",
+    "th": "สระแก้ว",
+    "code": 27,
+    "longtitude": 102.327099717,
+    "latitude": 13.7882846048
   },
   {
-    "en":"Singburi",
-    "th":"สิงห์บุรี",
-    "longitude":100.36330225,
-    "latitude":14.8892220454545
+    "en": "Singburi",
+    "th": "สิงห์บุรี",
+    "code": 17,
+    "longtitude": 100.346775381,
+    "latitude": 14.9152442447
   },
   {
-    "en":"Supanburi",
-    "th":"สุพรรณบุรี",
-    "longitude":100.015373605505,
-    "latitude":14.5403112844037
+    "en": "Supanburi",
+    "th": "สุพรรณบุรี",
+    "code": 72,
+    "longtitude": 99.889347625,
+    "latitude": 14.6105598839
   },
   {
-    "en":"Surat Thani",
-    "th":"สุราษฎร์ธานี",
-    "longitude":99.2577957076923,
-    "latitude":9.06235492307692
+    "en": "Surat Thani",
+    "th": "สุราษฎร์ธานี",
+    "code": 84,
+    "longtitude": 99.0887264733,
+    "latitude": 9.05395476344
   },
   {
-    "en":"Surin",
-    "th":"สุรินทร์",
-    "longitude":103.670411849057,
-    "latitude":14.9355406918239
+    "en": "Surin",
+    "th": "สุรินทร์",
+    "code": 32,
+    "longtitude": 103.652438474,
+    "latitude": 14.8864501384
   },
   {
-    "en":"Sukhothai",
-    "th":"สุโขทัย",
-    "longitude":99.7963721744186,
-    "latitude":17.1555554651163
+    "en": "Sukhothai",
+    "th": "สุโขทัย",
+    "code": 64,
+    "longtitude": 99.7126083072,
+    "latitude": 17.262899038
   },
   {
-    "en":"Nongkai",
-    "th":"หนองคาย",
-    "longitude":102.796801629032,
-    "latitude":17.9161840322581
+    "en": "Nongkai",
+    "th": "หนองคาย",
+    "code": 43,
+    "longtitude": 103.315801374,
+    "latitude": 18.0525414637
   },
   {
-    "en":"Nong Bua Lam Phu",
-    "th":"หนองบัวลำภู",
-    "longitude":102.313639864407,
-    "latitude":17.1740289322034
+    "en": "Nong Bua Lam Phu",
+    "th": "หนองบัวลำภู",
+    "code": 39,
+    "longtitude": 102.303308079,
+    "latitude": 17.1762028213
   },
   {
-    "en":"Amnat Charoen",
-    "th":"อำนาจเจริญ",
-    "longitude":104.705081535714,
-    "latitude":15.8604037142857
+    "en": "Amnat Charoen",
+    "th": "อำนาจเจริญ",
+    "code": 37,
+    "longtitude": 104.744320389,
+    "latitude": 15.8918966114
   },
   {
-    "en":"Udon Thani",
-    "th":"อุดรธานี",
-    "longitude":102.885997096154,
-    "latitude":17.4064364807692
+    "en": "Udon Thani",
+    "th": "อุดรธานี",
+    "code": 41,
+    "longtitude": 102.862543971,
+    "latitude": 17.4236788383
   },
   {
-    "en":"Uttaradit",
-    "th":"อุตรดิตถ์",
-    "longitude":100.325813268657,
-    "latitude":17.6408062089552
+    "en": "Uttaradit",
+    "th": "อุตรดิตถ์",
+    "code": 53,
+    "longtitude": 100.512845555,
+    "latitude": 17.7440269988
   },
   {
-    "en":"Uthai Thani",
-    "th":"อุทัยธานี",
-    "longitude":99.7980804202898,
-    "latitude":15.3740453623188
+    "en": "Uthai Thani",
+    "th": "อุทัยธานี",
+    "code": 61,
+    "longtitude": 99.4794974066,
+    "latitude": 15.347270949
   },
   {
-    "en":"Ubon Ratchathani",
-    "th":"อุบลราชธานี",
-    "longitude":105.022665726027,
-    "latitude":15.2750102328767
+    "en": "Ubon Ratchathani",
+    "th": "อุบลราชธานี",
+    "code": 34,
+    "longtitude": 105.11161643,
+    "latitude": 15.1842114497
   },
   {
-    "en":"Angthong",
-    "th":"อ่างทอง",
-    "longitude":100.383538945205,
-    "latitude":14.6140928767123
+    "en": "Angthong",
+    "th": "อ่างทอง",
+    "code": 15,
+    "longtitude": 100.350248178,
+    "latitude": 14.6243838901
   },
   {
-    "en":"Chiang Rai",
-    "th":"เชียงราย",
-    "longitude":99.9198874677419,
-    "latitude":19.8837658870968
+    "en": "Chiang Rai",
+    "th": "เชียงราย",
+    "code": 57,
+    "longtitude": 99.8695035648,
+    "latitude": 19.8496556719
   },
   {
-    "en":"Chiang Mai",
-    "th":"เชียงใหม่",
-    "longitude":98.9239019803922,
-    "latitude":18.872814
+    "en": "Chiang Mai",
+    "th": "เชียงใหม่",
+    "code": 50,
+    "longtitude": 98.7301034959,
+    "latitude": 18.7949135593
   },
   {
-    "en":"Petchburi",
-    "th":"เพชรบุรี",
-    "longitude":99.8789413870968,
-    "latitude":13.0492438709677
+    "en": "Petchburi",
+    "th": "เพชรบุรี",
+    "code": 76,
+    "longtitude": 99.6222585551,
+    "latitude": 12.9441939066
   },
   {
-    "en":"Phetchabun",
-    "th":"เพชรบูรณ์",
-    "longitude":101.120019735043,
-    "latitude":16.2763826239316
+    "en": "Phetchabun",
+    "th": "เพชรบูรณ์",
+    "code": 67,
+    "longtitude": 101.145115139,
+    "latitude": 16.2610490363
   },
   {
-    "en":"Loei",
-    "th":"เลย",
-    "longitude":101.645103188889,
-    "latitude":17.4122136333333
+    "en": "Loei",
+    "th": "เลย",
+    "code": 42,
+    "longtitude": 101.633059761,
+    "latitude": 17.4082818341
   },
   {
-    "en":"Phrae",
-    "th":"แพร่",
-    "longitude":100.097505115385,
-    "latitude":18.1636179358974
+    "en": "Phrae",
+    "th": "แพร่",
+    "code": 54,
+    "longtitude": 100.069204065,
+    "latitude": 18.204026558
   },
   {
-    "en":"Mae Hong Son",
-    "th":"แม่ฮ่องสอน",
-    "longitude":98.0603142666666,
-    "latitude":18.7713612888889
+    "en": "Mae Hong Son",
+    "th": "แม่ฮ่องสอน",
+    "code": 58,
+    "longtitude": 98.0323878919,
+    "latitude": 18.8191222349
   }
 ]
