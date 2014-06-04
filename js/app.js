@@ -1,4 +1,3 @@
-var API_BASEPATH = "//localhost:1337";
 
 sickconsole = function(message) {
   if (console) {
@@ -20,6 +19,26 @@ $(document).ready(function() {
 var app = angular.module('sicksense', []);
 
 app.factory('dashboard', [ '$rootScope', function($rootScope) {
+
+  var iconRed = L.icon({
+    iconUrl: '/images/pin-red.png',
+    iconSize: [17, 24],
+    iconAnchor: [8, 24],
+    popupAnchor: [8, -4],
+    shadowUrl: '/images/pin-shadow.png',
+    shadowSize: [27, 15],
+    shadowAnchor: [4, 12]
+  });
+
+  var iconGreen = L.icon({
+    iconUrl: '/images/pin-green.png',
+    iconSize: [17, 24],
+    iconAnchor: [8, 24],
+    popupAnchor: [8, -4],
+    shadowUrl: '/images/pin-shadow.png',
+    shadowSize: [27, 15],
+    shadowAnchor: [4, 12]
+  });
 
   function Dashboard (options) {
     options = _.defaults(options || {}, {
@@ -44,14 +63,9 @@ app.factory('dashboard', [ '$rootScope', function($rootScope) {
 
   Dashboard.prototype.addMarker = function(item) {
     //this.markers.push( L.marker([latitude, longitude]).addTo(this.map) );
-    var color = (item.fineCount > item.sickCount) ? '#2ca8af' : '#da1338';
+    var icon = (item.fineCount > item.sickCount) ? iconGreen : iconRed;
 
-    this.markers.push( L.circleMarker([item.latitude, item.longitude], {
-      opacity: 1,
-      color: color,
-      fillOpacity: 0.8,
-      fillColor: color
-    }).addTo(this.map) );
+    this.markers.push( L.marker([item.latitude, item.longitude], { icon: icon }).addTo(this.map) );
   };
 
   // ----
@@ -176,7 +190,7 @@ app.controller('CitySelector', [ '$scope', 'dashboard', 'data', function($scope,
     $scope.$watch('city', function(newValue, oldValue) {
       $scope.$emit('city.changed', newValue);
     });
-    $scope.city = _.find(provinces, { en: "Bangkok" });
+    $scope.city = _.find(provinces, { en: DEFAULT_CITY });
 
     _.each(regions, function(region) {
       var regionData = {

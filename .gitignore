@@ -2,3 +2,6 @@
 /css/*
 /bower_components/*
 /node_modules/*
+
+# Config
+/js/config.js
