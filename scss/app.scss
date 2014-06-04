@@ -66,12 +66,14 @@
 #map {
   width: 100%;
   height: 40%;
-  min-height: 280px;
+  min-height: 500px;
+  overflow: visible;
 }
 
 #week-selector {
   background-color: #3a4e5a;
-
+  position: relative;
+  z-index: 9999;
   .button {
     background-color: #3a4e5a;
   }
@@ -257,27 +259,38 @@
 
 #city-drop {
   z-index: 9999;
-
-  tbody {
-    td {
-      vertical-align: top;
-
-      .province-name {
-        margin-bottom: 4px;
-        cursor: pointer;
-        box-sizing: border-box;
-
-        > span {
-          padding-bottom: 3px;
-        }
-
-        &:hover {
-          > span {
-            border-bottom: 2px solid #008c8a;
-          }
-        }
+  border: none;
+  table {
+    min-width: 60em;
+      thead {
+	    th {
+		   text-align: center; 
+		   background: #dbdbdb;
+	    } 
       }
-    }
+	  tbody {
+	    td {
+	      vertical-align: top;
+	      .province-name {
+	        margin-bottom: 4px;
+	        cursor: pointer;
+	        box-sizing: border-box;
+/*
+			float: left;
+			width: 50%;
+*/
+	        > span {
+	          padding-bottom: 3px;
+	        }
+	
+	        &:hover {
+	          > span {
+	            border-bottom: 2px solid #008c8a;
+	          }
+	        }
+	      }
+	    }
+	  }  
   }
 }
 
@@ -295,8 +308,10 @@
 
 .progress {
   padding-right: 60px;
+  border: none;
   .meter {
     position: relative;
+    background: #00e4e5;
 
     .meter-number {
       display: block;
@@ -330,4 +345,100 @@
       font-size: 1.2em;
     }
   }
+}
+
+/**/
+.top-bar .name h1 a{
+	background: url(../images/logo.png) no-repeat;
+	text-indent: -999em;
+	overflow: hidden;
+	width: 229px;
+	height: 46px;
+}
+#top-nav-bar {padding: 0.5em 0; position: relative; z-index: 999;}
+#sicksense-map-control {
+	position: relative;
+	max-width: 62.5rem;
+	margin: 0 auto;
+	#city-ili-floating-box {
+		top: 20px;
+		left: 0;
+		background: transparent;
+		#city-selector {
+			background: rgba(255, 255, 255, 0.75);
+			border: 1px solid #ddd;
+			padding: 15px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			min-width: 365px;
+			min-height: 150px;
+			a.button {
+				background: none;
+				text-align: left;
+				padding: 0 0 0.35em;
+				color: #333;
+				font-size: 2em;
+				border-bottom: 2px solid #666;
+			}
+			.typcn-arrow-sorted-down {
+				background: url(../images/arrow_down.png) no-repeat right bottom;
+				float: right;
+				&:before {
+					content: ' '
+				}
+			}
+		}
+		#ili-stat {
+			margin-top: 6.5em;
+			margin-bottom: 0;
+		   .ili-stat_label {
+			   font-size: 1.1em;
+			   margin-bottom: 0.2em;
+			   color: #666;
+		   }
+		   .ili-stat_value {
+		     font-size: 2.2em;
+		   }
+		}
+	}
+	#map-legend {
+		left: 0;
+		top: 185px;
+		background: rgba(255, 255, 255, 0.8);
+		border: 1px solid #ddd;
+	}	
+}
+
+#ili-stat-ili-delta {
+  width: 30%;
+	.ili-stat_value{
+		&.still {
+			color: #333;
+		}
+		&.down {
+			color: #5b8196;
+			background: url(../images/ic-down.png) no-repeat left center;
+			padding: 0 0 0 20px
+		}
+		&.up {
+			color: #5b8196;
+			background: url(../images/ic-up.png) no-repeat left center;
+			padding: 0 0 0 20px
+		}
+	}
+}
+
+#ili-stat-ili-reporternumbers {
+  width: 45%;
+	.ili-stat_label {
+		background: url(../images/ic-report.png) no-repeat;
+		padding: 0 0 0 20px;
+	}
+}
+
+#wrapper-bottom {
+	position: relative;
+	z-index: 999;
+	background: #fff;
 }

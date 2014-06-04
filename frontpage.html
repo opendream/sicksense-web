@@ -28,58 +28,64 @@
     </nav>
   </div>
 
-  <div id="map"></div>
+  <div id="map">
 
-  <div id="city-ili-floating-box">
-    <div id="city-selector" ng-controller="CitySelector">
-      <a href="#" class="button" data-dropdown="city-drop" title="City">{{ city.th }} <span class="typcn typcn-arrow-sorted-down"></span></a>
-      <div id="city-drop" class="large f-dropdown" data-dropdown-content>
-        <table class="table">
-          <thead>
-            <tr>
-              <th ng-repeat="region in regions">{{ region.name }}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td ng-repeat="region in regions">
-                <div ng-repeat="province in region.provinces" class="province-name" ng-click="setCity(province)">
-                  <span>{{ province.th }}</span>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+    <div id="sicksense-map-control">
+      <div id="city-ili-floating-box">
+        <div id="city-selector" ng-controller="CitySelector">
+          <a href="#" class="button" data-dropdown="city-drop" title="City">{{ city.th }} <span class="typcn typcn-arrow-sorted-down"></span></a>
+          <div id="city-drop" class="large f-dropdown" data-dropdown-content>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th ng-repeat="region in regions">{{ region.name }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td ng-repeat="region in regions">
+                    <div ng-repeat="province in region.provinces" class="province-name" ng-click="setCity(province)">
+                      <span>{{ province.th }}</span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="ili-stat" ng-controller="ILIController">
+          <div class="row">
+            <div id="ili-stat-ili-thisweek" class="large-3 columns">
+              <div class="ili-stat_label">ILI</div>
+              <div class="ili-stat_value">{{ thisWeek }}%</div>
+            </div>
+            <div id="ili-stat-ili-delta" class="large-4 columns">
+              <div class="ili-stat_label">Last week</div>
+              <div class="ili-stat_value" ng-class="{ up: (delta > 0), still: (delta == 0), down: (delta < 0) }">{{ delta }}%</div>
+            </div>
+            <div id="ili-stat-ili-reporternumbers" class="large-5 columns">
+              <div class="ili-stat_label">Number of reports</div>
+              <div class="ili-stat_value">{{ numberOfReporters }}</div>
+            </div>
+          </div>
+        </div>
+    
       </div>
+
+      <div id="map-legend">
+        <ul class="inline-list">
+          <li class="legend-fine">
+            <div><span class="typcn typcn-media-record"></span> Fine</div>
+          </li>
+          <li class="legend-sick">
+            <div><span class="typcn typcn-media-record"></span> Sick</div>
+          </li>
+        </ul>
+      </div>
+
     </div>
 
-    <div id="ili-stat" ng-controller="ILIController">
-      <div class="row">
-        <div id="ili-stat-ili-thisweek" class="large-3 columns">
-          <div class="ili-stat_label">ILI</div>
-          <div class="ili-stat_value">{{ thisWeek }}%</div>
-        </div>
-        <div id="ili-stat-ili-delta" class="large-4 columns">
-          <div class="ili-stat_label">Last week</div>
-          <div class="ili-stat_value">{{ delta }}%</div>
-        </div>
-        <div id="ili-stat-ili-reporternumbers" class="large-5 columns">
-          <div class="ili-stat_label">Number of reporters</div>
-          <div class="ili-stat_value">{{ numberOfReporters }}</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="map-legend">
-    <ul class="inline-list">
-      <li class="legend-fine">
-        <div><span class="typcn typcn-media-record"></span> Fine</div>
-      </li>
-      <li class="legend-sick">
-        <div><span class="typcn typcn-media-record"></span> Sick</div>
-      </li>
-    </ul>
   </div>
 
   <div id="week-selector" ng-controller="WeekSelector">
@@ -261,34 +267,41 @@
       </div><!-- /#week-quarter-4 -->
     </div>
   </div><!-- /#week-selector -->
-
-  <div class="row">
-    <div class="large-6 large-centered columns">
-      <div id="symptoms-stat" ng-controller="SymptomsController">
-        <h4>Symptoms Statistics</h4>
-
-        <ul class="no-bullet" ng-show="symptoms">
-          <li ng-repeat="symptom in symptoms">
-            <div class="row">
-              <div class="large-2 columns text-center symptom-list-index"><span>{{ $index + 1 }}</span></div>
-              <div class="large-10 columns symptom-bar">
-                <div class="progress radius">
-                  <span class="meter" style="width:{{ symptom.percentOfReports }}%">
-                    <span class="meter-number">{{ symptom.percentOfReports }}%</span>
-                  </span>
-                </div>
-
-                {{ symptom.name }}
-              </div>
-            </div>
-          </li>
-        </ul>
-        <div ng-hide="symptoms">
-          No symptoms.
-        </div>
+  
+  <div id="wrapper-bottom">
+    <div class="row">
+      <div class="large-6 medium-6 columns">
+	    graph
       </div>
-    </div>
-  </div>
+	    <div class="large-6 medium-6 columns">
+	      <div id="symptoms-stat" ng-controller="SymptomsController">
+	        <h4>Symptoms Statistics</h4>
+	
+	        <ul class="no-bullet" ng-show="symptoms">
+	          <li ng-repeat="symptom in symptoms">
+	            <div class="row">
+	              <div class="large-2 columns text-center symptom-list-index"><span>{{ $index + 1 }}</span></div>
+	              <div class="large-10 columns symptom-bar">
+	                <div class="progress radius">
+	                  <span class="meter" style="width:{{ symptom.percentOfReports }}%">
+	                    <span class="meter-number">{{ symptom.percentOfReports }}%</span>
+	                  </span>
+	                </div>
+	
+	                {{ symptom.name }}
+	              </div>
+	            </div>
+	          </li>
+	        </ul>
+	        <div ng-hide="symptoms">
+	          No symptoms.
+	        </div>
+	      </div>
+	    </div>
+	  </div><!-- /#row -->
+  </div><!-- /#wrapper-bottom -->
+
+
 
   <script src="/bower_components/jquery/dist/jquery.min.js"></script>
   <script src="/bower_components/async/lib/async.js"></script>
