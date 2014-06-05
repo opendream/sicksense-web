@@ -33,7 +33,7 @@
     <div id="sicksense-map-control">
       <div id="city-ili-floating-box">
         <div id="city-selector" ng-controller="CitySelector">
-          <a href="#" class="button" data-dropdown="city-drop" title="City">{{ city.th }} <span class="typcn typcn-arrow-sorted-down"></span></a>
+          <a href="#" class="button" data-dropdown="city-drop" title="City">{{ city.properties.th }} <span class="typcn typcn-arrow-sorted-down"></span></a>
           <div id="city-drop" class="large f-dropdown" data-dropdown-content>
             <table class="table">
               <thead>
@@ -45,7 +45,7 @@
                 <tr>
                   <td ng-repeat="region in regions">
                     <div ng-repeat="province in region.provinces" class="province-name" ng-click="setCity(province)">
-                      <span>{{ province.th }}</span>
+                      <span>{{ province.properties.th }}</span>
                     </div>
                   </td>
                 </tr>

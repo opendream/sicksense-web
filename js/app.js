@@ -49,6 +49,9 @@ app.factory('dashboard', [ '$rootScope', function($rootScope) {
 
     this.map = L.map('map').setView([options.latitude, options.longitude], options.zoom);
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(this.map);
+
+    // Add city polygon layer
+    this.cityLayer = L.layerGroup().addTo(this.map);
   }
 
   Dashboard.prototype.map = null;
@@ -66,6 +69,17 @@ app.factory('dashboard', [ '$rootScope', function($rootScope) {
     var icon = (item.fineCount > item.sickCount) ? iconGreen : iconRed;
 
     this.markers.push( L.marker([item.latitude, item.longitude], { icon: icon }).addTo(this.map) );
+  };
+
+  Dashboard.prototype.cityLayer = null;
+  Dashboard.prototype.drawCity = function(geometry) {
+    var cityLayer = this.cityLayer;
+    // Clear all city.
+    cityLayer.eachLayer(function(layer) {
+      cityLayer.removeLayer(layer);
+    });
+    // Then draw the new one.
+    cityLayer.addLayer(L.geoJson(geometry, { style: CITY_POLYGON_STYLE }));
   };
 
   // ----
@@ -175,14 +189,14 @@ app.controller('CitySelector', [ '$scope', 'dashboard', 'data', function($scope,
 
   async.parallel([
     function(callback) {
-      $.getJSON('/js/region.json', function(resp) {
+      $.getJSON('/dist/js/region.min.json', function(resp) {
         regions = resp;
         callback();
       });
     },
     function(callback) {
-      $.getJSON('/js/province.json', function(resp) {
-        provinces = resp;
+      $.getJSON('/dist/js/provinces.min.json', function(resp) {
+        provinces = resp.features;
         callback();
       });
     }
@@ -190,7 +204,7 @@ app.controller('CitySelector', [ '$scope', 'dashboard', 'data', function($scope,
     $scope.$watch('city', function(newValue, oldValue) {
       $scope.$emit('city.changed', newValue);
     });
-    $scope.city = _.find(provinces, { en: DEFAULT_CITY });
+    $scope.setCity( _.find(provinces, { properties: { en: DEFAULT_CITY } }) );
 
     _.each(regions, function(region) {
       var regionData = {
@@ -199,7 +213,7 @@ app.controller('CitySelector', [ '$scope', 'dashboard', 'data', function($scope,
       };
 
       _.each(region.provinces, function(provinceTH) {
-        regionData.provinces.push(_.find(provinces, { th: provinceTH }));
+        regionData.provinces.push(_.find(provinces, { properties: { th: provinceTH } }));
       });
 
       $scope.regions.push(regionData);
@@ -213,8 +227,15 @@ app.controller('CitySelector', [ '$scope', 'dashboard', 'data', function($scope,
     Foundation.libs.dropdown.closeall();
     $scope.city = city;
 
-    // Set map center by city.
-    dashboard.map.setView([ city.latitude, city.longitude ], 10, {
+    dashboard.drawCity(city.geometry);
+
+    // Swap lat <-> lng position.
+    var bounds = [
+      [ city.bbox[1], city.bbox[0] ],
+      [ city.bbox[3], city.bbox[2] ]
+    ];
+    dashboard.map.fitBounds(bounds, {
+      maxZoom: 19,
       animate: true,
       duration: 1
     });

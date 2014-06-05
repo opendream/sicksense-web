@@ -12,7 +12,7 @@ module.exports = function(grunt) {
         },
         files: {
           'css/app.css': 'scss/app.scss'
-        }        
+        }
       }
     },
 
@@ -23,12 +23,22 @@ module.exports = function(grunt) {
         files: 'scss/**/*.scss',
         tasks: ['sass']
       }
+    },
+
+    minjson: {
+      compile: {
+        files: {
+          'dist/js/region.min.json': 'js/region.json',
+          'dist/js/provinces.min.json': 'js/provinces.json'
+        }
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-minjson');
 
-  grunt.registerTask('build', ['sass']);
+  grunt.registerTask('build', ['sass','minjson']);
   grunt.registerTask('default', ['build','watch']);
 }
