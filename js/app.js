@@ -115,7 +115,7 @@ app.factory('data', [ '$rootScope', function($rootScope) {
     var self = this;
     var dateStr = (new Date(weekDate)).toISOString();
 
-    $.getJSON(API_BASEPATH + '/dashboard?callback=?', { city: city.en, date: dateStr })
+    $.getJSON(API_BASEPATH + '/dashboard?callback=?', { city: city.properties.en, date: dateStr })
       .done(function(resp) {
         self.response = resp.response;
         $rootScope.$broadcast('data.refresh', self);
