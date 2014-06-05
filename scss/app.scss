@@ -74,8 +74,16 @@
   background-color: #3a4e5a;
   position: relative;
   z-index: 9999;
-  .button {
-    background-color: #3a4e5a;
+  #year-selector {
+    .button {
+      background-color: #3a4e5a;
+      span {
+	    background: url(../images/ic-down.png) no-repeat;
+	    &:before {
+		  content: ' ';
+	    }    
+      }
+    }
   }
 }
 
@@ -260,19 +268,32 @@
 #city-drop {
   z-index: 9999;
   border: none;
+  margin: 0;
+  &:before {
+	  border-color: transparent transparent #dbdbdb transparent;
+  }
   table {
-    min-width: 60em;
+    border-collapse: collapse;
       thead {
 	    th {
 		   text-align: center; 
 		   background: #dbdbdb;
+		   border-right: 1px solid #C4C4C4;
 	    } 
       }
 	  tbody {
 	    td {
 	      vertical-align: top;
+	      padding: 1em;
+	      /* border-right: 1px solid #C4C4C4; */
+	      &:nth-last-child(4),
+	      &:nth-last-child(5) {
+			-webkit-column-count:2; 
+			-moz-column-count:2;
+	      }
 	      .province-name {
-	        margin-bottom: 4px;
+	        color: #547b8a;
+	        padding-bottom: 4px;
 	        cursor: pointer;
 	        box-sizing: border-box;
 /*
@@ -280,12 +301,14 @@
 			width: 50%;
 */
 	        > span {
-	          padding-bottom: 3px;
+	         /*  padding-bottom: 4px; */
 	        }
 	
 	        &:hover {
 	          > span {
-	            border-bottom: 2px solid #008c8a;
+	            border-bottom: 1px solid #547b8a;
+	            /* padding-bottom: 4px; */
+	            box-sizing: border-box;
 	          }
 	        }
 	      }
