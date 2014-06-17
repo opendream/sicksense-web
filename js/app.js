@@ -47,7 +47,15 @@ app.factory('dashboard', [ '$rootScope', function($rootScope) {
       zoom: 10
     });
 
-    this.map = L.map('map').setView([options.latitude, options.longitude], options.zoom);
+    var mapOptions = {
+      dragging: false,
+      touchZoom: false,
+      scrollWheelZoom: false,
+      doubleClickZoom: false,
+      boxZoom: false
+    };
+
+    this.map = L.map('map', mapOptions).setView([options.latitude, options.longitude], options.zoom);
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(this.map);
 
     // Add city polygon layer
