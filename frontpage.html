@@ -117,14 +117,8 @@
       </div>
 
       <div class="large-10 columns">
-
-        <!-- <div id="week-slider">
-
-        </div> -->
-
         <div id="week-line">
-          <div id="week-month-name">
-          </div>
+          <div id="week-month-name"></div>
           <div id="week-knots" class="knots knots-ui">
             <hr class="ghost-line">
             <div class="knot-box" ng-repeat="date in weeks">
@@ -133,151 +127,14 @@
             </div>
           </div>
 
-
           <div class="week-knots-quarter-button right" ng-click="toggleQuartersUI()">
             <span class="typcn typcn-arrow-sorted-down" ng-show="quarterExpand"></span>
             <span class="typcn typcn-arrow-sorted-up" ng-hide="quarterExpand"></span>
           </div>
         </div>
-
       </div>
 
-    </div><!-- top row -->
-
-
-    <div id="week-quarters" ng-show="quarterExpand">
-      <div id="week-quarter-1" class="week-quarter" ng-class="{ selected: quarter == 1 }" data-quarter="1" ng-click="setQuarter(1)">
-        <div class="row">
-          <div class="large-4 columns text-center">
-            <div class="week-month-name">
-              {{ monthNames[0] }}
-            </div>
-            <div class="knots knots-static">
-              <span class="typcn typcn-media-record"></span>
-            </div>
-          </div>
-
-          <div class="large-4 columns text-center">
-            <div class="week-month-name">
-              {{ monthNames[1] }}
-            </div>
-            <div class="knots knots-static">
-              <span class="typcn typcn-media-record"></span>
-            </div>
-          </div>
-
-          <div class="large-4 columns text-center">
-            <div class="week-month-name">
-              {{ monthNames[2] }}
-            </div>
-            <div class="knots knots-static">
-              <span class="typcn typcn-media-record"></span>
-            </div>
-          </div>
-
-          <hr class="ghost-line" />
-        </div>
-      </div><!-- /#week-quarter-1 -->
-
-      <div id="week-quarter-2" class="week-quarter" ng-class="{ selected: quarter == 2 }" data-quarter="2" ng-click="setQuarter(2)">
-        <div class="row">
-          <div class="large-4 columns text-center">
-            <div class="week-month-name">
-              {{ monthNames[3] }}
-            </div>
-            <div class="knots knots-static">
-              <span class="typcn typcn-media-record"></span>
-            </div>
-          </div>
-
-          <div class="large-4 columns text-center">
-            <div class="week-month-name">
-              {{ monthNames[4] }}
-            </div>
-            <div class="knots knots-static">
-              <span class="typcn typcn-media-record"></span>
-            </div>
-          </div>
-
-          <div class="large-4 columns text-center">
-            <div class="week-month-name">
-              {{ monthNames[5] }}
-            </div>
-            <div class="knots knots-static">
-              <span class="typcn typcn-media-record"></span>
-            </div>
-          </div>
-
-          <hr class="ghost-line" />
-        </div>
-      </div><!-- /#week-quarter-2 -->
-
-      <div id="week-quarter-3" class="week-quarter" data-quarter="3" ng-click="setQuarter(3)">
-        <div class="row">
-          <div class="large-4 columns text-center">
-            <div class="week-month-name">
-              {{ monthNames[6] }}
-            </div>
-            <div class="knots knots-static">
-              <span class="typcn typcn-media-record"></span>
-            </div>
-          </div>
-
-          <div class="large-4 columns text-center">
-            <div class="week-month-name">
-              {{ monthNames[7] }}
-            </div>
-            <div class="knots knots-static">
-              <span class="typcn typcn-media-record"></span>
-            </div>
-          </div>
-
-          <div class="large-4 columns text-center">
-            <div class="week-month-name">
-              {{ monthNames[8] }}
-            </div>
-            <div class="knots knots-static">
-              <span class="typcn typcn-media-record"></span>
-            </div>
-          </div>
-
-          <hr class="ghost-line" />
-        </div>
-      </div><!-- /#week-quarter-3 -->
-
-      <div id="week-quarter-4" class="week-quarter" data-quarter="4" ng-click="setQuarter(4)">
-        <div class="row">
-          <div class="large-4 columns text-center">
-            <div class="week-month-name">
-              {{ monthNames[9] }}
-            </div>
-            <div class="knots knots-static">
-              <span class="typcn typcn-media-record"></span>
-            </div>
-          </div>
-
-          <div class="large-4 columns text-center">
-            <div class="week-month-name">
-              {{ monthNames[10] }}
-            </div>
-            <div class="knots knots-static">
-              <span class="typcn typcn-media-record"></span>
-            </div>
-          </div>
-
-          <div class="large-4 columns text-center">
-            <div class="week-month-name">
-              {{ monthNames[11] }}
-            </div>
-            <div class="knots knots-static">
-              <span class="typcn typcn-media-record"></span>
-            </div>
-          </div>
-
-          <hr class="ghost-line" />
-        </div>
-      </div><!-- /#week-quarter-4 -->
-    </div>
+    </div> <!--row-->
   </div><!-- /#week-selector -->
 
   <div class="statistics">
@@ -295,25 +152,32 @@
 	      </div>
       </div>
 	    <div class="large-6 medium-6 columns">
-	      <div class="symptoms-stat" ng-controller="SymptomsController">
-	        <h2 class="title-block">สถิติอาการป่วย / Symptoms Statistics</h4>
-	        <ul class="no-bullet" ng-show="symptoms">
-	          <li ng-repeat="symptom in symptoms">
-	            <div class="row">
-	              <div class="large-2 small-2 columns text-center symptom-list-index"><span>{{ $index + 1 }}</span></div>
-	              <div class="large-10 small-10 columns symptom-bar">
-	                <div class="progress radius">
-	                  <span class="meter" style="width:{{ symptom.percentOfReports }}%">
-	                    <span class="meter-number">{{ symptom.percentOfReports }}%</span>
-	                  </span>
-	                </div>
-									<span class="symptom-name">{{ symptom.name }}</span>
-	              </div>
-	            </div> <!--row-->
-	          </li>
-	        </ul>
-	        <div ng-hide="symptoms">No symptoms.</div>
-	      </div><!--symptoms-stat-->
+
+	    	<div class="symptoms-stat" ng-controller="SymptomsController">
+	    	  <h2 class="title-block">สถิติอาการป่วย / Symptoms Statistics</h2>
+	    	  
+	    	  
+	    	  <div class="">
+		    	  <ul class="no-bullet" ng-show="symptoms">
+		    	    <li ng-repeat="symptom in symptoms">
+		    	      <div class="row">
+		    	        <div class="large-2 small-2 columns text-center symptom-list-index"><span>{{ $index + 1 }}</span></div>
+		    	        <div class="large-10 small-10 columns symptom-bar">
+		    	          <div class="progress radius">
+		    	            <span class="meter" style="width:{{ symptom.percentOfReports }}%">
+		    	              <span class="meter-number">{{ symptom.percentOfReports }}%</span>
+		    	            </span>
+		    	          </div>
+		    						<span class="symptom-name">{{ symptom.name }}</span>
+		    	        </div>
+		    	      </div> <!--row-->
+		    	    </li>
+		    	  </ul>
+	    	  </div>
+	    	  
+	    	  <div ng-hide="symptoms">No symptoms.</div>
+	    	</div><!--symptoms-stat-->
+	    		    	      
 	    </div> <!--col-->
 	  </div><!-- /#row -->
   </div><!-- statistics -->
