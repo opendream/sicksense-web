@@ -1,0 +1,131 @@
+/*---------------------------------
+	FONT FACE
+---------------------------------*/
+
+@font-face {
+    font-family: 'umpushbold';
+    src: url('/fonts/umpush-bold-webfont.eot');
+    src: url('/fonts/umpush-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/umpush-bold-webfont.woff') format('woff'),
+         url('/fonts/umpush-bold-webfont.ttf') format('truetype'),
+         url('/fonts/umpush-bold-webfont.svg#umpushbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'typicons';
+  src: url("/bower_components/typicons/src/font/typicons.eot");
+  src: url("/bower_components/typicons/src/font/typicons.eot?#iefix") format('embedded-opentype'),
+       url("/bower_components/typicons/src/font/typicons.woff") format('woff'),
+       url("/bower_components/typicons/src/font/typicons.ttf") format('truetype'),
+       url("/bower_components/typicons/src/font/typicons.svg#typicons") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*---------------------------------
+	DROPDOWN
+---------------------------------*/
+.dropdown-button{
+	display: block;
+	margin: 0 0 10px;
+	padding: 0 0 5px;
+	color: #333;
+	border-bottom: 2px solid #a0a0a0;
+	font: normal 2em/1.5em umpushbold;
+	
+	.typcn{
+		margin-top: 5px;
+	}
+}
+
+/*---------------------------------
+	TOGGLE MENU
+---------------------------------*/
+
+/*--- I don't know why it doesn't work so I fix it---*/
+.top-bar .toggle-topbar.menu-icon {
+	top: 45%;
+
+	a span:after{
+		content: "";
+		position: absolute;
+		display: block;
+		width: 16px;
+		height: 0;
+		top: 50%;
+		left: -30px;
+		margin-top: -8px;
+		box-shadow: 0 0px 0 1px #fff, 0 7px 0 1px #fff, 0 14px 0 1px #fff;
+	}	
+}
+
+/*---------------------------------
+	ICON ROUND
+---------------------------------*/
+.icon-round{
+	border-radius: 20px;
+	display: inline-block !important;
+	width: 16px;
+	height: 16px;
+	margin: 0 10px 0 0;
+	vertical-align: middle;
+	background-color: #ccc;
+	
+	&.big{}
+	&.small{}
+	
+	&.gray{ background-color: #00aeae; }
+	&.red{ background-color: #dc0029; }
+	&.orange{ background-color: #fdd167; }
+	&.light-gray{ background-color: #59eded; }	
+}
+
+/*---------------------------------
+	FOOTER
+---------------------------------*/
+.footer{
+	padding: 2em 0 1.5em;
+	color: #8e8e8e;
+	background-color: #ececec;
+}
+
+/*---------------------------------
+	Utility Classes
+---------------------------------*/
+.title-block{
+	font-size: 1.5em;
+	font-weight: bold;
+	margin-bottom: 1.5em;
+}
+.inline-list{
+  margin: 0;
+  
+	li{
+	  display: inline-block;
+	  margin: 0 10px 0 0;
+		font-size: .85em;
+	}	
+}
+.block-list{
+	margin: 0;
+	color: #2a3b45;
+	list-style: none;
+}
+/*---For typcn-icon dropdown menu ---*/
+.rotate::before{
+	-moz-transform:rotate(90deg);
+	-webkit-transform:rotate(90deg);
+	-o-transform:rotate(90deg);
+	-ms-transform:rotate(90deg);
+	transform:rotate(90deg);
+}
+.hidden{
+	position: absolute;
+	left: -999em;
+	overflow: hidden;
+	text-indent: -999em;
+	height: 0;
+	line-height: 0;
+}
