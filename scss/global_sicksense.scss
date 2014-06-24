@@ -141,10 +141,12 @@
 /*---------------------------------
 	Utility Classes
 ---------------------------------*/
+.block{
+	margin-bottom: 2.5em;
+}
 .title-block{
-	font-size: 1.8em;
-	font-weight: bold;
 	margin-bottom: 1.5em;
+	font: normal 1.8em/1.5em umpushbold;
 }
 .inline-list{
   margin: 0;
@@ -191,6 +193,9 @@
 	> .nub{
 		left: 5%;
 	}
+}
+.has-tip{
+	cursor: pointer;
 }
 .tooltip.tip-top > .nub {
 	border-color: #00e4e4 transparent transparent transparent;
