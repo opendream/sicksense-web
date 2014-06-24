@@ -1,30 +1,6 @@
 @import "settings";
 
 /*---------------------------------
-	TOP NAV
----------------------------------*/
-
-/*--- Set Background-color for the top bar in
- _setting.css $topbar-bg-color ---*/
-
-.top-nav-bar {
-	position: relative; 
-	z-index: 999;
-	padding: .5em 0em 0;
-	
-	.name{
-		padding-top: 3px;
-	}
-}
-
-/*--- Divder ---*/
-.top-bar-section ul li{	
-	@media #{$small-only} { 
-		border-top: 1px solid #B12929;
-	}
-}
-
-/*---------------------------------
 	LOGO
 ---------------------------------*/
 
@@ -195,7 +171,8 @@
 ---------------------------------*/
 .ili-stat {
 	margin: 25px 0 0;
-
+	
+	/*--- Set Text style of label, value ---*/
   .ili-stat_label {
     margin-bottom: 0.8em;
     color: #666;
@@ -304,33 +281,10 @@
 
 
 /*---------------------------------
-	LOGO
----------------------------------*/
-.skoll-logo, .od-logo{
-	display: block;
-	width: 140px;
-	height: 45px;
-	overflow: hidden;
-	margin: 0 auto;
-	text-indent: -999em;
-	background: url('../images/company-logo.png') no-repeat left top;
-}
-.od-logo{
-	margin-top: 10px;
-	height: 25px;
-	background-position: 0 -45px;
-}
-.credit{
-	padding-top: 10px;
-	color: #8e8e8e;
-}
-
-
-/*---------------------------------
 	TIMELINE
 ---------------------------------*/
 .timeline {
-	min-height: 100px;
+	min-height: 90px;
 	margin: 0 0 50px;
   background-color: #3a4e5a;
   
@@ -338,8 +292,15 @@
   	color: #5b8196;
   }
 }
+
+
+/*---------------------------------
+	TIMELINE FILTER
+---------------------------------*/
 .timeline-filter {
-	padding: 30px 0 30px 20px;
+	min-height: 100px;
+	padding: 30px 0 15px 20px;
+	border-right: 1px solid #2a3b45;
 	
 	/*--- Dropdown button ---*/
   .button {
@@ -354,7 +315,15 @@
 	}
 	
 	@media #{$small-only} { 
+		min-height: 90px;
 		text-align: center;
+		border-right: none;
+		border-bottom: 1px solid #2a3b45;
+	}
+	
+	@media #{$medium-up} {
+		min-height: 90px;
+		padding-left: 0;
 	}
 }
 .timeline-year {
@@ -376,13 +345,108 @@
 		border-color: transparent transparent #2a3b45 transparent;
   }
   
+}
+
+
+/*---------------------------------
+	TIMELINE WEEK
+---------------------------------*/
+.timeline-week {
+	padding-top: 20px;
+	
+	@media #{$small-only} { 
+		padding-top: 5px;
+	}
+	
+	@media #{$medium-only} {
+		padding-top: 25px;
+	}
+	
+	@media #{$medium-up} {
+	
+	}
+}
+
+/*--- Wrap ---*/
+.timeline-week-items{
+	position: relative;
+}
+
+.timeline-week-item {
+  position: relative;
+  top: 18px;
+  z-index: 9;
+  display: inline-block ;
+  width: 7%;
+  height: 10px;
+  text-align: center;
+  border-left: 1px solid #11a0a4;  
   
+  &:first-child{
+  	border: none;
+  }
 }
 
+/*--- Pin Drop ---*/
+.timeline-week-pin {
 
-/*Panel*/
-.symptoms-panel{
+	/*--- Make Animation ---*/
+  -moz-transition: all .1s ease-out;
+  -webkit-transition: all .1s ease-out;
+  -o-transition: all .1s ease-out;
+  transition: all .1s ease-out;
+  
+	float: left;  
+  display: inline-block;
+  width: 100%;
+  height: 10px;
+	
+	/*--- Hover bar ---*/
+  &:hover {
+    cursor: pointer;
+    background-color: #19252d;
+  }
+
+  &.selected {
+    background-color: #19252d;
+  }
+}
+
+.timeline-week-horizon {
+	position: absolute;
+	top: 20px;
+	left: 0;
+	width: 98%;
+  height: 10px;
+  border-radius: 2em;
+  background-color: #2a3b45;
+}
+
+.timeline-tip{
+	display: block;
+	height: 10px;
 	width: 100%;
-	margin: 0;
+	border: none;
+	text-indent: -999em;
+	-moz-transition: all .2s ease-out;
+	-webkit-transition: all .2s ease-out;
+	-o-transition: all .2s ease-out;
+	transition: all .2s ease-out;
+	
+	&:hover{
+		border: none;
+	}
+	
+	/*-- When .timeline-week-pin is selected a circle will show --*/
+	.selected &{
+		border-radius: 30px;
+		height: 30px;
+		width: 30px;
+		margin: -8px auto 0;		
+		background: #00e4e4;
+	}
 }
 
+.timeline-columns{
+	height: 60px;
+}

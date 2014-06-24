@@ -1,9 +1,11 @@
+@import "settings";
+
 /*---------------------------------
 	FONT FACE
 ---------------------------------*/
 
 @font-face {
-    font-family: 'umpushbold';
+    font-family: 'umpushbold' ;
     src: url('/fonts/umpush-bold-webfont.eot');
     src: url('/fonts/umpush-bold-webfont.eot?#iefix') format('embedded-opentype'),
          url('/fonts/umpush-bold-webfont.woff') format('woff'),
@@ -31,12 +33,36 @@
 	display: block;
 	margin: 0 0 10px;
 	padding: 0 0 5px;
-	color: #333;
+	color: #000;
 	border-bottom: 2px solid #a0a0a0;
 	font: normal 2em/1.5em umpushbold;
 	
 	.typcn{
 		margin-top: 5px;
+	}
+}
+
+/*---------------------------------
+	TOP NAV
+---------------------------------*/
+
+/*--- Set Background-color for the top bar in
+ _setting.css $topbar-bg-color ---*/
+
+.top-nav-bar {
+	position: relative; 
+	z-index: 999;
+	padding: .5em 0em 0;
+	
+	.name{
+		padding-top: 3px;
+	}
+}
+
+/*--- Divder ---*/
+.top-bar-section ul li{	
+	@media #{$small-only} { 
+		border-top: 1px solid #B12929;
 	}
 }
 
@@ -91,11 +117,32 @@
 	background-color: #ececec;
 }
 
+/*--- FOOTER LOGO ---*/
+.skoll-logo, .od-logo{
+	display: block;
+	width: 140px;
+	height: 45px;
+	overflow: hidden;
+	margin: 0 auto;
+	text-indent: -999em;
+	background: url('../images/company-logo.png') no-repeat left top;
+}
+.od-logo{
+	margin-top: 10px;
+	height: 25px;
+	background-position: 0 -45px;
+}
+.credit{
+	padding-top: 10px;
+	color: #8e8e8e;
+}
+
+
 /*---------------------------------
 	Utility Classes
 ---------------------------------*/
 .title-block{
-	font-size: 1.5em;
+	font-size: 1.8em;
 	font-weight: bold;
 	margin-bottom: 1.5em;
 }
@@ -121,6 +168,7 @@
 	-ms-transform:rotate(90deg);
 	transform:rotate(90deg);
 }
+/*--- hide for a11y ---*/
 .hidden{
 	position: absolute;
 	left: -999em;
@@ -128,4 +176,22 @@
 	text-indent: -999em;
 	height: 0;
 	line-height: 0;
+}
+
+
+/*---------------------------------
+	TOOL TIP
+---------------------------------*/
+.tooltip{
+	border-radius: 10px;
+	color: #333;
+	background: #00e4e4;
+	z-index: 10;
+	
+	> .nub{
+		left: 5%;
+	}
+}
+.tooltip.tip-top > .nub {
+	border-color: #00e4e4 transparent transparent transparent;
 }

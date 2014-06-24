@@ -43,61 +43,6 @@
 @import "module";
 
 
-
-#week-month-name {
-  height: 2em;
-}
-
-.knots {
-  .knot-box {
-    display: inline-block;
-    width: 7%;
-    text-align: center;
-  }
-
-  .knot-pin {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    background-color: #2b3c46;
-    border-radius: 6px;
-    margin-left: 4%;
-
-    &:first-child {
-      margin-left: 0;
-    }
-  }
-
-  .ghost-line {
-    left: 3.5%;
-    width: 91%;
-    display: block;
-    position: relative;
-    top: 0.5em;
-    border-color: #2b3c46;
-    margin: 0;
-  }
-
-  &.knots-ui .knot-pin {
-    -moz-transition: all .1s ease-out;
-    -webkit-transition: all .1s ease-out;
-    -o-transition: all .1s ease-out;
-    transition: all .1s ease-out;
-
-    &:hover {
-      cursor: pointer;
-    }
-
-    &.selected {
-      -moz-transform: scale(2);
-      -webkit-transform: scale(2);
-      -o-transform: scale(2);
-      transform: scale(2);
-      background-color: green;
-    }
-  }
-}
-
 #week-quarters {
   position: absolute;
   width: 100%;

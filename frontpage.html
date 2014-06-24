@@ -102,7 +102,7 @@
 
   <div id="week-selector" class="timeline" ng-controller="WeekSelector">
     <div class="row">
-      <div class="large-2 columns">
+      <div class="large-2 medium-2 columns">
         <div id="year-selector" class="timeline-filter">
           <a href="#" class="button" data-dropdown="year-drop" title="Year">
           <span class="hidden">แสดงรายการของปี</span> <strong timeline-selected>{{ year + 543 }}</strong>
@@ -116,20 +116,15 @@
         </div> <!--year-selector-->
       </div>
 
-      <div class="large-10 columns">
-        <div id="week-line">
-          <div id="week-month-name"></div>
-          <div id="week-knots" class="knots knots-ui">
-            <hr class="ghost-line">
-            <div class="knot-box" ng-repeat="date in weeks">
-              <time  class="knot-pin" ng-class="{ selected: isSelectedWeek(date) }" datetime="{{ date.toString() }}" ng-click="setWeek(date)">
+      <div class="large-10 medium-10 columns timeline-columns">
+        <div id="week-line" class="timeline-week">
+          <div id="week-knots" class="timeline-week-items">
+            <div class="timeline-week-item" ng-repeat="date in weeks">
+              <time  class="timeline-week-pin" ng-class="{ selected: isSelectedWeek(date) }" datetime="{{ date.toString() }}" ng-click="setWeek(date)">
+              <span data-tooltip class="timeline-tip has-tip tip-top" title="Tooltips are awesome, you should totally use them!">Msg here</span>
               </time>
             </div>
-          </div>
-
-          <div class="week-knots-quarter-button right" ng-click="toggleQuartersUI()">
-            <span class="typcn typcn-arrow-sorted-down" ng-show="quarterExpand"></span>
-            <span class="typcn typcn-arrow-sorted-up" ng-hide="quarterExpand"></span>
+            <div class="timeline-week-horizon"></div>
           </div>
         </div>
       </div>
@@ -156,13 +151,12 @@
 	    	<div class="symptoms-stat" ng-controller="SymptomsController">
 	    	  <h2 class="title-block">สถิติอาการป่วย / Symptoms Statistics</h2>
 	    	  
-	    	  
 	    	  <div class="">
 		    	  <ul class="no-bullet" ng-show="symptoms">
 		    	    <li ng-repeat="symptom in symptoms">
 		    	      <div class="row">
-		    	        <div class="large-2 small-2 columns text-center symptom-list-index"><span>{{ $index + 1 }}</span></div>
-		    	        <div class="large-10 small-10 columns symptom-bar">
+		    	        <div class="symptom-list-index text-center large-2 small-2 columns"><span>{{ $index + 1 }}</span></div>
+		    	        <div class="symptom-bar large-10 small-10 columns ">
 		    	          <div class="progress radius">
 		    	            <span class="meter" style="width:{{ symptom.percentOfReports }}%">
 		    	              <span class="meter-number">{{ symptom.percentOfReports }}%</span>
