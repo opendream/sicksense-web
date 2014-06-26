@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="/bower_components/leaflet/dist/leaflet.css" />
   <link rel="stylesheet" href="/bower_components/typicons/src/font/typicons.min.css" />
   <link rel="stylesheet" href="/bower_components/nouislider/jquery.nouislider.css" />
+  <!--<link rel="stylesheet" href="/bower_components/scrollnavi/css/scrollnavi.css" />-->
   <link rel="stylesheet" href="/css/app.css" />
   <script src="/bower_components/modernizr/modernizr.js"></script>
   		
@@ -30,7 +31,7 @@
 	    </section>
 	  </nav>
 	</div>
-	
+		
 	<div class="filter fadeIn animated">
 		<div class="row">
 			<div class="large-6 small-12 columns">
@@ -101,36 +102,37 @@
 	
   <div id="map"><!--MAP--></div>
 
-  <div id="week-selector" class="timeline" ng-controller="WeekSelector">
-    <div class="row">
-      <div class="large-2 medium-2 columns">
-        <div id="year-selector" class="timeline-filter">
-          <a href="#" class="button" data-dropdown="year-drop" title="Year">
-          <span class="hidden">แสดงรายการของปี</span> <strong timeline-selected>{{ year + 543 }}</strong>
-          <span class="typcn typcn-chevron-right rotate"></span></a>
-          <p class="hidden">เลือกปีที่ต้องการค้นหา</p>
-          <ul id="year-drop" class="timeline-year large f-dropdown" data-dropdown-content>
-            <li ng-repeat="value in years">
-              <a ng-click="setYear(value)" data-year="{{ value }}">{{ value + 543 }}</a>
-            </li>
-          </ul>
-        </div> <!--year-selector-->
-      </div>
-
-      <div class="large-10 medium-10 columns timeline-columns">
-        <div id="week-line" class="timeline-week">
-          <div id="week-knots" class="timeline-week-items">
-            <div class="timeline-week-item" ng-repeat="date in weeks">
-              <time  class="timeline-week-pin" ng-class="{ selected: isSelectedWeek(date) }" datetime="{{ date.toString() }}" ng-click="setWeek(date)">
-              <span data-tooltip class="timeline-tip has-tip tip-top" title="Tooltips are awesome, you should totally use them!">Msg here</span>
-              </time>
-            </div>
-            <div class="timeline-week-horizon"></div>
-          </div>
-        </div>
-      </div>
-
-    </div> <!--row-->
+  <div id="week-selector" class="contain-to-grid sticky timeline" ng-controller="WeekSelector">
+	  <div data-topbar data-options="sticky_on: large">
+    	<div class="row" >
+	      <div class="large-2 medium-2 columns">
+	        <div id="year-selector" class="timeline-filter">
+	          <a href="#" class="button" data-dropdown="year-drop" title="Year">
+	          <span class="hidden">แสดงรายการของปี</span> <strong timeline-selected>{{ year + 543 }}</strong>
+	          <span class="typcn typcn-chevron-right rotate"></span></a>
+	          <p class="hidden">เลือกปีที่ต้องการค้นหา</p>
+	          <ul id="year-drop" class="timeline-year large f-dropdown" data-dropdown-content>
+	            <li ng-repeat="value in years">
+	              <a ng-click="setYear(value)" data-year="{{ value }}">{{ value + 543 }}</a>
+	            </li>
+	          </ul>
+	        </div> <!--year-selector-->
+	      </div>
+	
+	      <div class="large-10 medium-10 columns timeline-columns">
+	        <div id="week-line" class="timeline-week">
+	          <div id="week-knots" class="timeline-week-items">
+	            <div class="timeline-week-item" ng-repeat="date in weeks">
+	              <time  class="timeline-week-pin" ng-class="{ selected: isSelectedWeek(date) }" datetime="{{ date.toString() }}" ng-click="setWeek(date)">
+	              <span data-tooltip class="timeline-tip has-tip tip-top" title="Tooltips are awesome, you should totally use them!">Msg here</span>
+	              </time>
+	            </div>
+	            <div class="timeline-week-horizon"></div>
+	          </div>
+	        </div>
+	      </div>
+	    </div> <!--row-->
+	  </div> <!--sticky-->
   </div><!-- /#week-selector -->
 
   <div class="statistics">
@@ -200,10 +202,12 @@
   <script src="/bower_components/async/lib/async.js"></script>
   <script src="/bower_components/lodash/dist/lodash.js"></script>
   <script src="/bower_components/foundation/js/foundation.min.js"></script>
+  <script src="/bower_components/foundation/js/foundation/foundation.topbar.js"></script>
   <script src="/bower_components/leaflet/dist/leaflet.js"></script>
   <script src="/bower_components/momentjs/moment.js"></script>
   <script src="/bower_components/momentjs/lang/th.js"></script>
   <script src="/bower_components/angular/angular.js"></script>
+  <!--<script src="/bower_components/scrollnavi/js/scroll_navi.min.js"></script>-->
   <script src="/js/wow.js"></script>
   <script src="/js/config.js"></script>
   <script src="/js/runonce.js"></script>

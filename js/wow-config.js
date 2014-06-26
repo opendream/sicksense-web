@@ -6,4 +6,6 @@ $( document ).ready(function() {
 	  }
 	);
 	wow.init();
+	
+//	$("#week-selector").scroll_navi();
 });
