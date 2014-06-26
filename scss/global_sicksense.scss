@@ -28,16 +28,6 @@
 
 
 /*---------------------------------
-	MIXIN
----------------------------------*/
-@mixin border-radius($r){
-	-webkit-border-radius: $r;
-	-moz-border-radius: $r;
-	-khtml-border-radius: $r;
-	border-radius: $r;	
-}
-
-/*---------------------------------
 	DROPDOWN
 ---------------------------------*/
 .dropdown-button{
@@ -71,8 +61,8 @@
 }
 .toggle-topbar{
 	span{
-		display: block;
-		text-indent: -999em;
+		display: block ;
+		/*text-indent: -999em;*/
 	}
 }
 
