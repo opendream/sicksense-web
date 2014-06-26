@@ -15,7 +15,7 @@
 
 <body ng-app="sicksense">
 	<div class="top-nav-bar contain-to-grid">
-		<nav class="top-bar" data-topbar>	    
+		<nav class="top-bar slideInDown animated " data-topbar>	    
 			<ul class="title-area">
 			  <li class="name">
 			    <h1><a href="#" class="logo">SickSense</a></h1>
@@ -136,7 +136,7 @@
   <div class="statistics">
     <div class="row">
       <div class="large-6 medium-6 columns">
-	      <div class="chart-block block">
+	      <div class="wow fadeInDown chart-block block" data-wow-duration="1s">
 		      <h2 class="title-block">graph</h2>
 		      <div class="chart">
 		       Here
@@ -149,7 +149,7 @@
       </div>
 	    <div class="large-6 medium-6 columns">
 
-	    	<div class="symptoms-stat block" ng-controller="SymptomsController">
+	    	<div class="wow fadeInDown symptoms-stat block" ng-controller="SymptomsController" data-wow-duration="1s">
 	    	  <h2 class="title-block">สถิติอาการป่วย / Symptoms Statistics</h2>
 	    	  
 	    	  <div class="">
@@ -195,9 +195,15 @@
   <script src="/bower_components/momentjs/moment.js"></script>
   <script src="/bower_components/momentjs/lang/th.js"></script>
   <script src="/bower_components/angular/angular.js"></script>
+  <script src="/js/wow.js"></script>
   <script src="/js/config.js"></script>
   <script src="/js/runonce.js"></script>
   <script src="/js/app.js"></script>
+  <script src="/js/wow-config.js"></script>
+  
+  <script>
+    
+  </script>
     
 </body>
 </html>
