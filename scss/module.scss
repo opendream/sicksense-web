@@ -214,20 +214,20 @@
 ---------------------------------*/
 .symptoms-stat {
   li{
-    padding: 7px 10px 0;
+    padding: 10px 10px 5px;
     margin-bottom: 7px;
     background-color: #f5f4f2;
   }
 
   .symptom-list-index {
     span {
+    	@include border-radius(2em);
       width: 2em;
       height: 2em;
       display: inline-block;
       text-align: center;
       background-color: #989898;
       color: #FFF;
-      border-radius: 2em;
       line-height: 2em;
       font-size: 1em;
     }
@@ -410,15 +410,19 @@
   &.selected {
     background-color: #19252d;
   }
+  
+  &:last-of-type{
+  
+  }
 }
 
 .timeline-week-horizon {
+	@include border-radius(2em);
 	position: absolute;
 	top: 20px;
 	left: 0;
 	width: 98%;
   height: 10px;
-  border-radius: 2em;
   background-color: #2a3b45;
 }
 
@@ -440,14 +444,14 @@
 	
 	/*-- When .timeline-week-pin is selected a circle will show --*/
 	.selected &{
-		border-radius: 30px;
+		@include border-radius(30px);
 		height: 30px;
 		width: 30px;
 		margin: -8px auto 0;		
 		background: #00e4e4;
 		
 		@media #{$small-only} { 
-			border-radius: 20px;
+			@include border-radius(20px);
 			height: 20px;
 			width: 20px;
 			margin: -5px auto 0;
