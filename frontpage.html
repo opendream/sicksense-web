@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SickSense</title>
+  <meta name="description" content="Sicksense - เครือข่ายอาสาสมัครดิจิทัลเพื่อการติดตามโรคระบาดอุบัติใหม่แบบมีส่วนร่วม">
+  <title>Sicksense - Digital Disease Detection</title>
   <link rel="stylesheet" href="/css/animate.css">
   <link rel="stylesheet" href="/bower_components/leaflet/dist/leaflet.css" />
   <link rel="stylesheet" href="/bower_components/typicons/src/font/typicons.min.css" />
@@ -12,10 +13,9 @@
   <script src="/bower_components/modernizr/modernizr.js"></script>
   		
 </head>
-
 <body ng-app="sicksense">
 	<div class="top-nav-bar contain-to-grid">
-		<nav class="top-bar slideInDown animated " data-topbar>	    
+		<nav class="top-bar slideInDown animated " data-topbar role="navigation">	    
 			<ul class="title-area">
 			  <li class="name">
 			    <h1><a href="#" class="logo">SickSense</a></h1>
@@ -25,7 +25,7 @@
 	
 	    <section class="top-bar-section">
 	      <ul class="right">
-	        <li><a href="#">เกี่ยวกับเรา</a></li>
+	        <li><a href="#" data-reveal-id="aboutModal">เกี่ยวกับเรา</a></li>
 	      </ul>
 	    </section>
 	  </nav>
@@ -186,6 +186,15 @@
 		  </div>
 	  </div>
   </div>
+  
+  <div id="aboutModal" class="reveal-modal about-modal" data-reveal>
+    <h2>เกี่ยวกับเรา</h2>
+    <p>ตั้งแต่เมื่อไรไม่รู้ที่มนุษยชาติเราหลงลืมไปว่าภัยคุกคามที่ใกล้ตัวที่สุดคือ โรคระบาดอุบัติใหม่ ลองนึกถึงว่า หากโลกปัจจุบันมีโรคระบาดในระดับเดียวกับ[<a href="https://en.wikipedia.org/wiki/1918_flu_pandemic" target="blank">ไข้หวัดสเปน</a>][1] ในช่วงปี พ.ศ. 2461 - 2463 ที่ทำให้ประชากรโลก 3 - 5% เสียชีวิตในช่วงระยเวลาการระบาด หากจะให้ใกล้ตัวขึ้นอีกนิดก็คือการระบาดไข้หวัดใหญ่สายพันธุ์ใหม่ 2009</p>
+    <p>Sicksense เป็นโครงการภายใต้ความร่วมมือของ [<a href="http://www.skollglobalthreats.org/" target="blank">Skoll Global Threats Fund</a>][2] , [<a href="http://www.thaihealth.or.th/" target="blank">สำนักงานกองทุนสนับสนุนการสร้างเสริมสุขภาพ (สสส.)</a>][3] และ [<a href="http://www.opendream.co.th/" target="blank">โอเพ่นดรีม</a>][4] ในการสร้างเครือข่ายอาสาสมัครดิจิทัลเพื่อร่วมกันหาสัญญาณของโรคระบาดอุบัติใหม่แบบมีส่วนร่วม ผ่านการรายงานสุขภาพของตนเองแบบนิรนาม</p>
+    <p>เราตั้งเป้าหมายในการเป็นผู้ช่วยของระบบสาธารณะสุขในปัจจุบันเพื่อการค้นหาสัญญาณการเจ็บป่วยแบบ real-time และมีส่วนร่วมผ่านเครื่องมือดิจิทัลต่างๆ ผู้ใช้ในประเทศไทยทุกสามารถเข้าร่วมเป็นอาสาสมัครได้</p>
+    <p>Sicksense จะเก็บแต่ข้อมูลนิรนามของผู้ใช้และจะใช้งานข้อมูลเหล่านั้นเพื่อการวิเคราะห์หาสัญญาณของโรคระบาดอุบัติใหม่ที่ไม่ใช่เพื่อผลประโยชน์ทางการค้าเท่านั้น</p>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
 
   <script src="/bower_components/jquery/dist/jquery.min.js"></script>
   <script src="/bower_components/async/lib/async.js"></script>
@@ -200,10 +209,5 @@
   <script src="/js/runonce.js"></script>
   <script src="/js/app.js"></script>
   <script src="/js/wow-config.js"></script>
-  
-  <script>
-    
-  </script>
-    
 </body>
 </html>
