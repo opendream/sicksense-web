@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="/bower_components/nouislider/jquery.nouislider.css" />
   <link rel="stylesheet" href="/css/app.css" />
   <script src="/bower_components/modernizr/modernizr.js"></script>
+  		
 </head>
 
 <body ng-app="sicksense">
@@ -46,9 +47,9 @@
 			      	<!--Mobile-->
 			        <dl class="accordion provinces-for-mobile show-for-small-up hide-for-large-up" data-accordion>
 			          <dd ng-repeat="region in regions">
-			            <a class="" href="#panel1">{{ region.name }}</a>
-			            <div id="panel1" class="content">
-			              <a class="province-name" ng-repeat="province in region.provinces" ng-click="setCity(province)">{{ province.properties.th }}</a>
+			            <a class="" href="#panel{{ $index }}">{{ region.name }}</a>
+			            <div id="panel{{ $index }}" class="content">
+			              <a class="province-name" ng-repeat="province in region.provinces | orderBy:province.properties.th" ng-click="setCity(province)">{{ province.properties.th }}</a>
 			            </div>
 			          </dd>
 			        </dl>
@@ -58,7 +59,7 @@
 			        	<li class="region-list large-2 columns" ng-repeat="region in regions">
 			          	<h2>{{ region.name }}</h2>
 			          	<ul class="province-group">
-				          	<li class="province-name" ng-repeat="province in region.provinces" ng-click="setCity(province)">					          	  <a>{{ province.properties.th }}</a></li>
+				          	<li class="province-name" ng-repeat="province in region.provinces | orderBy:province.properties.th" ng-click="setCity(province)">					          	  <a>{{ province.properties.th }}</a></li>
 			          	</ul>
 			        	</li>
 			        </ul>
@@ -179,8 +180,10 @@
   <div class="footer">
 	  <div class="row">
 		  <div class="large-8 medium-6 columns"><p class="credit">สนับสนุนโดย Skoll Global Threats Fund พัฒนาระบบโดย Opendream สัญญาอนุญาต cc by-nc-sa</p></div>
-		  <div class="large-2 medium-3 columns"><a href="http://www.skollglobalthreats.org/" target="blank" class="skoll-logo">Skoll Global Threats Fund Logo</a></div>
-		  <div class="large-2 medium-3 columns"><a href="http://www.opendream.co.th" target="blank" class="od-logo">Opendream Logo</a></div>
+		  <div class="large-4 medium-6 columns">
+		  	<a href="http://www.skollglobalthreats.org/" target="blank" class="skoll-logo">Skoll Global Threats Fund Logo</a>
+		  	<a href="http://www.opendream.co.th" target="blank" class="od-logo">Opendream Logo</a>
+		  </div>
 	  </div>
   </div>
 
@@ -195,6 +198,6 @@
   <script src="/js/config.js"></script>
   <script src="/js/runonce.js"></script>
   <script src="/js/app.js"></script>
-
+    
 </body>
 </html>

@@ -58,6 +58,12 @@
 		padding-top: 3px;
 	}
 }
+.toggle-topbar{
+	span{
+		display: block;
+		text-indent: -999em;
+	}
+}
 
 /*--- Divder ---*/
 .top-bar-section ul li{	
@@ -115,20 +121,24 @@
 	padding: 2em 0 1.5em;
 	color: #8e8e8e;
 	background-color: #ececec;
+	
+	@media #{$small-only}{
+		text-align: center;
+	}
 }
 
 /*--- FOOTER LOGO ---*/
 .skoll-logo, .od-logo{
-	display: block;
+	display: inline-block;
 	width: 140px;
 	height: 45px;
 	overflow: hidden;
-	margin: 0 auto;
+	/*margin: 0 10px 0 0;*/
 	text-indent: -999em;
 	background: url('../images/company-logo.png') no-repeat left top;
 }
 .od-logo{
-	margin-top: 10px;
+	margin-bottom: 10px;
 	height: 25px;
 	background-position: 0 -45px;
 }
@@ -191,6 +201,7 @@
 	z-index: 10;
 	
 	> .nub{
+		display: none;
 		left: 5%;
 	}
 }
