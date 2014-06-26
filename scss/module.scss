@@ -241,6 +241,16 @@
   	  margin: 0;
   	  padding-left: 0;	
   	}
+  	.meter{
+  		width: auto;
+  		/*position: static;*/
+  		
+  		/*--- Make Animation ---*/
+  		/*-moz-transition: all .1s ease-out;
+  		-webkit-transition: all .1s ease-out;
+  		-o-transition: all .1s ease-out;
+  		transition: all .1s ease-out;*/
+  	}
   }
 }
 
