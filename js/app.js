@@ -161,7 +161,7 @@ app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope,
 
   $scope.monthNames = moment.months();
 
-  $scope.weeks = getWeeks($scope.year, $scope.quarter);
+  $scope.weeks = getWeeks($scope.year);
 
   $scope.setYear = function(value) {
     Foundation.libs.dropdown.closeall();
@@ -283,26 +283,12 @@ app.controller('SymptomsController', [ '$scope', function($scope) {
   });
 }]);
 
-function getWeeks (year, quarter) {
-  // 1. Get first day of quarter
-  var firstDateOfQuarter = new Date(moment(year + '-01-01').quarter(quarter));
+function getWeeks (year) {
+  var weeks = [];
 
-  // 2. Get first day of that week
-  var firstDateOfTheWeek = moment(new Date(firstDateOfQuarter)).startOf('week');
-  // 3. Generate each first day of week by adding 7 days until the last week before next quarter
-  var weeks = [ new Date(firstDateOfTheWeek) ];
-  var run = true;
-  var tmp;
-
-  while (run) {
-    tmp = moment(new Date(_.last(weeks))).add('days', 7);
-    if (tmp.year() > year || tmp.quarter() > quarter) {
-      run = false;
-    }
-    else {
-      weeks.push(new Date(tmp));
-    }
-  }
+  weeks = _.map(_.range(1, 53), function (week) {
+    return moment(year.toString()).weeks(week).startOf('week').toDate();
+  });
 
   return weeks;
 }

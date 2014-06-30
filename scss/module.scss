@@ -5,7 +5,7 @@
 	LOGO
 ---------------------------------*/
 
-.logo{	
+.logo{
 	width: 214px !important;
 	height: 38px;
 	text-indent: -999em;
@@ -16,12 +16,12 @@
 	    background-image: url(../images/sicksense-logo@2x.png);
 	    -webkit-background-size: 214px 38px;
 	}
-	
+
 	/*--- Make padding-left on mobile screen ---*/
-	@media #{$medium-only}, #{$small-only} { 
+	@media #{$medium-only}, #{$small-only} {
 		margin-left: .8em !important;
 	}
-	
+
 
 }
 
@@ -32,8 +32,8 @@
 	width: 932px !important; /* Fix Table */
 	margin: 0 !important; /* Reset row class to make indent */
 	border: 1px solid #C4C4C4;
-	background: #fff;	
-	
+	background: #fff;
+
 	/*--- Name of region ---*/
 	h2{
 		margin: 0 0 1em;
@@ -49,7 +49,7 @@
 		a{
 			padding: 0.2rem 0.2rem 0.4rem;
 			color: #547b8a;
-			
+
 			&:hover{
 				text-decoration: underline;
 			}
@@ -59,24 +59,24 @@
 			background: transparent;
 		}
 	}
-	
+
 	.region-list{
 		width: 120px;
 		min-height: 420px;
-		border-right: 1px solid #C4C4C4;	
+		border-right: 1px solid #C4C4C4;
 		list-style: none;
-		
+
 		/*--- North East & central---*/
 		&:nth-child(2), &:nth-child(3){
 			width: 200px;
-			
+
 			/*--- Set 2 Columns of province---*/
 			.province-name{
 				display: inline-block;
 				width: 45%;
 			}
 		}
-		
+
 		/*--- Set New width for central(child(3)) ---*/
 		&:nth-child(3){
 			width: 250px;
@@ -85,15 +85,15 @@
 			border: none;
 		}
 	}
-	
+
 	.province-group{
 		padding: 0;
 		margin: 0;
-		list-style: none;	
+		list-style: none;
 	}
 	.province-name{
 		padding: 0 1em;
-	}	
+	}
 }
 
 /*--- For Mobile ---*/
@@ -103,17 +103,17 @@
 		font-size: 1em;
 		font-weight: bold;
 	}
-	
+
 	.province-name{
-		display: inline-block;		
+		display: inline-block;
 		width: 145px;
 		padding: 0 1em .5em 1em;
-		
-		@media #{$medium-only} { 
+
+		@media #{$medium-only} {
 			/*width: ;*/
 		}
-		
-		@media #{$small-only} { 
+
+		@media #{$small-only} {
 			width: 33%;
 		}
 	}
@@ -129,10 +129,10 @@
 	z-index: 99;
 	-webkit-animation-duration: .5s;
 	-webkit-animation-delay: 2s;
-	
-	@media only screen and (max-width: 40em) { 
+
+	@media only screen and (max-width: 40em) {
 		margin: 0px;
-		
+
 		.columns{
 			padding: 0;
 		}
@@ -148,16 +148,16 @@
 	padding: 15px;
 	border: 1px solid #ddd;
 	background: rgba(255, 255, 255, 0.75);
-	
+
 	.f-dropdown{
 		width: auto;
 		max-width: none;
 		border: none;
-		
+
 		li a{
 			padding: 1rem 0.5rem;
 		}
-	}	
+	}
 }
 
 .more-info{
@@ -176,12 +176,12 @@
 ---------------------------------*/
 .ili-stat {
 	margin: 25px 0 0;
-	
+
 	/*--- Set Text style of label, value ---*/
   .ili-stat_label {
     margin-bottom: 0.8em;
     color: #666;
-    
+
     .typcn{
 	    font-size: 1.7em;
 	    margin: 0 5px 0 0;
@@ -192,27 +192,27 @@
     font-size: 1.7em;
     font-weight: bold;
   }
-  
+
   /*--- Set Icon Color ---*/
   .ili-stat-ili-delta{
   	.typcn-arrow-down-thick{
 	  	color: #5b8196 ;
   	}
   }
-  
+
   /*--- Moblie Srceen ---*/
   .ili-stat-row{
-  	@media #{$small-only} { 
+  	@media #{$small-only} {
   		border-bottom: 1px dotted #ccc;
   		margin: 0;
   		padding: 0;
   		border: none;
-  	}  	
+  	}
   }
-  @media #{$small-only} { 
+  @media #{$small-only} {
   	text-align: center;
   }
-  
+
   @media only screen and (max-width: 320px){
 	  .typcn{
 	  	display: none;
@@ -243,19 +243,19 @@
       font-size: 1em;
     }
   }
-  
+
   .symptom-bar {
 	  padding-left: 0;
-  
+
   	.progress {
   	  height: 20px;
   	  margin: 0;
-  	  padding-left: 0;	
+  	  padding-left: 0;
   	}
   	.meter{
   		width: auto;
   		/*position: static;*/
-  		
+
   		/*--- Make Animation ---*/
   		/*-moz-transition: all .1s ease-out;
   		-webkit-transition: all .1s ease-out;
@@ -308,7 +308,7 @@
 	min-height: 90px;
 	margin: 0 0 50px;
   background-color: #3a4e5a;
-  
+
   .typcn{
   	color: #5b8196;
   }
@@ -322,50 +322,50 @@
 	min-height: 100px;
 	padding: 30px 0 15px 20px;
 	border-right: 1px solid #2a3b45;
-	
+
 	/*--- Dropdown button ---*/
   .button {
   	padding: 0;
   	margin-bottom: 0;
   	font-size: 2em;
 		background-color: #3a4e5a;
-		
+
 		strong {
 			font-weight: normal;
 		}
 	}
-	
-	@media #{$small-only} { 
+
+	@media #{$small-only} {
 		min-height: 90px;
 		text-align: center;
 		border-right: none;
 		border-bottom: 1px solid #2a3b45;
 	}
-	
+
 	@media #{$medium-up} {
 		min-height: 90px;
 		padding-left: 0;
 	}
 }
 .timeline-year {
-	width: 95px;	
+	width: 95px;
   border: 1px solid #2a3b45;
   background: #2a3b45;
-  
+
   li a {
   	color: #fff;
   	text-align: center;
-  	
+
   	&:hover {
       background: #456272;
       color: #fff;
   	}
   }
-  
+
   &:before, &:after {
 		border-color: transparent transparent #2a3b45 transparent;
   }
-  
+
 }
 
 
@@ -374,17 +374,17 @@
 ---------------------------------*/
 .timeline-week {
 	padding-top: 20px;
-	
-	@media #{$small-only} { 
+
+	@media #{$small-only} {
 		padding-top: 5px;
 	}
-	
+
 	@media #{$medium-only} {
 		padding-top: 25px;
 	}
-	
+
 	@media #{$medium-up} {
-	
+
 	}
 }
 
@@ -398,11 +398,11 @@
   top: 18px;
   z-index: 9;
   display: inline-block ;
-  width: 7%;
+  width: 1.8867924%; // 100 / 53
   height: 10px;
   text-align: center;
-  border-left: 1px solid #11a0a4;  
-  
+  border-left: 1px solid #11a0a4;
+
   &:first-child{
   	border: none;
   }
@@ -416,12 +416,12 @@
   -webkit-transition: all .1s ease-out;
   -o-transition: all .1s ease-out;
   transition: all .1s ease-out;
-  
-	float: left;  
+
+	float: left;
   display: inline-block;
   width: 100%;
   height: 10px;
-	
+
 	/*--- Hover bar ---*/
   &:hover {
     cursor: pointer;
@@ -431,9 +431,9 @@
   &.selected {
     background-color: #19252d;
   }
-  
+
   &:last-of-type{
-  
+
   }
 }
 
@@ -458,20 +458,20 @@
 	-webkit-transition: all .2s ease-out;
 	-o-transition: all .2s ease-out;
 	transition: all .2s ease-out;
-	
+
 	&:hover{
 		border: none;
 	}
-	
+
 	/*-- When .timeline-week-pin is selected a circle will show --*/
 	.selected &{
 		@include border-radius(30px);
 		height: 30px;
 		width: 30px;
-		margin: -8px auto 0;		
+		margin: -8px auto 0;
 		background: #00e4e4;
-		
-		@media #{$small-only} { 
+
+		@media #{$small-only} {
 			@include border-radius(20px);
 			height: 20px;
 			width: 20px;
@@ -489,8 +489,8 @@
 		margin-bottom: .75em;
 		font: normal 2.2em/1em umpushbold;
 	}
-	
-	@media #{$small-only}, #{$medium-only} { 
+
+	@media #{$small-only}, #{$medium-only} {
 		top: 100px;
 	}
 }
