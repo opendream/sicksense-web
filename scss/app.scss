@@ -38,7 +38,7 @@
 //   "foundation/components/type",
 //   "foundation/components/offcanvas",
 //   "foundation/components/visibility";
-  
+
 @import "global_sicksense";
 @import "module";
 
@@ -153,3 +153,37 @@
 	}
 }
 
+
+#chart {
+  width: 100%;
+  height: auto;
+  min-height: 400px;
+  max-height: 500px;
+  margin-bottom: 16px;
+
+  .y-label {
+    font-size: 1.4em;
+  }
+
+  .tick {
+    text {
+      transform: translate(0, 8px);
+    }
+  }
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.area-boe {
+  fill: #fcd070;
+  fill-opacity: 0.8;
+}
+.area-sicksense {
+  fill: #60eceb;
+  fill-opacity: 0.8;
+}
