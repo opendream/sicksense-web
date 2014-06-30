@@ -1,6 +1,7 @@
-# Foundation libsass template
+sicksense-web
+=============
 
-This is a template to start your own project that uses Grunt and libsass!
+Web page for SickSense application
 
 ## Requirements
 
