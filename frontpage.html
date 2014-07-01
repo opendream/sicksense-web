@@ -17,179 +17,179 @@
 
 </head>
 <body ng-app="sicksense">
-	<div class="top-nav-bar contain-to-grid">
-		<nav class="top-bar slideInDown animated " data-topbar role="navigation">
-			<ul class="title-area">
-			  <li class="name">
-			    <h1><a href="#" class="logo">SickSense</a></h1>
-			  </li>
-			  <li class="toggle-topbar menu-icon"><a href="#"><span>เมนู</span></a></li>
-			</ul>
+  <div class="top-nav-bar contain-to-grid">
+    <nav class="top-bar slideInDown animated " data-topbar role="navigation">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#" class="logo">SickSense</a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span>เมนู</span></a></li>
+      </ul>
 
-	    <section class="top-bar-section">
-	      <ul class="right">
-	        <li><a href="#" data-reveal-id="aboutModal">เกี่ยวกับเรา</a></li>
-	      </ul>
-	    </section>
-	  </nav>
-	</div>
+      <section class="top-bar-section">
+        <ul class="right">
+          <li><a href="#" data-reveal-id="aboutModal">เกี่ยวกับเรา</a></li>
+        </ul>
+      </section>
+    </nav>
+  </div>
 
-	<div class="filter fadeIn animated">
-		<div class="row">
-			<div class="large-6 small-12 columns">
-				<div class="map-control">
-					<div ng-controller="CitySelector">
+  <div class="filter fadeIn animated">
+    <div class="row">
+      <div class="large-6 small-12 columns">
+        <div class="map-control">
+          <div ng-controller="CitySelector">
 
-			    	<!--Dropdown Button-->
-			      <a class="dropdown-button" href="#" data-dropdown="city-drop" title="City">{{ city.properties.th }}
-			      <span class="typcn typcn-chevron-right rotate right"></span></a>
+          	<!--Dropdown Button-->
+            <a class="dropdown-button" href="#" data-dropdown="city-drop" title="City">{{ city.properties.th }}
+            <span class="typcn typcn-chevron-right rotate right"></span></a>
 
-			      <!--Dropdown-->
-			      <div id="city-drop" class="city-dropdown f-dropdown" data-dropdown-content>
+            <!--Dropdown-->
+            <div id="city-drop" class="city-dropdown f-dropdown" data-dropdown-content>
 
-			      	<!--Mobile-->
-			        <dl class="accordion provinces-for-mobile show-for-small-up hide-for-large-up" data-accordion>
-			          <dd ng-repeat="region in regions">
-			            <a class="" href="#panel{{ $index }}">{{ region.name }}</a>
-			            <div id="panel{{ $index }}" class="content">
-			              <a class="province-name" ng-repeat="province in region.provinces | orderBy:province.properties.th" ng-click="setCity(province)">{{ province.properties.th }}</a>
-			            </div>
-			          </dd>
-			        </dl>
+            	<!--Mobile-->
+              <dl class="accordion provinces-for-mobile show-for-small-up hide-for-large-up" data-accordion>
+                <dd ng-repeat="region in regions">
+                  <a class="" href="#panel{{ $index }}">{{ region.name }}</a>
+                  <div id="panel{{ $index }}" class="content">
+                    <a class="province-name" ng-repeat="province in region.provinces | orderBy:province.properties.th" ng-click="setCity(province)">{{ province.properties.th }}</a>
+                  </div>
+                </dd>
+              </dl>
 
-			        <!--Web-->
-			        <ul class="provinces-list hide-for-medium-down row">
-			        	<li class="region-list large-2 columns" ng-repeat="region in regions">
-			          	<h2>{{ region.name }}</h2>
-			          	<ul class="province-group">
-				          	<li class="province-name" ng-repeat="province in region.provinces | orderBy:province.properties.th" ng-click="setCity(province)">					          	  <a>{{ province.properties.th }}</a></li>
-			          	</ul>
-			        	</li>
-			        </ul>
-			      </div> <!--End Dropdown-->
+              <!--Web-->
+              <ul class="provinces-list hide-for-medium-down row">
+              	<li class="region-list large-2 columns" ng-repeat="region in regions">
+                	<h2>{{ region.name }}</h2>
+                	<ul class="province-group">
+                  	<li class="province-name" ng-repeat="province in region.provinces | orderBy:province.properties.th" ng-click="setCity(province)">					          	  <a>{{ province.properties.th }}</a></li>
+                	</ul>
+              	</li>
+              </ul>
+            </div> <!--End Dropdown-->
 
-			      <div class="ili-stat" ng-controller="ILIController">
-			        <div class="row">
-			          <div class="ili-stat-ili-thisweek ili-stat-row large-3 medium-4 small-3 columns">
-			            <div class="ili-stat_label"><span class="typcn typcn-heart-full-outline"></span>ILI</div>
-			            <div class="ili-stat_value">{{ thisWeek }}%</div>
-			          </div>
-			          <div class="ili-stat-ili-delta ili-stat-row large-4 medium-4 small-4 columns">
-			            <div class="ili-stat_label"><span class="typcn typcn-chart-bar"></span>อาทิตย์ที่ผ่านมา</div>
-			            <div class="ili-stat_value" ng-class="{ up: (delta > 0), still: (delta == 0), down: (delta < 0) }">
-			            <!--IF Condition-->
-			            <span class="typcn typcn-arrow-down-thick"></span> {{ delta }}%</div>
-			          </div>
-			          <div class="ili-stat-ili-reporternumbers ili-stat-row large-5 medium-4 small-5 columns">
-			            <div class="ili-stat_label"><span class="typcn typcn-clipboard"></span>จำนวนผู้รายงาน</div>
-			            <div class="ili-stat_value">{{ numberOfReporters }}</div>
-			          </div>
-			        </div>
-			      </div>
+            <div class="ili-stat" ng-controller="ILIController">
+              <div class="row">
+                <div class="ili-stat-ili-thisweek ili-stat-row large-3 medium-4 small-3 columns">
+                  <div class="ili-stat_label"><span class="typcn typcn-heart-full-outline"></span>ILI</div>
+                  <div class="ili-stat_value">{{ thisWeek }}%</div>
+                </div>
+                <div class="ili-stat-ili-delta ili-stat-row large-4 medium-4 small-4 columns">
+                  <div class="ili-stat_label"><span class="typcn typcn-chart-bar"></span>อาทิตย์ที่ผ่านมา</div>
+                  <div class="ili-stat_value" ng-class="{ up: (delta > 0), still: (delta == 0), down: (delta < 0) }">
+                  <!--IF Condition-->
+                  <span class="typcn typcn-arrow-down-thick"></span> {{ delta }}%</div>
+                </div>
+                <div class="ili-stat-ili-reporternumbers ili-stat-row large-5 medium-4 small-5 columns">
+                  <div class="ili-stat_label"><span class="typcn typcn-clipboard"></span>จำนวนผู้รายงาน</div>
+                  <div class="ili-stat_value">{{ numberOfReporters }}</div>
+                </div>
+              </div>
+            </div>
 
-				  </div>
-				</div> <!--control-->
+          </div>
+        </div> <!--control-->
 
-			  <div class="more-info hide-for-small-down">
-			    <p class="hidden">คำอธิบายเพิ่มเติม</p>
-			    <ul class="inline-list">
-			      <li><span class="icon-round gray"></span> สบายดี</li>
-			      <li><span class="icon-round red"></span> มีอาการ</li>
-			    </ul>
-			  </div>
+        <div class="more-info hide-for-small-down">
+          <p class="hidden">คำอธิบายเพิ่มเติม</p>
+          <ul class="inline-list">
+            <li><span class="icon-round gray"></span> สบายดี</li>
+            <li><span class="icon-round red"></span> มีอาการ</li>
+          </ul>
+        </div>
 
-			</div> <!--col-->
-		</div> <!--row-->
-	</div> <!--filter-->
+      </div> <!--col-->
+    </div> <!--row-->
+  </div> <!--filter-->
 
   <div id="map"><!--MAP--></div>
 
   <div id="week-selector" class="contain-to-grid sticky timeline" ng-controller="WeekSelector">
-	  <div data-topbar data-options="sticky_on: large">
+    <div data-topbar data-options="sticky_on: large">
     	<div class="row" >
-	      <div class="large-2 medium-2 columns">
-	        <div id="year-selector" class="timeline-filter">
-	          <a href="#" class="button" data-dropdown="year-drop" title="Year">
-	          <span class="hidden">แสดงรายการของปี</span> <strong timeline-selected>{{ year + 543 }}</strong>
-	          <span class="typcn typcn-chevron-right rotate"></span></a>
-	          <p class="hidden">เลือกปีที่ต้องการค้นหา</p>
-	          <ul id="year-drop" class="timeline-year large f-dropdown" data-dropdown-content>
-	            <li ng-repeat="value in years">
-	              <a ng-click="setYear(value)" data-year="{{ value }}">{{ value + 543 }}</a>
-	            </li>
-	          </ul>
-	        </div> <!--year-selector-->
-	      </div>
+        <div class="large-2 medium-2 columns">
+          <div id="year-selector" class="timeline-filter">
+            <a href="#" class="button" data-dropdown="year-drop" title="Year">
+            <span class="hidden">แสดงรายการของปี</span> <strong timeline-selected>{{ year + 543 }}</strong>
+            <span class="typcn typcn-chevron-right rotate"></span></a>
+            <p class="hidden">เลือกปีที่ต้องการค้นหา</p>
+            <ul id="year-drop" class="timeline-year large f-dropdown" data-dropdown-content>
+              <li ng-repeat="value in years">
+                <a ng-click="setYear(value)" data-year="{{ value }}">{{ value + 543 }}</a>
+              </li>
+            </ul>
+          </div> <!--year-selector-->
+        </div>
 
-	      <div class="large-10 medium-10 columns timeline-columns">
-	        <div id="week-line" class="timeline-week">
-	          <!-- <div id="week-knots" class="timeline-week-items">
-	            <div class="timeline-week-item" ng-repeat="date in weeks">
-	              <time  class="timeline-week-pin" ng-class="{ selected: isSelectedWeek(date) }" datetime="{{ date.toString() }}" ng-click="setWeek(date)">
-	              	<span data-tooltip class="timeline-tip has-tip tip-top" ng-attr-title="{{ date.toString }}">{{ date.toString() }}</span>
-	              </time>
-	            </div>
-	            <div class="timeline-week-horizon"></div>
-	          </div> -->
+        <div class="large-10 medium-10 columns timeline-columns">
+          <div id="week-line" class="timeline-week">
+            <!-- <div id="week-knots" class="timeline-week-items">
+              <div class="timeline-week-item" ng-repeat="date in weeks">
+                <time  class="timeline-week-pin" ng-class="{ selected: isSelectedWeek(date) }" datetime="{{ date.toString() }}" ng-click="setWeek(date)">
+                	<span data-tooltip class="timeline-tip has-tip tip-top" ng-attr-title="{{ date.toString }}">{{ date.toString() }}</span>
+                </time>
+              </div>
+              <div class="timeline-week-horizon"></div>
+            </div> -->
 
-						<input type="text" id="weekNo" name="weekNo" ng-model="weekNo" />
-	        </div>
-	      </div>
-	    </div> <!--row-->
-	  </div> <!--sticky-->
+            <input type="text" id="weekNo" name="weekNo" ng-model="weekNo" />
+          </div>
+        </div>
+      </div> <!--row-->
+    </div> <!--sticky-->
   </div><!-- /#week-selector -->
 
   <div class="statistics">
     <div class="row">
       <div class="large-6 medium-6 columns">
-	      <div class="wow fadeInDown chart-block block" data-wow-duration="1s" ng-controller="GraphController">
-		      <h2 class="title-block">สถิติ ILI ของทั้งประเทศ</h2>
-		      <div id="chart">
-		      </div>
-	      	<ul class="block-list">
-	      		<li><span class="icon-round orange"></span> ข้อมูล ILI จากสำนักระบาดวิทยา</li>
-	      		<li><span class="icon-round light-gray"></span> ข้อมูล ILI จาก DoctorMe</li>
-	      	</ul>
-	      </div>
+        <div class="wow fadeInDown chart-block block" data-wow-duration="1s" ng-controller="GraphController">
+          <h2 class="title-block">สถิติ ILI ของทั้งประเทศ</h2>
+          <div id="chart">
+          </div>
+        	<ul class="block-list">
+        		<li><span class="icon-round orange"></span> ข้อมูล ILI จากสำนักระบาดวิทยา</li>
+        		<li><span class="icon-round light-gray"></span> ข้อมูล ILI จาก DoctorMe</li>
+        	</ul>
+        </div>
       </div>
-	    <div class="large-6 medium-6 columns">
+      <div class="large-6 medium-6 columns">
 
-	    	<div class="wow fadeInDown symptoms-stat block" ng-controller="SymptomsController" data-wow-duration="1s">
-	    	  <h2 class="title-block">สถิติอาการป่วย / Symptoms Statistics</h2>
+      	<div class="wow fadeInDown symptoms-stat block" ng-controller="SymptomsController" data-wow-duration="1s">
+      	  <h2 class="title-block">สถิติอาการป่วย / Symptoms Statistics</h2>
 
-	    	  <div class="">
-		    	  <ul class="no-bullet" ng-show="symptoms">
-		    	    <li ng-repeat="symptom in symptoms">
-		    	      <div class="row">
-		    	        <div class="symptom-list-index text-center large-2 small-2 columns"><span>{{ $index + 1 }}</span></div>
-		    	        <div class="symptom-bar large-10 small-10 columns ">
-		    	          <div class="progress radius" style="width:{{ symptom.percentOfReports }}%">
-		    	            <span class="meter">
-		    	              <span class="meter-number">{{ symptom.percentOfReports }}%</span>
-		    	            </span>
-		    	          </div>
-		    						<span class="symptom-name">{{ symptom.name }}</span>
-		    	        </div>
-		    	      </div> <!--row-->
-		    	    </li>
-		    	  </ul>
-	    	  </div>
+      	  <div class="">
+        	  <ul class="no-bullet" ng-show="symptoms">
+        	    <li ng-repeat="symptom in symptoms">
+        	      <div class="row">
+        	        <div class="symptom-list-index text-center large-2 small-2 columns"><span>{{ $index + 1 }}</span></div>
+        	        <div class="symptom-bar large-10 small-10 columns ">
+        	          <div class="progress radius" style="width:{{ symptom.percentOfReports }}%">
+        	            <span class="meter">
+        	              <span class="meter-number">{{ symptom.percentOfReports }}%</span>
+        	            </span>
+        	          </div>
+        						<span class="symptom-name">{{ symptom.name }}</span>
+        	        </div>
+        	      </div> <!--row-->
+        	    </li>
+        	  </ul>
+      	  </div>
 
-	    	  <div ng-hide="symptoms">No symptoms.</div>
-	    	</div><!--symptoms-stat-->
+      	  <div ng-hide="symptoms">No symptoms.</div>
+      	</div><!--symptoms-stat-->
 
-	    </div> <!--col-->
-	  </div><!-- /#row -->
+      </div> <!--col-->
+    </div><!-- /#row -->
   </div><!-- statistics -->
 
   <div class="footer">
-	  <div class="row">
-		  <div class="large-8 medium-6 columns"><p class="credit">สนับสนุนโดย Skoll Global Threats Fund พัฒนาระบบโดย Opendream สัญญาอนุญาต cc by-nc-sa</p></div>
-		  <div class="large-4 medium-6 columns">
-		  	<a href="http://www.skollglobalthreats.org/" target="blank" class="skoll-logo">Skoll Global Threats Fund Logo</a>
-		  	<a href="http://www.opendream.co.th" target="blank" class="od-logo">Opendream Logo</a>
-		  </div>
-	  </div>
+    <div class="row">
+      <div class="large-8 medium-6 columns"><p class="credit">สนับสนุนโดย Skoll Global Threats Fund พัฒนาระบบโดย Opendream สัญญาอนุญาต cc by-nc-sa</p></div>
+      <div class="large-4 medium-6 columns">
+      	<a href="http://www.skollglobalthreats.org/" target="blank" class="skoll-logo">Skoll Global Threats Fund Logo</a>
+      	<a href="http://www.opendream.co.th" target="blank" class="od-logo">Opendream Logo</a>
+      </div>
+    </div>
   </div>
 
   <div id="aboutModal" class="reveal-modal about-modal" data-reveal>
@@ -201,7 +201,7 @@
     <a class="close-reveal-modal">&#215;</a>
   </div>
 
-	<script src="http://d3js.org/d3.v3.js"></script>
+  <script src="http://d3js.org/d3.v3.js"></script>
 
   <script src="/bower_components/jquery/dist/jquery.min.js"></script>
   <script src="/bower_components/async/lib/async.js"></script>
