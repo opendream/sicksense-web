@@ -91,7 +91,10 @@
 		left: -30px;
 		margin-top: -8px;
 		box-shadow: 0 0px 0 1px #fff, 0 7px 0 1px #fff, 0 14px 0 1px #fff;
-	}	
+	}
+	a{
+		padding: 0 15px 0 5px;
+	}
 }
 
 /*---------------------------------
@@ -135,7 +138,7 @@
 	width: 140px;
 	height: 45px;
 	overflow: hidden;
-	/*margin: 0 10px 0 0;*/
+	margin: 0 5px 0 0;
 	text-indent: -999em;
 	background: url('../images/company-logo.png') no-repeat left top;
 }
@@ -174,6 +177,10 @@
 	color: #2a3b45;
 	list-style: none;
 }
+.no-bullet{
+	margin-bottom: 0;
+}
+
 /*---For typcn-icon dropdown menu ---*/
 .rotate::before{
 	-moz-transform:rotate(90deg);
@@ -212,4 +219,12 @@
 }
 .tooltip.tip-top > .nub {
 	border-color: #00e4e4 transparent transparent transparent;
+}
+
+
+/*---------------------------------
+	MAP
+---------------------------------*/
+.leaflet-bottom{
+	z-index: 0;
 }
