@@ -500,6 +500,27 @@
 	}
 }
 
+
+/*---------------------------------
+	SCROLLBAR
+---------------------------------*/
+
+/*--- Bar Drag ---*/
+.mCS-dark-2.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{
+	@include border-radius(10px);
+	width: 10px;
+	background-color: #cbcbcb !important;
+}
+
+/*--- Bar ---*/
+.mCS-dark-2.mCSB_scrollTools .mCSB_draggerRail{
+	@include border-radius(10px);
+	width: 10px;
+	background-color: #f0f0f0;
+}
+
+
+
 /*fufu*/
 .timeline-columns{
 	height: 60px;
