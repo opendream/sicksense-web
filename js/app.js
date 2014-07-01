@@ -160,8 +160,9 @@ app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope,
     $scope.$emit('weekDate.changed', newValue);
   });
   $scope.weekDate = getWeekDate();
+  $scope.weekNo = moment($scope.weekDate).weeks();
 
-  $scope.years = [ 2014, 2013 ];
+  $scope.years = [ 2014, 2013, 2012, 2011, 2010 ];
 
   $scope.monthNames = moment.months();
 
@@ -170,6 +171,11 @@ app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope,
   $scope.setYear = function(value) {
     Foundation.libs.dropdown.closeall();
     $scope.year = value;
+    $scope.weeks = getWeeks($scope.year);
+
+    jQuery('#weekNo').ionRangeSlider('update', {
+      values: getWeekValuesForSlider($scope.year)
+    });
   };
 
   $scope.setQuarter = function(quarter) {
@@ -180,6 +186,8 @@ app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope,
 
   $scope.setWeek = function(weekDate) {
     $scope.weekDate = new Date(weekDate);
+    $scope.weekNo = moment($scope.weekDate).weeks();
+    $scope.$digest();
   };
 
   $scope.isSelectedWeek = function(date) {
@@ -190,6 +198,42 @@ app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope,
   $scope.toggleQuartersUI = function() {
     $scope.quarterExpand = !$scope.quarterExpand;
   };
+
+  jQuery('#weekNo').ionRangeSlider({
+    values: getWeekValuesForSlider($scope.year),
+
+    from: moment($scope.weekDate).weeks(),
+    prettify: false,
+    step: 10,
+    hasGrid: false,
+
+    onChange: function (obj) {
+      $scope.setWeek(moment($scope.year.toString()).weeks(obj.fromNumber).day('Sunday').toDate());
+    }
+  });
+
+  jQuery(window).resize(function (e) {
+    jQuery('#weekNo').ionRangeSlider('update', {
+      from: $scope.weekNo
+    });
+  });
+
+  function getWeekValuesForSlider(year) {
+    return _.map(getWeeks(year), function (week) {
+      week = moment(week);
+
+      var weekNo = week.weeks();
+      var weekMonthName;
+      if (weekNo == 1) {
+        weekMonthName = moment(week).day('Saturday').format('MMMM');
+      }
+      else {
+        weekMonthName = moment(week).day('Sunday').format('MMMM');
+      }
+
+      return "Week " + weekNo +  ", " + weekMonthName;
+    });
+  }
 }]);
 
 app.controller('CitySelector', [ '$scope', 'dashboard', 'data', function($scope, dashboard, data) {
