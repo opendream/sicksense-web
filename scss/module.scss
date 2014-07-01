@@ -224,6 +224,10 @@
 	SYMPTOMS STAT
 ---------------------------------*/
 .symptoms-stat {
+  .content {
+    height: 360px;
+  }
+
   li{
     padding: 10px 10px 5px;
     margin-bottom: 7px;
