@@ -153,10 +153,6 @@
 		width: auto;
 		max-width: none;
 		border: none;
-		
-		li a{
-			padding: 1rem 0.5rem;
-		}
 	}	
 }
 
@@ -355,6 +351,7 @@
   li a {
   	color: #fff;
   	text-align: center;
+  	padding: 1rem .5rem;
   	
   	&:hover {
       background: #456272;
