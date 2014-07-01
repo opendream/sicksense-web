@@ -14,6 +14,10 @@ $(document).ready(function() {
     $('.knot-pin', knot).removeClass('selected');
     $(this).addClass('selected');
   });
+
+  $('.symptoms-stat .content').mCustomScrollbar({
+    theme: 'dark-2'
+  });
 });
 
 var app = angular.module('sicksense', []);

@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="/bower_components/nouislider/jquery.nouislider.css" />
   <link rel="stylesheet" href="/bower_components/ion.rangeSlider/css/ion.rangeSlider.css" />
   <link rel="stylesheet" href="/bower_components/ion.rangeSlider/css/ion.rangeSlider.skinNice.css" />
+  <link rel="stylesheet" href="/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css" />
   <!--<link rel="stylesheet" href="/bower_components/scrollnavi/css/scrollnavi.css" />-->
   <link rel="stylesheet" href="/css/app.css" />
   <script src="/bower_components/modernizr/modernizr.js"></script>
@@ -157,7 +158,8 @@
 	    	<div class="wow fadeInDown symptoms-stat block" ng-controller="SymptomsController" data-wow-duration="1s">
 	    	  <h2 class="title-block">สถิติอาการป่วย / Symptoms Statistics</h2>
 
-	    	  <div class="">
+	        <div class="content">
+            <div ng-hide="symptoms">No symptoms.</div>
 		    	  <ul class="no-bullet" ng-show="symptoms">
 		    	    <li ng-repeat="symptom in symptoms">
 		    	      <div class="row">
@@ -174,8 +176,6 @@
 		    	    </li>
 		    	  </ul>
 	    	  </div>
-
-	    	  <div ng-hide="symptoms">No symptoms.</div>
 	    	</div><!--symptoms-stat-->
 
 	    </div> <!--col-->
@@ -213,6 +213,7 @@
   <script src="/bower_components/momentjs/lang/th.js"></script>
   <script src="/bower_components/angular/angular.js"></script>
   <script src="/bower_components/ion.rangeSlider/js/ion.rangeSlider.js"></script>
+  <script src="/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
   <!--<script src="/bower_components/scrollnavi/js/scroll_navi.min.js"></script>-->
   <script src="/js/wow.js"></script>
   <script src="/js/config.js"></script>
