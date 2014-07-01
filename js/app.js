@@ -151,7 +151,7 @@ app.factory('data', [ '$rootScope', function($rootScope) {
 }]);
 
 app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope, dashboard, data) {
-  moment.lang('en');
+  moment.lang('th');
 
   $scope.year = moment().year();
   $scope.quarter = moment().quarter();
@@ -162,7 +162,12 @@ app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope,
   $scope.weekDate = getWeekDate();
 
   $scope.$watch('weekNo', function (newValue, oldValue) {
-    updateSliderTooltip(oldValue);
+    var weekDate = moment($scope.year.toString())
+      .weeks(newValue)
+      .startOf('week')
+      .toDate();
+    $scope.setWeek(weekDate);
+    updateSliderTooltip(newValue);
   });
   $scope.weekNo = moment($scope.weekDate).weeks();
 
@@ -172,10 +177,13 @@ app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope,
 
   $scope.weeks = getWeeks($scope.year);
 
+  $scope.monthsOptions = getMonthsOptions($scope.year);
+
   $scope.setYear = function(value) {
     Foundation.libs.dropdown.closeall();
     $scope.year = value;
     $scope.weeks = getWeeks($scope.year);
+    $scope.monthsOptions = getMonthsOptions($scope.year);
   };
 
   $scope.setQuarter = function(quarter) {
@@ -228,9 +236,38 @@ app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope,
     });
   })(jQuery);
 
+  function getMonthsOptions(year) {
+    var optgroups = {};
+    // Prepare optgroups
+    optgroups = _.map($scope.monthNames, function (name) {
+      return {
+        monthName: name,
+        options: []
+      };
+    });
+
+    _.each(getWeeks(year), function (weekDate, index) {
+      var monthIndex;
+      if (index === 0) {
+        monthIndex = 0;
+      }
+      else {
+        monthIndex = moment(weekDate).months();
+      }
+
+      optgroups[monthIndex].options.push({
+        weekName: 'สัปดาห์ที่ ' + moment(weekDate).weeks(),
+        weekNo: moment(weekDate).weeks()
+      });
+    });
+
+    return optgroups;
+  }
+
   function updateSliderTooltip(weekNo) {
     var tooltip = $('.weekTooltip');
     var slider = $('.weekNo');
+    slider.slider('value', weekNo);
 
     // Rebuild tooltip text.
     var weekMonthName;

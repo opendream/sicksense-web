@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/bower_components/jqueryui/themes/ui-lightness/jquery-ui.min.css" />
   <link rel="stylesheet" href="/css/app.css" />
   <script src="/bower_components/modernizr/modernizr.js"></script>
+  <script src="/bower_components/angular/angular.js"></script>
 
 </head>
 <body ng-app="sicksense">
@@ -120,7 +121,7 @@
         </div>
 
         <div class="large-10 medium-10 columns timeline-columns">
-          <div id="week-line" class="timeline-week">
+          <div id="week-line" class="timeline-week hide-for-medium-down">
             <!-- <div id="week-knots" class="timeline-week-items">
               <div class="timeline-week-item" ng-repeat="date in weeks">
                 <time  class="timeline-week-pin" ng-class="{ selected: isSelectedWeek(date) }" datetime="{{ date.toString() }}" ng-click="setWeek(date)">
@@ -137,6 +138,16 @@
             <div class="weekTicks">
               <span class="weekTick-tick" ng-repeat="date in weeks"></span>
             </div>
+          </div>
+
+          <div id="week-drop" class="show-for-medium-down">
+            <select ng-model="weekNo">
+              <optgroup ng-repeat="group in monthsOptions" label="{{ group.monthName }}">
+                <option ng-repeat="week in group.options" ng-selected="{{ weekNo == week.weekNo }}" value="{{ week.weekNo }}">
+                  {{ week.weekName }}
+                </option>
+              </optgroup>
+            </select>
           </div>
         </div>
       </div> <!--row-->
@@ -216,7 +227,6 @@
   <script src="/bower_components/leaflet/dist/leaflet.js"></script>
   <script src="/bower_components/momentjs/moment.js"></script>
   <script src="/bower_components/momentjs/lang/th.js"></script>
-  <script src="/bower_components/angular/angular.js"></script>
   <script src="/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
   <script src="/js/wow.js"></script>
   <script src="/js/config.js"></script>

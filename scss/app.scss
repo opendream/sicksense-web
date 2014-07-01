@@ -171,7 +171,7 @@
   -o-transition: left 0.2s linear 0;
   -webkit-transition: left 0.2s linear 0;
   -moz-transition: left 0.2s linear 0;
-  transition: left 0.2s linear 0;
+  transition: all 0.2s linear 0;
 
   &.processed {
     opacity: .8;
