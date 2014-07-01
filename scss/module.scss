@@ -150,12 +150,16 @@
 	background: rgba(255, 255, 255, 0.75);
 
 	.f-dropdown{
-		width: auto;
+		/*width: auto;*/
 		max-width: none;
 		border: none;
-
+/*
 		li a{
 			padding: 1rem 0.5rem;
+		}*/
+		
+		@media #{$medium-only} {
+			width: 96.5%;
 		}
 	}
 }
@@ -262,13 +266,6 @@
   	}
   	.meter{
   		width: auto;
-  		/*position: static;*/
-
-  		/*--- Make Animation ---*/
-  		/*-moz-transition: all .1s ease-out;
-  		-webkit-transition: all .1s ease-out;
-  		-o-transition: all .1s ease-out;
-  		transition: all .1s ease-out;*/
   	}
   }
 }
@@ -355,6 +352,8 @@
 		padding-left: 0;
 	}
 }
+
+/*--- Dropdown menu ---*/
 .timeline-year {
 	width: 95px;
   border: 1px solid #2a3b45;
@@ -372,7 +371,12 @@
   }
 
   &:before, &:after {
-		border-color: transparent transparent #2a3b45 transparent;
+	left: 45% !important;
+	border-color: transparent transparent #2a3b45 transparent;
+	
+	@media #{$small-only} {
+		left: 50% !important;
+	}
   }
 
 }
@@ -402,19 +406,18 @@
 	position: relative;
 }
 
-.timeline-week-item {
-  position: relative;
-  top: 18px;
-  z-index: 9;
-  display: inline-block ;
-  width: 1.8867924%; // 100 / 53
-  height: 10px;
-  text-align: center;
-  border-left: 1px solid #11a0a4;
+.timeline-week-item, .weekTick-tick {
+	position: relative;
+	top: -2px;
+	display: inline-block ;
+	width: 1.920784314%; // 100 / 51
+	height: 10px;
+	text-align: center;
+	border-left: 1px solid #11a0a4;
 
-  &:first-child{
-  	border: none;
-  }
+	&:first-child{
+		border: none;
+	}
 }
 
 /*--- Pin Drop ---*/
@@ -446,46 +449,45 @@
   }
 }
 
+/*--- Timeline Bar ---*/
 .timeline-week-horizon {
 	@include border-radius(2em);
-	position: absolute;
-	top: 20px;
-	left: 0;
-	width: 98%;
-  height: 10px;
-  background-color: #2a3b45;
-}
-
-.timeline-tip{
-	display: block;
-	height: 10px;
-	width: 100%;
-	z-index: 29;
+	margin: 20px 0 0;
 	border: none;
-	text-indent: -999em;
-	-moz-transition: all .2s ease-out;
-	-webkit-transition: all .2s ease-out;
-	-o-transition: all .2s ease-out;
-	transition: all .2s ease-out;
-
-	&:hover{
-		border: none;
-	}
-
-	/*-- When .timeline-week-pin is selected a circle will show --*/
-	.selected &{
+	background: none;
+	background-color: #2a3b45;
+	
+	/*--- Big circle ---*/
+	.ui-slider-handle{
 		@include border-radius(30px);
-		height: 30px;
-		width: 30px;
-		margin: -8px auto 0;
+		height: 25px;
+		width: 25px;
+		margin-top: -2px;
 		background: #00e4e4;
-
+		
 		@media #{$small-only} {
 			@include border-radius(20px);
 			height: 20px;
 			width: 20px;
-			margin: -5px auto 0;
+			margin-top: 0;
 		}
+		
+		&.ui-state-hover, &.ui-state-focus{
+			border: none;
+			background: darken(#00e4e4, 7%);	
+		}
+	}
+	
+	/*--- Tool Tip ---*/
+	.timeline-tip{
+		display: block;
+		top: -40px;
+		width: 150px;
+		z-index: 29;
+		padding-top: 5px;
+		border: none;
+		color: #000;
+		background: #00e4e4;
 	}
 }
 

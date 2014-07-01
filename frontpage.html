@@ -121,7 +121,7 @@
         </div>
 
         <div class="large-10 medium-10 columns timeline-columns">
-          <div id="week-line" class="timeline-week hide-for-medium-down">
+          <div id="week-line" class="timeline-week hide-for-small-down">
             <!-- <div id="week-knots" class="timeline-week-items">
               <div class="timeline-week-item" ng-repeat="date in weeks">
                 <time  class="timeline-week-pin" ng-class="{ selected: isSelectedWeek(date) }" datetime="{{ date.toString() }}" ng-click="setWeek(date)">
@@ -132,15 +132,16 @@
             </div> -->
 
             <!-- <input type="text" id="weekNo" name="weekNo" ng-model="weekNo" /> -->
-            <div class="weekNo">
-              <span class="weekTooltip"></span>
+            <div class="weekNo timeline-week-horizon">
+              <span class="weekTooltip timeline-tip"></span>
+              <div class="weekTicks">
+                <span class="weekTick-tick" ng-repeat="date in weeks"></span>
+              </div>
             </div>
-            <div class="weekTicks">
-              <span class="weekTick-tick" ng-repeat="date in weeks"></span>
-            </div>
+            
           </div>
 
-          <div id="week-drop" class="show-for-medium-down">
+          <div id="week-drop" class="show-for-small-down">
             <select ng-model="weekNo">
               <optgroup ng-repeat="group in monthsOptions" label="{{ group.monthName }}">
                 <option ng-repeat="week in group.options" ng-selected="{{ weekNo == week.weekNo }}" value="{{ week.weekNo }}">
@@ -174,7 +175,7 @@
           <h2 class="title-block">สถิติอาการป่วย / Symptoms Statistics</h2>
 
           <div class="content">
-            <div ng-hide="symptoms">No symptoms.</div>
+            <div ng-hide="symptoms">ไม่มีข้อมูล</div>
             <ul class="no-bullet" ng-show="symptoms">
               <li ng-repeat="symptom in symptoms">
                 <div class="row">
@@ -209,15 +210,15 @@
 
   <div id="aboutModal" class="reveal-modal about-modal" data-reveal>
     <h2>เกี่ยวกับเรา</h2>
-    <p>ตั้งแต่เมื่อไรไม่รู้ที่มนุษยชาติเราหลงลืมไปว่าภัยคุกคามที่ใกล้ตัวที่สุดคือ โรคระบาดอุบัติใหม่ ลองนึกถึงว่า หากโลกปัจจุบันมีโรคระบาดในระดับเดียวกับ[<a href="https://en.wikipedia.org/wiki/1918_flu_pandemic" target="blank">ไข้หวัดสเปน</a>][1] ในช่วงปี พ.ศ. 2461 - 2463 ที่ทำให้ประชากรโลก 3 - 5% เสียชีวิตในช่วงระยเวลาการระบาด หากจะให้ใกล้ตัวขึ้นอีกนิดก็คือการระบาดไข้หวัดใหญ่สายพันธุ์ใหม่ 2009</p>
-    <p>Sicksense เป็นโครงการภายใต้ความร่วมมือของ [<a href="http://www.skollglobalthreats.org/" target="blank">Skoll Global Threats Fund</a>][2] , [<a href="http://www.thaihealth.or.th/" target="blank">สำนักงานกองทุนสนับสนุนการสร้างเสริมสุขภาพ (สสส.)</a>][3] และ [<a href="http://www.opendream.co.th/" target="blank">โอเพ่นดรีม</a>][4] ในการสร้างเครือข่ายอาสาสมัครดิจิทัลเพื่อร่วมกันหาสัญญาณของโรคระบาดอุบัติใหม่แบบมีส่วนร่วม ผ่านการรายงานสุขภาพของตนเองแบบนิรนาม</p>
+    <p>ตั้งแต่เมื่อไรไม่รู้ที่มนุษยชาติเราหลงลืมไปว่าภัยคุกคามที่ใกล้ตัวที่สุดคือ โรคระบาดอุบัติใหม่ ลองนึกถึงว่า หากโลกปัจจุบันมีโรคระบาดในระดับเดียวกับ<a href="https://en.wikipedia.org/wiki/1918_flu_pandemic" target="blank">ไข้หวัดสเปน</a> ในช่วงปี พ.ศ. 2461 - 2463 ที่ทำให้ประชากรโลก 3 - 5% เสียชีวิตในช่วงระยเวลาการระบาด หากจะให้ใกล้ตัวขึ้นอีกนิดก็คือการระบาดไข้หวัดใหญ่สายพันธุ์ใหม่ 2009</p>
+    <p>Sicksense เป็นโครงการภายใต้ความร่วมมือของ <a href="http://www.skollglobalthreats.org/" target="blank">Skoll Global Threats Fund</a> , <a href="http://www.thaihealth.or.th/" target="blank">สำนักงานกองทุนสนับสนุนการสร้างเสริมสุขภาพ (สสส.)</a> และ <a href="http://www.opendream.co.th/" target="blank">โอเพ่นดรีม</a> ในการสร้างเครือข่ายอาสาสมัครดิจิทัลเพื่อร่วมกันหาสัญญาณของโรคระบาดอุบัติใหม่แบบมีส่วนร่วม ผ่านการรายงานสุขภาพของตนเองแบบนิรนาม</p>
     <p>เราตั้งเป้าหมายในการเป็นผู้ช่วยของระบบสาธารณะสุขในปัจจุบันเพื่อการค้นหาสัญญาณการเจ็บป่วยแบบ real-time และมีส่วนร่วมผ่านเครื่องมือดิจิทัลต่างๆ ผู้ใช้ในประเทศไทยทุกสามารถเข้าร่วมเป็นอาสาสมัครได้</p>
     <p>Sicksense จะเก็บแต่ข้อมูลนิรนามของผู้ใช้และจะใช้งานข้อมูลเหล่านั้นเพื่อการวิเคราะห์หาสัญญาณของโรคระบาดอุบัติใหม่ที่ไม่ใช่เพื่อผลประโยชน์ทางการค้าเท่านั้น</p>
     <a class="close-reveal-modal">&#215;</a>
   </div>
 
   <script src="http://d3js.org/d3.v3.js"></script>
-
+  <script src="//localhost:35729/livereload.js"></script>
   <script src="/bower_components/jquery/dist/jquery.min.js"></script>
   <script src="/bower_components/jqueryui/jquery-ui.min.js"></script>
   <script src="/bower_components/async/lib/async.js"></script>
