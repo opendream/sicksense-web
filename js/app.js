@@ -222,6 +222,10 @@ app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope,
         });
       }
     });
+
+    $(window).resize(function (e) {
+      updateSliderTooltip($scope.weekNo);
+    });
   })(jQuery);
 
   function updateSliderTooltip(weekNo) {
@@ -251,8 +255,8 @@ app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope,
     var actualLeft = handleLeft - (tipWidth / 2);
 
     tooltip
-      .addClass('processed')
-      .css('left', actualLeft);
+      .css('left', actualLeft)
+      .addClass('processed');
   }
 
   function getWeekValuesForSlider(year) {
