@@ -8,6 +8,7 @@
     "leaflet": "~0.7.3",
     "angular": "~1.2.16",
     "typicons": "~2.0.4",
-    "async": "~0.9.0"
+    "async": "~0.9.0",
+    "jqueryui": "~1.11.0"
   }
 }

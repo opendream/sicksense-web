@@ -156,6 +156,10 @@ app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope,
     $scope.$emit('weekDate.changed', newValue);
   });
   $scope.weekDate = getWeekDate();
+
+  $scope.$watch('weekNo', function (newValue, oldValue) {
+    updateSliderTooltip(oldValue);
+  });
   $scope.weekNo = moment($scope.weekDate).weeks();
 
   $scope.years = [ 2014, 2013, 2012, 2011, 2010 ];
@@ -168,10 +172,6 @@ app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope,
     Foundation.libs.dropdown.closeall();
     $scope.year = value;
     $scope.weeks = getWeeks($scope.year);
-
-    jQuery('#weekNo').ionRangeSlider('update', {
-      values: getWeekValuesForSlider($scope.year)
-    });
   };
 
   $scope.setQuarter = function(quarter) {
@@ -195,24 +195,61 @@ app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope,
     $scope.quarterExpand = !$scope.quarterExpand;
   };
 
-  jQuery('#weekNo').ionRangeSlider({
-    values: getWeekValuesForSlider($scope.year),
+  (function ($) {
+    var tooltip = $('.weekTooltip');
+    var slider = $('.weekNo');
 
-    from: moment($scope.weekDate).weeks(),
-    prettify: false,
-    step: 10,
-    hasGrid: false,
+    tooltip.text($scope.weekNo);
 
-    onChange: function (obj) {
-      $scope.setWeek(moment($scope.year.toString()).weeks(obj.fromNumber).day('Sunday').toDate());
-    }
-  });
+    slider.slider({
+      min: 1,
+      max: 52,
+      value: $scope.weekNo,
 
-  jQuery(window).resize(function (e) {
-    jQuery('#weekNo').ionRangeSlider('update', {
-      from: $scope.weekNo
+      slide: function (event, ui) {
+        var weekDate = moment($scope.year.toString())
+          .weeks(ui.value)
+          .startOf('week')
+          .toDate();
+        $scope.setWeek(weekDate);
+
+        runOnce('updateSliderTooltip', 50, null, function () {
+          updateSliderTooltip(ui.value);
+        });
+      }
     });
-  });
+  })(jQuery);
+
+  function updateSliderTooltip(weekNo) {
+    var tooltip = $('.weekTooltip');
+    var slider = $('.weekNo');
+
+    // Rebuild tooltip text.
+    var weekMonthName;
+    if (weekNo == 1) {
+      weekMonthName = moment($scope.year.toString())
+        .weeks(1)
+        .endOf('week')
+        .format('MMMM');
+    }
+    else {
+      weekMonthName = moment($scope.year.toString())
+        .weeks(weekNo)
+        .startOf('week')
+        .format('MMMM');
+    }
+    var tipText = 'Week ' + weekNo + ', ' + weekMonthName;
+    tooltip.text(tipText);
+
+    var tipWidth = tooltip.width();
+    var handleLeft = parseFloat($('.ui-slider-handle', slider).css('left'));
+
+    var actualLeft = handleLeft - (tipWidth / 2);
+
+    tooltip
+      .addClass('processed')
+      .css('left', actualLeft);
+  }
 
   function getWeekValuesForSlider(year) {
     return _.map(getWeeks(year), function (week) {
