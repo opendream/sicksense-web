@@ -40,7 +40,7 @@
           <div ng-controller="CitySelector">
 
           	<!--Dropdown Button-->
-            <a class="dropdown-button" href="#" data-dropdown="city-drop" title="City">{{ city.properties.th }}
+            <a ng-cloak class="dropdown-button" href="#" data-dropdown="city-drop" title="City">{{ city.properties.th }}
             <span class="typcn typcn-chevron-right rotate right"></span></a>
 
             <!--Dropdown-->
@@ -49,7 +49,7 @@
             	<!--Mobile-->
               <dl class="accordion provinces-for-mobile show-for-small-up hide-for-large-up" data-accordion>
                 <dd ng-repeat="region in regions">
-                  <a class="" href="#panel{{ $index }}">{{ region.name }}</a>
+                  <a ng-cloak class="" href="#panel{{ $index }}">{{ region.name }}</a>
                   <div id="panel{{ $index }}" class="content">
                     <a class="province-name" ng-repeat="province in region.provinces | orderBy:province.properties.th" ng-click="setCity(province)">{{ province.properties.th }}</a>
                   </div>
@@ -59,9 +59,11 @@
               <!--Web-->
               <ul class="provinces-list hide-for-medium-down row">
               	<li class="region-list large-2 columns" ng-repeat="region in regions">
-                	<h2>{{ region.name }}</h2>
+                	<h2 ng-clock>{{ region.name }}</h2>
                 	<ul class="province-group">
-                  	<li class="province-name" ng-repeat="province in region.provinces | orderBy:province.properties.th" ng-click="setCity(province)">					          	  <a>{{ province.properties.th }}</a></li>
+                  	<li class="province-name" ng-repeat="province in region.provinces | orderBy:province.properties.th" ng-click="setCity(province)">
+                      <a ng-cloak>{{ province.properties.th }}</a>
+                    </li>
                 	</ul>
               	</li>
               </ul>
@@ -71,17 +73,17 @@
               <div class="row">
                 <div class="ili-stat-ili-thisweek ili-stat-row large-3 medium-4 small-3 columns">
                   <div class="ili-stat_label"><span class="typcn typcn-heart-full-outline"></span>ILI</div>
-                  <div class="ili-stat_value">{{ thisWeek }}%</div>
+                  <div ng-cloak class="ili-stat_value">{{ thisWeek }}%</div>
                 </div>
                 <div class="ili-stat-ili-delta ili-stat-row large-4 medium-4 small-4 columns">
                   <div class="ili-stat_label"><span class="typcn typcn-chart-bar"></span>อาทิตย์ที่ผ่านมา</div>
-                  <div class="ili-stat_value" ng-class="{ up: (delta > 0), still: (delta == 0), down: (delta < 0) }">
+                  <div ng-cloak class="ili-stat_value" ng-class="{ up: (delta > 0), still: (delta == 0), down: (delta < 0) }">
                   <!--IF Condition-->
                   <span class="typcn typcn-arrow-down-thick"></span> {{ delta }}%</div>
                 </div>
                 <div class="ili-stat-ili-reporternumbers ili-stat-row large-5 medium-4 small-5 columns">
                   <div class="ili-stat_label"><span class="typcn typcn-clipboard"></span>จำนวนผู้รายงาน</div>
-                  <div class="ili-stat_value">{{ numberOfReporters }}</div>
+                  <div ng-cloak class="ili-stat_value">{{ numberOfReporters }}</div>
                 </div>
               </div>
             </div>
@@ -109,12 +111,12 @@
         <div class="large-2 medium-2 columns">
           <div id="year-selector" class="timeline-filter">
             <a href="#" class="button" data-dropdown="year-drop" title="Year">
-            <span class="hidden">แสดงรายการของปี</span> <strong timeline-selected>{{ year + 543 }}</strong>
+            <span class="hidden">แสดงรายการของปี</span> <strong ng-cloak timeline-selected>{{ year + 543 }}</strong>
             <span class="typcn typcn-chevron-right rotate"></span></a>
             <p class="hidden">เลือกปีที่ต้องการค้นหา</p>
             <ul id="year-drop" class="timeline-year large f-dropdown" data-dropdown-content>
               <li ng-repeat="value in years">
-                <a ng-click="setYear(value)" data-year="{{ value }}">{{ value + 543 }}</a>
+                <a ng-cloak ng-click="setYear(value)" data-year="{{ value }}">{{ value + 543 }}</a>
               </li>
             </ul>
           </div> <!--year-selector-->
