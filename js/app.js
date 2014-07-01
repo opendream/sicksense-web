@@ -56,7 +56,8 @@ app.factory('dashboard', [ '$rootScope', function($rootScope) {
       touchZoom: false,
       scrollWheelZoom: false,
       doubleClickZoom: false,
-      boxZoom: false
+      boxZoom: false,
+      zoomControl: false
     };
 
     this.map = L.map('map', mapOptions).setView([options.latitude, options.longitude], options.zoom);
