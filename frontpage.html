@@ -77,9 +77,9 @@
                 </div>
                 <div class="ili-stat-ili-delta ili-stat-row large-4 medium-4 small-4 columns">
                   <div class="ili-stat_label"><span class="typcn typcn-chart-bar"></span>อาทิตย์ที่ผ่านมา</div>
-                  <div ng-cloak class="ili-stat_value" ng-class="{ up: (delta > 0), still: (delta == 0), down: (delta < 0) }">
+                  <div ng-cloak class="ili-stat_value">
                   <!--IF Condition-->
-                  <span class="typcn typcn-arrow-down-thick"></span> {{ delta }}%</div>
+                  <span ng-class="{ 'typcn': 1, 'typcn-arrow-up-thick': (delta > 0), 'typcn-arrow-down-thick': (delta < 0) }"></span> {{ (delta >= 0) ? delta : (delta * -1) }}%</div>
                 </div>
                 <div class="ili-stat-ili-reporternumbers ili-stat-row large-5 medium-4 small-5 columns">
                   <div class="ili-stat_label"><span class="typcn typcn-clipboard"></span>จำนวนผู้รายงาน</div>
