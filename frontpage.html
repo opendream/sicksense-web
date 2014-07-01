@@ -145,7 +145,8 @@
           <div id="week-drop" class="show-for-medium-down">
             <select ng-model="weekNo">
               <optgroup ng-repeat="group in monthsOptions" label="{{ group.monthName }}">
-                <option ng-repeat="week in group.options" ng-selected="{{ weekNo == week.weekNo }}" value="{{ week.weekNo }}">
+                <option ng-repeat="week in group.options" ng-selected="{{ weekNo == week.weekNo }}"
+                        value="{{ week.weekNo }}">
                   {{ week.weekName }}
                 </option>
               </optgroup>

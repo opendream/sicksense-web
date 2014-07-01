@@ -163,12 +163,13 @@ app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope,
   $scope.weekDate = getWeekDate();
 
   $scope.$watch('weekNo', function (newValue, oldValue) {
+    updateSliderTooltip(newValue);
+
     var weekDate = moment($scope.year.toString())
       .weeks(newValue)
       .startOf('week')
       .toDate();
     $scope.setWeek(weekDate);
-    updateSliderTooltip(newValue);
   });
   $scope.weekNo = moment($scope.weekDate).weeks();
 
@@ -196,7 +197,6 @@ app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope,
   $scope.setWeek = function(weekDate) {
     $scope.weekDate = new Date(weekDate);
     $scope.weekNo = moment($scope.weekDate).weeks();
-    $scope.$digest();
   };
 
   $scope.isSelectedWeek = function(date) {
@@ -225,6 +225,7 @@ app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope,
           .startOf('week')
           .toDate();
         $scope.setWeek(weekDate);
+        $scope.$digest();
 
         runOnce('updateSliderTooltip', 50, null, function () {
           updateSliderTooltip(ui.value);
@@ -284,7 +285,7 @@ app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope,
         .startOf('week')
         .format('MMMM');
     }
-    var tipText = 'Week ' + weekNo + ', ' + weekMonthName;
+    var tipText = "สัปดาห์ที่ " + weekNo +  ", เดือน" + weekMonthName;
     tooltip.text(tipText);
 
     var tipWidth = tooltip.width();
@@ -295,23 +296,6 @@ app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope,
     tooltip
       .css('left', actualLeft)
       .addClass('processed');
-  }
-
-  function getWeekValuesForSlider(year) {
-    return _.map(getWeeks(year), function (week) {
-      week = moment(week);
-
-      var weekNo = week.weeks();
-      var weekMonthName;
-      if (weekNo == 1) {
-        weekMonthName = moment(week).day('Saturday').format('MMMM');
-      }
-      else {
-        weekMonthName = moment(week).day('Sunday').format('MMMM');
-      }
-
-      return "Week " + weekNo +  ", " + weekMonthName;
-    });
   }
 }]);
 
