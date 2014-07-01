@@ -9,21 +9,22 @@
   <link rel="stylesheet" href="/bower_components/leaflet/dist/leaflet.css" />
   <link rel="stylesheet" href="/bower_components/typicons/src/font/typicons.min.css" />
   <link rel="stylesheet" href="/bower_components/nouislider/jquery.nouislider.css" />
+  <link rel="stylesheet" href="/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css" />
   <!--<link rel="stylesheet" href="/bower_components/scrollnavi/css/scrollnavi.css" />-->
   <link rel="stylesheet" href="/css/app.css" />
   <script src="/bower_components/modernizr/modernizr.js"></script>
-  		
+
 </head>
 <body ng-app="sicksense">
 	<div class="top-nav-bar contain-to-grid">
-		<nav class="top-bar slideInDown animated " data-topbar role="navigation">	    
+		<nav class="top-bar slideInDown animated " data-topbar role="navigation">
 			<ul class="title-area">
 			  <li class="name">
 			    <h1><a href="#" class="logo">SickSense</a></h1>
 			  </li>
 			  <li class="toggle-topbar menu-icon"><a href="#"><span>เมนู</span></a></li>
 			</ul>
-	
+
 	    <section class="top-bar-section">
 	      <ul class="right">
 	        <li><a href="#" data-reveal-id="aboutModal">เกี่ยวกับเรา</a></li>
@@ -31,20 +32,20 @@
 	    </section>
 	  </nav>
 	</div>
-		
+
 	<div class="filter fadeIn animated">
 		<div class="row">
 			<div class="large-6 small-12 columns">
 				<div class="map-control">
 					<div ng-controller="CitySelector">
-				        
+
 			    	<!--Dropdown Button-->
 			      <a class="dropdown-button" href="#" data-dropdown="city-drop" title="City">{{ city.properties.th }}
 			      <span class="typcn typcn-chevron-right rotate right"></span></a>
-			      
+
 			      <!--Dropdown-->
 			      <div id="city-drop" class="city-dropdown f-dropdown" data-dropdown-content>
-			      
+
 			      	<!--Mobile-->
 			        <dl class="accordion provinces-for-mobile show-for-small-up hide-for-large-up" data-accordion>
 			          <dd ng-repeat="region in regions">
@@ -54,7 +55,7 @@
 			            </div>
 			          </dd>
 			        </dl>
-			      
+
 			        <!--Web-->
 			        <ul class="provinces-list hide-for-medium-down row">
 			        	<li class="region-list large-2 columns" ng-repeat="region in regions">
@@ -65,7 +66,7 @@
 			        	</li>
 			        </ul>
 			      </div> <!--End Dropdown-->
-				
+
 			      <div class="ili-stat" ng-controller="ILIController">
 			        <div class="row">
 			          <div class="ili-stat-ili-thisweek ili-stat-row large-3 medium-4 small-3 columns">
@@ -84,10 +85,10 @@
 			          </div>
 			        </div>
 			      </div>
-				
-				  </div>			
+
+				  </div>
 				</div> <!--control-->
-				    
+
 			  <div class="more-info hide-for-small-down">
 			    <p class="hidden">คำอธิบายเพิ่มเติม</p>
 			    <ul class="inline-list">
@@ -95,11 +96,11 @@
 			      <li><span class="icon-round red"></span> มีอาการ</li>
 			    </ul>
 			  </div>
-				    
+
 			</div> <!--col-->
 		</div> <!--row-->
 	</div> <!--filter-->
-	
+
   <div id="map"><!--MAP--></div>
 
   <div id="week-selector" class="contain-to-grid sticky timeline" ng-controller="WeekSelector">
@@ -118,7 +119,7 @@
 	          </ul>
 	        </div> <!--year-selector-->
 	      </div>
-	
+
 	      <div class="large-10 medium-10 columns timeline-columns">
 	        <div id="week-line" class="timeline-week">
 	          <div id="week-knots" class="timeline-week-items">
@@ -138,10 +139,9 @@
   <div class="statistics">
     <div class="row">
       <div class="large-6 medium-6 columns">
-	      <div class="wow fadeInDown chart-block block" data-wow-duration="1s">
-		      <h2 class="title-block">graph</h2>
-		      <div class="chart">
-		       Here
+	      <div class="wow fadeInDown chart-block block" data-wow-duration="1s" ng-controller="GraphController">
+		      <h2 class="title-block">สถิติ ILI ของทั้งประเทศ</h2>
+		      <div id="chart">
 		      </div>
 	      	<ul class="block-list">
 	      		<li><span class="icon-round orange"></span> ข้อมูล ILI จากสำนักระบาดวิทยา</li>
@@ -153,8 +153,9 @@
 
 	    	<div class="wow fadeInDown symptoms-stat block" ng-controller="SymptomsController" data-wow-duration="1s">
 	    	  <h2 class="title-block">สถิติอาการป่วย / Symptoms Statistics</h2>
-	    	  
-	    	  <div class="">
+
+	        <div class="content">
+            <div ng-hide="symptoms">No symptoms.</div>
 		    	  <ul class="no-bullet" ng-show="symptoms">
 		    	    <li ng-repeat="symptom in symptoms">
 		    	      <div class="row">
@@ -171,14 +172,12 @@
 		    	    </li>
 		    	  </ul>
 	    	  </div>
-	    	  
-	    	  <div ng-hide="symptoms">No symptoms.</div>
 	    	</div><!--symptoms-stat-->
-	    		    	      
+
 	    </div> <!--col-->
 	  </div><!-- /#row -->
   </div><!-- statistics -->
-  
+
   <div class="footer">
 	  <div class="row">
 		  <div class="large-8 medium-6 columns"><p class="credit">สนับสนุนโดย Skoll Global Threats Fund พัฒนาระบบโดย Opendream สัญญาอนุญาต cc by-nc-sa</p></div>
@@ -188,7 +187,7 @@
 		  </div>
 	  </div>
   </div>
-  
+
   <div id="aboutModal" class="reveal-modal about-modal" data-reveal>
     <h2>เกี่ยวกับเรา</h2>
     <p>ตั้งแต่เมื่อไรไม่รู้ที่มนุษยชาติเราหลงลืมไปว่าภัยคุกคามที่ใกล้ตัวที่สุดคือ โรคระบาดอุบัติใหม่ ลองนึกถึงว่า หากโลกปัจจุบันมีโรคระบาดในระดับเดียวกับ[<a href="https://en.wikipedia.org/wiki/1918_flu_pandemic" target="blank">ไข้หวัดสเปน</a>][1] ในช่วงปี พ.ศ. 2461 - 2463 ที่ทำให้ประชากรโลก 3 - 5% เสียชีวิตในช่วงระยเวลาการระบาด หากจะให้ใกล้ตัวขึ้นอีกนิดก็คือการระบาดไข้หวัดใหญ่สายพันธุ์ใหม่ 2009</p>
@@ -197,6 +196,8 @@
     <p>Sicksense จะเก็บแต่ข้อมูลนิรนามของผู้ใช้และจะใช้งานข้อมูลเหล่านั้นเพื่อการวิเคราะห์หาสัญญาณของโรคระบาดอุบัติใหม่ที่ไม่ใช่เพื่อผลประโยชน์ทางการค้าเท่านั้น</p>
     <a class="close-reveal-modal">&#215;</a>
   </div>
+
+	<script src="http://d3js.org/d3.v3.js"></script>
 
   <script src="/bower_components/jquery/dist/jquery.min.js"></script>
   <script src="/bower_components/async/lib/async.js"></script>
@@ -207,11 +208,14 @@
   <script src="/bower_components/momentjs/moment.js"></script>
   <script src="/bower_components/momentjs/lang/th.js"></script>
   <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
   <!--<script src="/bower_components/scrollnavi/js/scroll_navi.min.js"></script>-->
   <script src="/js/wow.js"></script>
   <script src="/js/config.js"></script>
   <script src="/js/runonce.js"></script>
   <script src="/js/app.js"></script>
   <script src="/js/wow-config.js"></script>
+  <script src="/js/graph.js"></script>
+
 </body>
 </html>
