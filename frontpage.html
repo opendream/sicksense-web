@@ -8,11 +8,8 @@
   <link rel="stylesheet" href="/css/animate.css">
   <link rel="stylesheet" href="/bower_components/leaflet/dist/leaflet.css" />
   <link rel="stylesheet" href="/bower_components/typicons/src/font/typicons.min.css" />
-  <link rel="stylesheet" href="/bower_components/nouislider/jquery.nouislider.css" />
-  <link rel="stylesheet" href="/bower_components/ion.rangeSlider/css/ion.rangeSlider.css" />
-  <link rel="stylesheet" href="/bower_components/ion.rangeSlider/css/ion.rangeSlider.skinNice.css" />
   <link rel="stylesheet" href="/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css" />
-  <!--<link rel="stylesheet" href="/bower_components/scrollnavi/css/scrollnavi.css" />-->
+  <link rel="stylesheet" href="/bower_components/jqueryui/themes/ui-lightness/jquery-ui.min.css" />
   <link rel="stylesheet" href="/css/app.css" />
   <script src="/bower_components/modernizr/modernizr.js"></script>
 
@@ -133,7 +130,13 @@
               <div class="timeline-week-horizon"></div>
             </div> -->
 
-            <input type="text" id="weekNo" name="weekNo" ng-model="weekNo" />
+            <!-- <input type="text" id="weekNo" name="weekNo" ng-model="weekNo" /> -->
+            <div class="weekNo">
+              <span class="weekTooltip"></span>
+            </div>
+            <div class="weekTicks">
+              <span class="weekTick-tick" ng-repeat="date in weeks"></span>
+            </div>
           </div>
         </div>
       </div> <!--row-->
@@ -205,6 +208,7 @@
   <script src="http://d3js.org/d3.v3.js"></script>
 
   <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/bower_components/jqueryui/jquery-ui.min.js"></script>
   <script src="/bower_components/async/lib/async.js"></script>
   <script src="/bower_components/lodash/dist/lodash.js"></script>
   <script src="/bower_components/foundation/js/foundation.min.js"></script>
@@ -213,9 +217,7 @@
   <script src="/bower_components/momentjs/moment.js"></script>
   <script src="/bower_components/momentjs/lang/th.js"></script>
   <script src="/bower_components/angular/angular.js"></script>
-  <script src="/bower_components/ion.rangeSlider/js/ion.rangeSlider.js"></script>
   <script src="/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-  <!--<script src="/bower_components/scrollnavi/js/scroll_navi.min.js"></script>-->
   <script src="/js/wow.js"></script>
   <script src="/js/config.js"></script>
   <script src="/js/runonce.js"></script>
