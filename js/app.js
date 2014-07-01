@@ -209,7 +209,9 @@ app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope,
   });
 
   jQuery(window).resize(function (e) {
-    jQuery('#weekNo').ionRangeSlider('update');
+    jQuery('#weekNo').ionRangeSlider('update', {
+      from: $scope.weekNo
+    });
   });
 
   function getWeekValuesForSlider(year) {
