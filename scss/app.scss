@@ -42,6 +42,10 @@
 @import "global_sicksense";
 @import "module";
 
+ng-cloak {
+  display: none !important;
+}
+
 
 #week-quarters {
   position: absolute;
