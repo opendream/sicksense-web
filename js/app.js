@@ -61,7 +61,7 @@ app.factory('dashboard', [ '$rootScope', function($rootScope) {
     };
 
     this.map = L.map('map', mapOptions).setView([options.latitude, options.longitude], options.zoom);
-    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(this.map);
+    L.tileLayer('//{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(this.map);
 
     // Add city polygon layer
     this.cityLayer = L.layerGroup().addTo(this.map);
