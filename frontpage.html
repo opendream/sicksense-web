@@ -73,17 +73,17 @@
               <div class="row">
                 <div class="ili-stat-ili-thisweek ili-stat-row large-3 medium-4 small-3 columns">
                   <div class="ili-stat_label"><span class="typcn typcn-heart-full-outline"></span>ILI</div>
-                  <div ng-cloak class="ili-stat_value">{{ thisWeek }}%</div>
+                  <div ng-cloak class="ili-stat_value">{{ thisWeek | number : 2 }}%</div>
                 </div>
                 <div class="ili-stat-ili-delta ili-stat-row large-4 medium-4 small-4 columns">
                   <div class="ili-stat_label"><span class="typcn typcn-chart-bar"></span>อาทิตย์ที่ผ่านมา</div>
                   <div ng-cloak class="ili-stat_value">
                   <!--IF Condition-->
-                  <span ng-class="{ 'typcn': 1, 'typcn-arrow-up-thick': (delta > 0), 'typcn-arrow-down-thick': (delta < 0) }"></span> {{ (delta >= 0) ? delta : (delta * -1) }}%</div>
+                  <span ng-class="{ 'typcn': 1, 'typcn-arrow-up-thick': (delta > 0), 'typcn-arrow-down-thick': (delta < 0) }"></span> {{ ((delta >= 0) ? delta : (delta * -1))  | number : 2 }}%</div>
                 </div>
                 <div class="ili-stat-ili-reporternumbers ili-stat-row large-5 medium-4 small-5 columns">
                   <div class="ili-stat_label"><span class="typcn typcn-clipboard"></span>จำนวนผู้รายงาน</div>
-                  <div ng-cloak class="ili-stat_value">{{ numberOfReporters }}</div>
+                  <div ng-cloak class="ili-stat_value">{{ numberOfReporters | number : 2 }}</div>
                 </div>
               </div>
             </div>
@@ -184,9 +184,9 @@
                 <div class="row">
                   <div class="symptom-list-index text-center large-2 small-2 columns"><span>{{ $index + 1 }}</span></div>
                   <div class="symptom-bar large-10 small-10 columns ">
-                    <div class="progress radius" style="width:{{ symptom.percentOfReports }}%">
+                    <div class="progress radius" style="width:{{ symptom.percentOfReports | number : 2 }}%">
                       <span class="meter">
-                        <span class="meter-number">{{ symptom.percentOfReports }}%</span>
+                        <span class="meter-number">{{ symptom.percentOfReports | number : 2 }}%</span>
                       </span>
                     </div>
                     <span class="symptom-name">{{ symptom.name }}</span>
