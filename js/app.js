@@ -213,6 +213,7 @@ app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope,
     var slider = $('.weekNo');
 
     tooltip.text($scope.weekNo);
+    tooltip.addClass('processed');
 
     slider.slider({
       min: 1,
@@ -292,10 +293,14 @@ app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope,
     var handleLeft = parseFloat($('.ui-slider-handle', slider).css('left'));
 
     var actualLeft = handleLeft - (tipWidth / 2);
+    var css = { 'left': actualLeft, 'right': 'auto' };
 
-    tooltip
-      .css('left', actualLeft)
-      .addClass('processed');
+    if (actualLeft + 210 > slider.width()) {
+      tooltip.css({ 'right': 0, 'left': 'auto' });
+    }
+    else {
+      tooltip.css({ 'left': actualLeft, 'right': 'auto' });
+    }
   }
 }]);
 
