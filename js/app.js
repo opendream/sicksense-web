@@ -120,15 +120,34 @@ app.factory('data', [ '$rootScope', function($rootScope) {
   var posting = false;
   var duration = 100; // ms
 
-  function Data() {}
+  function Data() {
+    this.delay = 200;
+  }
 
   Data.prototype.response = null;
 
   Data.prototype.refresh = function() {
     var self = this;
+
+    if (self.timer) {
+      clearTimeout(self.timer);
+      self.timer = null;
+    }
+
+    self.timer = setTimeout(function() {
+      self.request();
+    }, self.delay);
+  };
+
+  Data.prototype.request = function() {
+    var self = this;
     var dateStr = (new Date(weekDate)).toISOString();
 
-    $.getJSON(API_BASEPATH + '/dashboard?callback=?', { city: city.properties.en, date: dateStr })
+    if (self.xhr && self.xhr.readyState < 4) {
+      self.xhr.abort();
+    }
+
+    self.xhr = $.getJSON(API_BASEPATH + '/dashboard?callback=?', { city: city.properties.en, date: dateStr })
       .done(function(resp) {
         self.response = resp.response;
         $rootScope.$broadcast('data.refresh', self);
@@ -140,12 +159,12 @@ app.factory('data', [ '$rootScope', function($rootScope) {
 
   $rootScope.$on('city.changed', function(event, value) {
     city = value;
-    runOnce('refreshData', 200, self, data.refresh);
+    data.refresh();
   });
 
   $rootScope.$on('weekDate.changed', function(event, value) {
     weekDate = value;
-    runOnce('refreshData', 200, self, data.refresh);
+    data.refresh();
   });
 
   return data;
