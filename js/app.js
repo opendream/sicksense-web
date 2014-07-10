@@ -413,7 +413,7 @@ app.controller('ILIController', [ '$scope', 'data', function($scope, data) {
 
 app.controller('SymptomsController', [ '$scope', function($scope) {
   $scope.$on('data.refresh', function(event, data) {
-    $scope.symptoms = data.response.topSymptoms;
+    $scope.symptoms = localeSymptoms(data.response.topSymptoms);
     $scope.$digest();
   });
 }]);
@@ -431,4 +431,29 @@ function getWeeks (year) {
 function getWeekDate (dateInWeek) {
   var date = new Date(dateInWeek || new Date());
   return new Date(moment(date).startOf('week'));
+}
+
+var symptomMap = {
+  'fever': 'มีไข้',
+  'cough': 'ไอ',
+  'nuasea': 'คลื่นไส้',
+  'headache': 'ปวดหัว',
+  'red-eye': 'ตาแดง',
+  'sore-throat': 'เจ็บคอ',
+  'rash': 'ผื่นคัน',
+  'jointache': 'ปวดข้อ',
+  'diarrhea': 'ท้องเสีย',
+  'dark-urine': 'ปัสสาวะสีเข้ม',
+  'bleeding': 'เลือดออก',
+  'imfine': 'สบายดี'
+};
+
+function localeSymptoms(symptoms) {
+  var _symptoms = [];
+  _.each(symptoms, function(symptom, i) {
+    var name = symptomMap[symptom.name];
+    symptom.name = name || symptom.name;
+    _symptoms.push(symptom);
+  });
+  return _symptoms;
 }
