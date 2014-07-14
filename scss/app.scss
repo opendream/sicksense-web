@@ -209,11 +209,13 @@ ng-cloak {
   shape-rendering: crispEdges;
 }
 
-.area-boe {
-  fill: #fcd070;
-  fill-opacity: 0.8;
+.line-boe {
+  stroke: #fcd070;
+  stroke-width: 3px;
+  fill: none;
 }
-.area-sicksense {
-  fill: #60eceb;
-  fill-opacity: 0.8;
+.line-sicksense {
+  stroke: #60eceb;
+  stroke-width: 3px;
+  fill: none;
 }

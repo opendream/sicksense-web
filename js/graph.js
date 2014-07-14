@@ -27,12 +27,11 @@ app.controller('GraphController', [ '$scope', '$rootScope', function ($scope, $r
     .scale(y)
     .orient('left');
 
-  var area = d3.svg.area()
+  var line = d3.svg.line()
     .x(function (d) {
       return x(d.date);
     })
-    .y0(height)
-    .y1(function (d) {
+    .y(function (d) {
       return y(d.value);
     });
 
@@ -74,7 +73,9 @@ app.controller('GraphController', [ '$scope', '$rootScope', function ($scope, $r
     // Find max `y`.
     var maxBOE = _.max(_.pluck(BOE, 'value'));
     var maxSickSense = _.max(_.pluck(SickSense, 'value'));
-    y.domain([0, _.max([maxBOE, maxSickSense])]);
+    var maxY = _.max([maxBOE, maxSickSense]);
+    maxY = _.max([maxY, 15.00]);
+    y.domain([0, maxY]);
 
     xAxis.tickValues(_.pluck(BOE, 'date'));
     xAxis.tickSize(0, 0);
@@ -83,27 +84,27 @@ app.controller('GraphController', [ '$scope', '$rootScope', function ($scope, $r
     if (!BOEPath) {
       BOEPath = svg
         .append('path')
-        .attr('class', 'area-boe')
-        .attr('d', area(BOE));
+        .attr('class', 'line-boe')
+        .attr('d', line(BOE));
     }
     else {
       BOEPath
         .transition()
         .duration(750)
-        .attr('d', area(BOE));
+        .attr('d', line(BOE));
     }
 
     if (!SickSensePath) {
       SickSensePath = svg
         .append('path')
-        .attr('class', 'area-sicksense')
-        .attr('d', area(SickSense));
+        .attr('class', 'line-sicksense')
+        .attr('d', line(SickSense));
     }
     else {
       SickSensePath
         .transition()
         .duration(750)
-        .attr('d', area(SickSense));
+        .attr('d', line(SickSense));
     }
 
     d3.selectAll('.axis').remove();
