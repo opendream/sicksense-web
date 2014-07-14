@@ -317,6 +317,9 @@ app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope,
     if (actualLeft + 210 > slider.width()) {
       tooltip.css({ 'right': 0, 'left': 'auto' });
     }
+    else if (actualLeft <= 0) {
+      tooltip.css({ 'left': 0, 'right': 'auto' });
+    }
     else {
       tooltip.css({ 'left': actualLeft, 'right': 'auto' });
     }
