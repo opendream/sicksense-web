@@ -74,7 +74,7 @@ app.controller('GraphController', [ '$scope', '$rootScope', function ($scope, $r
     var maxBOE = _.max(_.pluck(BOE, 'value'));
     var maxSickSense = _.max(_.pluck(SickSense, 'value'));
     var maxY = _.max([maxBOE, maxSickSense]);
-    maxY = _.max([maxY, 15.00]);
+    maxY = _.max([maxY, GRAPH_MAX_Y]);
     y.domain([0, maxY]);
 
     xAxis.tickValues(_.pluck(BOE, 'date'));

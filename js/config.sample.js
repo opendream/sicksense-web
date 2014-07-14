@@ -16,3 +16,5 @@ var CITY_POLYGON_STYLE = {
   fillOpacity: 0.4,
   fillColor: '#f2d7a5'
 };
+
+var GRAPH_MAX_Y = 15.00;
