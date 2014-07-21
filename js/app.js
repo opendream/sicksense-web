@@ -147,7 +147,7 @@ app.factory('data', [ '$rootScope', function($rootScope) {
       self.xhr.abort();
     }
 
-    self.xhr = $.getJSON(API_BASEPATH + '/dashboard?callback=?', { city: city.properties.en, date: dateStr })
+    self.xhr = $.getJSON(API_BASEPATH + '/dashboard/now?callback=?', { city: city.properties.en, date: dateStr })
       .done(function(resp) {
         self.response = resp.response;
         $rootScope.$broadcast('data.refresh', self);
