@@ -171,7 +171,22 @@ app.factory('data', [ '$rootScope', function($rootScope) {
 }]);
 
 app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope, dashboard, data) {
-  moment.lang('th');
+  moment.lang('th', {
+    monthsShort: [
+      'ม.ค.',
+      'ก.พ.',
+      'มี.ค.',
+      'เม.ย.',
+      'พ.ค.',
+      'มิ.ย.',
+      'ก.ค.',
+      'ส.ค.',
+      'ก.ย.',
+      'ต.ค.',
+      'พ.ย.',
+      'ธ.ค.',
+    ]
+  });
 
   $scope.year = moment().year();
   $scope.quarter = moment().quarter();
@@ -191,6 +206,7 @@ app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope,
     $scope.setWeek(weekDate);
   });
   $scope.weekNo = moment($scope.weekDate).weeks();
+  $scope.weekName = moment($scope.weekDate).format('D MMM YYYY') + ' - ' + moment($scope.weekdate).endOf('week').format('D MMM YYYY');
 
   $scope.years = [ 2014, 2013, 2012, 2011, 2010 ];
 
@@ -216,6 +232,7 @@ app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope,
   $scope.setWeek = function(weekDate) {
     $scope.weekDate = new Date(weekDate);
     $scope.weekNo = moment($scope.weekDate).weeks();
+    $scope.weekName = moment($scope.weekDate).format('D MMM YYYY') + ' - ' + moment($scope.weekdate).endOf('week').format('D MMM YYYY');
   };
 
   $scope.isSelectedWeek = function(date) {
