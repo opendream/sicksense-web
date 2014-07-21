@@ -1,4 +1,8 @@
 var API_BASEPATH = "//localhost:1337";
+var MAP_TILE_URL = "//{s}.tile.osm.org/{z}/{x}/{y}.png";
+var MAP_TILE_PARAMS = {
+    access_token: ''
+};
 
 var MAP_DEFAULT_OPTIONS = {
   latitude: 13.751690,
