@@ -8,6 +8,7 @@
     "grunt-sass": "~0.8.0"
   },
   "dependencies": {
+    "grunt-http-server": "0.0.5",
     "grunt-minjson": "^0.1.1"
   }
 }
