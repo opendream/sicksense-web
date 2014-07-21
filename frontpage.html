@@ -124,39 +124,11 @@
 
         <div class="large-10 medium-10 columns timeline-columns">
           <div id="week-line" class="timeline-week">
-            <!-- <div id="week-knots" class="timeline-week-items">
-              <div class="timeline-week-item" ng-repeat="date in weeks">
-                <time  class="timeline-week-pin" ng-class="{ selected: isSelectedWeek(date) }" datetime="{{ date.toString() }}" ng-click="setWeek(date)">
-                	<span data-tooltip class="timeline-tip has-tip tip-top" ng-attr-title="{{ date.toString }}">{{ date.toString() }}</span>
-                </time>
-              </div>
-              <div class="timeline-week-horizon"></div>
-            </div> -->
-
-            <!-- <input type="text" id="weekNo" name="weekNo" ng-model="weekNo" /> -->
-            <!-- <div class="weekNo timeline-week-horizon">
-              <span class="weekTooltip timeline-tip"></span>
-              <div class="weekTicks">
-                <span class="weekTick-tick" ng-repeat="date in weeks"></span>
-              </div>
-            </div> -->
-
             <div class="week-name">
-              {{ weekName }}
+              <span class="typcn typcn-calender"></span> วันที่ {{ weekName }}
             </div>
 
           </div>
-
-          <!-- <div id="week-drop" class="show-for-small-down">
-            <select ng-model="weekNo">
-              <optgroup ng-repeat="group in monthsOptions" label="{{ group.monthName }}">
-                <option ng-repeat="week in group.options" ng-selected="{{ weekNo == week.weekNo }}"
-                        value="{{ week.weekNo }}">
-                  {{ week.weekName }}
-                </option>
-              </optgroup>
-            </select>
-          </div> -->
         </div>
       </div> <!--row-->
     </div> <!--sticky-->
