@@ -188,13 +188,13 @@
     color: #666;
 
     .typcn{
-	    font-size: 1.5em;
+	    font-size: 1.2em;
 	    margin: 0 5px 0 0;
     }
   }
   .ili-stat_value {
 	  margin: 0 0 10px;
-    font-size: 1.7em;
+    font-size: 1.3em;
     font-weight: bold;
   }
 
@@ -387,14 +387,14 @@
 	TIMELINE WEEK
 ---------------------------------*/
 .timeline-week {
-	padding-top: 25px;
+	padding-top: 15px;
 
 	@media #{$small-only} {
-		padding-top: 5px;
+		padding-top: 0;
 	}
 
 	@media #{$medium-only} {
-		padding-top: 25px;
+		padding-top: 15px;
 	}
 
 	@media #{$medium-up} {
@@ -512,7 +512,7 @@
 .about-modal{
 	h2{
 		margin-bottom: .75em;
-		font: normal 2.2em/1em umpushbold;
+		font: 700 2em/1.5em "Boon-0.6";
 	}
 
 	@media #{$small-only}, #{$medium-only} {
@@ -543,5 +543,6 @@
 
 /*fufu*/
 .timeline-columns{
-	height: 60px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
