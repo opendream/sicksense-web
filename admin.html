@@ -26,7 +26,7 @@
   <div class="row">
     <div class="large-12">
       <h1>รายการ</h1>
-      <table>
+      <table ng-controller="NotificationList">
         <thead>
           <tr>
             <th width="20">ลำดับ</th>
@@ -39,39 +39,21 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>This is longer content Donec id elit non mi porta gravida at eget metus.</td>
-            <td>1 กรกฎาคม 2557 - 23:00:00</td>
-            <td>25-34</td>
-            <td>หญิง</td>
-            <td>กรุงเทพมหานคร</td>
-            <td><span class="typcn typcn-tick"></span></td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
-            <td>10 กรกฎาคม 2557 - 12:00:00</td>
-            <td>13-50</td>
-            <td>ทุกเพศ</td>
-            <td>กรุงเทพมหานคร</td>
-            <td><span class="typcn typcn-times"></span></td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
-            <td>22 กรกฎาคม 2557 - 8:00:00</td>
-            <td>35-45</td>
-            <td>ชาย</td>
-            <td>กรุงเทพมหานคร</td>
-            <td><span class="typcn typcn-times"></span></td>
+          <tr ng-repeat="item in items">
+            <td>{{ $index + 1 }}</td>
+            <td>{{ item.message }}</td>
+            <td>{{ item.schedule }}</td>
+            <td>{{ item.age }}</td>
+            <td>{{ item.gender }}</td>
+            <td>{{ item.province }}</td>
+            <td ng-show="item.status == 1"><span class="typcn typcn-tick"></span></td>
+            <td ng-show="item.status == 0"><span class="typcn typcn-times"></span></td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <script src="/bower_components/d3/d3.min.js"></script>
   <script src="/bower_components/jquery/dist/jquery.min.js"></script>
   <script src="/bower_components/jqueryui/jquery-ui.min.js"></script>
   <script src="/js/libs/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
@@ -79,16 +61,10 @@
   <script src="/bower_components/lodash/dist/lodash.js"></script>
   <script src="/bower_components/foundation/js/foundation.min.js"></script>
   <script src="/bower_components/foundation/js/foundation/foundation.topbar.js"></script>
-  <script src="/bower_components/leaflet/dist/leaflet.js"></script>
   <script src="/bower_components/momentjs/moment.js"></script>
   <script src="/bower_components/momentjs/lang/th.js"></script>
-  <script src="/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-  <script src="/js/wow.js"></script>
   <script src="/js/config.js"></script>
-  <script src="/js/runonce.js"></script>
-  <script src="/js/app.js"></script>
-  <script src="/js/wow-config.js"></script>
-  <script src="/js/graph.js"></script>
+  <script src="/js/admin.js"></script>
 
 </body>
 </html>
