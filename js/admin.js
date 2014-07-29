@@ -1,47 +1,17 @@
 (function ($, window, document, undefined) {
+  var url = API_BASEPATH + '/notifications/';
 
   var app = angular.module('sicksense', []);
 
   app.controller('NotificationList', ['$scope', function($scope) {
 
-    $scope.items = [
-      {
-        id: Math.random(),
-        body: 'This is longer content Donec id elit non mi porta gravida at eget metus.',
-        published: '1 กรกฎาคม 2557 - 23:00:00',
-        age_start: 25,
-        age_stop: 34,
-        gender: 'f',
-        province: 'Bangkok',
-        status: 1
-      },
-      {
-        id: Math.random(),
-        body: 'This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.',
-        published: '10 กรกฎาคม 2557 - 12:00:00',
-        age_start: 13,
-        age_stop: 50,
-        gender: 'all',
-        province: 'Chiang Mai',
-        status: 0
-      },
-      {
-        id: Math.random(),
-        body: 'This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.',
-        published: '22 กรกฎาคม 2557 - 8:00:00',
-        age_start: 35,
-        age_stop: 45,
-        gender: 'm',
-        province: 'Bangkok',
-        status: 0
-      }
-    ];
+    $scope.items = [];
 
     // Gender.
     $scope.genderOptions = {
       'all': 'ทุกเพศ',
-      'm': 'ชาย',
-      'f': 'หญิง'
+      'male': 'ชาย',
+      'female': 'หญิง'
     };
 
     // Province.
@@ -56,6 +26,20 @@
       $scope.age_stop = 40;
     };
 
+    $scope.load = function() {
+      $.getJSON(url)
+        .done(function(resp) {
+          $scope.$apply(function() {
+            resp.response.notifications.items.forEach(function(notification) {
+              $scope.items.push(notification);
+            })
+          });
+        })
+        .error(function(resp) {
+
+        });
+    };
+
     $scope.validate = function() {
 
     };
@@ -67,14 +51,20 @@
         body: $scope.body,
         published: $scope.published,
         gender: $scope.gender,
-        province: $scope.province,
+        city: $scope.province,
         age_start: $scope.age_start,
         age_stop: $scope.age_stop
       };
 
-      params.id = Math.random();
-      params.status = 0;
-      $scope.items.unshift(params);
+      $.post(url, params)
+        .done(function(resp) {
+          $scope.$apply(function() {
+            $scope.items.unshift(resp.response.notification);
+          });
+        })
+        .error(function(resp) {
+
+        });
 
       $scope.close('#add-new');
     };
@@ -111,6 +101,7 @@
     };
 
     $scope.reset();
+    $scope.load();
 
     // Init date picker.
     $('.date-picker').dtpicker({
