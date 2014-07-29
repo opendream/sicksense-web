@@ -6,6 +6,7 @@
 
     $scope.items = [
       {
+        id: Math.random(),
         body: 'This is longer content Donec id elit non mi porta gravida at eget metus.',
         published: '1 กรกฎาคม 2557 - 23:00:00',
         age_start: 25,
@@ -14,8 +15,8 @@
         province: 'Bangkok',
         status: 1
       },
-
       {
+        id: Math.random(),
         body: 'This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.',
         published: '10 กรกฎาคม 2557 - 12:00:00',
         age_start: 13,
@@ -24,8 +25,8 @@
         province: 'Chiang Mai',
         status: 0
       },
-
       {
+        id: Math.random(),
         body: 'This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.',
         published: '22 กรกฎาคม 2557 - 8:00:00',
         age_start: 35,
@@ -71,32 +72,34 @@
         age_stop: $scope.age_stop
       };
 
-      // $.post(addURL, params)
-      //   .done(function(resp) {
-      //     $scope.$apply(function() {
-            params._id = Math.random();
-            params.status = 0;
-            $scope.items.unshift(params);
-        //   });
-        // })
-        // .error(function(resp) {
+      params.id = Math.random();
+      params.status = 0;
+      $scope.items.unshift(params);
 
-        // });
-
-      $scope.close();
+      $scope.close('#add-new');
     };
 
     $scope.delete = function() {
-
+      $scope.current = this.item;
+      $('#confirm-delete').foundation('reveal', 'open');
     };
 
-    $scope.cancel = function() {
-      $scope.close();
+    $scope.confirm_delete = function() {
+      $scope.items.forEach(function(item, idx) {
+        if (item.id == $scope.current.id) {
+          $scope.items.splice(idx, 1);
+        }
+      });
+      $scope.close('#confirm-delete');
+    };
+
+    $scope.cancel = function(selector) {
+      $scope.close(selector);
       $scope.reset();
     };
 
-    $scope.close = function() {
-      $('#add-new').foundation('reveal', 'close');
+    $scope.close = function(selector) {
+      $(selector).foundation('reveal', 'close');
     };
 
     $scope.getProvinceText = function(province) {

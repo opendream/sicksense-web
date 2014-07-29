@@ -56,7 +56,7 @@
 
   <div class="row" ng-controller="NotificationList">
     <div class="large-12">
-      <h1>รายการ</h1>
+      <h2>รายการข้อความ</h2>
       <table>
         <thead>
           <tr>
@@ -85,6 +85,7 @@
         </tbody>
       </table>
 
+      <!-- Add new modal -->
       <div id="add-new" class="reveal-modal" data-reveal>
         <h2>ส่งข้อความใหม่</h2>
         <a class="close-reveal-modal">&#215;</a>
@@ -150,6 +151,23 @@
           </div>
         </form>
       </div>
+      <!-- End Add new modal -->
+
+      <!-- Confirm delete modal -->
+      <div id="confirm-delete" class="reveal-modal small" data-reveal>
+        <h2>ลบข้อความ?</h2>
+        <a class="close-reveal-modal">&#215;</a>
+
+        <form>
+          <p>คุณต้องการลบข้อความนี้ใช่หรือไม่ เอาคืนไม่ได้แล้วนะ!</p>
+          <div class="panel">
+            {{ current.body }}
+          </div>
+          <button type="button" ng-click="confirm_delete()" class="tiny alert">ลบ</button>
+          <button type="button" ng-click="cancel('#confirm-delete');" class="tiny">ยกเลิก</button>
+        </form>
+      </div>
+      <!-- End Confirm delete modal -->
 
     </div>
   </div>
