@@ -5,9 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Sicksense - เครือข่ายอาสาสมัครดิจิทัลเพื่อการติดตามโรคระบาดอุบัติใหม่แบบมีส่วนร่วม">
   <title>Sicksense - Digital Disease Detection</title>
-  <link rel="stylesheet" href="/css/animate.css">
   <link rel="stylesheet" href="/bower_components/typicons/src/font/typicons.min.css" />
+  <link rel="stylesheet" href="/bower_components/jqueryui/themes/ui-lightness/jquery-ui.min.css" />
+  <link rel="stylesheet" href="/js/libs/jquery-simple-datetimepicker/jquery.simple-dtpicker.css" />
   <link rel="stylesheet" href="/css/app.css" />
+  <style>
+    input.age-input {
+      width: 45px;
+      float: left;
+    }
+    #slider-range {
+      width: 300px;
+      float: left;
+      height: 2.64286rem;
+    }
+    #slider-range .ui-slider-handle {
+      width: 0.8em;
+      height: 3rem;
+      top: -.3rem;
+      margin-left: -.4em;
+      outline: none;
+    }
+    .datepicker_table { margin: 0; }
+    .datepicker_timelist {
+      -webkit-box-sizing: content-box;
+      -moz-box-sizing: content-box;
+      box-sizing: content-box;
+    }
+  </style>
   <script src="/bower_components/modernizr/modernizr.js"></script>
   <script src="/bower_components/angular/angular.js"></script>
 </head>
@@ -20,13 +45,19 @@
           <h1><a href="#" class="logo">SickSense</a></h1>
         </li>
       </ul>
+
+      <section class="top-bar-section">
+        <ul class="right">
+          <li><a href="#" data-reveal-id="add-new">ส่งข้อความ</a></li>
+        </ul>
+      </section>
     </nav>
   </div>
 
-  <div class="row">
+  <div class="row" ng-controller="NotificationList">
     <div class="large-12">
       <h1>รายการ</h1>
-      <table ng-controller="NotificationList">
+      <table>
         <thead>
           <tr>
             <th width="20">ลำดับ</th>
@@ -51,16 +82,84 @@
           </tr>
         </tbody>
       </table>
+
+      <div id="add-new" class="reveal-modal" data-reveal>
+        <h2>ส่งข้อความใหม่</h2>
+        <a class="close-reveal-modal">&#215;</a>
+
+        <br />
+        <form>
+          <div class="row">
+            <div class="small-8">
+              <div class="row">
+                <div class="small-3 columns">
+                  <label for="edit-message" class="right inline">ข้อความ</label>
+                </div>
+                <div class="small-9 columns">
+                  <textarea id="edit-message" rows="5" placeholder="กรอกข้อความ" ng-model="message"></textarea>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="small-3 columns">
+                  <label for="edit-schedule" class="right inline">วัน-เวลา</label>
+                </div>
+                <div class="small-9 columns">
+                  <!-- <input type="text" id="edit-schedule" ng-model="schedule" class="date-picker" /> -->
+                  <div class="date-picker"></div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="small-3 columns">
+                  <label for="edit-gender" class="right inline">เพศ</label>
+                </div>
+                <div class="small-9 columns">
+                  <select id="edit-gender" ng-model="gender" ng-options="k as v for (k,v) in genderOptions"></select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="small-3 columns">
+                  <label for="edit-age" class="right inline">ช่วงอายุ</label>
+                </div>
+                <div class="small-9 columns">
+                  <input type="text" id="right-label" ng-model="age_start" class="small age-input">
+                  <div id="slider-range"></div>
+                  <input type="text" id="right-label" ng-model="age_end" class="small age-input">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="small-3 columns">
+                  <label for="edit-province" class="right inline">จังหวัด</label>
+                </div>
+                <div class="small-9 columns">
+                  <select id="edit-province" ng-model="province" ng-options="k as v for (k,v) in provinceOptions"></select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="small-9 columns small-offset-3">
+                  <button type="button" ng-click="add()">ส่ง</button>
+                  <button type="button" ng-click="cancel()">ยกเลิก</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
     </div>
   </div>
 
   <script src="/bower_components/jquery/dist/jquery.min.js"></script>
   <script src="/bower_components/jqueryui/jquery-ui.min.js"></script>
+  <script src="/js/libs/jquery-simple-datetimepicker/jquery.simple-dtpicker.js"></script>
   <script src="/js/libs/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
   <script src="/bower_components/async/lib/async.js"></script>
   <script src="/bower_components/lodash/dist/lodash.js"></script>
   <script src="/bower_components/foundation/js/foundation.min.js"></script>
-  <script src="/bower_components/foundation/js/foundation/foundation.topbar.js"></script>
   <script src="/bower_components/momentjs/moment.js"></script>
   <script src="/bower_components/momentjs/lang/th.js"></script>
   <script src="/js/config.js"></script>
