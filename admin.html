@@ -67,18 +67,20 @@
             <th width="100">เพศ</th>
             <th width="150">จังหวัด</th>
             <th width="100">สถานะ</th>
+            <th width="100">ลบ</th>
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="item in items">
             <td>{{ $index + 1 }}</td>
-            <td>{{ item.message }}</td>
-            <td>{{ item.schedule }}</td>
-            <td>{{ item.age }}</td>
-            <td>{{ item.gender }}</td>
-            <td>{{ item.province }}</td>
+            <td>{{ item.body }}</td>
+            <td>{{ item.published }}</td>
+            <td>{{ item.age_start }}-{{ item.age_stop }}</td>
+            <td>{{ getGenderText(item.gender) }}</td>
+            <td>{{ getProvinceText(item.province) }}</td>
             <td ng-show="item.status == 1"><span class="typcn typcn-tick"></span></td>
             <td ng-show="item.status == 0"><span class="typcn typcn-times"></span></td>
+            <td><button type="button" class="tiny alert" ng-click="delete()">ลบ</button></td>
           </tr>
         </tbody>
       </table>
@@ -93,19 +95,18 @@
             <div class="small-8">
               <div class="row">
                 <div class="small-3 columns">
-                  <label for="edit-message" class="right inline">ข้อความ</label>
+                  <label for="edit-body" class="right inline">ข้อความ</label>
                 </div>
                 <div class="small-9 columns">
-                  <textarea id="edit-message" rows="5" placeholder="กรอกข้อความ" ng-model="message"></textarea>
+                  <textarea id="edit-body" rows="5" placeholder="กรอกข้อความ" ng-model="body"></textarea>
                 </div>
               </div>
 
               <div class="row">
                 <div class="small-3 columns">
-                  <label for="edit-schedule" class="right inline">วัน-เวลา</label>
+                  <label for="edit-published" class="right inline">วัน-เวลา</label>
                 </div>
                 <div class="small-9 columns">
-                  <!-- <input type="text" id="edit-schedule" ng-model="schedule" class="date-picker" /> -->
                   <div class="date-picker"></div>
                 </div>
               </div>
@@ -126,7 +127,7 @@
                 <div class="small-9 columns">
                   <input type="text" id="right-label" ng-model="age_start" class="small age-input">
                   <div id="slider-range"></div>
-                  <input type="text" id="right-label" ng-model="age_end" class="small age-input">
+                  <input type="text" id="right-label" ng-model="age_stop" class="small age-input">
                 </div>
               </div>
 
