@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sicksense - เครือข่ายอาสาสมัครดิจิทัลเพื่อการติดตามโรคระบาดอุบัติใหม่แบบมีส่วนร่วม">
+  <title>Sicksense - Digital Disease Detection</title>
+  <link rel="stylesheet" href="/bower_components/typicons/src/font/typicons.min.css" />
+  <link rel="stylesheet" href="/bower_components/jqueryui/themes/ui-lightness/jquery-ui.min.css" />
+  <link rel="stylesheet" href="/js/libs/jquery-simple-datetimepicker/jquery.simple-dtpicker.css" />
+  <link rel="stylesheet" href="/css/app.css" />
+  <style>
+    input.age-input {
+      width: 45px;
+      float: left;
+    }
+    #slider-range {
+      width: 300px;
+      float: left;
+      height: 2.64286rem;
+    }
+    #slider-range .ui-slider-handle {
+      width: 0.8em;
+      height: 3rem;
+      top: -.3rem;
+      margin-left: -.4em;
+      outline: none;
+    }
+    .datepicker_table { margin: 0; }
+    .datepicker_timelist {
+      -webkit-box-sizing: content-box;
+      -moz-box-sizing: content-box;
+      box-sizing: content-box;
+    }
+    .typcn { font-size: 2em; }
+    .typcn.typcn-stopwatch { color: #666; }
+    .typcn.typcn-tick { color: green; }
+    .typcn.typcn-times { color: red; }
+  </style>
+  <script src="/bower_components/modernizr/modernizr.js"></script>
+  <script src="/bower_components/angular/angular.js"></script>
+</head>
+
+<body ng-app="sicksense" ng-controller="NotificationList">
+  <div class="top-nav-bar contain-to-grid">
+    <nav class="top-bar slideInDown animated " data-topbar role="navigation">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#" class="logo">SickSense</a></h1>
+        </li>
+      </ul>
+
+      <section class="top-bar-section">
+        <ul class="left">
+          <li class="has-form">
+            <div class="row collapse">
+              <div class="large-8 small-9 columns">
+                <input type="text" ng-model="token" placeholder="Enter API token">
+              </div>
+              <div class="large-4 small-3 columns">
+                <button type="button" class="success" ng-click="loadItems()">ยืนยัน</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <ul class="right">
+          <li><a href="#" data-reveal-id="add-new">ส่งข้อความ</a></li>
+        </ul>
+      </section>
+    </nav>
+  </div>
+
+  <div class="row">
+    <div class="large-12">
+      <h2>รายการข้อความ</h2>
+      <table>
+        <thead>
+          <tr>
+            <th class="text-center">ข้อความ</th>
+            <th class="text-center" width="150">เวลาส่ง</th>
+            <th class="text-center" width="100">อายุ</th>
+            <th class="text-center" width="100">เพศ</th>
+            <th class="text-center" width="150">จังหวัด</th>
+            <th class="text-center" width="150">สร้างเมื่อ</th>
+            <th class="text-center" width="100">สถานะ</th>
+            <th class="text-center" width="100">ลบ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in items" ng-hide="item.status > 2">
+            <td>{{ item.body }}</td>
+            <td>{{ getDateFormatted(item.published) }}</td>
+            <td>{{ item.age_start }}-{{ item.age_stop }}</td>
+            <td>{{ getGenderText(item.gender) }}</td>
+            <td>{{ getProvinceText(item.province) }}</td>
+            <td>{{ getDateFormatted(item.createdAt) }}</td>
+            <td class="text-center" ng-show="item.status == 0">
+              <span class="typcn typcn-stopwatch"></span>
+            </td>
+            <td class="text-center" ng-show="item.status == 1">
+              <span class="typcn typcn-tick"></span>
+            </td>
+            <td class="text-center" ng-show="item.status == 2">
+              <span class="typcn typcn-times"></span>
+            </td>
+            <td class="text-center" ng-show="item.status == 3">
+              <span class="typcn typcn-trash"></span>
+            </td>
+            <td class="text-center">
+              <button type="button" class="tiny alert" ng-click="showConfirmDeleteDialog()">ลบ</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Add new modal -->
+      <div id="add-new" class="reveal-modal" data-reveal>
+        <h2>ส่งข้อความใหม่</h2>
+        <a class="close-reveal-modal">&#215;</a>
+
+        <br />
+        <form>
+          <div class="row">
+            <div class="small-8">
+              <div class="row">
+                <div class="small-3 columns">
+                  <label for="edit-body" class="right inline">ข้อความ</label>
+                </div>
+                <div class="small-9 columns">
+                  <textarea id="edit-body" rows="5" placeholder="กรอกข้อความ" ng-model="body"></textarea>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="small-3 columns">
+                  <label for="edit-published" class="right inline">วัน-เวลา</label>
+                </div>
+                <div class="small-9 columns">
+                  <label for="send-now">
+                    <input type="radio" id="send-now" name="edit-published" ng-model="send" value="0"> ส่งทันที
+                  </label>
+                  <label for="send-schedule">
+                    <input type="radio" id="send-schedule" name="edit-published" ng-model="send" value="1"> ตั้งเวลา
+                  </label>
+                  <div ng-show="send == '1'">
+                    <input type="text" id="edit-published" ng-model="published" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="small-3 columns">
+                  <label for="edit-gender" class="right inline">เพศ</label>
+                </div>
+                <div class="small-9 columns">
+                  <select id="edit-gender" ng-model="gender" ng-options="k as v for (k,v) in genderOptions"></select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="small-3 columns">
+                  <label for="edit-age" class="right inline">ช่วงอายุ</label>
+                </div>
+                <div class="small-9 columns">
+                  <input type="text" id="right-label" ng-model="age_start" class="small age-input" disabled="disabled">
+                  <div id="slider-range"></div>
+                  <input type="text" id="right-label" ng-model="age_stop" class="small age-input" disabled="disabled">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="small-3 columns">
+                  <label for="edit-province" class="right inline">จังหวัด</label>
+                </div>
+                <div class="small-9 columns">
+                  <select id="edit-province" ng-model="province" ng-options="k as v for (k,v) in provinceOptions"></select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="small-9 columns small-offset-3">
+                  <button type="button" class="tiny success" id="add-item-button" ng-click="addItem()">ส่ง</button>
+                  <button type="button" class="tiny" id="add-cancel-button" ng-click="cancelModal('#add-new')">ยกเลิก</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- End Add new modal -->
+
+      <!-- Confirm delete modal -->
+      <div id="confirm-delete" class="reveal-modal small" data-reveal>
+        <h2>ลบข้อความ?</h2>
+        <a class="close-reveal-modal">&#215;</a>
+
+        <form>
+          <p>คุณต้องการลบข้อความนี้ใช่หรือไม่ เอาคืนไม่ได้แล้วนะ!</p>
+          <div class="panel">
+            {{ current.body }}
+          </div>
+          <button type="button" id="delete-item-button" ng-click="deleteItem()" class="tiny alert">ลบ</button>
+          <button type="button" id="delete-cancel-button" ng-click="cancelModal('#confirm-delete');" class="tiny">ยกเลิก</button>
+        </form>
+      </div>
+      <!-- End Confirm delete modal -->
+
+    </div>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/bower_components/jqueryui/jquery-ui.min.js"></script>
+  <script src="/js/libs/jquery-simple-datetimepicker/jquery.simple-dtpicker.js"></script>
+  <script src="/js/libs/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+  <script src="/bower_components/async/lib/async.js"></script>
+  <script src="/bower_components/lodash/dist/lodash.js"></script>
+  <script src="/bower_components/foundation/js/foundation.js"></script>
+  <script src="/bower_components/momentjs/moment.js"></script>
+  <script src="/bower_components/momentjs/lang/th.js"></script>
+  <script src="/js/config.js"></script>
+  <script src="/js/admin.js"></script>
+
+</body>
+</html>
