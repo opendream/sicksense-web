@@ -34,6 +34,9 @@
       $scope.body = '';
       $scope.gender = 'all';
       $scope.published = moment().add(1, 'hour').format('YYYY-MM-DD HH:00');
+      if ($('#edit-published').data('datepicker')) {
+        $('#edit-published').handleDtpicker('setDate', $scope.published);
+      }
       $scope.province = '-';
       $scope.age_start = minAge;
       $scope.age_stop = maxAge;
@@ -53,6 +56,8 @@
       $.getJSON(url, params)
         .done(function(resp) {
           $scope.$apply(function() {
+            $scope.removeItems();
+
             resp.response.notifications.items.forEach(function(notification) {
               $scope.items.push(notification);
             });
@@ -68,6 +73,10 @@
           }
           processing = false;
         });
+    };
+
+    $scope.removeItems = function() {
+      $scope.items = [];
     };
 
     /**
@@ -243,15 +252,23 @@
      * Generate date picker.
      */
     $scope.generateDatePicker = function() {
+      if ($('#edit-published').data('datepicker')) {
+        var date = $('#edit-published').handleDtpicker('getDate');
+        $('#edit-published').handleDtpicker('setDate', date);
+        return;
+      }
+
       $('#edit-published').appendDtpicker({
         calendarMouseScroll: false,
         minuteInterval: 15,
         autoDateOnStart: true,
-        current: $scope.published,
+        current: moment().add(1, 'hour').format('YYYY-MM-DD HH:00'),
         futureOnly: true,
         timelistScroll: false,
         inline: true
       });
+
+      $('#edit-published').data('datepicker', true);
     };
 
     $scope.destroyDatePicker = function() {
@@ -273,6 +290,14 @@
         $('#slider-range').slider('values', 1, newValue);
       });
 
+      $scope.$watch('send', function(newValue, oldValue) {
+        if (newValue == '1') {
+          setTimeout(function() {
+              $scope.generateDatePicker();
+          }, 1);
+        }
+      })
+
       // Init slider.
       $('#slider-range').slider({
         range: true,
@@ -290,9 +315,7 @@
 
       // Regenerate date picker.
       $('#add-new').on('opened', function() {
-        $scope.generateDatePicker();
       }).on('closed', function() {
-        $scope.destroyDatePicker();
         $scope.$apply(function() {
           $scope.resetForm();
         });
