@@ -32,6 +32,10 @@
       -moz-box-sizing: content-box;
       box-sizing: content-box;
     }
+    .typcn { font-size: 2em; }
+    .typcn.typcn-stopwatch { color: #666; }
+    .typcn.typcn-tick { color: green; }
+    .typcn.typcn-times { color: red; }
   </style>
   <script src="/bower_components/modernizr/modernizr.js"></script>
   <script src="/bower_components/angular/angular.js"></script>
@@ -60,27 +64,39 @@
       <table>
         <thead>
           <tr>
-            <th width="20">ลำดับ</th>
-            <th>ข้อความ</th>
-            <th width="150">เวลา</th>
-            <th width="100">อายุ</th>
-            <th width="100">เพศ</th>
-            <th width="150">จังหวัด</th>
-            <th width="100">สถานะ</th>
-            <th width="100">ลบ</th>
+            <th class="text-center">ข้อความ</th>
+            <th class="text-center" width="150">เวลาส่ง</th>
+            <th class="text-center" width="100">อายุ</th>
+            <th class="text-center" width="100">เพศ</th>
+            <th class="text-center" width="150">จังหวัด</th>
+            <th class="text-center" width="150">สร้างเมื่อ</th>
+            <th class="text-center" width="100">สถานะ</th>
+            <th class="text-center" width="100">ลบ</th>
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="item in items">
-            <td>{{ $index + 1 }}</td>
+          <tr ng-repeat="item in items" ng-hide="item.status > 2">
             <td>{{ item.body }}</td>
-            <td>{{ item.published }}</td>
+            <td>{{ getDateFormatted(item.published) }}</td>
             <td>{{ item.age_start }}-{{ item.age_stop }}</td>
             <td>{{ getGenderText(item.gender) }}</td>
             <td>{{ getProvinceText(item.province) }}</td>
-            <td ng-show="item.status == 1"><span class="typcn typcn-tick"></span></td>
-            <td ng-show="item.status == 0"><span class="typcn typcn-times"></span></td>
-            <td><button type="button" class="tiny alert" ng-click="delete()">ลบ</button></td>
+            <td>{{ getDateFormatted(item.createdAt) }}</td>
+            <td class="text-center" ng-show="item.status == 0">
+              <span class="typcn typcn-stopwatch"></span>
+            </td>
+            <td class="text-center" ng-show="item.status == 1">
+              <span class="typcn typcn-tick"></span>
+            </td>
+            <td class="text-center" ng-show="item.status == 2">
+              <span class="typcn typcn-times"></span>
+            </td>
+            <td class="text-center" ng-show="item.status == 3">
+              <span class="typcn typcn-trash"></span>
+            </td>
+            <td class="text-center">
+              <button type="button" class="tiny alert" ng-click="showConfirmDeleteDialog()">ลบ</button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -143,8 +159,8 @@
 
               <div class="row">
                 <div class="small-9 columns small-offset-3">
-                  <button type="button" ng-click="add()">ส่ง</button>
-                  <button type="button" ng-click="cancel()">ยกเลิก</button>
+                  <button type="button" id="add-item-button" ng-click="addItem()">ส่ง</button>
+                  <button type="button" id="add-cancel-button" ng-click="cancelModal()">ยกเลิก</button>
                 </div>
               </div>
             </div>
@@ -163,8 +179,8 @@
           <div class="panel">
             {{ current.body }}
           </div>
-          <button type="button" ng-click="confirm_delete()" class="tiny alert">ลบ</button>
-          <button type="button" ng-click="cancel('#confirm-delete');" class="tiny">ยกเลิก</button>
+          <button type="button" id="delete-item-button" ng-click="deleteItem()" class="tiny alert">ลบ</button>
+          <button type="button" id="delete-cancel-button" ng-click="cancelModal('#confirm-delete');" class="tiny">ยกเลิก</button>
         </form>
       </div>
       <!-- End Confirm delete modal -->
