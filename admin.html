@@ -41,7 +41,7 @@
   <script src="/bower_components/angular/angular.js"></script>
 </head>
 
-<body ng-app="sicksense">
+<body ng-app="sicksense" ng-controller="NotificationList">
   <div class="top-nav-bar contain-to-grid">
     <nav class="top-bar slideInDown animated " data-topbar role="navigation">
       <ul class="title-area">
@@ -51,6 +51,19 @@
       </ul>
 
       <section class="top-bar-section">
+        <ul class="left">
+          <li class="has-form">
+            <div class="row collapse">
+              <div class="large-8 small-9 columns">
+                <input type="text" ng-model="token" placeholder="Enter API token">
+              </div>
+              <div class="large-4 small-3 columns">
+                <button type="button" class="success" ng-click="loadItems()">ยืนยัน</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+
         <ul class="right">
           <li><a href="#" data-reveal-id="add-new">ส่งข้อความ</a></li>
         </ul>
@@ -58,7 +71,7 @@
     </nav>
   </div>
 
-  <div class="row" ng-controller="NotificationList">
+  <div class="row">
     <div class="large-12">
       <h2>รายการข้อความ</h2>
       <table>

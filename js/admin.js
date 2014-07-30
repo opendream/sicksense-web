@@ -44,16 +44,29 @@
      * Load items.
      */
     $scope.loadItems = function() {
-      $.getJSON(url)
+      if (processing) return false;
+
+      processing = true;
+
+      var params = { token: $scope.token };
+
+      $.getJSON(url, params)
         .done(function(resp) {
           $scope.$apply(function() {
             resp.response.notifications.items.forEach(function(notification) {
               $scope.items.push(notification);
             });
           });
+          processing = false;
         })
         .error(function(resp) {
-          alert('Error: ' + resp.responseJSON.meta.errorMessage);
+          if (resp.responseJSON.error) {
+            alert('Error: ' + resp.responseJSON.error);
+          }
+          else {
+            alert('Error: ' + resp.responseJSON.meta.errorMessage);
+          }
+          processing = false;
         });
     };
 
@@ -62,6 +75,9 @@
      */
     $scope.addItem = function() {
       if (processing) return false;
+
+      processing = true;
+      $scope.disableButtons();
 
       var params = {};
 
@@ -87,10 +103,7 @@
         params.age_stop = $scope.age_stop;
       }
 
-      processing = true;
-      $scope.disableButtons();
-
-      $.post(url, params)
+      $.post(url + '?token=' + $scope.token, params)
         .done(function(resp) {
           $scope.$apply(function() {
             $scope.items.unshift(resp.response.notification);
@@ -98,7 +111,12 @@
           });
         })
         .error(function(resp) {
-          alert('Error: ' + resp.responseJSON.meta.errorMessage);
+          if (resp.responseJSON.error) {
+            alert('Error: ' + resp.responseJSON.error);
+          }
+          else {
+            alert('Error: ' + resp.responseJSON.meta.errorMessage);
+          }
           $scope.enableButtons();
         });
     };
@@ -120,7 +138,7 @@
       processing = true;
       $scope.disableButtons();
 
-      var deleteURL = url + $scope.current.id + '/delete/';
+      var deleteURL = url + $scope.current.id + '/delete/?token=' + $scope.token;
       $.post(deleteURL)
         .done(function(resp) {
           $scope.$apply(function() {
@@ -133,7 +151,12 @@
           });
         })
         .error(function(resp) {
-          alert('Error: ' + resp.responseJSON.meta.errorMessage);
+          if (resp.responseJSON.error) {
+            alert('Error: ' + resp.responseJSON.error);
+          }
+          else {
+            alert('Error: ' + resp.responseJSON.meta.errorMessage);
+          }
           $scope.enableButtons();
         });
     };
@@ -241,9 +264,6 @@
     $scope.init = function() {
       // Set default values to add form.
       $scope.resetForm();
-
-      // Start load items.
-      $scope.loadItems();
 
       $scope.$watch('age_start', function(newValue, oldValue) {
         $('#slider-range').slider('values', 0, newValue);
