@@ -124,7 +124,15 @@
                   <label for="edit-published" class="right inline">วัน-เวลา</label>
                 </div>
                 <div class="small-9 columns">
-                  <input type="text" id="edit-published" ng-model="published" />
+                  <label for="send-now">
+                    <input type="radio" id="send-now" name="edit-published" ng-model="send" value="0"> ส่งทันที
+                  </label>
+                  <label for="send-schedule">
+                    <input type="radio" id="send-schedule" name="edit-published" ng-model="send" value="1"> ตั้งเวลา
+                  </label>
+                  <div ng-show="send == '1'">
+                    <input type="text" id="edit-published" ng-model="published" />
+                  </div>
                 </div>
               </div>
 

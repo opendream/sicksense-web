@@ -37,6 +37,7 @@
       $scope.province = '-';
       $scope.age_start = minAge;
       $scope.age_stop = maxAge;
+      $scope.send = '0';
     };
 
     /**
@@ -62,16 +63,29 @@
     $scope.addItem = function() {
       if (processing) return false;
 
-      var published = moment($('#edit-published').handleDtpicker('getDate'));
+      var params = {};
 
-      var params = {
-        body: $scope.body,
-        published: published.format('YYYY-MM-DDTHH:mm:ssZ'),
-        gender: $scope.gender,
-        city: $scope.province,
-        age_start: $scope.age_start,
-        age_stop: $scope.age_stop
-      };
+      if ($scope.body.trim()) {
+        params.body = $scope.body.trim();
+      }
+
+      if ($scope.send == '1') {
+        var published = moment($('#edit-published').handleDtpicker('getDate'));
+        params.published = published.format('YYYY-MM-DDTHH:mm:ssZ');
+      }
+
+      if ($scope.gender != 'all') {
+        params.gender = $scope.gender;
+      }
+
+      if ($scope.province != '-') {
+        params.city = $scope.province;
+      }
+
+      if ($scope.age_start != minAge || $scope.age_stop != maxAge) {
+        params.age_start = $scope.age_start;
+        params.age_stop = $scope.age_stop;
+      }
 
       processing = true;
       $scope.disableButtons();
@@ -175,21 +189,31 @@
      * Return province as Thai.
      */
     $scope.getProvinceText = function(province) {
-      return $scope.provinceOptions[province];
+      if (province) {
+        return $scope.provinceOptions[province];
+      }
+      return $scope.provinceOptions['-'];
     };
 
     /**
      * Return gender code as text.
      */
     $scope.getGenderText = function(gender) {
-      return $scope.genderOptions[gender];
+      if (gender) {
+        return $scope.genderOptions[gender];
+      }
+      return $scope.genderOptions['all'];
     };
 
     /**
      * Return date formatted.
      */
     $scope.getDateFormatted = function(date) {
-      return moment(date).format('D MMM YYYY - HH:mm:ss');
+      if (date) {
+        return moment(date).format('D MMM YYYY - HH:mm:ss');
+      }
+
+      return 'ส่งทันที';
     }
 
     /**
@@ -221,6 +245,14 @@
       // Start load items.
       $scope.loadItems();
 
+      $scope.$watch('age_start', function(newValue, oldValue) {
+        $('#slider-range').slider('values', 0, newValue);
+      });
+
+      $scope.$watch('age_stop', function(newValue, oldValue) {
+        $('#slider-range').slider('values', 1, newValue);
+      });
+
       // Init slider.
       $('#slider-range').slider({
         range: true,
@@ -241,7 +273,9 @@
         $scope.generateDatePicker();
       }).on('closed', function() {
         $scope.destroyDatePicker();
-        $scope.resetForm();
+        $scope.$apply(function() {
+          $scope.resetForm();
+        });
       });
     };
 
