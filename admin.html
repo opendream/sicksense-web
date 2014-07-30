@@ -124,7 +124,7 @@
                   <label for="edit-published" class="right inline">วัน-เวลา</label>
                 </div>
                 <div class="small-9 columns">
-                  <div class="date-picker"></div>
+                  <input type="text" id="edit-published" ng-model="published" />
                 </div>
               </div>
 
@@ -159,8 +159,8 @@
 
               <div class="row">
                 <div class="small-9 columns small-offset-3">
-                  <button type="button" id="add-item-button" ng-click="addItem()">ส่ง</button>
-                  <button type="button" id="add-cancel-button" ng-click="cancelModal()">ยกเลิก</button>
+                  <button type="button" class="tiny success" id="add-item-button" ng-click="addItem()">ส่ง</button>
+                  <button type="button" class="tiny" id="add-cancel-button" ng-click="cancelModal('#add-new')">ยกเลิก</button>
                 </div>
               </div>
             </div>
@@ -194,7 +194,7 @@
   <script src="/js/libs/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
   <script src="/bower_components/async/lib/async.js"></script>
   <script src="/bower_components/lodash/dist/lodash.js"></script>
-  <script src="/bower_components/foundation/js/foundation.min.js"></script>
+  <script src="/bower_components/foundation/js/foundation.js"></script>
   <script src="/bower_components/momentjs/moment.js"></script>
   <script src="/bower_components/momentjs/lang/th.js"></script>
   <script src="/js/config.js"></script>
