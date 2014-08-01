@@ -230,9 +230,15 @@ app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope,
   };
 
   $scope.setWeek = function(weekDate) {
+    var yearPad = (moment.lang() == 'th') ? 543 : 0;
+
     $scope.weekDate = new Date(weekDate);
     $scope.weekNo = moment($scope.weekDate).weeks();
-    $scope.weekName = moment($scope.weekDate).format('D MMM YYYY') + ' - ' + moment($scope.weekdate).endOf('week').format('D MMM YYYY');
+    $scope.weekName = moment($scope.weekDate).format('D MMM ') +
+                      (moment($scope.weekDate).year() + yearPad) +
+                      ' - ' +
+                      moment($scope.weekdate).endOf('week').format('D MMM ') +
+                      (moment($scope.weekdate).endOf('week').year() + yearPad);
   };
 
   $scope.isSelectedWeek = function(date) {
