@@ -4,6 +4,8 @@ var MAP_TILE_PARAMS = {
     access_token: ''
 };
 
+var LANG = 'th';
+
 var MAP_DEFAULT_OPTIONS = {
   latitude: 13.751690,
   longitude: 100.491882,

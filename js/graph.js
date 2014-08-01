@@ -1,6 +1,25 @@
 app.controller('GraphController', [ '$scope', '$rootScope', function ($scope, $rootScope) {
   'use strict';
 
+  var timeFormat = d3.time.format;
+
+  if (LANG == 'th') {
+    timeFormat = d3.locale({
+      decimal: ".",
+      thousands: ",",
+      grouping: [ 3 ],
+      currency: [ "$", "" ],
+      dateTime: "%a %b %e %X %Y",
+      date: "%m/%d/%Y",
+      time: "%H:%M:%S",
+      periods: [ "AM", "PM" ],
+      days: [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ],
+      shortDays: [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ],
+      months: [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ],
+      shortMonths: [ 'ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.' ]
+    }).timeFormat;
+  }
+
   var $chart = jQuery('#chart');
 
   var margin = {
@@ -63,9 +82,9 @@ app.controller('GraphController', [ '$scope', '$rootScope', function ($scope, $r
 
     var oldestDate = moment(_.first(BOE).date).toDate();
     var latestDate = moment(_.last(BOE).date).toDate();
-    var customTimeFormat = d3.time.format.multi([
+    var customTimeFormat = timeFormat.multi([
       ['',      function (d) { return d.getTime() == oldestDate.getTime(); }],
-      ["%b %d", function (d) { return d.getTime() != latestDate.getTime(); }],
+      ["%_d %b", function (d) { return d.getTime() != latestDate.getTime(); }],
       ["สัปดาห์", function (d) { return d.getTime() == latestDate.getTime(); }]
     ]);
 

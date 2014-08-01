@@ -230,7 +230,7 @@ app.controller('WeekSelector', [ '$scope', 'dashboard', 'data', function($scope,
   };
 
   $scope.setWeek = function(weekDate) {
-    var yearPad = (moment.lang() == 'th') ? 543 : 0;
+    var yearPad = (LANG == 'th') ? 543 : 0;
 
     $scope.weekDate = new Date(weekDate);
     $scope.weekNo = moment($scope.weekDate).weeks();
