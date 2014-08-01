@@ -158,7 +158,7 @@
 		li a{
 			padding: 1rem 0.5rem;
 		}*/
-		
+
 		@media #{$medium-only} {
 			width: 96.5%;
 		}
@@ -237,10 +237,10 @@
     padding: 10px 10px 5px;
     margin-bottom: 7px;
     background-color: #f5f4f2;
-    
+
     &:last-child{
     	margin: 0;
-    }	
+    }
   }
 
   .symptom-list-index {
@@ -310,9 +310,10 @@
 	TIMELINE
 ---------------------------------*/
 .timeline {
-	min-height: 90px;
 	margin: 0 0 50px;
   background-color: #3a4e5a;
+
+	padding: 10px 0;
 
   .typcn{
   	color: #5b8196;
@@ -364,7 +365,7 @@
   	color: #fff;
   	text-align: center;
   	padding: 1rem .5rem;
-  	
+
   	&:hover {
       background: #456272;
       color: #fff;
@@ -374,7 +375,7 @@
   &:before, &:after {
 	left: 45% !important;
 	border-color: transparent transparent #2a3b45 transparent;
-	
+
 	@media #{$small-only} {
 		left: 50% !important;
 	}
@@ -387,19 +388,8 @@
 	TIMELINE WEEK
 ---------------------------------*/
 .timeline-week {
-	padding-top: 15px;
 
-	@media #{$small-only} {
-		padding-top: 0;
-	}
 
-	@media #{$medium-only} {
-		padding-top: 15px;
-	}
-
-	@media #{$medium-up} {
-
-	}
 }
 
 /*--- Wrap ---*/
@@ -457,7 +447,7 @@
 	border: none;
 	background: none;
 	background-color: #2a3b45;
-	
+
 	/*--- Big circle ---*/
 	.ui-slider-handle{
 		@include border-radius(30px);
@@ -465,20 +455,20 @@
 		width: 25px;
 		margin-top: -2px;
 		background: #00e4e4;
-		
+
 		@media #{$small-only} {
 			@include border-radius(20px);
 			height: 20px;
 			width: 20px;
 			margin-top: 0;
 		}
-		
+
 		&.ui-state-hover, &.ui-state-focus{
 			border: none;
-			background: darken(#00e4e4, 7%);	
+			background: darken(#00e4e4, 7%);
 		}
 	}
-	
+
 	/*--- Tool Tip ---*/
 	.timeline-tip{
 		display: block;
@@ -496,12 +486,12 @@
 	.week-name{
 		font: 700 1.7em/1.5em "Boon-0.6";
 		color: #fff;
-		
+
 		@media #{$small-only} {
 			text-align: center;
 		}
 	}
-	.typcn-calender{
+	.typcn-calendar{
 		color: #fff;
 	}
 }
