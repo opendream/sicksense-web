@@ -33,9 +33,11 @@
     $scope.resetForm = function() {
       $scope.body = '';
       $scope.gender = 'all';
-      $scope.published = moment().add(1, 'hour').format('YYYY-MM-DD HH:00');
+
+      var publishedDate = moment().add(1, 'hour').startOf('hour');
+      $scope.published = publishedDate.format('YYYY-MM-DD HH:00');
       if ($('#edit-published').data('datepicker')) {
-        $('#edit-published').handleDtpicker('setDate', $scope.published);
+        $('#edit-published').handleDtpicker('setDate', publishedDate);
       }
       $scope.province = '-';
       $scope.age_start = minAge;
@@ -51,7 +53,7 @@
 
       processing = true;
 
-      var params = { token: $scope.token };
+      var params = { token: $scope.token, limit: 2000 };
 
       $.getJSON(url, params)
         .done(function(resp) {
