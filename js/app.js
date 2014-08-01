@@ -465,7 +465,8 @@ var symptomMap = {
   'diarrhea': 'ท้องเสีย',
   'dark-urine': 'ปัสสาวะสีเข้ม',
   'bleeding': 'เลือดออก',
-  'imfine': 'สบายดี'
+  'imfine': 'สบายดี',
+  'aphthous': 'ร้อนใน'
 };
 
 function localeSymptoms(symptoms) {
