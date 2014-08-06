@@ -105,7 +105,7 @@
 
             $http.post($scope.registerURL, params)
                 .success(function(resp) {
-                    window.location = '/login.html?success';
+                    window.location = '/?success';
                 })
                 .error(function(resp) {
                     if (resp.meta.status == 409) {

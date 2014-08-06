@@ -11,6 +11,11 @@
     $('.symptoms-stat .content').mCustomScrollbar({
       theme: 'dark-2'
     });
+
+    var query = window.location.search.substr(1);
+    if (query === 'success') {
+      $('#loginModal').foundation('reveal', 'open');
+    }
   });
 
   app.factory('dashboard', [ '$rootScope', function($rootScope) {

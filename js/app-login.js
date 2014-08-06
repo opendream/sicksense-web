@@ -9,8 +9,34 @@
         $scope.shared = shared;
         $scope.shared.loggedIn = false;
 
+        $scope.isEmail = function(email) {
+            var re = new RegExp(/^(([^<>()\[\]\\.,;:\s@\"]+(\.[^<>()\[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+            if (!email.match(re)) {
+                return false;
+            }
+            return true;
+        };
+
         $scope.validate = function() {
             var isValid = true;
+
+            $scope.invalidLogin = false;
+
+            if (!$scope.isEmail($scope.email)) {
+                $scope.invalidEmail = true;
+                isValid = false;
+            }
+            else {
+                $scope.invalidEmail = false;
+            }
+
+            if ($scope.password.length < 8) {
+                $scope.invalidPassword = true;
+                isValid = false;
+            }
+            else {
+                $scope.invalidPassword = false;
+            }
 
             return isValid;
         };
@@ -36,7 +62,9 @@
                 .error(function(resp) {
                     $scope.submitting = false;
                     if (resp.error && resp.error.statusCode == 403) {
-                        console.log('login failed');
+                        $scope.invalidLogin = true;
+                        $scope.invalidEmail = false;
+                        $scope.invalidPassword = false;
                     }
                 });
         };
@@ -44,6 +72,8 @@
         $scope.checkLogin = function() {
             var accessToken = $.cookie('accessToken');
             var userId = $.cookie('userId');
+
+            $scope.invalidLogin = false;
 
             if (accessToken && userId) {
                 var url = $scope.checkURL + userId + '?accessToken=' + accessToken
