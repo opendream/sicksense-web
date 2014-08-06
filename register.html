@@ -48,7 +48,9 @@
                 <label class="right-label inline">อีเมล</label>
               </div>
               <div class="large-9 columns">
-                <input type="text" placeholder="john@example.com" />
+                <input type="text" ng-model="email" placeholder="john@example.com" />
+                <small class="error" ng-show="invalidEmail">รูปแบบอีเมลไม่ถูกต้อง</small>
+                <small class="error" ng-show="invalidDuplicateEmail">อีเมลนี้มีในระบบแล้ว กรุณาใช้อีเมลอื่น</small>
               </div>
             </div>
           </div>
@@ -60,7 +62,8 @@
                 <label class="right-label inline">รหัสผ่าน</label>
               </div>
               <div class="large-9 columns">
-                <input type="password" placeholder="******" />
+                <input type="password" ng-model="password" placeholder="******" />
+                <small class="error" ng-show="invalidPassword">รหัสผ่านต้องไม่น้อยกว่า 8 ตัวอักษร</small>
               </div>
             </div>
           </div>
@@ -72,7 +75,8 @@
                 <label class="right-label inline">ยืนยันรหัสผ่าน</label>
               </div>
               <div class="large-9 columns">
-                <input type="password" placeholder="******" />
+                <input type="password" ng-model="repassword" placeholder="******" />
+                <small class="error" ng-show="invalidSamePassword">รหัสผ่านไม่ตรงกัน</small>
               </div>
             </div>
           </div>
@@ -84,8 +88,9 @@
                 <label class="right-label inline">เพศ</label>
               </div>
               <div class="large-9 columns">
-                <input type="radio" name="pokemon" value="male" id="pokemonRed"><label for="pokemonRed">ชาย</label>
-                <input type="radio" name="pokemon" value="female" id="pokemonBlue"><label for="pokemonBlue">หญิง</label>
+                <input type="radio" ng-model="gender" value="male" id="edit-male"><label for="edit-male">ชาย</label>
+                <input type="radio" ng-model="gender" value="female" id="edit-female"><label for="edit-female">หญิง</label>
+                <small class="error" ng-show="invalidGender">กรุณาเลือกเพศของคุณ</small>
               </div>
             </div>
           </div>
@@ -97,7 +102,8 @@
                 <label class="right-label inline">ปีเกิด (พ.ศ.)</label>
               </div>
               <div class="large-9 columns">
-                <select id="year" name="year" ng-model="year" ng-options="k as v for (k, v) in yearOptions"></select>
+                <select ng-model="year" ng-options="k as v for (k, v) in yearOptions"></select>
+                <small class="error" ng-show="invalidYear">กรุณาเลือกปีเกิด</small>
               </div>
             </div>
           </div>
@@ -109,9 +115,10 @@
                 <label class="right-label inline">จังหวัด</label>
               </div>
               <div class="large-9 columns">
-                <select id="province" name="province" ng-model="province">
-                  <option ng-repeat="province in provinceOptions" value="{{ province.key }}">{{ province.value }}</option>
+                <select id="city" name="city" ng-model="city">
+                  <option ng-repeat="city in cityOptions" value="{{ city.key }}">{{ city.value }}</option>
                 </select>
+                <small class="error" ng-show="invalidCity">กรุณาเลือกจังหวัด</small>
               </div>
             </div>
           </div>
@@ -123,9 +130,10 @@
                 <label class="right-label inline">อำเภอ</label>
               </div>
               <div class="large-9 columns">
-                <select id="amphoe" name="amphoe" ng-model="amphoe">
-                  <option ng-repeat="amphoe in amphoes" value="{{ amphoe.key }}">{{ amphoe.value }}</option>
+                <select id="district" name="district" ng-model="district">
+                  <option ng-repeat="district in districts" value="{{ district.key }}">{{ district.value }}</option>
                 </select>
+                <small class="error" ng-show="invalidDistrict">กรุณาเลือกอำเภอ</small>
               </div>
             </div>
           </div>
@@ -137,23 +145,30 @@
                 <label class="right-label inline">ตำบล</label>
               </div>
               <div class="large-9 columns">
-                <select id="tambon" name="tambon" ng-model="tambon">
-                  <option ng-repeat="tambon in tambons" value="{{ tambon.key }}">{{ tambon.value }}</option>
+                <select id="subdistrict" name="subdistrict" ng-model="subdistrict">
+                  <option ng-repeat="subdistrict in subdistricts" value="{{ subdistrict.key }}">{{ subdistrict.value }}</option>
                 </select>
+                <small class="error" ng-show="invalidSubdistrict">กรุณาเลือกตำบล</small>
               </div>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="large-6 large-offset-3 columns">
-            <input id="checkbox1" type="checkbox">
-            <label for="checkbox1">แจ้งเตือนผ่านอีเมล</label>
+            <input id="edit-subscribe" type="checkbox" ng-model="subscribe" />
+            <label for="edit-subscribe">แจ้งเตือนผ่านอีเมล</label>
+          </div>
+        </div>
+
+        <div class="row" ng-show="subscribe">
+          <div class="large-6 large-offset-3 columns">
+            <div class="panel">Tu quoque, Brute, fili mi, nihil timor populi, nihil! Quae vero auctorem tractata ab fiducia dicuntur. Cum sociis natoque penatibus et magnis dis parturient. Me non paenitet nullum festiviorem excogitasse ad hoc. Etiam habebis sem dicantur magna mollis euismod.</div>
           </div>
         </div>
 
         <div class="row">
           <div class="large-6 large-offset-3 columns">
-            <a href="#" class="button tiny round">สมัคร</a>
+            <a href="#" ng-click="submit()" class="button tiny round">สมัคร</a>
           </div>
         </div>
       </form>
