@@ -1,15 +1,18 @@
 ;(function ($, window, document, undefined) {
 
-    $(document).foundation();
-
-    var app = angular.module('sicksense', []);
-
-    app.controller('RegisterController', [ '$scope', '$http', function($scope, $http) {
+    app.controller('RegisterController', [ '$scope', '$http', 'shared', function($scope, $http, shared) {
         $scope.registerURL = API_BASEPATH + '/users/';
         $scope.email = '';
         $scope.password = '';
         $scope.repassword = '';
         $scope.subscribe = true;
+        $scope.shared = shared;
+
+        $scope.$watch('shared.loggedIn', function(newValue, oldValue) {
+            if (newValue) {
+                window.location = '/frontpage.html';
+            }
+        });
 
         $scope.yearOptions = {};
         for (var i = 0; i < 100; i++) {
