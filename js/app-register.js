@@ -49,25 +49,15 @@
         };
 
         $scope.validate = function() {
-            var isValid = true;
-
-            if (!$scope.isEmail($scope.email)) {
-                $scope.invalidEmail = true;
-                isValid = false;
-            }
-            else {
-                $scope.invalidEmail = false;
-            }
+            $scope.invalidEmail = !$scope.isEmail($scope.email);
 
             if ($scope.password.length < 8) {
                 $scope.invalidSamePassword = false;
                 $scope.invalidPassword = true;
-                isValid = false;
             }
             else if ($scope.password != $scope.repassword) {
                 $scope.invalidSamePassword = true;
                 $scope.invalidPassword = false;
-                isValid = false;
             }
             else {
                 $scope.invalidSamePassword = false;
@@ -80,7 +70,9 @@
             $scope.invalidDistrict = $scope.district ? false : true;
             $scope.invalidSubdistrict = $scope.subdistrict ? false : true;
 
-            return isValid;
+            return !($scope.invalidEmail || $scope.invalidSamePassword || $scope.invalidPassword ||
+                $scope.invalidGender || $scope.invalidYear || $scope.invalidCity ||
+                $scope.invalidDistrict || $scope.invalidSubdistrict);
         };
 
         $scope.submit = function() {
