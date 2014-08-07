@@ -69,6 +69,13 @@
                 });
         };
 
+        $scope.checkModal = function() {
+            var query = window.location.search.substr(1);
+            if (query === 'success') {
+                $('#loginModal').foundation('reveal', 'open');
+            }
+        };
+
         $scope.checkLogin = function() {
             var accessToken = $.cookie('accessToken');
             var userId = $.cookie('userId');
@@ -80,7 +87,13 @@
                 $http.get(url)
                     .success(function(resp) {
                         $scope.shared.loggedIn = true;
+                    })
+                    .error(function(resp) {
+                        $scope.checkModal();
                     });
+            }
+            else {
+                $scope.checkModal();
             }
         };
 
