@@ -58,6 +58,9 @@
                     $.cookie('accessToken', resp.response.accessToken);
                     $.cookie('userId', resp.response.id);
                     $scope.shared.loggedIn = true;
+                    $scope.submitting = false;
+                    $scope.email = '';
+                    $scope.password = '';
                 })
                 .error(function(resp) {
                     $scope.submitting = false;
