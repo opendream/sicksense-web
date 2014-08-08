@@ -4,7 +4,7 @@
         $scope.reportURL = API_BASEPATH + '/reports/';
         $scope.reportSuccess = false;
 
-        $scope.isFine = null;
+        $scope.isFine = getParameterByName('isFine');
         $scope.symptoms = [];
         $scope.symptoms_choices = [
             {
