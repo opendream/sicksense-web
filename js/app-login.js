@@ -7,7 +7,7 @@
         $scope.email = '';
         $scope.password = '';
         $scope.shared = shared;
-        $scope.shared.loggedIn = false;
+        // $scope.shared.loggedIn = false;
 
         $scope.isEmail = function(email) {
             var re = new RegExp(/^(([^<>()\[\]\\.,;:\s@\"]+(\.[^<>()\[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
@@ -81,6 +81,9 @@
                     .success(function(resp) {
                         $scope.shared.loggedIn = true;
                     });
+            } else {
+                $scope.shared.loggedIn = false;
+                console.log('not accessToken')
             }
         };
 
