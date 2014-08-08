@@ -32,6 +32,7 @@
      */
     $scope.resetForm = function() {
       $scope.body = '';
+      $scope.link = '';
       $scope.gender = 'all';
 
       var publishedDate = moment().add(1, 'hour').startOf('hour');
@@ -94,6 +95,10 @@
 
       if ($scope.body.trim()) {
         params.body = $scope.body.trim();
+      }
+
+      if ($scope.link.trim()) {
+        params.link = $scope.link.trim();
       }
 
       if ($scope.send == '1') {
