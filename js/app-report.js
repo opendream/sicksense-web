@@ -100,7 +100,7 @@
             var isFirstTime = newValue === undefined && newValue == oldValue;
 
             if (!isFirstTime && !newValue) {
-                window.location = '/frontpage.html?success';
+                window.location = '/?success';
             }
         });
 
