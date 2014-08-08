@@ -94,9 +94,6 @@
                     .error(function(resp) {
                         $scope.checkModal();
                     });
-            } else {
-                $scope.shared.loggedIn = false;
-                console.log('not accessToken')
             }
             else {
                 $scope.checkModal();
