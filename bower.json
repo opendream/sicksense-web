@@ -11,7 +11,6 @@
     "async": "~0.9.0",
     "jqueryui": "~1.11.0",
     "malihu-custom-scrollbar-plugin": "~3.0.2",
-    "d3": "~3.4.9",
-    "jReject": "~1.1.1"
+    "d3": "~3.4.9"
   }
 }
