@@ -129,11 +129,15 @@
 
             $scope.submitting = true;
 
+            if ($scope.isFine == "1") {
+                $scope.symptoms = [];
+            }
+
             var symptoms = _.pluck($scope.symptoms, 'name');
             var data = {
-                isFine: $scope.isFine,
+                isFine: parseInt($scope.isFine),
                 symptoms: symptoms,
-                animalContact: $scope.animalContact,
+                animalContact: parseInt($scope.animalContact),
                 moreInfo: $scope.moreInfo,
                 startedAt: new Date(),
                 platform: 'sicksenseweb'
