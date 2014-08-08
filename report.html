@@ -81,7 +81,7 @@
         <div class="row">
           <div class="large-8 large-offset-2 columns">
             <label>รายละเอียดเพิ่มเติม
-              <textarea name="moreInfo" ng-model="moreInfo" placeholder="small-12.columns"></textarea>
+              <textarea name="moreInfo" ng-model="moreInfo"></textarea>
             </label>
           </div>
         </div>
@@ -122,6 +122,47 @@
     <a class="close-reveal-modal">&#215;</a>
   </div>
 
+  <div id="loginModal" class="reveal-modal login-modal small" ng-controller="LoginController" data-reveal>
+    <h2>เข้าสู่ระบบ</h2>
+    <a class="close-reveal-modal">&#215;</a><form>
+
+    <small class="error" ng-show="invalidLogin">อีเมลและรหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง</small>
+
+    <div class="row">
+      <div class="columns">
+        <div class="row">
+          <div class="large-3 columns">
+            <label class="right-label inline">อีเมล</label>
+          </div>
+          <div class="large-9 columns">
+            <input type="text" ng-model="email" placeholder="john@example.com" />
+            <small class="error" ng-show="invalidEmail">รูปแบบอีเมลไม่ถูกต้อง</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="columns">
+        <div class="row">
+          <div class="large-3 columns">
+            <label class="right-label inline">รหัสผ่าน</label>
+          </div>
+          <div class="large-9 columns">
+            <input type="password" ng-model="password" placeholder="******" />
+            <small class="error" ng-show="invalidPassword">รหัสผ่านต้องไม่น้อยกว่า 8 ตัวอักษร</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="columns">
+        <a href="#" ng-click="login()" class="round tiny button">เข้าสู่ระบบ</a>
+      </div>
+    </div>
+  </div>
+
   <script src="/bower_components/jquery/dist/jquery.min.js"></script>
   <script src="/bower_components/foundation/js/foundation.min.js"></script>
   <script src="/bower_components/lodash/dist/lodash.js"></script>
@@ -129,6 +170,7 @@
   <script src="/js/config.js"></script>
   <script src="/js/app.js"></script>
   <script src="/js/app-report.js"></script>
+  <script src="/js/app-login.js"></script>
   <script src="/js/app-menu.js"></script>
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
