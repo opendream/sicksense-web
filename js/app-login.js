@@ -58,6 +58,9 @@
                     $.cookie('accessToken', resp.response.accessToken);
                     $.cookie('userId', resp.response.id);
                     $scope.shared.loggedIn = true;
+                    $scope.submitting = false;
+                    $scope.email = '';
+                    $scope.password = '';
                 })
                 .error(function(resp) {
                     $scope.submitting = false;
@@ -67,6 +70,13 @@
                         $scope.invalidPassword = false;
                     }
                 });
+        };
+
+        $scope.checkModal = function() {
+            var query = window.location.search.substr(1);
+            if (query === 'success') {
+                $('#loginModal').foundation('reveal', 'open');
+            }
         };
 
         $scope.checkLogin = function() {
@@ -80,10 +90,16 @@
                 $http.get(url)
                     .success(function(resp) {
                         $scope.shared.loggedIn = true;
+                    })
+                    .error(function(resp) {
+                        $scope.checkModal();
                     });
             } else {
                 $scope.shared.loggedIn = false;
                 console.log('not accessToken')
+            }
+            else {
+                $scope.checkModal();
             }
         };
 
