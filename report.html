@@ -17,7 +17,7 @@
 </head>
 <body ng-app="sicksense">
   <div class="top-nav-bar contain-to-grid">
-    <nav class="top-bar slideInDown animated " data-topbar role="navigation">
+    <nav class="top-bar slideInDown animated" data-topbar role="navigation">
       <ul class="title-area">
         <li class="name">
           <h1><a href="/" class="logo">SickSense</a></h1>
@@ -38,7 +38,7 @@
   </div>
 
   <div class="row page-report" ng-controller="ReportController">
-    <div class="large-12 columns">
+    <div class="large-12 columns" ng-hide="reportSuccess">
       <form>
         <div class="row">
           <div class="large-8 large-offset-2 columns">
@@ -60,7 +60,7 @@
             <label>มีอาการอะไรจ๊ะ ?</label>
             <div class="row">
               <ul>
-                <li ng-repeat="choice in symptoms_choices">
+                <li ng-repeat="(key, choice) in symptoms_choices">
                   <img src="{{ choice.imageCurrent }}" ng-click="toggleImage(choice)" />
                 </li>
               </ul>
@@ -92,6 +92,14 @@
           </div>
         </div>
       </form>
+    </div>
+
+    <div class="large-12 columns" ng-show="reportSuccess">
+      <h1 class="text-center">ขอบคุณสำหรับการรายงานสุขภาพ</h1>
+      <h3 class="subheader text-center">{{ symptoms_summary }}</h3>
+      <hr />
+      <h4 class="subheader text-center">ข้อมูลของคุณได้มีส่วนร่วมในการแสดงสถานการณ์สุขภาพในประเทศไทย</h4>
+      <p class="text-center"><a class="button" href="/frontpage.html">ดูสถานการณ์สุขภาพ</a></p>
     </div>
   </div>
 

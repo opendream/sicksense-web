@@ -2,82 +2,97 @@
 
     app.controller('ReportController', [ '$scope', '$http', 'shared', function($scope, $http, shared) {
         $scope.reportURL = API_BASEPATH + '/reports/';
+        $scope.reportSuccess = false;
+
         $scope.isFine = null;
         $scope.symptoms = [];
         $scope.symptoms_choices = [
             {
                 'name': 'fever',
+                'displayName': 'มีไข้',
                 'image': './images/symptoms/fever@2x.png',
                 'imageActive': './images/symptoms/fever-active@2x.png',
                 'imageCurrent': './images/symptoms/fever@2x.png'
             },
             {
                 'name': 'cough',
+                'displayName': 'ไอ',
                 'image': './images/symptoms/cough@2x.png',
                 'imageActive': './images/symptoms/cough-active@2x.png',
                 'imageCurrent': './images/symptoms/cough@2x.png'
             },
             {
                 'name': 'nuasea',
+                'displayName': 'คลื่นไส้',
                 'image': './images/symptoms/nuasea@2x.png',
                 'imageActive': './images/symptoms/nuasea-active@2x.png',
                 'imageCurrent': './images/symptoms/nuasea@2x.png'
             },
             {
                 'name': 'headache',
+                'displayName': 'ปวดหัว',
                 'image': './images/symptoms/headache@2x.png',
                 'imageActive': './images/symptoms/headache-active@2x.png',
                 'imageCurrent': './images/symptoms/headache@2x.png'
             },
             {
                 'name': 'red-eye',
+                'displayName': 'ตาแดง',
                 'image': './images/symptoms/red-eye@2x.png',
                 'imageActive': './images/symptoms/red-eye-active@2x.png',
                 'imageCurrent': './images/symptoms/red-eye@2x.png'
             },
             {
                 'name': 'sore-throat',
+                'displayName': 'เจ็บคอ',
                 'image': './images/symptoms/sore-throat@2x.png',
                 'imageActive': './images/symptoms/sore-throat-active@2x.png',
                 'imageCurrent': './images/symptoms/sore-throat@2x.png'
             },
             {
                 'name': 'aphthous',
+                'displayName': 'ร้อนใน',
                 'image': './images/symptoms/aphthous@2x.png',
                 'imageActive': './images/symptoms/aphthous-active@2x.png',
                 'imageCurrent': './images/symptoms/aphthous@2x.png'
             },
             {
                 'name': 'rash',
+                'displayName': 'ผื่นคัน',
                 'image': './images/symptoms/rash@2x.png',
                 'imageActive': './images/symptoms/rash-active@2x.png',
                 'imageCurrent': './images/symptoms/rash@2x.png'
             },
             {
                 'name': 'jointache',
+                'displayName': 'ปวดข้อ',
                 'image': './images/symptoms/jointache@2x.png',
                 'imageActive': './images/symptoms/jointache-active@2x.png',
                 'imageCurrent': './images/symptoms/jointache@2x.png'
             },
             {
                 'name': 'diarrhea',
+                'displayName': 'ท้องเสีย',
                 'image': './images/symptoms/diarrhea@2x.png',
                 'imageActive': './images/symptoms/diarrhea-active@2x.png',
                 'imageCurrent': './images/symptoms/diarrhea@2x.png'
             },
             {
                 'name': 'dark-urine',
+                'displayName': 'ปัสสาวะสีเข้ม',
                 'image': './images/symptoms/dark-urine@2x.png',
                 'imageActive': './images/symptoms/dark-urine-active@2x.png',
                 'imageCurrent': './images/symptoms/dark-urine@2x.png'
             },
             {
                 'name': 'bleeding',
+                'displayName': 'เลือดออก',
                 'image': './images/symptoms/bleeding@2x.png',
                 'imageActive': './images/symptoms/bleeding-active@2x.png',
                 'imageCurrent': './images/symptoms/bleeding@2x.png'
             }
         ];
+        $scope.symptoms_summary = '';
 
         $scope.shared = shared;
 
@@ -91,11 +106,11 @@
 
 
         $scope.toggleImage = function (symptom) {
-            if ($scope.symptoms.indexOf(symptom.name) < 0) {
-                $scope.symptoms.push(symptom.name)
+            if ($scope.symptoms.indexOf(symptom) < 0) {
+                $scope.symptoms.push(symptom)
                 symptom.imageCurrent = symptom.imageActive;
             } else {
-                _.pull($scope.symptoms, symptom.name);
+                _.pull($scope.symptoms, symptom);
                 symptom.imageCurrent = symptom.image;
             }
         };
@@ -114,9 +129,10 @@
 
             $scope.submitting = true;
 
+            var symptoms = _.pluck($scope.symptoms, 'name');
             var data = {
                 isFine: $scope.isFine,
-                symptoms: $scope.symptoms,
+                symptoms: symptoms,
                 animalContact: $scope.animalContact,
                 moreInfo: $scope.moreInfo,
                 startedAt: new Date(),
@@ -129,8 +145,10 @@
                     }
                 })
                 .success(function(resp) {
-                    console.log('success', resp);
-                    // window.location = '/report-thank.html';
+
+                    var symptoms_names = _.pluck($scope.symptoms, 'displayName');
+                    $scope.symptoms_summary = symptoms_names.length > 0 ? symptoms_names.join(', ') : 'สบายดี';
+                    $scope.reportSuccess = true;
                 })
                 .error(function(resp) {
                     console.log('errorr', resp);
