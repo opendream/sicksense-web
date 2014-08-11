@@ -20,7 +20,7 @@
     <nav class="top-bar slideInDown animated " data-topbar role="navigation">
       <ul class="title-area">
         <li class="name">
-          <h1><a href="/" class="logo">SickSense</a></h1>
+          <h1><a href="frontpage.html" class="logo">SickSense</a></h1>
         </li>
         <li class="toggle-topbar menu-icon"><a href="#"><span>เมนู</span></a></li>
       </ul>
@@ -39,20 +39,20 @@
 
   <div class="row" ng-controller="RegisterController">
     <div class="large-12 columns">
-      <form>
+      <form class="register-form">
         <div class="row">
-          <div class="large-6 large-offset-3 columns">
+          <div class="large-6 large-centered columns">
             <h1>สมัครสมาชิก</h1>
           </div>
         </div>
         <div class="row">
-          <div class="large-6 large-offset-3 columns">
+          <div class="large-6 large-centered columns">
             <div class="row">
               <div class="large-3 columns">
                 <label class="right-label inline">อีเมล</label>
               </div>
               <div class="large-9 columns">
-                <input type="text" ng-model="email" placeholder="john@example.com" />
+                <input type="text" ng-model="email" placeholder="mayom@sicksense.org" />
                 <small class="error" ng-show="invalidEmail">รูปแบบอีเมลไม่ถูกต้อง</small>
                 <small class="error" ng-show="invalidDuplicateEmail">อีเมลนี้มีในระบบแล้ว กรุณาใช้อีเมลอื่น</small>
               </div>
@@ -60,33 +60,33 @@
           </div>
         </div>
         <div class="row">
-          <div class="large-6 large-offset-3 columns">
+          <div class="large-6 large-centered columns">
             <div class="row">
               <div class="large-3 columns">
                 <label class="right-label inline">รหัสผ่าน</label>
               </div>
               <div class="large-9 columns">
-                <input type="password" ng-model="password" placeholder="******" />
+                <input type="password" ng-model="password" placeholder="********" />
                 <small class="error" ng-show="invalidPassword">รหัสผ่านต้องไม่น้อยกว่า 8 ตัวอักษร</small>
               </div>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="large-6 large-offset-3 columns">
+          <div class="large-6 large-centered columns">
             <div class="row">
               <div class="large-3 columns">
                 <label class="right-label inline">ยืนยันรหัสผ่าน</label>
               </div>
               <div class="large-9 columns">
-                <input type="password" ng-model="repassword" placeholder="******" />
+                <input type="password" ng-model="repassword" placeholder="********" />
                 <small class="error" ng-show="invalidSamePassword">รหัสผ่านไม่ตรงกัน</small>
               </div>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="large-6 large-offset-3 columns">
+          <div class="large-6 large-centered columns">
             <div class="row">
               <div class="large-3 columns">
                 <label class="right-label inline">เพศ</label>
@@ -100,7 +100,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="large-6 large-offset-3 columns">
+          <div class="large-6 large-centered columns">
             <div class="row">
               <div class="large-3 columns">
                 <label class="right-label inline">ปีเกิด (พ.ศ.)</label>
@@ -113,7 +113,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="large-6 large-offset-3 columns">
+          <div class="large-6 large-centered columns">
             <div class="row">
               <div class="large-3 columns">
                 <label class="right-label inline">จังหวัด</label>
@@ -128,7 +128,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="large-6 large-offset-3 columns">
+          <div class="large-6 large-centered columns">
             <div class="row">
               <div class="large-3 columns">
                 <label class="right-label inline">อำเภอ</label>
@@ -143,7 +143,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="large-6 large-offset-3 columns">
+          <div class="large-6 large-centered columns">
             <div class="row">
               <div class="large-3 columns">
                 <label class="right-label inline">ตำบล</label>
@@ -158,21 +158,21 @@
           </div>
         </div>
         <div class="row">
-          <div class="large-6 large-offset-3 columns">
+          <div class="large-6 large-centered columns">
             <input id="edit-subscribe" type="checkbox" ng-model="subscribe" />
             <label for="edit-subscribe">แจ้งเตือนผ่านอีเมล</label>
           </div>
         </div>
 
         <div class="row" ng-show="subscribe">
-          <div class="large-6 large-offset-3 columns">
+          <div class="large-6 large-centered columns">
             <div class="panel">Tu quoque, Brute, fili mi, nihil timor populi, nihil! Quae vero auctorem tractata ab fiducia dicuntur. Cum sociis natoque penatibus et magnis dis parturient. Me non paenitet nullum festiviorem excogitasse ad hoc. Etiam habebis sem dicantur magna mollis euismod.</div>
           </div>
         </div>
 
         <div class="row">
-          <div class="large-6 large-offset-3 columns">
-            <a href="#" ng-click="submit()" class="button tiny round">สมัคร</a>
+          <div class="large-6 large-centered columns">
+            <a href="#" ng-click="submit()" class="button round ss-button ss-button-full-width">สมัคร</a>
           </div>
         </div>
       </form>
@@ -198,43 +198,35 @@
     <a class="close-reveal-modal">&#215;</a>
   </div>
 
-  <div id="loginModal" class="reveal-modal login-modal small" ng-controller="LoginController" data-reveal>
+  <div id="loginModal" class="reveal-modal login-modal medium" ng-controller="LoginController" data-reveal>
     <h2>เข้าสู่ระบบ</h2>
     <a class="close-reveal-modal">&#215;</a><form>
 
     <small class="error" ng-show="invalidLogin">อีเมลและรหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง</small>
 
     <div class="row">
-      <div class="columns">
-        <div class="row">
-          <div class="large-3 columns">
-            <label class="right-label inline">อีเมล</label>
-          </div>
-          <div class="large-9 columns">
-            <input type="text" ng-model="email" placeholder="john@example.com" />
-            <small class="error" ng-show="invalidEmail">รูปแบบอีเมลไม่ถูกต้อง</small>
-          </div>
-        </div>
+      <div class="large-3 columns">
+        <label class="right-label inline">อีเมล</label>
+      </div>
+      <div class="large-9 columns">
+        <input type="text" ng-model="email" placeholder="mayom@sicksense.org" />
+        <small class="error" ng-show="invalidEmail">รูปแบบอีเมลไม่ถูกต้อง</small>
       </div>
     </div>
 
     <div class="row">
-      <div class="columns">
-        <div class="row">
-          <div class="large-3 columns">
-            <label class="right-label inline">รหัสผ่าน</label>
-          </div>
-          <div class="large-9 columns">
-            <input type="password" ng-model="password" placeholder="******" />
-            <small class="error" ng-show="invalidPassword">รหัสผ่านต้องไม่น้อยกว่า 8 ตัวอักษร</small>
-          </div>
-        </div>
+      <div class="large-3 columns">
+        <label class="right-label inline">รหัสผ่าน</label>
+      </div>
+      <div class="large-9 columns">
+        <input type="password" ng-model="password" placeholder="********" />
+        <small class="error" ng-show="invalidPassword">รหัสผ่านต้องไม่น้อยกว่า 8 ตัวอักษร</small>
       </div>
     </div>
 
     <div class="row">
-      <div class="columns">
-        <a href="#" ng-click="login()" class="round tiny button">เข้าสู่ระบบ</a>
+      <div class="large-9 large-offset-3 columns">
+        <a href="#" ng-click="login()" class="round button ss-button ss-button-modal">เข้าสู่ระบบ</a>
       </div>
     </div>
   </div>

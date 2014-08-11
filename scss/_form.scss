@@ -1,0 +1,9 @@
+@import "settings";
+
+.register-form{
+    padding-top: 50px;
+
+	@media #{$medium-only}, #{$small-only} {
+		padding-top: 20px;
+	}
+}

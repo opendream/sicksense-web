@@ -1,0 +1,18 @@
+@import "settings";
+@import "mixin";
+
+.ss-button{
+    padding: 7px 20px;
+    font-family: "Boon-0.6", sans-serif;
+}
+.ss-button-full-width{
+    width: 100%;
+}
+.ss-button-modal{
+    
+    /*--- Make full width ---*/
+	@media #{$medium-only}, #{$small-only} {
+		margin-left: 0;
+        width: 100%;
+	}
+}
