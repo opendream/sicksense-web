@@ -4,8 +4,14 @@
 
 /*--- Defualt Button Style ---*/
 .ss-button{
+    border-radius: 5px;
     padding: 7px 20px;
     font-family: "Boon-0.6", sans-serif;
+    background-color: #00aeae;
+    
+    &:hover{
+        background-color: #007C7C;
+    }
 }
 .ss-button-full-width{
     width: 100%;
