@@ -1,0 +1,35 @@
+#chart {
+  width: 100%;
+  height: auto;
+  min-height: 340px;
+  max-height: 500px;
+  margin-bottom: 16px;
+
+  .y-label {
+    font-size: 1.4em;
+  }
+
+  .tick {
+    text {
+      transform: translate(0, 8px);
+    }
+  }
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.line-boe {
+  stroke: #fcd070;
+  stroke-width: 3px;
+  fill: none;
+}
+.line-sicksense {
+  stroke: #60eceb;
+  stroke-width: 3px;
+  fill: none;
+}

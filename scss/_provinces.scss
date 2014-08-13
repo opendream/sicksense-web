@@ -1,0 +1,96 @@
+@import "settings";
+
+/*---------------------------------
+	PROVINCES LIST (Dropdown List)
+---------------------------------*/
+.provinces-list{
+	width: 932px !important; /* Fix Table */
+	margin: 0 !important; /* Reset row class to make indent */
+	border: 1px solid #C4C4C4;
+	background: #fff;
+
+	/*--- Name of region ---*/
+	h2{
+		margin: 0 0 1em;
+		padding: .75em 1em;
+		font-size: 1em;
+		font-weight: bold;
+		text-align: center;
+		background-color: #dbdbdb;
+	}
+	/*--- Columns ---*/
+	li{
+		padding: 0;
+		a{
+			padding: 0.2rem 0.2rem 0.4rem;
+			color: #547b8a;
+
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+		/*--- Remove all li hover from f-dropdown default ---*/
+		&:hover{
+			background: transparent;
+		}
+	}
+
+	.region-list{
+		width: 120px;
+		min-height: 420px;
+		border-right: 1px solid #C4C4C4;
+		list-style: none;
+
+		/*--- North East & central---*/
+		&:nth-child(2), &:nth-child(3){
+			width: 200px;
+
+			/*--- Set 2 Columns of province---*/
+			.province-name{
+				display: inline-block;
+				width: 45%;
+			}
+		}
+
+		/*--- Set New width for central(child(3)) ---*/
+		&:nth-child(3){
+			width: 250px;
+		}
+		&:last-child{
+			border: none;
+		}
+	}
+
+	.province-group{
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+	.province-name{
+		padding: 0 1em;
+	}
+}
+
+/*--- For Mobile ---*/
+.provinces-for-mobile{
+	dd > a{
+		padding: .5rem 1em;
+		font-size: 1em;
+		font-weight: bold;
+		font-family: "Boon-0.6";
+	}
+
+	.province-name{
+		display: inline-block;
+		width: 145px;
+		padding: 0 1em .5em 1em;
+
+		@media #{$medium-only} {
+			/*width: ;*/
+		}
+
+		@media #{$small-only} {
+			width: 33%;
+		}
+	}
+}

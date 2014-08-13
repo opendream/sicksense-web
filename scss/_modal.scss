@@ -1,0 +1,16 @@
+@import "settings";
+@import "mixin";
+
+/*---------------------------------
+	MODAL
+---------------------------------*/
+.about-modal, .login-modal{
+	h2{
+		margin-bottom: .75em;
+		font: normal 2em/1.5em "Boon-0.6";
+	}
+
+	@media #{$small-only}, #{$medium-only} {
+		top: 100px;
+	}
+}

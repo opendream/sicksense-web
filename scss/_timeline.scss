@@ -1,0 +1,272 @@
+@import "settings";
+@import "mixin";
+
+/*---------------------------------
+	TIMELINE FILTER
+---------------------------------*/
+.timeline-filter {
+	min-height: 100px;
+	padding: 30px 0 15px 20px;
+	border-right: 1px solid #2a3b45;
+
+	/*--- Dropdown button ---*/
+  .button {
+  	padding: 0;
+  	margin-bottom: 0;
+  	font-size: 2em;
+		background-color: #3a4e5a;
+
+		strong {
+			/*font-weight: normal;*/
+			font: 700 1em/1em "Boon-0.6";
+		}
+	}
+
+	@media #{$small-only} {
+		min-height: 90px;
+		text-align: center;
+		border-right: none;
+		border-bottom: 1px solid #2a3b45;
+	}
+
+	@media #{$medium-up} {
+		min-height: 90px;
+		padding-left: 0;
+	}
+}
+
+/*--- Dropdown menu ---*/
+.timeline-year {
+	width: 95px;
+  border: 1px solid #2a3b45;
+  background: #2a3b45;
+
+  li a {
+  	color: #fff;
+  	text-align: center;
+  	padding: 1rem .5rem;
+
+  	&:hover {
+      background: #456272;
+      color: #fff;
+  	}
+  }
+
+  &:before, &:after {
+	left: 45% !important;
+	border-color: transparent transparent #2a3b45 transparent;
+
+	@media #{$small-only} {
+		left: 50% !important;
+	}
+  }
+}
+
+
+/*---------------------------------
+	TIMELINE WEEK
+---------------------------------*/
+.timeline-week {}
+
+/*--- Wrap ---*/
+.timeline-week-items{
+	position: relative;
+}
+
+.timeline-week-item, .weekTick-tick {
+	position: relative;
+	top: -2px;
+	display: inline-block ;
+	width: 1.920784314%; // 100 / 51
+	height: 10px;
+	text-align: center;
+	border-left: 1px solid #11a0a4;
+
+	&:first-child{
+		border: none;
+	}
+}
+
+/*--- Pin Drop ---*/
+.timeline-week-pin {
+
+	/*--- Make Animation ---*/
+  -moz-transition: all .1s ease-out;
+  -webkit-transition: all .1s ease-out;
+  -o-transition: all .1s ease-out;
+  transition: all .1s ease-out;
+
+	float: left;
+  display: inline-block;
+  width: 100%;
+  height: 10px;
+
+	/*--- Hover bar ---*/
+  &:hover {
+    cursor: pointer;
+    background-color: #19252d;
+  }
+
+  &.selected {
+    background-color: #19252d;
+  }
+
+  &:last-of-type{
+
+  }
+}
+
+/*--- Timeline Bar ---*/
+.timeline-week-horizon {
+	@include border-radius(2em);
+	margin: 20px 0 0;
+	border: none;
+	background: none;
+	background-color: #2a3b45;
+
+	/*--- Big circle ---*/
+	.ui-slider-handle{
+		@include border-radius(30px);
+		height: 25px;
+		width: 25px;
+		margin-top: -2px;
+		background: #00e4e4;
+
+		@media #{$small-only} {
+			@include border-radius(20px);
+			height: 20px;
+			width: 20px;
+			margin-top: 0;
+		}
+
+		&.ui-state-hover, &.ui-state-focus{
+			border: none;
+			background: darken(#00e4e4, 7%);
+		}
+	}
+
+	/*--- Tool Tip ---*/
+	.timeline-tip{
+		display: block;
+		top: -40px;
+		width: auto;
+		z-index: 29;
+		padding: 5px 10px;
+		border: none;
+		color: #000;
+		background: #00e4e4;
+	}
+}
+
+#week-line{
+	.week-name{
+		font: 700 1.7em/1.5em "Boon-0.6";
+		color: #fff;
+
+		@media #{$small-only} {
+			text-align: center;
+		}
+	}
+	.typcn-calendar{
+		color: #fff;
+	}
+}
+
+
+/*---------------------------------
+	TIMELINE
+---------------------------------*/
+.timeline {
+	margin: 0 0 50px;
+  background-color: #3a4e5a;
+
+	padding: 10px 0;
+
+  .typcn{
+  	color: #5b8196;
+  }
+}
+
+.timeline-columns{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+
+/*---------------------------------
+	OLD VERSION
+---------------------------------*/
+/*
+#week-quarters {
+  position: absolute;
+  width: 100%;
+  z-index: 999;
+}
+
+.week-quarter {
+  padding-top: 1em;
+  padding-bottom: 0.5em;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .week-month-name {
+    color: #cdd0d3;
+    margin-bottom: 0.3em;
+  }
+
+  .columns {
+    z-index: 99;
+  }
+
+  .ghost-line {
+    width: 66.666666%;
+    left: 16.666666%;
+    display: block;
+    top: -0.54em;
+    position: relative;
+  }
+
+  background-color: #2a3b44;
+
+  .typcn-media-record {
+    color: #3a4e5a;
+  }
+
+  .ghost-line {
+    border-color: #3a4e5a;
+  }
+
+  &:hover, &.selected {
+    background-color: #3a4e5a;
+
+    .typcn-media-record {
+      color: #2a3b44;
+    }
+
+    .ghost-line {
+      border-color: #2a3b44;
+    }
+  }
+}
+
+.week-knots-quarter-button {
+  position: absolute;
+  top: 1.8em;
+  right: 0px;
+
+  background-color: #2b3b44;
+  padding: 3px;
+  border-radius: 4px;
+  color: #5e8095;
+  cursor: pointer;
+}
+
+#city-selector {
+  .button {
+    display: block;
+    font-size: 1.4em;
+  }
+}
+*/

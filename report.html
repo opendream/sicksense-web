@@ -39,25 +39,27 @@
 
   <div class="row page-report" ng-controller="ReportController">
     <div class="large-12 columns" ng-hide="reportSuccess">
-      <form>
+      <form class="report-form">
         <div class="row">
-          <div class="large-8 large-offset-2 columns">
+          <div class="large-8 large-centered columns">
             <h1>รายงานสุขภาพ</h1>
           </div>
         </div>
 
         <div class="row">
-          <div class="large-8 large-offset-2 columns">
-            <label>วันนี้คุณรู้สึกไม่สบายหรือเปล่าจ๊ะ ?</label>
-            <input type="radio" name="isFine" ng-model="isFine" value="1" id="isFineTrue"><label for="isFineTrue">สบายดี</label>
-            <input type="radio" name="isFine" ng-model="isFine" value="0" id="isFineFalse"><label for="isFineFalse">มีอาการ</label>
+          <div class="large-8 large-centered columns">
+            <p>วันนี้คุณรู้สึกไม่สบายหรือเปล่าจ๊ะ ?</p>
+            <input type="radio" name="isFine" ng-model="isFine" value="1" id="isFineTrue">
+            <label for="isFineTrue">สบายดี</label>
+            <input type="radio" name="isFine" ng-model="isFine" value="0" id="isFineFalse">
+            <label for="isFineFalse">มีอาการ</label>
             <small class="error" ng-show="invalidIsFine">กรุณาระบุข้อมูล</small>
           </div>
         </div>
 
         <div class="row symptoms" ng-show="!!isFine && isFine==false">
           <div class="large-8 large-offset-2 columns">
-            <label>มีอาการอะไรจ๊ะ ?</label>
+            <p>มีอาการอะไรจ๊ะ ?</p>
             <div class="row">
               <ul>
                 <li ng-repeat="(key, choice) in symptoms_choices">
@@ -71,7 +73,7 @@
 
         <div class="row">
           <div class="large-8 large-offset-2 columns">
-            <label>คุณได้มีการสัมผัสกับสัตว์หรือไม่ ?</label>
+            <p>คุณได้มีการสัมผัสกับสัตว์หรือไม่ ?</p>
             <input type="radio" name="animalContact" ng-model="animalContact" value="1" id="animalContactTrue"><label for="animalContactTrue">ใช่</label>
             <input type="radio" name="animalContact" ng-model="animalContact" value="0" id="animalContactFalse"><label for="animalContactFalse">ไม่ใช่</label>
             <small class="error" ng-show="invalidAnimalContact">กรุณาระบุข้อมูล</small>
@@ -122,43 +124,35 @@
     <a class="close-reveal-modal">&#215;</a>
   </div>
 
-  <div id="loginModal" class="reveal-modal login-modal small" ng-controller="LoginController" data-reveal>
+  <div id="loginModal" class="reveal-modal login-modal medium" ng-controller="LoginController" data-reveal>
     <h2>เข้าสู่ระบบ</h2>
     <a class="close-reveal-modal">&#215;</a><form>
 
     <small class="error" ng-show="invalidLogin">อีเมลและรหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง</small>
 
     <div class="row">
-      <div class="columns">
-        <div class="row">
-          <div class="large-3 columns">
-            <label class="right-label inline">อีเมล</label>
-          </div>
-          <div class="large-9 columns">
-            <input type="text" ng-model="email" placeholder="john@example.com" />
-            <small class="error" ng-show="invalidEmail">รูปแบบอีเมลไม่ถูกต้อง</small>
-          </div>
-        </div>
+      <div class="large-3 columns">
+        <label class="right-label inline">อีเมล</label>
+      </div>
+      <div class="large-9 columns">
+        <input type="text" ng-model="email" placeholder="mayom@sicksense.org" />
+        <small class="error" ng-show="invalidEmail">รูปแบบอีเมลไม่ถูกต้อง</small>
       </div>
     </div>
 
     <div class="row">
-      <div class="columns">
-        <div class="row">
-          <div class="large-3 columns">
-            <label class="right-label inline">รหัสผ่าน</label>
-          </div>
-          <div class="large-9 columns">
-            <input type="password" ng-model="password" placeholder="******" />
-            <small class="error" ng-show="invalidPassword">รหัสผ่านต้องไม่น้อยกว่า 8 ตัวอักษร</small>
-          </div>
-        </div>
+      <div class="large-3 columns">
+        <label class="right-label inline">รหัสผ่าน</label>
+      </div>
+      <div class="large-9 columns">
+        <input type="password" ng-model="password" placeholder="********" />
+        <small class="error" ng-show="invalidPassword">รหัสผ่านต้องไม่น้อยกว่า 8 ตัวอักษร</small>
       </div>
     </div>
 
     <div class="row">
-      <div class="columns">
-        <a href="#" ng-click="login()" class="round tiny button">เข้าสู่ระบบ</a>
+      <div class="large-9 large-offset-3 columns">
+        <a href="#" ng-click="login()" class="round button ss-button ss-button-modal">เข้าสู่ระบบ</a>
       </div>
     </div>
   </div>
