@@ -39,7 +39,7 @@
 
   <div class="row page-report" ng-controller="ReportController">
     <div class="large-12 columns" ng-hide="reportSuccess">
-      <form class="report-form">
+      <form class="report-form container-block">
         <div class="row">
           <div class="large-8 large-centered columns">
             <h1>รายงานสุขภาพ</h1>
@@ -83,7 +83,7 @@
         <div class="row">
           <div class="large-8 large-offset-2 columns">
             <label>รายละเอียดเพิ่มเติม
-              <textarea name="moreInfo" ng-model="moreInfo"></textarea>
+              <textarea name="moreInfo" ng-model="moreInfo" class="txt-moreinfo"></textarea>
             </label>
           </div>
         </div>
@@ -97,11 +97,12 @@
     </div>
 
     <div class="large-12 columns" ng-show="reportSuccess">
-      <h1 class="text-center">ขอบคุณสำหรับการรายงานสุขภาพ</h1>
-      <h3 class="subheader text-center">{{ symptoms_summary }}</h3>
-      <hr />
-      <h4 class="subheader text-center">ข้อมูลของคุณได้มีส่วนร่วมในการแสดงสถานการณ์สุขภาพในประเทศไทย</h4>
-      <p class="text-center"><a class="button" href="/frontpage.html">ดูสถานการณ์สุขภาพ</a></p>
+      <div class="panel radius reportSuccess container-block">
+          <h2 class="text-center">ขอบคุณสำหรับการรายงานสุขภาพ</h2>
+          <h3 class="text-center">คุณ{{ symptoms_summary }}</h3>
+          <p class="text-center">ข้อมูลของคุณได้มีส่วนร่วมในการแสดงสถานการณ์สุขภาพในประเทศไทย</p>
+          <div class="text-center"><a class="button ss-button round" href="/frontpage.html">ดูสถานการณ์สุขภาพ</a></div>
+      </div>
     </div>
   </div>
 

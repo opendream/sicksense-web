@@ -10,9 +10,11 @@
 }
 
 .report-form{
-   @extend .register-form;
-    
     p{
         font-size: 1.2em;
     }
+}
+
+.txt-moreinfo{
+    height: 100px;
 }

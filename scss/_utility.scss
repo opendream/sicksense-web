@@ -26,6 +26,13 @@
 .no-bullet{
 	margin-bottom: 0;
 }
+.container-block{
+    margin-top: 50px;
+
+	@media #{$medium-only}, #{$small-only} {
+		margin-top: 20px;
+	}
+}
 
 /*---For typcn-icon dropdown menu ---*/
 .rotate::before{
