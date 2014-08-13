@@ -57,12 +57,12 @@
           </div>
         </div>
 
-        <div class="row symptoms" ng-show="!!isFine && isFine==false">
-          <div class="large-8 large-offset-2 columns">
+        <div class="row" ng-show="!!isFine && isFine==false">
+          <div class="large-8 large-centered columns">
             <p>มีอาการอะไรจ๊ะ ?</p>
             <div class="row">
-              <ul>
-                <li ng-repeat="(key, choice) in symptoms_choices">
+              <ul class="symptoms-list">
+                <li class="symptoms-item" ng-repeat="(key, choice) in symptoms_choices">
                   <img src="{{ choice.imageCurrent }}" ng-click="toggleImage(choice)" />
                 </li>
               </ul>
@@ -90,7 +90,7 @@
 
         <div class="row">
           <div class="large-8 large-offset-2 columns">
-            <a href="#" ng-click="submit()" class="button tiny round">บันทึก</a>
+            <a href="#" ng-click="submit()" class="button ss-button round">บันทึก</a>
           </div>
         </div>
       </form>
