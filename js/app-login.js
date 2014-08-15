@@ -54,13 +54,16 @@
 
             $http.post($scope.loginURL, params)
                 .success(function(resp) {
-                    $('#loginModal').foundation('reveal', 'close');
                     $.cookie('accessToken', resp.response.accessToken);
                     $.cookie('userId', resp.response.id);
                     $scope.shared.loggedIn = true;
                     $scope.submitting = false;
                     $scope.email = '';
                     $scope.password = '';
+
+                    if (_.has($scope.query, 'redirect') && $scope.query.redirect) {
+                        window.location = BASE_URL + '/' + $scope.query.redirect;
+                    }
                 })
                 .error(function(resp) {
                     $scope.submitting = false;
@@ -73,10 +76,20 @@
         };
 
         $scope.checkModal = function() {
-            var query = window.location.search.substr(1);
-            if (query === 'success') {
+            if (_.has($scope.query, 'login')) {
                 $('#loginModal').foundation('reveal', 'open');
             }
+        };
+
+        $scope.buildQuery = function() {
+            var queryString = window.location.search.substr(1);
+            var queries = queryString.split('&');
+            var results = {};
+            queries.forEach(function(query) {
+                var tmp = query.split('=');
+                results[tmp[0]] = tmp[1];
+            });
+            $scope.query = results;
         };
 
         $scope.checkLogin = function() {
@@ -90,16 +103,26 @@
                 $http.get(url)
                     .success(function(resp) {
                         $scope.shared.loggedIn = true;
+                        $scope.shared.state = 'login';
+
+                        if (_.has($scope.query, 'redirect') && $scope.query.redirect) {
+                            window.location = BASE_URL + '/' + $scope.query.redirect;
+                        }
                     })
                     .error(function(resp) {
+                        $scope.shared.loggedIn = false;
+                        $.removeCookie('accessToken');
+                        $.removeCookie('userId');
                         $scope.checkModal();
                     });
             }
             else {
+                $scope.shared.loggedIn = false;
                 $scope.checkModal();
             }
         };
 
+        $scope.buildQuery();
         $scope.checkLogin();
 
     }]);

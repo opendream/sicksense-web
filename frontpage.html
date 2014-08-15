@@ -28,7 +28,7 @@
     <nav class="top-bar slideInDown animated " data-topbar role="navigation">
       <ul class="title-area">
         <li class="name">
-          <h1><a href="#" class="logo">SickSense</a></h1>
+          <h1><a href="/" class="logo">SickSense</a></h1>
         </li>
         <li class="toggle-topbar menu-icon"><a href="#"><span>เมนู</span></a></li>
       </ul>
@@ -198,39 +198,39 @@
   
     <div id="loginModal" class="reveal-modal login-modal medium" ng-controller="LoginController" data-reveal>
     <h2>เข้าสู่ระบบ</h2>
-    <a class="close-reveal-modal">&#215;</a><form>
-    
-    <div class="row">
-      <div class="large-12 columns">
-        <small class="error" ng-show="invalidLogin">อีเมลและรหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง</small>
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="large-3 columns">
-        <label class="right-label inline">อีเมล</label>
-      </div>
-      <div class="large-9 columns">
-        <input type="text" ng-model="email" placeholder="mayom@sicksense.org" />
-        <small class="error" ng-show="invalidEmail">รูปแบบอีเมลไม่ถูกต้อง</small>
-      </div>
-    </div>
+    <a class="close-reveal-modal">&#215;</a>
 
-    <div class="row">
-      <div class="large-3 columns">
-        <label class="right-label inline">รหัสผ่าน</label>
-      </div>
-      <div class="large-9 columns">
-        <input type="password" ng-model="password" placeholder="********" />
-        <small class="error" ng-show="invalidPassword">รหัสผ่านต้องไม่น้อยกว่า 8 ตัวอักษร</small>
-      </div>
-    </div>
+    <p class="text-center" ng-show="shared.loggedIn">เข้าสู่ระบบเรียบร้อยแล้ว</p>
+    
+    <form ng-submit="login()" ng-hide="shared.loggedIn">
+      <small class="error" ng-show="invalidLogin">อีเมลและรหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง</small>
 
-    <div class="row">
-      <div class="large-9 large-offset-3 columns">
-        <a href="#" ng-click="login()" class="button ss-button ss-button-modal">เข้าสู่ระบบ</a>
+      <div class="row">
+        <div class="large-3 columns">
+          <label class="right-label inline">อีเมล</label>
+        </div>
+        <div class="large-9 columns">
+          <input type="text" ng-model="email" placeholder="mayom@sicksense.org" />
+          <small class="error" ng-show="invalidEmail">รูปแบบอีเมลไม่ถูกต้อง</small>
+        </div>
       </div>
-    </div>
+
+      <div class="row">
+        <div class="large-3 columns">
+          <label class="right-label inline">รหัสผ่าน</label>
+        </div>
+        <div class="large-9 columns">
+          <input type="password" ng-model="password" placeholder="********" />
+          <small class="error" ng-show="invalidPassword">รหัสผ่านต้องไม่น้อยกว่า 8 ตัวอักษร</small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-9 large-offset-3 columns">
+          <input type="submit" class="button ss-button ss-button-modal" value="เข้าสู่ระบบ" />
+        </div>
+      </div>
+    </form>
   </div>
 
   <script src="/bower_components/d3/d3.min.js"></script>

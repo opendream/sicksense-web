@@ -100,7 +100,11 @@
             var isFirstTime = newValue === undefined && newValue == oldValue;
 
             if (!isFirstTime && !newValue) {
-                window.location = '/?success';
+                var redirectURL = HOME_URL;
+                if ($scope.shared.state != 'logout') {
+                    redirectURL += '?login&redirect=report.html';
+                }
+                window.location = redirectURL;
             }
         });
 

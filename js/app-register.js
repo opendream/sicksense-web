@@ -10,7 +10,7 @@
 
         $scope.$watch('shared.loggedIn', function(newValue, oldValue) {
             if (newValue) {
-                window.location = '/frontpage.html';
+                window.location = HOME_URL;
             }
         });
 
@@ -97,7 +97,7 @@
 
             $http.post($scope.registerURL, params)
                 .success(function(resp) {
-                    window.location = '/?success';
+                    window.location = HOME_URL + '?login';
                 })
                 .error(function(resp) {
                     if (resp.meta.status == 409) {

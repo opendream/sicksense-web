@@ -5,6 +5,7 @@
 
         $scope.logout = function() {
             $scope.shared.loggedIn = false;
+            $scope.shared.state = 'logout';
             $.removeCookie('accessToken');
             $.removeCookie('userId');
         };

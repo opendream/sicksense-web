@@ -1,4 +1,6 @@
 var API_BASEPATH = "//localhost:1337";
+var BASE_URL = "//www.sicksense.org/";
+var HOME_URL = BASE_URL;
 var MAP_TILE_URL = "//{s}.tile.osm.org/{z}/{x}/{y}.png";
 var MAP_TILE_PARAMS = {
     access_token: ''
