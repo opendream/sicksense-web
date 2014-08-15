@@ -138,7 +138,8 @@
         self.xhr.abort();
       }
 
-      self.xhr = $.getJSON(API_BASEPATH + '/dashboard/now?includeReports=1&callback=?', { city: city.properties.en, date: dateStr })
+      // self.xhr = $.getJSON(API_BASEPATH + '/dashboard/now?includeReports=1&callback=?', { city: city.properties.en, date: dateStr })
+      self.xhr = $.getJSON(API_BASEPATH + '/dashboard/now?includeReports=1&callback=?', { city: city.properties.en })
         .done(function(resp) {
           self.response = resp.response;
           $rootScope.$broadcast('data.refresh', self);
