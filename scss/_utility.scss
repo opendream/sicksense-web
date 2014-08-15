@@ -1,6 +1,8 @@
 /*---------------------------------
 	Utility Classes
 ---------------------------------*/
+@import "settings";
+
 .block{
 	margin-bottom: 2.5em;
 }
@@ -11,12 +13,12 @@
 }
 .inline-list{
   margin: 0;
-  
+
 	li{
 	  display: inline-block;
 	  margin: 0 10px 0 0;
 		font-size: .85em;
-	}	
+	}
 }
 .block-list{
 	margin: 0;
@@ -64,14 +66,14 @@
 	margin: 0 10px 0 0;
 	vertical-align: middle;
 	background-color: #ccc;
-	
+
 	&.big{}
 	&.small{}
-	
+
 	&.gray{ background-color: #00aeae; }
 	&.red{ background-color: #dc0029; }
 	&.orange{ background-color: #fdd167; }
-	&.light-gray{ background-color: #59eded; }	
+	&.light-gray{ background-color: #59eded; }
 }
 
 
@@ -83,7 +85,7 @@
 	color: #333;
 	background: #00e4e4;
 	z-index: 10;
-	
+
 	> .nub{
 		display: none;
 		left: 5%;
