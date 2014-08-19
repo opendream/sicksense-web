@@ -52,6 +52,9 @@ app.controller('GraphController', [ '$scope', '$rootScope', function ($scope, $r
     })
     .y(function (d) {
       return y(d.value);
+    })
+    .defined(function (d) {
+      return d.value !== null;
     });
 
   var svg = d3.select('#chart')
@@ -84,11 +87,10 @@ app.controller('GraphController', [ '$scope', '$rootScope', function ($scope, $r
     var latestDate = moment(_.last(BOE).date).toDate();
     var customTimeFormat = timeFormat.multi([
       ['',      function (d) { return d.getTime() == oldestDate.getTime(); }],
-      ["%_d %b", function (d) { return d.getTime() != latestDate.getTime(); }],
-      ["สัปดาห์", function (d) { return d.getTime() == latestDate.getTime(); }]
+      ["%_d %b", function (d) { return true; }]
     ]);
 
-    x.domain(d3.extent(BOE, function (d) { return d.date; }));
+    x.domain(d3.extent(SickSense, function (d) { return d.date; }));
     // Find max `y`.
     var maxBOE = _.max(_.pluck(BOE, 'value'));
     var maxSickSense = _.max(_.pluck(SickSense, 'value'));
@@ -96,7 +98,7 @@ app.controller('GraphController', [ '$scope', '$rootScope', function ($scope, $r
     maxY = _.max([maxY, GRAPH_MAX_Y]);
     y.domain([0, maxY]);
 
-    xAxis.tickValues(_.pluck(BOE, 'date'));
+    xAxis.tickValues(_.pluck(SickSense, 'date'));
     xAxis.tickSize(0, 0);
     xAxis.tickFormat(customTimeFormat);
 
