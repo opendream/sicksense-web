@@ -77,13 +77,17 @@
 
     Dashboard.prototype.cityLayer = null;
     Dashboard.prototype.drawCity = function(geometry) {
+      this.clearCityOutline();
+      var cityLayer = this.cityLayer;
+      // Then draw the new one.
+      cityLayer.addLayer(L.geoJson(geometry, { style: CITY_POLYGON_STYLE }));
+    };
+    Dashboard.prototype.clearCityOutline = function() {
       var cityLayer = this.cityLayer;
       // Clear all city.
       cityLayer.eachLayer(function(layer) {
         cityLayer.removeLayer(layer);
       });
-      // Then draw the new one.
-      cityLayer.addLayer(L.geoJson(geometry, { style: CITY_POLYGON_STYLE }));
     };
 
     // ----
@@ -139,7 +143,8 @@
       }
 
       // self.xhr = $.getJSON(API_BASEPATH + '/dashboard/now?includeReports=1&callback=?', { city: city.properties.en, date: dateStr })
-      self.xhr = $.getJSON(API_BASEPATH + '/dashboard/now?includeReports=1&callback=?', { city: city.properties.en })
+      // self.xhr = $.getJSON(API_BASEPATH + '/dashboard/now?includeReports=1&callback=?', { city: city.properties.en })
+      self.xhr = $.getJSON(API_BASEPATH + '/dashboard?includeReports=1&callback=?', { city: 'all' })
         .done(function(resp) {
           self.response = resp.response;
           $rootScope.$broadcast('data.refresh', self);
@@ -388,17 +393,40 @@
       Foundation.libs.dropdown.closeall();
       $scope.city = city;
 
-      dashboard.drawCity(city.geometry);
+      var bounds;
 
-      // Swap lat <-> lng position.
-      var bounds = [
-        [ city.bbox[1], city.bbox[0] ],
-        [ city.bbox[3], city.bbox[2] ]
-      ];
+      if (city != 'all') {
+        dashboard.drawCity(city.geometry);
+
+        // Swap lat <-> lng position.
+        bounds = [
+          [ city.bbox[1], city.bbox[0] ],
+          [ city.bbox[3], city.bbox[2] ]
+        ];
+
+      }
+      else {
+        dashboard.clearCityOutline();
+
+        bounds = [
+          [ 20.876665, 97.000854 ],
+          [ 5.285034, 106.130493 ]
+        ];
+      }
+
+      var paddingTopLeft;
+      if (matchMedia(Foundation.media_queries['large']).matches) {
+        paddingTopLeft = [200, 0];
+      }
+      else {
+        paddingTopLeft = [0, 100];
+      }
+
       dashboard.map.fitBounds(bounds, {
         maxZoom: 19,
         animate: true,
-        duration: 1
+        duration: 1,
+        paddingTopLeft: paddingTopLeft
       });
     };
 
