@@ -401,7 +401,8 @@
       if (city == 'all') {
         $scope.city = {
           properties: {
-            th: 'ทั้งประเทศ'
+            th: 'ทั้งประเทศ',
+            en: 'all'
           }
         };
       }
