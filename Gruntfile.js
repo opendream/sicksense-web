@@ -33,19 +33,19 @@ module.exports = function(grunt) {
         livereload: true
       }
     },
-    
+
     'http-server': {
       'dev': {
         root: './',
-        
+
         port: 8282,
-        
+
         host: '0.0.0.0',
-        
+
         showDir: true,
         autoIndex: true,
         defaultExt: 'html',
-        
+
         runInBackground: true
       }
     },
@@ -54,7 +54,8 @@ module.exports = function(grunt) {
       compile: {
         files: {
           'dist/js/region.min.json': 'js/region.json',
-          'dist/js/provinces.min.json': 'js/provinces.json'
+          'dist/js/provinces.min.json': 'js/provinces.json',
+          'dist/js/thailand.min.json': 'js/thailand.json'
         }
       }
     }

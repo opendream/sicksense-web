@@ -351,6 +351,7 @@
 
     $scope.regions = [];
     $scope.city = null;
+    $scope.thailandShape = null;
 
     async.parallel([
       function(callback) {
@@ -362,6 +363,12 @@
       function(callback) {
         $.getJSON('/dist/js/provinces.min.json', function(resp) {
           provinces = resp.features;
+          callback();
+        });
+      },
+      function(callback) {
+        $.getJSON('/dist/js/thailand.min.json', function(resp) {
+          $scope.thailandShape = resp;
           callback();
         });
       }
@@ -390,9 +397,20 @@
 
     $scope.setCity = function(city) {
       Foundation.libs.dropdown.closeall();
-      $scope.city = city;
+
+      if (city == 'all') {
+        $scope.city = {
+          properties: {
+            th: 'ทั้งประเทศ'
+          }
+        };
+      }
+      else {
+        $scope.city = city;
+      }
 
       var bounds;
+      var bbox;
 
       if (city != 'all') {
         dashboard.drawCity(city.geometry);
@@ -405,11 +423,12 @@
 
       }
       else {
-        dashboard.clearCityOutline();
+        dashboard.drawCity($scope.thailandShape.features);
+        bbox = $scope.thailandShape.bbox;
 
         bounds = [
-          [ 20.876665, 97.000854 ],
-          [ 5.285034, 106.130493 ]
+          [ bbox[1], bbox[0] ],
+          [ bbox[3], bbox[2] ]
         ];
       }
 
