@@ -79,6 +79,9 @@
                 	</ul>
               	</li>
               </ul>
+              <div class="">
+                <a ng-click="setCity('all')">ทั้งประเทศ</a>
+              </div>
             </div> <!--End Dropdown-->
 
             <div class="ili-stat" ng-controller="ILIController">
@@ -195,13 +198,13 @@
     <p>Sicksense จะเก็บแต่ข้อมูลนิรนามของผู้ใช้และจะใช้งานข้อมูลเหล่านั้นเพื่อการวิเคราะห์หาสัญญาณของโรคระบาดอุบัติใหม่ที่ไม่ใช่เพื่อผลประโยชน์ทางการค้าเท่านั้น</p>
     <a class="close-reveal-modal">&#215;</a>
   </div>
-  
+
     <div id="loginModal" class="reveal-modal login-modal medium" ng-controller="LoginController" data-reveal>
     <h2>เข้าสู่ระบบ</h2>
     <a class="close-reveal-modal">&#215;</a>
 
     <p class="text-center" ng-show="shared.loggedIn">เข้าสู่ระบบเรียบร้อยแล้ว</p>
-    
+
     <form ng-submit="login()" ng-hide="shared.loggedIn">
       <small class="error" ng-show="invalidLogin">อีเมลและรหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง</small>
 
