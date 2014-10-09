@@ -71,6 +71,23 @@
 	}
 }
 
+/*--- Buuton for all provinces ---*/
+.provinces-all a{
+    display: block;
+    width: 932px;
+    padding: 5px 0;
+    text-align: center;
+    background-color: #e4e4e4;
+    
+    &:hover{
+        background-color: #cecece;
+    }
+    
+    @media only screen and (max-width:64.063em) {
+		width: auto;
+    }
+}
+
 /*--- For Mobile ---*/
 .provinces-for-mobile{
 	dd > a{
@@ -86,11 +103,15 @@
 		padding: 0 1em .5em 1em;
 
 		@media #{$medium-only} {
-			/*width: ;*/
 		}
 
 		@media #{$small-only} {
 			width: 33%;
 		}
 	}
+}
+
+/*--- City drop is a wrapper for provinces list ---*/
+.city-dropdown{
+    background: transparent;
 }
