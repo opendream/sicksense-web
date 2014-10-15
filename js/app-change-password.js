@@ -72,11 +72,14 @@
 
             $http.post($scope.changePasswordURL, params)
                 .success(function(resp) {
-                    window.location = HOME_URL;
+                    // TODO: UPDATE NEW ACCESS TOKEN
+                    $scope.submitStatus = 'completed';
+                    $scope.submitting = false;
                 })
                 .error(function(resp) {
                     // TODO: CHECK IF OLD PASSWORD IS WRONG
                     // $scope.wrongOldPassword = true;
+                    $scope.submitStatus = 'failed';
                     $scope.submitting = false;
                 });
         };

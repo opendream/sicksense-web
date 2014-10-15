@@ -105,9 +105,11 @@
 
             $http.post($scope.userURL, data, {params: params})
                 .success(function(resp) {
-                    // window.location = HOME_URL + '?login';
+                    $scope.submitStatus = 'completed';
+                    $scope.submitting = false;
                 })
                 .error(function(resp) {
+                    $scope.submitStatus = 'failed';
                     $scope.submitting = false;
                 });
         };
