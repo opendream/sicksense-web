@@ -34,6 +34,7 @@
                         $scope.city = resp.response.address.city;
                         $scope.district = resp.response.address.district;
                         $scope.subdistrict = resp.response.address.subdistrict;
+                        $scope.subscribe = resp.response.isSubscribed;
                     })
                     .error(function(resp) {
                         console.log('Error get user detail', resp);
