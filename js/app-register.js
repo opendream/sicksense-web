@@ -24,6 +24,8 @@
         $scope.$watch('city', function(newValue, oldValue) {
             if (newValue) {
                 $scope.districts = locations[newValue].amphoes;
+                $scope.district = '';
+                $scope.subdistrict = '';
             }
             else {
                 $scope.districts = [];
@@ -34,6 +36,7 @@
         $scope.$watch('district', function(newValue, oldValue) {
             if (newValue) {
                 $scope.subdistricts = locations[$scope.city][newValue];
+                $scope.subdistrict = '';
             }
             else {
                 $scope.subdistricts = [];

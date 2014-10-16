@@ -8,13 +8,15 @@
         $scope.shared = shared;
         var accessToken = $.cookie('accessToken');
 
+        var isSetAddress = false;
+
         $scope.$watch('shared.loggedIn', function(newValue, oldValue) {
             var isFirstTime = newValue === undefined && newValue == oldValue;
 
             if (!isFirstTime && !newValue) {
                 var redirectURL = HOME_URL;
                 if ($scope.shared.state != 'logout') {
-                    redirectURL += '?login&redirect=edit_profile.html';
+                    redirectURL += '?login&redirect=edit-profile.html';
                 }
                 window.location = redirectURL;
             }
@@ -35,6 +37,10 @@
                         $scope.district = resp.response.address.district;
                         $scope.subdistrict = resp.response.address.subdistrict;
                         $scope.subscribe = resp.response.isSubscribed;
+
+                        setTimeout(function () {
+                            isSetAddress = true;
+                        }, 1);
                     })
                     .error(function(resp) {
                         console.log('Error get user detail', resp);
@@ -55,6 +61,11 @@
         $scope.$watch('city', function(newValue, oldValue) {
             if (newValue) {
                 $scope.districts = locations[newValue].amphoes;
+
+                if (isSetAddress) {
+                    $scope.district = '';
+                    $scope.subdistrict = '';
+                }
             }
             else {
                 $scope.districts = [];
@@ -65,6 +76,10 @@
         $scope.$watch('district', function(newValue, oldValue) {
             if (newValue) {
                 $scope.subdistricts = locations[$scope.city][newValue];
+
+                if (isSetAddress) {
+                    $scope.subdistrict = '';
+                }
             }
             else {
                 $scope.subdistricts = [];
