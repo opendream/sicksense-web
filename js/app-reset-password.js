@@ -1,8 +1,8 @@
 ;(function ($, window, document, undefined) {
 
     app.controller('ResetPasswordController', [ '$scope', '$http', 'shared', function($scope, $http, shared) {
-        $scope.resetPasswordURL = API_BASEPATH + '/reset_password/';
-        $scope.checkResetPasswordURL = API_BASEPATH + '/check_reset_password/';
+        $scope.resetPasswordURL = API_BASEPATH + '/users/reset-password/';
+        $scope.validateTokenURL = API_BASEPATH + '/onetimetoken/validate/';
         $scope.password = '';
         $scope.repassword = '';
         $scope.shared = shared;
@@ -18,9 +18,10 @@
             if (token) {
                 var params = {
                     token: token,
+                    type: 'user.resetPassword'
                 };
 
-                $http.post($scope.checkResetPasswordURL, params)
+                $http.post($scope.validateTokenURL, params)
                     .success(function(resp) {})
                     .error(function(resp) {
                         window.location = HOME_URL;
@@ -56,11 +57,15 @@
 
             var params = {
                 password: $scope.password,
+                token: getParameterByName('token')
             };
 
             $http.post($scope.resetPasswordURL, params)
                 .success(function(resp) {
-                    window.location = HOME_URL + '?login';
+                    $.cookie('accessToken', resp.response.user.accessToken);
+                    $.cookie('userId', resp.response.user.id);
+                    $scope.shared.loggedIn = true;
+                    window.location = HOME_URL;
                 })
                 .error(function(resp) {
                     console.log(resp);

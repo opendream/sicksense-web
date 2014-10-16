@@ -1,7 +1,7 @@
 ;(function ($, window, document, undefined) {
 
     app.controller('ForgotPasswordController', [ '$scope', '$http', 'shared', function($scope, $http, shared) {
-        $scope.forgotPasswordURL = API_BASEPATH + '/users/forgotpassword';
+        $scope.forgotPasswordURL = API_BASEPATH + '/users/forgot-password';
         $scope.email = '';
         $scope.shared = shared;
 
