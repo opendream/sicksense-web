@@ -35,6 +35,19 @@
 		margin-top: 20px;
 	}
 }
+.row-full-width{
+    max-width: 100%;
+    
+    .columns{
+        padding: 0;
+    }
+    .row{
+        margin: 0;
+    }
+}
+.p-20{
+    padding: 0 20px;
+}
 
 /*---For typcn-icon dropdown menu ---*/
 .rotate::before{

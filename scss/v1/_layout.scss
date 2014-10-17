@@ -49,3 +49,47 @@
 	border: 1px solid #ddd;
 	background: rgba(255, 255, 255, 0.8);
 }
+
+
+/*---------------------------------
+	FILTER WRAPPER
+---------------------------------*/
+.secondnary-bar{
+    height: 45px;
+    padding: 10px 20px;
+    color: #fff;
+    background: #282828;
+}
+
+.off-canvas-wrap, .inner-wrap{
+    height: 100%;
+}
+
+.symptoms-stat-list{
+    li{
+        background-color: transparent !important;
+        margin: 0;
+        padding: 0 0.71429rem 1.42857rem !important;
+    }
+}
+.symptoms-stat-name{
+    border-bottom: 3px solid #ccc;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.hidden-button{
+    @media only screen and (max-width: 735px){
+        display: none;
+    }
+}
+
+.ili-stat{
+    p{
+        margin-bottom: 5px;
+    }
+}
+.ili-stat-value{
+    font-size: 24px;
+    font-weight: bold;
+}
