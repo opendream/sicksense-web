@@ -1,0 +1,37 @@
+@import "settings";
+@import "mixin";
+
+
+/*--- Defualt Button Style ---*/
+.ss-button{
+    border-radius: 5px;
+    padding: 7px 20px;
+    font-family: "Boon-0.6", sans-serif;
+    background-color: #00aeae;
+    
+    &:hover{
+        background-color: #007C7C;
+    }
+}
+.ss-button-full-width{
+    width: 100%;
+}
+
+.ss-button-modal{
+    
+    /*--- Make full width ---*/
+	@media #{$medium-only}, #{$small-only} {
+		margin-left: 0;
+        width: 100%;
+	}
+}
+
+
+/*---------------------------------
+	HIDE REPORT BUTTON ON FRONTPAGE
+---------------------------------*/
+.hidden-button{
+    @media only screen and (max-width: 735px){
+        display: none;
+    }
+}
