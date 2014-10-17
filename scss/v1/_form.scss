@@ -1,7 +1,10 @@
 @import "settings";
 @import "mixin";
 
-.register-form{
+.register-form,
+.reset-password-form,
+.change-password-form,
+.edit-profile-form {
     padding-top: 50px;
 
 	@media #{$medium-only}, #{$small-only} {
@@ -9,7 +12,10 @@
 	}
 }
 
-.report-form{
+.report-form,
+.reset-password-form,
+.change-password-form,
+.edit-profile-form {
     p{
         font-size: 1.2em;
     }
