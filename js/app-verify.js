@@ -4,6 +4,8 @@
 
 app.controller('VerifyController', function ($scope, $http, shared) {
     $scope.verifyPasswordURL = API_BASEPATH + '/users/verify/';
+    $scope.verifySuccess = false;
+    $scope.verifyFail = false;
     $scope.shared = shared;
 
     $http.post($scope.verifyPasswordURL, {
@@ -16,7 +18,7 @@ app.controller('VerifyController', function ($scope, $http, shared) {
         $scope.shared.loggedIn = true;
     })
     .error(function (resp) {
-        $scope.verifySuccess = false;
+        $scope.verifyFail = true;
     });
 
 });

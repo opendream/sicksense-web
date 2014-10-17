@@ -40,7 +40,7 @@
   <div class="row page-report" ng-controller="VerifyController">
 
     <div class="large-12 columns" ng-show="verifySuccess">
-      <div class="panel radius reportSuccess container-block">
+      <div class="panel radius container-block">
           <h2 class="text-center">อีเมลของคุณได้รับการยืนยันแล้ว</h2>
           <div class="text-center">
             <p>เข้าสู่ระบบเรียบร้อยแล้ว</p>
@@ -49,8 +49,8 @@
       </div>
     </div>
 
-    <div class="large-12 columns" ng-hide="verifySuccess">
-      <div class="panel radius reportSuccess container-block">
+    <div class="large-12 columns" ng-show="verifyFail">
+      <div class="panel radius container-block">
           <h2 class="text-center">เกิดข้อผิดพลาดในการยืนยันอีเมล</h2>
 
           <div class="row"><div class="large-6 columns push-3">
