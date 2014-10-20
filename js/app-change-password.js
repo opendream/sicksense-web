@@ -1,7 +1,7 @@
 ;(function ($, window, document, undefined) {
 
     app.controller('ChangePasswordController', [ '$scope', '$http', 'shared', function($scope, $http, shared) {
-        $scope.changePasswordURL = API_BASEPATH + '/change_password/';
+        $scope.changePasswordURL = API_BASEPATH + '/users/' + $.cookie('userId') + '/change-password';
         $scope.getUserURL = API_BASEPATH + '/users/' + $.cookie('userId');
         $scope.oldpassword = '';
         $scope.password = '';
@@ -65,20 +65,25 @@
 
             $scope.submitting = true;
 
-            var params = {
-                oldpassword: $scope.oldpassword,
-                password: $scope.password,
+            var params = {accessToken: $.cookie('accessToken')}
+
+            var data = {
+                oldPassword: $scope.oldpassword,
+                newPassword: $scope.password,
             };
 
-            $http.post($scope.changePasswordURL, params)
+            $http.post($scope.changePasswordURL, data, {
+                    params: params
+                })
                 .success(function(resp) {
-                    // TODO: UPDATE NEW ACCESS TOKEN
+                    $.cookie('accessToken', resp.response.accessToken);
                     $scope.submitStatus = 'completed';
                     $scope.submitting = false;
                 })
                 .error(function(resp) {
-                    // TODO: CHECK IF OLD PASSWORD IS WRONG
-                    // $scope.wrongOldPassword = true;
+                    if (resp.error.statusCode == 403) {
+                       $scope.wrongOldPassword = true;
+                    }
                     $scope.submitStatus = 'failed';
                     $scope.submitting = false;
                 });
