@@ -45,7 +45,7 @@
 
 @import "layout";
 @import "modal";
-@import "font";
+@import "../shared/font";
 @import "button";
 @import "form";
 @import "utility";
@@ -61,7 +61,7 @@
 @import "symptoms";
 @import "chart";
 
-@import "supported_browser";
+@import "../shared/supported_browser";
 
 ng-cloak {
   display: none !important;

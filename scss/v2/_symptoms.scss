@@ -1,0 +1,17 @@
+@import "settings";
+
+/*---------------------------------
+	SYMPTOMS
+---------------------------------*/
+.symptoms-stat-list{
+    li{
+        background-color: transparent !important;
+        margin: 0;
+        padding: 0 0.71429rem 1.42857rem !important;
+    }
+}
+.symptoms-stat-name{
+    border-bottom: 3px solid #ccc;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
