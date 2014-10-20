@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/bower_components/typicons/src/font/typicons.min.css" />
   <link rel="stylesheet" href="/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css" />
   <link rel="stylesheet" href="/bower_components/jqueryui/themes/ui-lightness/jquery-ui.min.css" />
-  <link rel="stylesheet" href="/css/app.css" />
+  <link rel="stylesheet" href="/css/v1/app.css" />
   <script src="/bower_components/modernizr/modernizr.js"></script>
   <script src="/bower_components/angular/angular.js"></script>
 
@@ -93,7 +93,7 @@
                 <label class="right-label inline">ปีเกิด (พ.ศ.)</label>
               </div>
               <div class="large-9 columns">
-                <select ng-model="year" ng-options="k as v for (k, v) in yearOptions"></select>
+                <select ng-model="year" ng-options="k as v for (k, v) in yearOptions"  class="no-margin"></select>
                 <small class="error" ng-show="invalidYear">กรุณาเลือกปีเกิด</small>
               </div>
             </div>
@@ -106,8 +106,8 @@
                 <label class="right-label inline">จังหวัด</label>
               </div>
               <div class="large-9 columns">
-                <select id="city" name="city" ng-model="city">
-                  <option ng-repeat="city in cityOptions" value="{{ city.key }}">{{ city.value }}</option>
+                <select id="city" name="city" ng-model="city" class="no-margin">
+                  <option ng-repeat="city in cityOptions" value="{{ city.key }}" class="no-margin">{{ city.value }}</option>
                 </select>
                 <small class="error" ng-show="invalidCity">กรุณาเลือกจังหวัด</small>
               </div>
@@ -121,7 +121,7 @@
                 <label class="right-label inline">อำเภอ</label>
               </div>
               <div class="large-9 columns">
-                <select id="district" name="district" ng-model="district">
+                <select id="district" name="district" ng-model="district" class="no-margin">
                   <option ng-repeat="districtChoice in districts" value="{{ districtChoice.key }}" ng-selected="district == districtChoice.key">{{ districtChoice.value }}</option>
                 </select>
                 <small class="error" ng-show="invalidDistrict">กรุณาเลือกอำเภอ</small>
@@ -136,7 +136,7 @@
                 <label class="right-label inline">ตำบล</label>
               </div>
               <div class="large-9 columns">
-                <select id="subdistrict" name="subdistrict" ng-model="subdistrict">
+                <select id="subdistrict" name="subdistrict" ng-model="subdistrict" class="no-margin">
                   <option ng-repeat="subdistrictChoice in subdistricts" value="{{ subdistrictChoice.key }}" ng-selected="subdistrict == subdistrictChoice.key">{{ subdistrictChoice.value }}</option>
                 </select>
                 <small class="error" ng-show="invalidSubdistrict">กรุณาเลือกตำบล</small>
