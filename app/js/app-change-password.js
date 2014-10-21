@@ -14,7 +14,7 @@
             if (!isFirstTime && !newValue) {
                 var redirectURL = HOME_URL;
                 if ($scope.shared.state != 'logout') {
-                    redirectURL += '?login&redirect=change-password.html';
+                    redirectURL += '/login.html?redirect=change-password.html';
                 }
                 window.location = redirectURL;
             }

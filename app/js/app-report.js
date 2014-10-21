@@ -102,7 +102,7 @@
             if (!isFirstTime && !newValue) {
                 var redirectURL = HOME_URL;
                 if ($scope.shared.state != 'logout') {
-                    redirectURL += '?login&redirect=report.html';
+                    redirectURL += '/login.html?redirect=report.html';
                 }
                 window.location = redirectURL;
             }

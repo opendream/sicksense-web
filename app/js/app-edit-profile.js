@@ -16,7 +16,7 @@
             if (!isFirstTime && !newValue) {
                 var redirectURL = HOME_URL;
                 if ($scope.shared.state != 'logout') {
-                    redirectURL += '?login&redirect=edit-profile.html';
+                    redirectURL += '/login.html?redirect=edit-profile.html';
                 }
                 window.location = redirectURL;
             }
