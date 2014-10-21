@@ -28,10 +28,55 @@ module.exports = function(grunt) {
           expand: true,
           cwd: 'app/scss',
           src: [ '**/*.scss' ],
-          dest: 'build/css',
+          dest: 'app/css',
           ext: '.css'
         }]
       },
+    },
+
+    // assemble: {
+    //   options: {
+    //     assets: 'app',
+    //     partials: [ 'app/partials', 'app/layouts' ],
+    //     layout: false
+    //   },
+    //   pages: {
+    //     src: [ 'app/*.hbs' ],
+    //     dest: 'build'
+    //   }
+    // },
+
+    copy: {
+      prod: {
+        files: [{
+          expand: true,
+          cwd: 'app',
+          src: '*.html',
+          dest: 'build'
+        }]
+      }
+    },
+
+    useminPrepare: {
+      html: 'app/index.html',
+      options: {
+        dest: 'build',
+        flow: {
+          html: {
+            steps: {
+              js: [ 'concat' ]
+            },
+            post: {}
+          }
+        }
+      }
+    },
+
+    usemin: {
+      html: 'build/index.html',
+      options: {
+        assetsDirs: [ 'app' ]
+      }
     },
 
     watch: {
@@ -39,7 +84,12 @@ module.exports = function(grunt) {
 
       sass: {
         files: 'app/scss/**/*.scss',
-        tasks: ['sass']
+        tasks: [ 'sass' ]
+      },
+
+      minjson: {
+        files: 'app/data/**/*.json',
+        tasks: [ 'minjson:dev' ]
       },
 
       options: {
@@ -65,7 +115,16 @@ module.exports = function(grunt) {
     },
 
     minjson: {
-      compile: {
+      dev: {
+        files: [{
+          expand: true,
+          cwd: 'app/data',
+          src: [ '**/*.json' ],
+          dest: 'app/data',
+          ext: '.min.json'
+        }]
+      },
+      prod: {
         files: [{
           expand: true,
           cwd: 'app/data',
@@ -80,13 +139,19 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', [
     'clean',
-    'sass',
-    'minjson'
+    'sass:dist',
+    'minjson:prod',
+    'useminPrepare',
+    'copy:prod',
+    'usemin',
+    'concat',
   ]);
 
   grunt.registerTask('default', [
     'http-server:dev',
-    'build',
+    'clean',
+    'sass',
+    'minjson:dev',
     'watch'
   ]);
 

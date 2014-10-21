@@ -1,8 +1,15 @@
+# OS temp files
 *.DS_Store
-/css/*
+
+# module dependencies
 /bower_components
 /app/bower_components
 /node_modules
+
+# generated files
+/css
+/app/css
+/app/data/*.min.json
 /tmp
 /dist
 /build
