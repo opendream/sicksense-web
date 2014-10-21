@@ -8,6 +8,11 @@ $(document).foundation();
 
 var app = angular.module('sicksense', []);
 
+app.config(function ($interpolateProvider) {
+    $interpolateProvider.startSymbol('[[');
+    $interpolateProvider.endSymbol(']]');
+});
+
 app.factory('shared', function() {
     return {};
 });

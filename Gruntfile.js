@@ -1,4 +1,9 @@
+var useDelims = require('handlebars-delimiters');
+
 module.exports = function(grunt) {
+  // Load grunt tasks automatically
+  require('load-grunt-tasks')(grunt);
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
@@ -21,6 +26,49 @@ module.exports = function(grunt) {
       },
     },
 
+    assemble: {
+      options: {
+        partials: ['views/partials/**/*.hbs', 'views/layouts/*.hbs'],
+        // layout: ['views/layouts/base.hbs']
+        layout: false,
+        // layoutdir: 'views/layouts'
+      },
+      site: {
+        expand: true,
+        src: ['views/*.hbs'],
+        dest: './dist/',
+        flatten: true
+      }
+    },
+
+    // Automatically inject Bower components into the app
+    bowerInstall: {
+      app: {
+        src: ['views/layouts/base.hbs'],
+        cwd: '',
+        dependencies: true
+      }
+    },
+
+    sync: {
+      dist: {
+        files: [{
+          expand: true,
+          dot: true,
+          dest: 'dist',
+          src: [
+            '!**/.git',
+            'js/**/*.js',
+            'js/**/*.json',
+            'bower_components/**/*',
+            'css/**/*.css',
+            'images/**/*',
+            'fonts/**/*'
+          ]
+        }]
+      }
+    },
+
     watch: {
       grunt: { files: ['Gruntfile.js'] },
 
@@ -29,14 +77,24 @@ module.exports = function(grunt) {
         tasks: ['sass']
       },
 
+      // nunjucks: {
+      //   files: 'views/*',
+      //   tasks: ['nunjucks']
+      // },
+
+      assemble: {
+        files: 'views/**/*',
+        tasks: ['assemble']
+      },
+
       options: {
-        livereload: true
+        livereload: false
       }
     },
 
     'http-server': {
       'dev': {
-        root: './',
+        root: './dist',
 
         port: 8282,
 
@@ -52,20 +110,23 @@ module.exports = function(grunt) {
 
     minjson: {
       compile: {
-        files: {
-          'dist/js/region.min.json': 'js/region.json',
-          'dist/js/provinces.min.json': 'js/provinces.json',
-          'dist/js/thailand.min.json': 'js/thailand.json'
-        }
+        files: [{
+          expand: true,
+          src: 'js/*.json',
+          dest: 'dist',
+          ext: '.min.json'
+        }]
       }
     }
   });
 
-  grunt.loadNpmTasks('grunt-sass');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-minjson');
-  grunt.loadNpmTasks('grunt-http-server');
+  // grunt.loadNpmTasks('grunt-sass');
+  // grunt.loadNpmTasks('grunt-contrib-watch');
+  // grunt.loadNpmTasks('grunt-minjson');
+  // grunt.loadNpmTasks('grunt-http-server');
+  // grunt.loadNpmTasks('grunt-nunjucks');
+  grunt.loadNpmTasks('assemble');
 
-  grunt.registerTask('build', ['sass','minjson']);
+  grunt.registerTask('build', ['bowerInstall','assemble','sass','minjson','sync']);
   grunt.registerTask('default', ['http-server:dev','build','watch']);
 }
