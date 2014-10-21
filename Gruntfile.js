@@ -1,10 +1,23 @@
+var matchdep = require('matchdep');
+
 module.exports = function(grunt) {
+  // Load dependencies automatically with matchdep.
+  matchdep.filterDev([
+    'grunt-*',
+    '!grunt-cli',
+    'assemble'
+  ]).forEach(grunt.loadNpmTasks);
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
+    clean: {
+      build: [ 'build' ]
+    },
+
     sass: {
       options: {
-        includePaths: ['bower_components/foundation/scss'],
+        includePaths: ['app/bower_components/foundation/scss'],
         sourceMap: true
       },
       dist: {
@@ -13,9 +26,9 @@ module.exports = function(grunt) {
         },
         files: [{
           expand: true,
-          cwd: 'scss',
+          cwd: 'app/scss',
           src: [ '**/*.scss' ],
-          dest: 'css',
+          dest: 'build/css',
           ext: '.css'
         }]
       },
@@ -25,7 +38,7 @@ module.exports = function(grunt) {
       grunt: { files: ['Gruntfile.js'] },
 
       sass: {
-        files: 'scss/**/*.scss',
+        files: 'app/scss/**/*.scss',
         tasks: ['sass']
       },
 
@@ -36,7 +49,7 @@ module.exports = function(grunt) {
 
     'http-server': {
       'dev': {
-        root: './',
+        root: 'app',
 
         port: 8282,
 
@@ -44,7 +57,8 @@ module.exports = function(grunt) {
 
         showDir: true,
         autoIndex: true,
-        defaultExt: 'html',
+
+        ext: 'html',
 
         runInBackground: true
       }
@@ -52,20 +66,28 @@ module.exports = function(grunt) {
 
     minjson: {
       compile: {
-        files: {
-          'dist/js/region.min.json': 'js/region.json',
-          'dist/js/provinces.min.json': 'js/provinces.json',
-          'dist/js/thailand.min.json': 'js/thailand.json'
-        }
+        files: [{
+          expand: true,
+          cwd: 'app/data',
+          src: [ '**/*.json' ],
+          dest: 'build/data',
+          ext: '.min.json'
+        }]
       }
     }
+
   });
 
-  grunt.loadNpmTasks('grunt-sass');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-minjson');
-  grunt.loadNpmTasks('grunt-http-server');
+  grunt.registerTask('build', [
+    'clean',
+    'sass',
+    'minjson'
+  ]);
 
-  grunt.registerTask('build', ['sass','minjson']);
-  grunt.registerTask('default', ['http-server:dev','build','watch']);
-}
+  grunt.registerTask('default', [
+    'http-server:dev',
+    'build',
+    'watch'
+  ]);
+
+};

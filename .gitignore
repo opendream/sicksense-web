@@ -1,9 +1,12 @@
 *.DS_Store
 /css/*
-/bower_components/*
-/node_modules/*
+/bower_components
+/app/bower_components
+/node_modules
+/tmp
+/dist
+/build
 
 # Config
 /js/config.js
-/tmp
-/dist
+/app/js/config.js
