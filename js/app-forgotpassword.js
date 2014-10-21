@@ -7,7 +7,7 @@
 
         $scope.$watch('shared.loggedIn', function(newValue, oldValue) {
             if (newValue) {
-                window.location = HOME_URL;
+                window.location = HOME_URL + '/report.html';
             }
         });
 
