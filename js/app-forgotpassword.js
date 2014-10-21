@@ -51,6 +51,26 @@
                     $scope.submitting = false;
                 });
         };
+
+        $scope.buildQuery = function() {
+            var queryString = window.location.search.substr(1);
+            var queries = queryString.split('&');
+            var results = {};
+            queries.forEach(function(query) {
+                var tmp = query.split('=');
+                results[tmp[0]] = tmp[1];
+            });
+            $scope.query = results;
+        };
+
+        $scope.isInvalidLinkFromResetPassword = function () {
+            if (_.has($scope.query, 'invalid-url')) {
+                $scope.invalidResetLink = true;
+            }
+        };
+
+        $scope.buildQuery();
+        $scope.isInvalidLinkFromResetPassword();
     }]);
 
 })(jQuery, this, this.document);
