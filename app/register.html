@@ -38,7 +38,7 @@
   </div>
 
   <div class="row" ng-controller="RegisterController">
-    <div class="large-12 columns">
+    <div class="large-12 columns" ng-hide="submitSuccess">
       <form class="register-form" ng-submit="submit()">
         <div class="row">
           <div class="large-6 large-centered columns">
@@ -176,6 +176,17 @@
           </div>
         </div>
       </form>
+    </div>
+
+    <div class="large-12 columns" ng-show="submitSuccess">
+      <div class="panel radius container-block">
+        <h2 class="text-center">ลงทะเบียนสำเร็จแล้ว</h2>
+
+        <div class="text-center">
+          <p>ระบบได้ส่งอีเมลเพื่อให้ผู้ใช้ยืนยันการใช้งานเรียบร้อยแล้ว</p>
+          <p><a class="button ss-button" href="/login.html">เข้าสู่ระบบ</a></p>
+        </div>
+      </div>
     </div>
   </div>
 
