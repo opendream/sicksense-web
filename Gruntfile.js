@@ -12,7 +12,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     clean: {
-      build: [ 'build' ]
+      build: [ 'app/data/**/*.min.json', 'build' ]
     },
 
     sass: {
@@ -119,7 +119,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'app/data',
-          src: [ '**/*.json' ],
+          src: [ '**/*.json', '!**/*.min.json' ],
           dest: 'app/data',
           ext: '.min.json'
         }]
