@@ -355,19 +355,19 @@
 
     async.parallel([
       function(callback) {
-        $.getJSON('/dist/js/region.min.json', function(resp) {
+        $.getJSON('/data/region.min.json', function(resp) {
           regions = resp;
           callback();
         });
       },
       function(callback) {
-        $.getJSON('/dist/js/provinces.min.json', function(resp) {
+        $.getJSON('/data/provinces.min.json', function(resp) {
           provinces = resp.features;
           callback();
         });
       },
       function(callback) {
-        $.getJSON('/dist/js/thailand.min.json', function(resp) {
+        $.getJSON('/data/thailand.min.json', function(resp) {
           $scope.thailandShape = resp;
           callback();
         });

@@ -1,10 +1,23 @@
+var matchdep = require('matchdep');
+
 module.exports = function(grunt) {
+  // Load dependencies automatically with matchdep.
+  matchdep.filterDev([
+    'grunt-*',
+    '!grunt-cli',
+    'assemble'
+  ]).forEach(grunt.loadNpmTasks);
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
+    clean: {
+      build: [ 'app/data/**/*.min.json', 'build' ]
+    },
+
     sass: {
       options: {
-        includePaths: ['bower_components/foundation/scss'],
+        includePaths: ['app/bower_components/foundation/scss'],
         sourceMap: true
       },
       dist: {
@@ -13,20 +26,70 @@ module.exports = function(grunt) {
         },
         files: [{
           expand: true,
-          cwd: 'scss',
+          cwd: 'app/scss',
           src: [ '**/*.scss' ],
-          dest: 'css',
+          dest: 'app/css',
           ext: '.css'
         }]
       },
+    },
+
+    // assemble: {
+    //   options: {
+    //     assets: 'app',
+    //     partials: [ 'app/partials', 'app/layouts' ],
+    //     layout: false
+    //   },
+    //   pages: {
+    //     src: [ 'app/*.hbs' ],
+    //     dest: 'build'
+    //   }
+    // },
+
+    copy: {
+      prod: {
+        files: [{
+          expand: true,
+          cwd: 'app',
+          src: '*.html',
+          dest: 'build'
+        }]
+      }
+    },
+
+    useminPrepare: {
+      html: 'app/index.html',
+      options: {
+        dest: 'build',
+        flow: {
+          html: {
+            steps: {
+              js: [ 'concat' ]
+            },
+            post: {}
+          }
+        }
+      }
+    },
+
+    usemin: {
+      html: 'build/index.html',
+      options: {
+        assetsDirs: [ 'app' ]
+      }
     },
 
     watch: {
       grunt: { files: ['Gruntfile.js'] },
 
       sass: {
-        files: 'scss/**/*.scss',
-        tasks: ['sass']
+        files: 'app/scss/**/*.scss',
+        tasks: [ 'sass' ]
+      },
+
+      minjson: {
+        files: 'app/data/**/*.json',
+        tasks: [ 'minjson:dev' ]
       },
 
       options: {
@@ -36,7 +99,7 @@ module.exports = function(grunt) {
 
     'http-server': {
       'dev': {
-        root: './',
+        root: 'app',
 
         port: 8282,
 
@@ -44,28 +107,52 @@ module.exports = function(grunt) {
 
         showDir: true,
         autoIndex: true,
-        defaultExt: 'html',
+
+        ext: 'html',
 
         runInBackground: true
       }
     },
 
     minjson: {
-      compile: {
-        files: {
-          'dist/js/region.min.json': 'js/region.json',
-          'dist/js/provinces.min.json': 'js/provinces.json',
-          'dist/js/thailand.min.json': 'js/thailand.json'
-        }
+      dev: {
+        files: [{
+          expand: true,
+          cwd: 'app/data',
+          src: [ '**/*.json', '!**/*.min.json' ],
+          dest: 'app/data',
+          ext: '.min.json'
+        }]
+      },
+      prod: {
+        files: [{
+          expand: true,
+          cwd: 'app/data',
+          src: [ '**/*.json' ],
+          dest: 'build/data',
+          ext: '.min.json'
+        }]
       }
     }
+
   });
 
-  grunt.loadNpmTasks('grunt-sass');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-minjson');
-  grunt.loadNpmTasks('grunt-http-server');
+  grunt.registerTask('build', [
+    'clean',
+    'sass:dist',
+    'minjson:prod',
+    'useminPrepare',
+    'copy:prod',
+    'usemin',
+    'concat',
+  ]);
 
-  grunt.registerTask('build', ['sass','minjson']);
-  grunt.registerTask('default', ['http-server:dev','build','watch']);
-}
+  grunt.registerTask('default', [
+    'http-server:dev',
+    'clean',
+    'sass',
+    'minjson:dev',
+    'watch'
+  ]);
+
+};

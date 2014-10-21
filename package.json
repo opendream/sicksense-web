@@ -2,13 +2,18 @@
   "name": "foundation-libsass-template",
   "version": "0.0.1",
   "devDependencies": {
-    "node-sass": "~0.7.0",
+    "assemble": "^0.4.42",
     "grunt": "~0.4.1",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-copy": "^0.7.0",
     "grunt-contrib-watch": "~0.5.3",
-    "grunt-sass": "~0.8.0"
-  },
-  "dependencies": {
     "grunt-http-server": "0.0.5",
-    "grunt-minjson": "^0.1.1"
+    "grunt-minjson": "^0.1.1",
+    "grunt-sass": "~0.8.0",
+    "grunt-usemin": "^2.4.0",
+    "grunt-useref": "0.0.16",
+    "matchdep": "^0.3.0",
+    "node-sass": "~0.7.0"
   }
 }

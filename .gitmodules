@@ -1,6 +1,0 @@
-[submodule "js/libs/jquery-ui-touch-punch"]
-	path = js/libs/jquery-ui-touch-punch
-	url = https://github.com/furf/jquery-ui-touch-punch.git
-[submodule "js/libs/jquery-simple-datetimepicker"]
-	path = js/libs/jquery-simple-datetimepicker
-	url = https://github.com/mugifly/jquery-simple-datetimepicker.git
