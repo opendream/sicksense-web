@@ -10,6 +10,7 @@
 /css
 /app/css
 /app/data/*.min.json
+/app/*.html
 /tmp
 /.tmp
 /dist
