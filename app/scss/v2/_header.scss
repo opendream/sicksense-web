@@ -1,0 +1,28 @@
+@import "settings";
+@import "mixin";
+
+/*---------------------------------
+	LOGO
+---------------------------------*/
+
+.logo{
+	width: 214px !important;
+	height: 38px;
+	text-indent: -999em;
+	overflow: hidden;
+	background: url(../../images/sicksense-logo.png) no-repeat;
+
+	@media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2) {
+	    background-image: url(../../images/sicksense-logo@2x.png);
+	    -webkit-background-size: 214px 38px;
+	}
+
+	/*--- Make padding-left on mobile screen ---*/
+	@media #{$medium-only}, #{$small-only} {
+		margin-left: .8em !important;
+	}
+}
+
+.top-bar .name h1{
+    padding: 13px 15px 10px;
+}

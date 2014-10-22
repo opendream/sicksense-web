@@ -31,7 +31,21 @@
 	HIDE REPORT BUTTON ON FRONTPAGE
 ---------------------------------*/
 .hidden-button{
-    @media only screen and (max-width: 735px){
+    @media only screen and (max-width: 975px){
         display: none;
+    }
+}
+
+
+.ss-button-join{
+    @include border-radius(5px);
+    color: #333 !important;
+    background-color: #fdd167 !important;
+    font-size: 1.1em !important;
+    padding: 5px 15px;
+    margin: 9px 0 0;
+    
+    &:hover{
+        color: #fff !important;
     }
 }
