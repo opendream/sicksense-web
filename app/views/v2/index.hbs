@@ -1,0 +1,129 @@
+---
+layout: default_v2.hbs
+---
+
+<nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area left">
+        <li class="name"><h1><a href="#">Sicksense</a></h1></li>
+    </ul>
+    <section class="top-bar-section hidden-for-small">
+        <ul class="" role="navigation">
+            <li class="divider"></li>
+            <li><a href="#">สถิติอาการป่วย</a></li>
+            <li class="divider"></li>
+            <li><a href="#">สถิติอาการป่วยคล้ายไข้หวัดใหญ่ทั้งประเทศ</a></li>
+            <li class="has-form right hidden-button"><a href="http://foundation.zurb.com/docs" class="button" data-reveal-id="myModal">ร่วมรายงานอาการ</a></li>
+        </ul>
+    </section>
+    <a class="right-off-canvas-toggle right" href="#" >Menu</a>
+</nav>
+
+<section class="main-content" role="main">
+    <div class="row row-full-width">
+        <div class="large-6 medium-6 columns">
+            <section class="provinces secondnary-bar clearfix">
+                <div class="provinces-filter">
+                    <a class="" data-dropdown="tinyDrop" aria-controls="tinyDrop" aria-expanded="false">กรุงเทพ »</a>
+
+                    <div id="tinyDrop" class="f-dropdown" data-dropdown-content="" tabindex="-1" aria-hidden="true" style="position: absolute; top: 285px; left: -99999px;">
+                        <dl class="accordion" data-accordion>
+                          <dd class="accordion-navigation">
+                            <a href="#panel1">ภาคเหนือ</a>
+                            <div id="panel1" class="content active">
+
+                            </div>
+                          </dd>
+                          <dd class="accordion-navigation">
+                            <a href="#panel2">ภาคใต้</a>
+                            <div id="panel2" class="content">
+<!--                                  here-->
+                            </div>
+                          </dd>
+                          <dd class="accordion-navigation">
+                            <a href="#panel3">ภาคตะวันออก</a>
+                            <div id="panel3" class="content">
+<!--                                  here-->
+                            </div>
+                          </dd>
+                        </dl>
+                    </div>
+                </div>
+                <a href="#" class="provinces-all">แสดงทั้งประเทศ</a>
+            </section>
+
+            <div class="map hide-for-small">
+                <div class="map-info">
+                    <span><span class="icon-round gray"></span> สบายดี</span>
+                    <span><span class="icon-round red"></span> มีอาการ</span>
+                </div>
+                <div id="map"><!--MAP--></div>
+            </div>
+
+        </div>
+        <div class="large-6 medium-6 columns">
+            <section class="info-stat secondnary-bar clearfix">
+                <span><span class="typcn typcn-calendar"></span> วันที่ 12 ต.ค. 2557 - 18 ต.ค. 2557</span>
+            </section>
+            <section class="ili-stat p-20">
+                <h2 class="title-block">สรุปอาการป่วย</h2>
+                <div class="row">
+                    <div class="large-6 medium-6 small-6 columns">
+                        <div class="ili-stat-reporter">
+                            <p class="ili-stat-label">จำนวนผู้รายงานอาการทั้งหมด</p>
+                            <p class="ili-stat-value">450 คน</p>
+                        </div>
+                    </div>
+                    <div class="large-6 medium-6 small-6 columns">
+                        <div class="ili-stat-weekly">
+                            <p class="ili-stat-label">จำนวนผู้ป่วยที่มีอาการคล้ายไข้หวัดใหญ่</p>
+                            <p class="ili-stat-value">450 คน</p>
+                        </div>
+                        <div class="ili-stat-delta">
+                            <p class="ili-stat-label">อาทิตย์ที่ผ่านมา</p>
+                            <p class="ili-stat-value">450 คน</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="symptoms-stat p-20">
+                <h2 class="title-block">สถิติอาการป่วย</h2>
+                <ul class="symptoms-stat-list large-block-grid-4 medium-block-grid-4">
+                    <li>
+                        <div class="symptoms-stat-name">ปวดหัว</div>
+                        <div class="symptoms-stat-value">17.55%</div>
+                    </li>
+                    <li>
+                        <div class="symptoms-stat-name">ปวดหัว</div>
+                        <div class="symptoms-stat-value">17.55%</div>
+                    </li>
+                    <li>
+                        <div class="symptoms-stat-name">ปวดหัว</div>
+                        <div class="symptoms-stat-value">17.55%</div>
+                    </li>
+                    <li>
+                        <div class="symptoms-stat-name">ปวดหัว</div>
+                        <div class="symptoms-stat-value">17.55%</div>
+                    </li>
+                    <li>
+                        <div class="symptoms-stat-name">ปวดหัว</div>
+                        <div class="symptoms-stat-value">17.55%</div>
+                    </li>
+                    <li>
+                        <div class="symptoms-stat-name">ปวดหัว</div>
+                        <div class="symptoms-stat-value">17.55%</div>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+</section>
+
+
+<div id="myModal" class="reveal-modal small" data-reveal>
+  <p class="lead">คุณเป็นสมาชิกกับเราแล้ว</p>
+  <a href="http://foundation.zurb.com/docs" class="button" data-reveal-id="myModal">Log in</a>
+  <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+  <a href="http://foundation.zurb.com/docs" class="button" data-reveal-id="myModal">Register</a>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
