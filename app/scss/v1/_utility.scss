@@ -37,7 +37,7 @@
 }
 .row-full-width{
     max-width: 100%;
-    
+
     .columns{
         padding: 0;
     }
@@ -112,4 +112,17 @@
 }
 .tooltip.tip-top > .nub {
 	border-color: #00e4e4 transparent transparent transparent;
+}
+
+/**
+ * Clearing
+ */
+.clear-left {
+	clear: left;
+}
+.clear-right {
+	clear: right;
+}
+.clear-both {
+	clear: both;
 }

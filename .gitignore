@@ -11,6 +11,7 @@
 /app/css
 /app/data/*.min.json
 /tmp
+/.tmp
 /dist
 /build
 

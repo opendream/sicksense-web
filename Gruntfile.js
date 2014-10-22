@@ -12,7 +12,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     clean: {
-      build: [ 'app/data/**/*.min.json', 'build' ]
+      build: [ 'app/data/**/*.min.json', 'app/html', 'build' ]
     },
 
     sass: {
@@ -34,17 +34,21 @@ module.exports = function(grunt) {
       },
     },
 
-    // assemble: {
-    //   options: {
-    //     assets: 'app',
-    //     partials: [ 'app/partials', 'app/layouts' ],
-    //     layout: false
-    //   },
-    //   pages: {
-    //     src: [ 'app/*.hbs' ],
-    //     dest: 'build'
-    //   }
-    // },
+    assemble: {
+      options: {
+        assets: 'app',
+        partials: [ 'app/partials/**/*.hbs' ],
+        layout: [ 'default.hbs' ],
+        layoutdir: 'app/layouts'
+      },
+      dev: {
+        expand: true,
+        cwd: 'app/views',
+        src: [ '**/*.hbs' ],
+        dest: 'app',
+        ext: '.html'
+      }
+    },
 
     copy: {
       prod: {
@@ -53,6 +57,34 @@ module.exports = function(grunt) {
           cwd: 'app',
           src: '*.html',
           dest: 'build'
+        }, {
+          expand: true,
+          cwd: 'app/css',
+          src: '**/*.css',
+          dest: 'build/css'
+        }]
+      }
+    },
+
+    ngmin: {
+      generated: {
+        files: [{
+          expand: true,
+          cwd: '.tmp/concat/js',
+          src: '*.js',
+          dest: 'build/js'
+        }]
+      }
+    },
+
+    uglify: {
+      generated: {
+        files: [{
+          expand: true,
+          cwd: 'build/js',
+          src: [ '*.js', '!*.min.js' ],
+          dest: 'build/js',
+          ext: '.min.js'
         }]
       }
     },
@@ -64,7 +96,8 @@ module.exports = function(grunt) {
         flow: {
           html: {
             steps: {
-              js: [ 'concat' ]
+              js: [ 'concat', 'uglifyjs' ],
+              css: [ 'concat', 'cssmin' ]
             },
             post: {}
           }
@@ -90,6 +123,11 @@ module.exports = function(grunt) {
       minjson: {
         files: 'app/data/**/*.json',
         tasks: [ 'minjson:dev' ]
+      },
+
+      assemble: {
+        files: 'app/**/*.hbs',
+        tasks: [ 'assemble:dev' ]
       },
 
       options: {
@@ -145,6 +183,8 @@ module.exports = function(grunt) {
     'copy:prod',
     'usemin',
     'concat',
+    'ngmin',
+    'uglify'
   ]);
 
   grunt.registerTask('default', [
@@ -152,6 +192,7 @@ module.exports = function(grunt) {
     'clean',
     'sass',
     'minjson:dev',
+    'assemble',
     'watch'
   ]);
 

@@ -1,12 +1,12 @@
 (function ($, window, document, undefined) {
+  'use strict';
+
   var url = API_BASEPATH + '/notifications/';
   var minAge = 1;
   var maxAge = 130;
   var processing = false;
 
-  var app = angular.module('sicksense', []);
-
-  app.controller('NotificationList', ['$scope', function($scope) {
+  app.controller('NotificationList', ['$scope', 'shared', function($scope, shared) {
 
     /**
      * Items to display.
@@ -54,7 +54,7 @@
 
       processing = true;
 
-      var params = { token: $scope.token, limit: 2000 };
+      var params = { token: shared.token, limit: 2000 };
 
       $.getJSON(url, params)
         .done(function(resp) {
@@ -119,7 +119,7 @@
         params.age_stop = $scope.age_stop;
       }
 
-      $.post(url + '?token=' + $scope.token, params)
+      $.post(url + '?token=' + shared.token, params)
         .done(function(resp) {
           $scope.$apply(function() {
             $scope.items.unshift(resp.response.notification);
@@ -154,7 +154,7 @@
       processing = true;
       $scope.disableButtons();
 
-      var deleteURL = url + $scope.current.id + '/delete/?token=' + $scope.token;
+      var deleteURL = url + $scope.current.id + '/delete/?token=' + shared.token;
       $.post(deleteURL)
         .done(function(resp) {
           $scope.$apply(function() {
@@ -253,7 +253,7 @@
       }
 
       return 'ส่งทันที';
-    }
+    };
 
     /**
      * Generate date picker.
@@ -303,7 +303,11 @@
               $scope.generateDatePicker();
           }, 1);
         }
-      })
+      });
+
+      $scope.$on('tokenChanged', function () {
+        $scope.loadItems();
+      });
 
       // Init slider.
       $('#slider-range').slider({

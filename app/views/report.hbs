@@ -1,0 +1,72 @@
+<div class="row page-report" ng-controller="ReportController">
+  <div class="large-12 columns" ng-hide="reportSuccess">
+    <form class="report-form container-block">
+      <div class="row">
+        <div class="large-8 large-centered columns">
+          <h1>รายงานสุขภาพ</h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-8 large-centered columns">
+          <p>วันนี้คุณรู้สึกไม่สบายหรือเปล่าจ๊ะ ?</p>
+          <input type="radio" name="isFine" ng-model="isFine" value="1" id="isFineTrue">
+          <label for="isFineTrue">สบายดี</label>
+          <input type="radio" name="isFine" ng-model="isFine" value="0" id="isFineFalse">
+          <label for="isFineFalse">มีอาการ</label>
+          <small class="error" ng-show="invalidIsFine">กรุณาระบุข้อมูล</small>
+        </div>
+      </div>
+
+      <div class="row" ng-show="!!isFine && isFine==false">
+        <div class="large-8 large-centered columns">
+          <p>มีอาการอะไรจ๊ะ ?</p>
+          <div class="row">
+            <ul class="symptoms-list">
+              <li class="symptoms-item" ng-repeat="(key, choice) in symptoms_choices">
+                <img src="[[ choice.imageCurrent ]]" ng-click="toggleImage(choice)" />
+              </li>
+            </ul>
+          </div>
+          <small class="error" ng-show="invalidSymptoms">กรุณาระบุข้อมูล</small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-8 large-offset-2 columns">
+          <p>คุณได้มีการสัมผัสกับสัตว์หรือไม่ ?</p>
+          <input type="radio" name="animalContact" ng-model="animalContact" value="1" id="animalContactTrue"><label for="animalContactTrue">ใช่</label>
+          <input type="radio" name="animalContact" ng-model="animalContact" value="0" id="animalContactFalse"><label for="animalContactFalse">ไม่ใช่</label>
+          <small class="error" ng-show="invalidAnimalContact">กรุณาระบุข้อมูล</small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-8 large-offset-2 columns">
+          <label>รายละเอียดเพิ่มเติม
+            <textarea name="moreInfo" ng-model="moreInfo" class="txt-moreinfo"></textarea>
+          </label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-8 large-offset-2 columns">
+          <a href="#" ng-click="submit()" class="button ss-button">บันทึก</a>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="large-12 columns" ng-show="reportSuccess">
+    <div class="panel radius reportSuccess container-block">
+        <h2 class="text-center">ขอบคุณสำหรับการรายงานสุขภาพ</h2>
+        <h3 class="text-center">คุณ[[ symptoms_summary ]]</h3>
+        <p class="text-center">ข้อมูลของคุณได้มีส่วนร่วมในการแสดงสถานการณ์สุขภาพในประเทศไทย</p>
+        <div class="text-center"><a class="button ss-button" href="/">ดูสถานการณ์สุขภาพ</a></div>
+    </div>
+  </div>
+</div>
+
+{{#content "js_footer"}}
+<script src="/js/app-report.js"></script>
+{{/content}}
