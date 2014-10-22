@@ -83,7 +83,7 @@ module.exports = function(grunt) {
       generated: {
         files: [{
           expand: true,
-          cwd: '.tmp/concat/js',
+          cwd: 'build/js',
           src: '*.js',
           dest: 'build/js'
         }]
@@ -99,9 +99,9 @@ module.exports = function(grunt) {
             'admin.min.js',
             'app.min.js',
             'vendor-footer.min.js',
-            'vender-header.min.js',
+            'vendor-header.min.js',
             'vendor-footer-admin.min.js',
-            'vender-header-admin.min.js'
+            'vendor-header-admin.min.js'
           ],
           dest: 'build/js',
           ext: '.min.js'
