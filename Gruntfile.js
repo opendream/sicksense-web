@@ -48,6 +48,13 @@ module.exports = function(grunt) {
         src: [ '**/*.hbs' ],
         dest: 'app',
         ext: '.html'
+      },
+      prod: {
+        expand: true,
+        cwd: 'app/views',
+        src: [ '**/*.hbs' ],
+        dest: 'build',
+        ext: '.html'
       }
     },
 
@@ -55,19 +62,24 @@ module.exports = function(grunt) {
       prod: {
         files: [{
           expand: true,
-          cwd: 'app',
-          src: '*.html',
-          dest: 'build'
+          cwd: 'app/js',
+          src: [ '**/*.js' ],
+          dest: 'build/js'
         }, {
           expand: true,
-          cwd: 'app/css',
-          src: '**/*.css',
-          dest: 'build/css'
+          cwd: 'app',
+          src: [
+            '*.html',
+            'bower_components/typicons/**/*',
+            'images/**/*',
+            'fonts/**/*',
+          ],
+          dest: 'build'
         }]
       }
     },
 
-    ngmin: {
+    ngAnnotate: {
       generated: {
         files: [{
           expand: true,
@@ -83,22 +95,41 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'build/js',
-          src: [ '*.js', '!*.min.js' ],
+          src: [
+            'admin.min.js',
+            'app.min.js',
+            'vendor-footer.min.js',
+            'vender-header.min.js',
+            'vendor-footer-admin.min.js',
+            'vender-header-admin.min.js'
+          ],
           dest: 'build/js',
           ext: '.min.js'
         }]
       }
     },
 
+    cssmin: {
+      generated: {
+        files: [{
+          expand: true,
+          cwd: 'build/css',
+          src: [ '*.css', '!*.min.css' ],
+          dest: 'build/css',
+          ext: '.min.css'
+        }]
+      }
+    },
+
     useminPrepare: {
-      html: 'app/index.html',
+      html: [ 'app/*.html' ],
       options: {
         dest: 'build',
         flow: {
           html: {
             steps: {
-              js: [ 'concat', 'uglifyjs' ],
-              css: [ 'concat', 'cssmin' ]
+              js: [ 'concat' ],
+              css: [ 'concat' ]
             },
             post: {}
           }
@@ -107,7 +138,7 @@ module.exports = function(grunt) {
     },
 
     usemin: {
-      html: 'build/index.html',
+      html: 'build/*.html',
       options: {
         assetsDirs: [ 'app' ]
       }
@@ -180,20 +211,22 @@ module.exports = function(grunt) {
     'clean',
     'sass:dist',
     'minjson:prod',
+    'assemble:dev',
     'useminPrepare',
-    'copy:prod',
-    'usemin',
+    'copy',
     'concat',
-    'ngmin',
+    'usemin',
+    // 'cssmin',
+    'ngAnnotate',
     'uglify'
   ]);
 
   grunt.registerTask('default', [
     'http-server:dev',
     'clean',
-    'sass',
+    'sass:dist',
     'minjson:dev',
-    'assemble',
+    'assemble:dev',
     'watch'
   ]);
 
