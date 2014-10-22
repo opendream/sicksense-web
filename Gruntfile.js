@@ -39,7 +39,8 @@ module.exports = function(grunt) {
         assets: 'app',
         partials: [ 'app/partials/**/*.hbs' ],
         layout: [ 'default.hbs' ],
-        layoutdir: 'app/layouts'
+        layoutdir: 'app/layouts',
+        helpers: [ 'handlebars-helper-isActivex' ]
       },
       dev: {
         expand: true,
