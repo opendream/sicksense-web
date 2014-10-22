@@ -6,6 +6,7 @@
         $scope.password = '';
         $scope.repassword = '';
         $scope.subscribe = true;
+        $scope.submitSuccess = false;
         $scope.shared = shared;
 
         $scope.$watch('shared.loggedIn', function(newValue, oldValue) {
@@ -100,7 +101,7 @@
 
             $http.post($scope.registerURL, params)
                 .success(function(resp) {
-                    window.location = HOME_URL + '?login';
+                    $scope.submitSuccess = true;
                 })
                 .error(function(resp) {
                     if (resp.meta.status == 409) {
