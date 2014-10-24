@@ -2,7 +2,7 @@
 
     app.controller('LoginController', [ '$scope', '$http', 'shared', function($scope, $http, shared) {
 
-        $scope.loginURL = API_BASEPATH + '/login/';
+        $scope.loginURL = API_BASEPATH + '/connect/';
         $scope.checkURL = API_BASEPATH + '/users/';
         $scope.email = '';
         $scope.password = '';
@@ -54,6 +54,7 @@
             $scope.submitting = true;
 
             var params = {
+                uuid: shared.uuid,
                 email: $scope.email,
                 password: $scope.password
             };
@@ -73,9 +74,14 @@
                 })
                 .error(function(resp) {
                     $scope.submitting = false;
-                    console.log(resp);
-                    if (resp.error && resp.error.statusCode == 403) {
-                        $scope.invalidLogin = true;
+                    if (resp.meta && resp.meta.status == 403) {
+
+                        if (resp.meta.errorSubType && resp.meta.errorSubType == 'unverified_email') {
+                            $scope.unverifiedEmail = true;
+                        }
+                        else {
+                            $scope.invalidLogin = true;
+                        }
                         $scope.invalidEmail = false;
                         $scope.invalidPassword = false;
                     }
@@ -96,5 +102,5 @@
         $scope.buildQuery();
 
     }]);
-    
+
 })(jQuery, this, this.document);
