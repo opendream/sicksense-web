@@ -16,18 +16,18 @@ app.config(function ($interpolateProvider) {
 app.factory('shared', function() {
     return {
         uuid: null,
-        setUUID: function setUUID(uuid, options) {
+        setUUID: function setUUID(customUUID, options) {
             var _options = _.extend({
                 expires: 365 * 10 // 10 years
             }, options);
 
-            if (!uuid) {
+            if (!customUUID) {
                 this.uuid = this.uuid || $.cookie('uuid') || uuid.v4();
                 $.cookie('uuid', this.uuid, _options);
             }
             else {
-                this.uuid = uuid;
-                $.cookie('uuid', uuid, _options);
+                this.uuid = customUUID;
+                $.cookie('uuid', customUUID, _options);
             }
         }
     };
