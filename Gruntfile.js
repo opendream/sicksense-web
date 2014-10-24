@@ -71,6 +71,7 @@ module.exports = function(grunt) {
           src: [
             '*.html',
             'bower_components/typicons/**/*',
+            'bower_components/jquery-simple-datetimepicker/**/*',
             'images/**/*',
             'fonts/**/*',
           ],

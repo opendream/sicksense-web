@@ -86,6 +86,7 @@
             $scope.submitting = true;
 
             var params = {
+                uuid: "somchai@opendream.co.th",
                 email: $scope.email,
                 password: $scope.password,
                 gender: $scope.gender,
