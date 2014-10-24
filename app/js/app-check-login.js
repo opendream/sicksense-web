@@ -2,6 +2,9 @@
 
     app.controller('CheckLoginController', [ '$scope', '$http', 'shared', function($scope, $http, shared) {
 
+        // be sure we always has uuid
+        shared.setUUID();
+
         $scope.checkURL = API_BASEPATH + '/users/';
         $scope.shared = shared;
 
@@ -48,5 +51,5 @@
         $scope.checkLogin();
 
     }]);
-    
+
 })(jQuery, this, this.document);

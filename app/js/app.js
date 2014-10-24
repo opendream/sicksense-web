@@ -14,7 +14,27 @@ app.config(function ($interpolateProvider) {
 });
 
 app.factory('shared', function() {
-    return {};
+    return {
+        uuid: null,
+        setUUID: function setUUID(uuid, options) {
+            var _options = _.extend({
+                expires: 365 * 10 // 10 years
+            }, options);
+
+            if (!uuid) {
+                this.uuid = this.uuid || $.cookie('uuid') || uuid.v4();
+                $.cookie('uuid', this.uuid, _options);
+            }
+            else {
+                this.uuid = uuid;
+                $.cookie('uuid', uuid, _options);
+            }
+        }
+    };
+});
+
+app.run(function (shared) {
+    shared.setUUID();
 });
 
 function getParameterByName(name) {
