@@ -81,7 +81,7 @@
                     $scope.submitting = false;
                 })
                 .error(function(resp) {
-                    if (resp.error.statusCode == 403) {
+                    if (resp.meta && resp.meta.status == 403) {
                        $scope.wrongOldPassword = true;
                     }
                     $scope.submitStatus = 'failed';
