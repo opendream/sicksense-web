@@ -4,6 +4,8 @@
         $scope.forgotPasswordURL = API_BASEPATH + '/users/forgot-password';
         $scope.email = '';
         $scope.shared = shared;
+        $scope.isiOS = $.browser.ipad || $.browser.iphone;
+        $scope.success = false;
 
         $scope.$watch('shared.loggedIn', function(newValue, oldValue) {
             if (newValue) {
@@ -40,6 +42,7 @@
             $http.post($scope.forgotPasswordURL, params)
                 .success(function(resp) {
                     $scope.message = resp.response.message;
+                    $scope.success = true;
                 })
                 .error(function(resp) {
                     if (resp.meta && resp.meta.status == 403) {
