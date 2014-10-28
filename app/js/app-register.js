@@ -2,6 +2,8 @@
 
     app.controller('RegisterController', [ '$scope', '$http', 'shared', function($scope, $http, shared) {
         $scope.registerURL = API_BASEPATH + '/users/';
+        $scope.connectURL = API_BASEPATH + '/connect/';
+
         $scope.email = '';
         $scope.password = '';
         $scope.repassword = '';
@@ -85,6 +87,14 @@
 
             $scope.submitting = true;
 
+            var accessToken = $.cookie('accessToken'),
+                endpoint = accessToken ? $scope.connectURL : $scope.registerURL,
+                config = accessToken ? {
+                    params: {
+                        accessToken: accessToken
+                    }
+                } : {};
+
             var params = {
                 uuid: shared.uuid,
                 email: $scope.email,
@@ -100,7 +110,9 @@
                 platform: 'sicksenseweb'
             };
 
-            $http.post($scope.registerURL, params)
+
+
+            $http.post(endpoint, params, config)
                 .success(function(resp) {
                     $scope.submitSuccess = true;
                 })

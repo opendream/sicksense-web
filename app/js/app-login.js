@@ -73,7 +73,7 @@
                 };
             }
 
-            $http.post($scope.loginURL, params)
+            $http.post($scope.loginURL, params, config)
                 .success(function(resp) {
                     $.cookie('accessToken', resp.response.accessToken);
                     $.cookie('userId', resp.response.id);
