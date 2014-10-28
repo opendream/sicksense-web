@@ -2,6 +2,7 @@
 
     app.controller('ReportController', [ '$scope', '$http', 'shared', function($scope, $http, shared) {
         $scope.reportURL = API_BASEPATH + '/reports/';
+        $scope.userURL = API_BASEPATH + '/users/';
         $scope.reportSuccess = false;
 
         $scope.isFine = getParameterByName('isFine');
@@ -96,6 +97,37 @@
 
         $scope.shared = shared;
 
+        if (!$scope.shared.loggedIn) {
+            $scope.yearOptions = {};
+            for (var i = 0; i < 100; i++) {
+                $scope.yearOptions[2014 - i] = 2557 - i;
+            }
+
+            $scope.cityOptions = locations.provinces;
+
+            $scope.$watch('city', function(newValue, oldValue) {
+                if (newValue) {
+                    $scope.districts = locations[newValue].amphoes;
+                    $scope.district = '';
+                    $scope.subdistrict = '';
+                }
+                else {
+                    $scope.districts = [];
+                }
+                $scope.subdistricts = [];
+            });
+
+            $scope.$watch('district', function(newValue, oldValue) {
+                if (newValue) {
+                    $scope.subdistricts = locations[$scope.city][newValue];
+                    $scope.subdistrict = '';
+                }
+                else {
+                    $scope.subdistricts = [];
+                }
+            });
+        }
+
         $scope.toggleImage = function (symptom) {
             if ($scope.symptoms.indexOf(symptom) < 0) {
                 $scope.symptoms.push(symptom)
@@ -111,7 +143,19 @@
             $scope.invalidSymptoms = $scope.isFine == false && $scope.symptoms ? false : true;
             $scope.invalidAnimalContact = $scope.animalContact ? false : true;
 
-            return (!$scope.invalidIsFine || !$scope.invalidSymptoms || !$scope.invalidAnimalContact)
+            if ($scope.shared.loggedIn) {
+                return (!$scope.invalidIsFine || !$scope.invalidSymptoms || !$scope.invalidAnimalContact)
+            } else {
+                $scope.invalidGender = $scope.gender ? false : true;
+                $scope.invalidYear = $scope.year ? false : true;
+                $scope.invalidCity = $scope.city ? false : true;
+                $scope.invalidDistrict = $scope.district ? false : true;
+                $scope.invalidSubdistrict = $scope.subdistrict ? false : true;
+
+                return (!$scope.invalidIsFine || !$scope.invalidSymptoms || !$scope.invalidAnimalContact ||
+                    $scope.invalidGender || $scope.invalidYear || $scope.invalidCity ||
+                    $scope.invalidDistrict || $scope.invalidSubdistrict)
+            }
         };
 
         $scope.submit = function() {
@@ -134,8 +178,52 @@
                 platform: 'sicksenseweb'
             };
 
+            var registerData = {
+                email: $.cookie('uuid') + '@sicksense.com',
+                password: $.cookie('uuid'),
+                uuid: $.cookie('uuid'),
+                gender: $scope.gender,
+                birthYear: $scope.year,
+                address: {
+                    city: $scope.city,
+                    district: $scope.district,
+                    subdistrict: $scope.subdistrict
+                }
+            };
+
+            if (!$scope.shared.loggedIn) {
+                $.extend(data, {
+                    gender: $scope.gender,
+                    birthYear: $scope.year,
+                    address: {
+                        city: $scope.city,
+                        district: $scope.district,
+                        subdistrict: $scope.subdistrict
+                    }
+                });
+            }
+
+            if ($.cookie('accessToken') && $.cookie('userId')) {
+                submitReport(data);
+            }
+            else {
+                $http.post($scope.userURL, registerData)
+                    .success(function (resp) {
+                        $.cookie('accessToken', resp.response.accessToken);
+                        $.cookie('userId', resp.response.id);
+
+                        submitReport(data);
+                    })
+                    .error(function (resp) {
+                        console.log('error Register', resp);
+                        $scope.submitting = false;
+                    });
+            }
+        };
+
+        function submitReport(data) {
             $http.post($scope.reportURL, data, {
-                    'params': {
+                    params: {
                         accessToken: $.cookie('accessToken')
                     }
                 })
@@ -146,7 +234,7 @@
                     $scope.reportSuccess = true;
                 })
                 .error(function(resp) {
-                    console.log('errorr', resp);
+                    console.log('error Report', resp);
                     $scope.submitting = false;
                 });
         };
