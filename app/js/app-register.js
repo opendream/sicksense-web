@@ -103,6 +103,10 @@
             $http.post($scope.registerURL, params)
                 .success(function(resp) {
                     $scope.submitSuccess = true;
+
+                    $.cookie('accessToken', resp.response.accessToken);
+                    $.cookie('userId', resp.response.id);
+                    $scope.shared.loggedIn = true;
                 })
                 .error(function(resp) {
                     if (resp.meta.status == 409) {
