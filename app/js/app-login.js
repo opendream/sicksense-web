@@ -53,18 +53,38 @@
 
             $scope.submitting = true;
 
+            // Regen UUID when accessToken lose. Existing UUID is trivial cuz
+            // no one can use this UUID unless he has accessToken. So regen
+            // is still ok.
+            if ($.cookie('uuid') || !$.cookie('accessToken')) {
+                shared.setUUID(uuid.v4());
+            }
+
             var params = {
-                uuid: shared.uuid,
+                uuid: $.cookie('uuid'),
                 email: $scope.email,
                 password: $scope.password
             };
 
+            var config = {};
+            if ($.cookie('accessToken')) {
+                config.params = {
+                    accessToken: $.cookie('accessToken')
+                };
+            }
+
             $http.post($scope.loginURL, params)
                 .success(function(resp) {
+                    $scope.submitting = false;
+
                     $.cookie('accessToken', resp.response.accessToken);
                     $.cookie('userId', resp.response.id);
-                    $scope.shared.loggedIn = true;
-                    $scope.submitting = false;
+
+                    if (resp.response.sicksenseId) {
+                        $scope.shared.loggedIn = true;
+                        $scope.shared.state = 'login';
+                    }
+
                     $scope.email = '';
                     $scope.password = '';
 

@@ -27,6 +27,21 @@
   <link rel="stylesheet" href="/css/v1/app.css" />
   <!-- endbuild -->
 
+  <script>
+  function getParameterByName(name) {
+      name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+      var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+          results = regex.exec(location.search);
+      return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+  }
+  // Check if is webview.
+  (function () {
+    if (getParameterByName('webview')) {
+      document.getElementsByTagName('html')[0].className += ' webview ';
+    }
+  })();
+  </script>
+
   <!-- build:js /js/vendor-header.min.js -->
   <script src="/bower_components/modernizr/modernizr.js"></script>
   <script src="/bower_components/angular/angular.js"></script>
