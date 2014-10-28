@@ -6,6 +6,11 @@ sickconsole = function(message) {
 
 $(document).foundation();
 
+// Check if is webview.
+Modernizr.addTest('webview', function () {
+    return getParameterByName('webview');
+});
+
 var app = angular.module('sicksense', []);
 
 app.config(function ($interpolateProvider) {
