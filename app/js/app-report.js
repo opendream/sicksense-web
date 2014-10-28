@@ -97,6 +97,8 @@
 
         $scope.shared = shared;
 
+        var isSetAddress = false;
+
         if (!$scope.shared.loggedIn) {
             $scope.yearOptions = {};
             for (var i = 0; i < 100; i++) {
@@ -108,8 +110,11 @@
             $scope.$watch('city', function(newValue, oldValue) {
                 if (newValue) {
                     $scope.districts = locations[newValue].amphoes;
-                    $scope.district = '';
-                    $scope.subdistrict = '';
+
+                    if (isSetAddress) {
+                        $scope.district = '';
+                        $scope.subdistrict = '';
+                    }
                 }
                 else {
                     $scope.districts = [];
@@ -120,7 +125,10 @@
             $scope.$watch('district', function(newValue, oldValue) {
                 if (newValue) {
                     $scope.subdistricts = locations[$scope.city][newValue];
-                    $scope.subdistrict = '';
+
+                    if (isSetAddress) {
+                        $scope.subdistrict = '';
+                    }
                 }
                 else {
                     $scope.subdistricts = [];
@@ -238,6 +246,33 @@
                     $scope.submitting = false;
                 });
         };
+
+        function getUser() {
+            var params = {
+                accessToken: $.cookie('accessToken'),
+            };
+            $http.get($scope.userURL + $.cookie('userId'), {params: params})
+                .success(function (resp) {
+                    $scope.gender = resp.response.gender;
+                    $scope.year = resp.response.birthYear.toString();
+                    $scope.city = resp.response.address.city;
+                    $scope.district = resp.response.address.district;
+                    $scope.subdistrict = resp.response.address.subdistrict;
+
+                    setTimeout(function () {
+                        isSetAddress = true;
+                    }, 1);
+
+                    $scope.digest();
+                })
+                .error(function (resp) {
+                    console.log('Error get User', resp);
+                });
+        }
+
+        if (!$scope.shared.loggedIn && $.cookie('userId') && $.cookie('accessToken')) {
+            getUser();
+        }
 
     }]);
 

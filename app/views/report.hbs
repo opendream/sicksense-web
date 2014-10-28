@@ -57,7 +57,7 @@
         </div>
 
         <div class="row">
-          <div class="large-6 large-centered columns">
+          <div class="large-8 large-centered columns">
             <div class="row">
               <div class="large-3 columns">
                 <label class="right-label inline">เพศ</label>
@@ -71,7 +71,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="large-6 large-centered columns">
+          <div class="large-8 large-centered columns">
             <div class="row">
               <div class="large-3 columns">
                 <label class="right-label inline">ปีเกิด (พ.ศ.)</label>
@@ -84,7 +84,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="large-6 large-centered columns">
+          <div class="large-8 large-centered columns">
             <div class="row">
               <div class="large-3 columns">
                 <label class="right-label inline">จังหวัด</label>
@@ -99,14 +99,14 @@
           </div>
         </div>
         <div class="row">
-          <div class="large-6 large-centered columns">
+          <div class="large-8 large-centered columns">
             <div class="row">
-              <div class="large-3 columns">
+              <div class="large-3 small-3 columns">
                 <label class="right-label inline">อำเภอ</label>
               </div>
-              <div class="large-9 columns">
+              <div class="large-9 small-9 columns">
                 <select id="district" name="district" ng-model="district" class="no-margin">
-                  <option ng-repeat="district in districts" value="[[ district.key ]]">[[ district.value ]]</option>
+                  <option ng-repeat="districtChoice in districts" value="[[ districtChoice.key ]]" ng-selected="district == districtChoice.key">[[ districtChoice.value ]]</option>
                 </select>
                 <small class="error" ng-show="invalidDistrict">กรุณาเลือกอำเภอ</small>
               </div>
@@ -114,14 +114,14 @@
           </div>
         </div>
         <div class="row">
-          <div class="large-6 large-centered columns">
+          <div class="large-8 large-centered columns">
             <div class="row">
-              <div class="large-3 columns">
+              <div class="large-3 small-3 columns">
                 <label class="right-label inline">ตำบล</label>
               </div>
-              <div class="large-9 columns">
+              <div class="large-9 small-9 columns">
                 <select id="subdistrict" name="subdistrict" ng-model="subdistrict" class="no-margin">
-                  <option ng-repeat="subdistrict in subdistricts" value="[[ subdistrict.key ]]">[[ subdistrict.value ]]</option>
+                  <option ng-repeat="subdistrictChoice in subdistricts" value="[[ subdistrictChoice.key ]]" ng-selected="subdistrict == subdistrictChoice.key">[[ subdistrictChoice.value ]]</option>
                 </select>
                 <small class="error" ng-show="invalidSubdistrict">กรุณาเลือกตำบล</small>
               </div>
