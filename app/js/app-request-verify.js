@@ -20,6 +20,9 @@
         };
 
         $scope.validate = function() {
+            $scope.error = false;
+            $scope.success = false;
+
             $scope.invalidEmail = !$scope.isEmail($scope.email);
             return !$scope.invalidEmail;
         };
@@ -28,6 +31,7 @@
             $scope.message = '';
             $scope.error = false;
             $scope.invalidUser = false;
+            $scope.alreadyVerified = false;
 
             if (!$scope.validate()) return false;
             if ($scope.submitting) return false;
@@ -48,6 +52,11 @@
                          resp.meta.status == 400 &&
                          resp.meta.errorMessage.match(/(not found)|(ไม่พบ)/i) ) {
                         $scope.invalidUser = true;
+                    }
+                    else if ( resp.meta &&
+                         resp.meta.status == 400 &&
+                         resp.meta.errorSubType == 'email_is_already_verified' ) {
+                        $scope.alreadyVerified = true;
                     }
                     else {
                         $scope.error = true;

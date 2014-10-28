@@ -263,7 +263,6 @@
                         isSetAddress = true;
                     }, 1);
 
-                    $scope.digest();
                 })
                 .error(function (resp) {
                     console.log('Error get User', resp);
