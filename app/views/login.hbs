@@ -8,10 +8,15 @@
       </div>
 
       <div class="row">
-        <div data-alert class=" alert-box alert radius" ng-show="invalidLogin">
-          อีเมลและรหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง
+        <div class="large-6 large-centered columns">
+          <div data-alert class=" alert-box alert radius" ng-show="invalidLogin">
+            อีเมลและรหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง
+          </div>
+          <div data-alert class=" alert-box alert radius" ng-show="unverifiedEmail">
+            โปรดยืนยันอีเมลของคุณก่อนเข้าสู่ระบบ หากยังไม่ได้รับอีเมล
+            <a href="/request-verify.html">สามารถขอลิ้งก์ได้ที่นี่</a>
+          </div>
         </div>
-        <div data-alert class=" alert-box alert radius" ng-show="unverifiedEmail">โปรดยืนยันอีเมลของคุณก่อนเข้าสู่ระบบ หากยังไม่ได้รับอีเมล <a href="/request-verify.html">สามารถขอลิ้งก์ได้ที่นี่</a></div>
       </div>
 
       <div class="row">

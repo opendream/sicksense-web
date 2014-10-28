@@ -5,6 +5,13 @@
 	LOGO
 ---------------------------------*/
 
+.webview {
+	.top-nav-bar,
+	.footer {
+		display: none;
+	}
+}
+
 .logo{
 	width: 214px !important;
 	height: 38px;
