@@ -7,3 +7,32 @@
 .chart{
 	margin: 0 0 40px;
 }
+
+
+.od-side-nav-block{
+    margin-top: 50px;
+    
+    h2{
+        font-size: 1.5em;
+        background-color: #F4F4F4;
+        margin: 0;
+        padding: 7px 15px 10px;
+    }
+}
+.od-side-nav{
+    padding: 0;
+    background-color: #3a4e5a;
+    
+    li{
+        margin: 0;
+        border-bottom: 1px solid #2C3E49;
+        
+        a:not(.button){
+            padding: 12px 15px;
+        }
+        
+        &.active > a:first-child:not(.button){
+            background-color: #2C3E49;
+        }
+    }
+}
