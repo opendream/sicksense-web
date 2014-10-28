@@ -40,6 +40,9 @@
                         }
                     })
                     .error(function(resp) {
+                        // reset uuid if cannot login successfully.
+                        shared.setUUID(uuid.v4());
+                        
                         $scope.shared.loggedIn = false;
                         $scope.shared.state = 'logout';
 
@@ -48,6 +51,9 @@
                     });
             }
             else {
+                // reset uuid if cannot login successfully.
+                shared.setUUID(uuid.v4());
+
                 $scope.shared.loggedIn = false;
                 // TODO: Actually I don't why we need `state` variables. Need to
                 // check later if it necessary or not.
