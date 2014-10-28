@@ -28,6 +28,7 @@
             $scope.message = '';
             $scope.error = false;
             $scope.invalidUser = false;
+            $scope.invalidResetLink = false;
 
             if (!$scope.validate()) return false;
             if ($scope.submitting) return false;
