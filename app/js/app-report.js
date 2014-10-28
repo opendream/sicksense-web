@@ -96,19 +96,6 @@
 
         $scope.shared = shared;
 
-        $scope.$watch('shared.loggedIn', function(newValue, oldValue) {
-            var isFirstTime = newValue === undefined && newValue == oldValue;
-
-            if (!isFirstTime && !newValue) {
-                var redirectURL = HOME_URL;
-                if ($scope.shared.state != 'logout') {
-                    redirectURL += '/login.html?redirect=report.html';
-                }
-                window.location = redirectURL;
-            }
-        });
-
-
         $scope.toggleImage = function (symptom) {
             if ($scope.symptoms.indexOf(symptom) < 0) {
                 $scope.symptoms.push(symptom)
