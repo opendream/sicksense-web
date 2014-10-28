@@ -269,9 +269,11 @@
                 });
         }
 
-        if (!$scope.shared.loggedIn && $.cookie('userId') && $.cookie('accessToken')) {
-            getUser();
-        }
+        $scope.$watch('shared.loggedIn', function(newValue, oldValue) {
+            if (newValue != oldValue && !newValue && $.cookie('userId') && $.cookie('accessToken')) {
+                getUser();
+            }
+        });
 
     }]);
 
