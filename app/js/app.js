@@ -6,11 +6,6 @@ sickconsole = function(message) {
 
 $(document).foundation();
 
-// Check if is webview.
-Modernizr.addTest('webview', function () {
-    return getParameterByName('webview');
-});
-
 var app = angular.module('sicksense', []);
 
 app.config(function ($interpolateProvider) {
@@ -41,10 +36,3 @@ app.factory('shared', function() {
 app.run(function (shared) {
     shared.setUUID();
 });
-
-function getParameterByName(name) {
-    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-        results = regex.exec(location.search);
-    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-}
