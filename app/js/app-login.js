@@ -52,6 +52,8 @@
             if ($scope.submitting) return false;
 
             $scope.submitting = true;
+            $scope.invalidLogin = false;
+            $scope.unverifiedEmail = false;
 
             // Regen UUID when accessToken lose. Existing UUID is trivial cuz
             // no one can use this UUID unless he has accessToken. So regen

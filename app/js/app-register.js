@@ -115,9 +115,17 @@
             $http.post(endpoint, params, config)
                 .success(function(resp) {
                     $scope.submitSuccess = true;
+
+                    $.cookie('accessToken', resp.response.accessToken);
+                    $.cookie('userId', resp.response.id);
+                    $scope.shared.loggedIn = true;
                 })
                 .error(function(resp) {
-                    if (resp.meta.status == 409) {
+                    if (resp.meta.status == 403 && resp.meta.errorSubType == 'unverified_email') {
+                        $scope.unverifiedEmail = true;
+                    }
+                    // HOT FIX ON REGISTER WITH EXISTS EMAIL AND WRONG PASSWORD
+                    else if (resp.meta.status == 409 || resp.meta.status == 403) {
                         $scope.invalidDuplicateEmail = true;
                     }
                     $scope.submitting = false;

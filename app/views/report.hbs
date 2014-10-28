@@ -49,6 +49,88 @@
         </div>
       </div>
 
+      <div ng-hide="shared.loggedIn">
+        <div class="row">
+          <div class="large-8 large-centered columns">
+            <h2>ข้อมูลส่วนตัว</h2>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="large-8 large-centered columns">
+            <div class="row">
+              <div class="large-3 columns">
+                <label class="right-label inline">เพศ</label>
+              </div>
+              <div class="large-9 columns">
+                <input type="radio" ng-model="gender" value="male" id="edit-male"><label for="edit-male">ชาย</label>
+                <input type="radio" ng-model="gender" value="female" id="edit-female"><label for="edit-female">หญิง</label>
+                <small class="error" ng-show="invalidGender">กรุณาเลือกเพศของคุณ</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-8 large-centered columns">
+            <div class="row">
+              <div class="large-3 columns">
+                <label class="right-label inline">ปีเกิด (พ.ศ.)</label>
+              </div>
+              <div class="large-9 columns">
+                <select ng-model="year" ng-options="k as v for (k, v) in yearOptions" class="no-margin"></select>
+                <small class="error" ng-show="invalidYear">กรุณาเลือกปีเกิด</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-8 large-centered columns">
+            <div class="row">
+              <div class="large-3 columns">
+                <label class="right-label inline">จังหวัด</label>
+              </div>
+              <div class="large-9 columns">
+                <select id="city" name="city" ng-model="city" class="no-margin">
+                  <option ng-repeat="city in cityOptions" value="[[ city.key ]]">[[ city.value ]]</option>
+                </select>
+                <small class="error" ng-show="invalidCity">กรุณาเลือกจังหวัด</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-8 large-centered columns">
+            <div class="row">
+              <div class="large-3 small-3 columns">
+                <label class="right-label inline">อำเภอ</label>
+              </div>
+              <div class="large-9 small-9 columns">
+                <select id="district" name="district" ng-model="district" class="no-margin">
+                  <option ng-repeat="districtChoice in districts" value="[[ districtChoice.key ]]" ng-selected="district == districtChoice.key">[[ districtChoice.value ]]</option>
+                </select>
+                <small class="error" ng-show="invalidDistrict">กรุณาเลือกอำเภอ</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-8 large-centered columns">
+            <div class="row">
+              <div class="large-3 small-3 columns">
+                <label class="right-label inline">ตำบล</label>
+              </div>
+              <div class="large-9 small-9 columns">
+                <select id="subdistrict" name="subdistrict" ng-model="subdistrict" class="no-margin">
+                  <option ng-repeat="subdistrictChoice in subdistricts" value="[[ subdistrictChoice.key ]]" ng-selected="subdistrict == subdistrictChoice.key">[[ subdistrictChoice.value ]]</option>
+                </select>
+                <small class="error" ng-show="invalidSubdistrict">กรุณาเลือกตำบล</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
       <div class="row">
         <div class="large-8 large-offset-2 columns">
           <a href="#" ng-click="submit()" class="button ss-button">บันทึก</a>
@@ -68,5 +150,6 @@
 </div>
 
 {{#content "js_footer"}}
+<script src="/js/locations.js"></script>
 <script src="/js/app-report.js"></script>
 {{/content}}
