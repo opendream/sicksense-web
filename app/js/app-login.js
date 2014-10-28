@@ -98,9 +98,11 @@
 
                         if (resp.meta.errorSubType && resp.meta.errorSubType == 'unverified_email') {
                             $scope.unverifiedEmail = true;
+                            $scope.invalidLogin = false;
                         }
                         else {
                             $scope.invalidLogin = true;
+                            $scope.unverifiedEmail = false;
                         }
                         $scope.invalidEmail = false;
                         $scope.invalidPassword = false;
