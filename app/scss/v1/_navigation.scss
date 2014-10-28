@@ -48,7 +48,10 @@
 	> a{
 		font-family: "Boon-0.6", sans-serif;
 		font-size: 16px;
-//        padding: 0 12px;
+        
+        &:hover{
+            text-decoration: underline;
+        }
 	}
 
     &:not(.has-form) a:not(.button){
