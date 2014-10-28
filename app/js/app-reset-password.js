@@ -64,13 +64,11 @@
 
             $http.post($scope.resetPasswordURL, params)
                 .success(function(resp) {
-                    $.cookie('accessToken', resp.response.accessToken);
-                    $.cookie('userId', resp.response.user.id);
-                    $scope.shared.loggedIn = true;
-                    window.location = HOME_URL;
+                    $scope.submitStatus = 'completed';
                 })
                 .error(function(resp) {
                     console.log(resp);
+                    $scope.submitStatus = 'failed';
                     $scope.submitting = false;
                 });
         };
