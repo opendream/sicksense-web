@@ -22,9 +22,12 @@
                 .success(function (resp) {
                     $scope.shared.loggedIn = false;
                     $scope.shared.state = 'logout';
+
+                    window.location = BASE_URL;
                 })
                 .error(function (resp) {
                     // TODO: show error popup
+                    window.location = BASE_URL;
                 });
         };
 
