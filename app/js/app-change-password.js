@@ -41,7 +41,7 @@
         }
 
         $scope.validate = function() {
-            if ($scope.password.length < 8) {
+            if ($scope.password.length < 8 || $scope.password.length > 64) {
                 $scope.invalidSamePassword = false;
                 $scope.invalidPassword = true;
             }
@@ -54,7 +54,7 @@
                 $scope.invalidPassword = false;
             }
 
-            $scope.invalidOldPassword = $scope.oldpassword.length < 8 ? true : false;
+            $scope.invalidOldPassword = $scope.oldpassword.length < 8 || $scope.oldpassword.length > 64 ? true : false;
 
             return !($scope.invalidOldPassword || $scope.invalidSamePassword || $scope.invalidPassword);
         };
@@ -64,9 +64,9 @@
 
             $scope.submitStatus = '';
             $scope.wrongOldPassword = false;
-            $scope.submitting = true;
-
             if (!$scope.validate()) return false;
+
+            $scope.submitting = true;
 
             var params = {accessToken: $.cookie('accessToken')}
 
