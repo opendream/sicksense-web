@@ -12,6 +12,10 @@
     &:hover{
         background-color: #007C7C;
     }
+    
+    form &{
+        margin-top: 20px;
+    }
 }
 .ss-button-full-width{
     width: 100%;
