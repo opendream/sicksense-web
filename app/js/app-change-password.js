@@ -60,10 +60,13 @@
         };
 
         $scope.submit = function() {
-            if (!$scope.validate()) return false;
             if ($scope.submitting) return false;
 
+            $scope.submitStatus = '';
+            $scope.wrongOldPassword = false;
             $scope.submitting = true;
+
+            if (!$scope.validate()) return false;
 
             var params = {accessToken: $.cookie('accessToken')}
 
