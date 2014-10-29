@@ -67,6 +67,7 @@
             $http.post($scope.resetPasswordURL, params)
                 .success(function(resp) {
                     $scope.submitStatus = 'completed';
+                    $scope.submitting = false;
                 })
                 .error(function(resp) {
                     console.log(resp);
