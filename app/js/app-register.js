@@ -57,7 +57,7 @@
         $scope.validate = function() {
             $scope.invalidEmail = !$scope.isEmail($scope.email);
 
-            if ($scope.password.length < 8) {
+            if ($scope.password.length < 8 || $scope.password.length > 64) {
                 $scope.invalidSamePassword = false;
                 $scope.invalidPassword = true;
             }
@@ -82,8 +82,11 @@
         };
 
         $scope.submit = function() {
-            if (!$scope.validate()) return false;
             if ($scope.submitting) return false;
+
+            $scope.unverifiedEmail = false;
+            $scope.invalidDuplicateEmail = false;
+            if (!$scope.validate()) return false;
 
             $scope.submitting = true;
 

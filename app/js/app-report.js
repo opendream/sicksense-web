@@ -148,7 +148,7 @@
 
         $scope.validate = function() {
             $scope.invalidIsFine = $scope.isFine ? false : true;
-            $scope.invalidSymptoms = $scope.isFine == false && $scope.symptoms ? false : true;
+            $scope.invalidSymptoms = $scope.isFine == false && $scope.symptoms.length == 0 ? true : false;
             $scope.invalidAnimalContact = $scope.animalContact ? false : true;
 
             if ($scope.shared.loggedIn) {
