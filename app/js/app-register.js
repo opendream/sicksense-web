@@ -12,7 +12,7 @@
         $scope.shared = shared;
 
         $scope.$watch('shared.loggedIn', function(newValue, oldValue) {
-            if (newValue) {
+            if (newValue && !$scope.submitSuccess) {
                 window.location = HOME_URL + '/report.html';
             }
         });

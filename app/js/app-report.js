@@ -254,7 +254,7 @@
             $http.get($scope.userURL + $.cookie('userId'), {params: params})
                 .success(function (resp) {
                     $scope.gender = resp.response.gender;
-                    $scope.year = resp.response.birthYear.toString();
+                    $scope.year = resp.response.birthYear ? resp.response.birthYear.toString() : '';
                     $scope.city = resp.response.address.city;
                     $scope.district = resp.response.address.district;
                     $scope.subdistrict = resp.response.address.subdistrict;
