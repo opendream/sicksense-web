@@ -25,13 +25,14 @@
         };
 
         $scope.submit = function() {
+            if ($scope.submitting) return false;
+
             $scope.message = '';
             $scope.error = false;
             $scope.invalidUser = false;
             $scope.invalidResetLink = false;
 
             if (!$scope.validate()) return false;
-            if ($scope.submitting) return false;
             $scope.submitting = true;
 
             var params = {
@@ -41,6 +42,7 @@
             $http.post($scope.forgotPasswordURL, params)
                 .success(function(resp) {
                     $scope.message = resp.response.message;
+                    $scope.submitting = false;
                 })
                 .error(function(resp) {
                     if (resp.meta && resp.meta.status == 403) {

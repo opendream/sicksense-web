@@ -14,9 +14,10 @@
             var isFirstTime = newValue === undefined && newValue == oldValue;
 
             if (!isFirstTime && !newValue) {
-                var redirectURL = HOME_URL;
-                if ($scope.shared.state != 'logout') {
-                    redirectURL += '/login.html?redirect=edit-profile.html';
+                var redirectURL = HOME_URL + '/login.html?redirect=edit-profile.html';
+
+                if ($scope.shared.state == 'logout') {
+                    redirectURL = HOME_URL;
                 }
                 window.location = redirectURL;
             }

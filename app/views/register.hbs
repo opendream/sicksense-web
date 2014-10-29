@@ -33,7 +33,7 @@
             </div>
             <div class="large-9 columns">
               <input type="password" ng-model="password" placeholder="********" class="no-margin" />
-              <small class="error" ng-show="invalidPassword">รหัสผ่านต้องไม่น้อยกว่า 8 ตัวอักษร</small>
+              <small class="error" ng-show="invalidPassword">รหัสผ่านต้องไม่น้อยกว่า 8 ตัวอักษร และไม่มากกว่า 64 ตัวอักษร</small>
             </div>
           </div>
         </div>
@@ -138,7 +138,7 @@
 
       <div class="row">
         <div class="large-8 large-centered columns">
-          <input type="submit" class="button ss-button ss-button-full-width" value="สมัคร" />
+          <input type="submit" class="button ss-button ss-button-full-width radius" value="สมัครสมาชิก" />
         </div>
       </div>
     </form>
@@ -146,10 +146,10 @@
 
   <div class="large-12 columns" ng-show="submitSuccess">
     <div class="panel radius container-block">
-      <h2 class="text-center">ลงทะเบียนสำเร็จแล้ว</h2>
+      <h2 class="text-center">ลงทะเบียนสำเร็จแล้ว</h2><br/>
       <div class="text-center">
-        <p>ระบบได้ส่งอีเมลเพื่อให้ผู้ใช้ยืนยันการใช้งานเรียบร้อยแล้ว</p>
-        <p><a class="button ss-button" href="/register.html">รายงานอาการ</a></p>
+        <p>ระบบได้ส่งอีเมลเพื่อให้ผู้ใช้ยืนยันการใช้งานเรียบร้อยแล้ว<br/> กรุณาเช็คอีเมลของคุณและยืนยันการลงทะเบียนเพื่อประโยชน์ในการใช้ระบบ Sicksense</p>
+        <a class="button ss-button radius" href="/register.html">รายงานสุขภาพ</a>
       </div>
     </div>
   </div>
