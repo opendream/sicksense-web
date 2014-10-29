@@ -58,7 +58,7 @@
             // Regen UUID when accessToken lose. Existing UUID is trivial cuz
             // no one can use this UUID unless he has accessToken. So regen
             // is still ok.
-            if ($.cookie('uuid') || !$.cookie('accessToken')) {
+            if (!$.cookie('uuid') || !$.cookie('accessToken')) {
                 shared.setUUID(uuid.v4());
             }
 
