@@ -263,16 +263,17 @@
                         isSetAddress = true;
                     }, 1);
 
-                    $scope.digest();
                 })
                 .error(function (resp) {
                     console.log('Error get User', resp);
                 });
         }
 
-        if (!$scope.shared.loggedIn && $.cookie('userId') && $.cookie('accessToken')) {
-            getUser();
-        }
+        $scope.$watch('shared.loggedIn', function(newValue, oldValue) {
+            if (newValue != oldValue && !newValue && $.cookie('userId') && $.cookie('accessToken')) {
+                getUser();
+            }
+        });
 
     }]);
 

@@ -33,11 +33,15 @@
                         if (resp.response.sicksenseId) {
                             $scope.shared.loggedIn = true;
                             $scope.shared.state = 'login';
+                        } else {
+                            $scope.shared.loggedIn = false;
+                            $scope.shared.state = 'logout';
                         }
 
                         if (_.has($scope.query, 'redirect') && $scope.query.redirect) {
                             window.location = BASE_URL + '/' + $scope.query.redirect;
                         }
+
                     })
                     .error(function(resp) {
                         // reset uuid if cannot login successfully.
