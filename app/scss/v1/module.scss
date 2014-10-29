@@ -12,6 +12,10 @@
 .od-side-nav-block{
     margin-top: 50px;
     
+    @media #{$medium-only}, #{$small-only} {
+		margin-top: 20px;
+	}
+    
     h2{
         font-size: 1.5em;
         background-color: #F4F4F4;
