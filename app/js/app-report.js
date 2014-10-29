@@ -199,6 +199,19 @@
                 }
             };
 
+            var userURL, config = {};
+            if ($.cookie('userId')) {
+                userURL = $scope.userURL + $.cookie('userId');
+                config = {
+                    params: {
+                        accessToken: $.cookie('accessToken')
+                    }
+                };
+            }
+            else {
+                userURL = $scope.userURL;
+            }
+
             if (!$scope.shared.loggedIn) {
                 $.extend(data, {
                     gender: $scope.gender,
@@ -211,11 +224,11 @@
                 });
             }
 
-            if ($.cookie('accessToken') && $.cookie('userId')) {
+            if ($scope.shared.loggedIn) {
                 submitReport(data);
             }
             else {
-                $http.post($scope.userURL, registerData)
+                $http.post(userURL, registerData, config)
                     .success(function (resp) {
                         $.cookie('accessToken', resp.response.accessToken);
                         $.cookie('userId', resp.response.id);
