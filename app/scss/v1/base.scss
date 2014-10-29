@@ -26,4 +26,10 @@ span.error, small.error{
 
 .alert-box{
     font-size: 1em !important;
+    word-break: break-all;
+    
+    a{
+        color: #fff;
+        text-decoration: underline;
+    }
 }

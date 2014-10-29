@@ -200,7 +200,7 @@
             };
 
             var userURL, config = {};
-            if ($.cookie('userId')) {
+            if ($.cookie('userId') && $.cookie('accessToken')) {
                 userURL = $scope.userURL + $.cookie('userId');
                 config = {
                     params: {
@@ -209,6 +209,10 @@
                 };
             }
             else {
+                if (!$.cookie('accessToken')) {
+                    shared.setUUID(uuid.v4());
+                }
+
                 userURL = $scope.userURL;
             }
 

@@ -5,6 +5,11 @@
         // be sure we always has uuid
         shared.setUUID();
 
+        // Regen UUID when accessToken lose
+        if (!$.cookie('uuid') || !$.cookie('accessToken')) {
+            shared.setUUID(uuid.v4());
+        }
+
         $scope.checkURL = API_BASEPATH + '/users/';
         $scope.shared = shared;
 
@@ -26,7 +31,7 @@
             $scope.invalidLogin = false;
 
             if (accessToken && userId) {
-                var url = $scope.checkURL + userId + '?accessToken=' + accessToken
+                var url = $scope.checkURL + userId + '?accessToken=' + accessToken;
                 $http.get(url)
                     .success(function(resp) {
                         // He is sicksense id obviously, make him logged-in.
@@ -46,7 +51,7 @@
                     .error(function(resp) {
                         // reset uuid if cannot login successfully.
                         shared.setUUID(uuid.v4());
-                        
+
                         $scope.shared.loggedIn = false;
                         $scope.shared.state = 'logout';
 
@@ -55,8 +60,7 @@
                     });
             }
             else {
-                // reset uuid if cannot login successfully.
-                shared.setUUID(uuid.v4());
+                shared.setUUID();
 
                 $scope.shared.loggedIn = false;
                 // TODO: Actually I don't why we need `state` variables. Need to
