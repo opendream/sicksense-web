@@ -10,13 +10,13 @@
 
     <section class="top-bar-section" ng-controller="MenuController">
         <ul class="right">            
-            <li ng-show="shared.loggedIn"><a href="/report.html" >รายงานสุขภาพ</a></li>
-            <li ng-hide="shared.loggedIn"><a href="/report.html" data-reveal-id="reportModal" >รายงานสุขภาพ</a></li>
-            <li ng-hide="shared.loggedIn"><a href="/register.html">สมัครสมาชิก</a></li>
-            <li ng-hide="shared.loggedIn"><a href="/login.html" >เข้าสู่ระบบ</a></li>
-            <li ng-show="shared.loggedIn"><a href="/edit-profile.html" >ข้อมูลส่วนตัว</a></li>
+            <li ng-show="shared.loggedIn" ng-cloak><a href="/report.html" >รายงานสุขภาพ</a></li>
+            <li ng-hide="shared.loggedIn" ng-cloak><a href="/report.html" data-reveal-id="reportModal" >รายงานสุขภาพ</a></li>
+            <li ng-hide="shared.loggedIn" ng-cloak><a href="/register.html">สมัครสมาชิก</a></li>
+            <li ng-hide="shared.loggedIn" ng-cloak><a href="/login.html" >เข้าสู่ระบบ</a></li>
+            <li ng-show="shared.loggedIn" ng-cloak><a href="/edit-profile.html" >ข้อมูลส่วนตัว</a></li>
             <li><a href="#" data-reveal-id="aboutModal">เกี่ยวกับเรา</a></li>
-            <li ng-show="shared.loggedIn"><a href="#" ng-click="logout()" >ออกระบบ</a></li>
+            <li ng-show="shared.loggedIn" ng-cloak><a href="#" ng-click="logout()" >ออกระบบ</a></li>
         </ul>
     </section>
 </nav>
