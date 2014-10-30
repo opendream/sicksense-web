@@ -2,7 +2,6 @@
 
     app.controller('RegisterController', [ '$scope', '$http', 'shared', function($scope, $http, shared) {
         $scope.registerURL = API_BASEPATH + '/users/';
-        $scope.connectURL = API_BASEPATH + '/connect/';
 
         $scope.email = '';
         $scope.password = '';
@@ -90,16 +89,12 @@
 
             $scope.submitting = true;
 
-            var accessToken = $.cookie('accessToken'),
-                endpoint = accessToken ? $scope.connectURL : $scope.registerURL,
-                config = accessToken ? {
-                    params: {
-                        accessToken: accessToken
-                    }
-                } : {};
+            var endpoint = $scope.registerURL;
+
+            var tmpUUID = uuid.v4();
 
             var params = {
-                uuid: shared.uuid,
+                uuid: tmpUUID,
                 email: $scope.email,
                 password: $scope.password,
                 gender: $scope.gender,
@@ -113,15 +108,16 @@
                 platform: 'sicksenseweb'
             };
 
-
-
-            $http.post(endpoint, params, config)
+            $http.post(endpoint, params)
                 .success(function(resp) {
                     $scope.submitSuccess = true;
 
+                    shared.setUUID(tmpUUID);
                     $.cookie('accessToken', resp.response.accessToken);
                     $.cookie('userId', resp.response.id);
+
                     $scope.shared.loggedIn = true;
+                    $scope.shared.state = 'login';
                 })
                 .error(function(resp) {
                     if (resp.meta.status == 403 && resp.meta.errorSubType == 'unverified_email') {
