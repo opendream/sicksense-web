@@ -10,20 +10,18 @@
     </div>
   </div>
 
-  <div class="large-12 columns" ng-show="verifyFail">
-    <div class="panel radius container-block">
-        <h2 class="text-center">เกิดข้อผิดพลาดในการยืนยันอีเมล</h2>
-
-        <div class="row"><div class="large-6 columns push-3">
-          <p>กรุณาลองใหม่อีกครั้ง</p>
-          <ul>
-            <li>ตรวจสอบว่าลิ้งก์ที่คุณคลิกมานั้นถูกต้อง</li>
-            <li>ทำการ refresh หน้าใหม่อีกครั้ง</li>
-            <li>ลอง <a href="/request-verify.html">ขอลิ้งก์ยืนยันอีเมล</a></li>
-          </ul>
-        </div></div>
+    <div class="row" ng-show="verifyFail">
+        <div class="large-8 columns large-centered">
+            <div class="panel radius container-block">
+                <h2 class="">เกิดข้อผิดพลาดในการยืนยันอีเมล กรุณาลองใหม่อีกครั้ง</h2>
+                <ul class="info-list">
+                    <li>ตรวจสอบว่าลิ้งก์ที่คุณคลิกมานั้นถูกต้อง</li>
+                    <li>ทำการ refresh หน้าใหม่อีกครั้ง</li>
+                </ul>
+                <a href="/request-verify.html" class="button ss-button ss-button-full-width radius">ขอลิ้งก์ยืนยันอีเมลใหม่</a>
+            </div>  
+        </div>
     </div>
-  </div>
 
 </div>
 
