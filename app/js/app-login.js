@@ -62,10 +62,8 @@
                 shared.setUUID(uuid.v4());
             }
 
-            var tmpUUID = uuid.v4();
-
             var params = {
-                uuid: tmpUUID,
+                uuid: $.cookie('uuid'),
                 email: $scope.email,
                 password: $scope.password
             };
@@ -80,8 +78,6 @@
             $http.post($scope.loginURL, params)
                 .success(function(resp) {
                     $scope.submitting = false;
-
-                    shared.setUUID(tmpUUID);
 
                     $.cookie('accessToken', resp.response.accessToken);
                     $.cookie('userId', resp.response.id);

@@ -196,7 +196,8 @@
                     city: $scope.city,
                     district: $scope.district,
                     subdistrict: $scope.subdistrict
-                }
+                },
+                platform: 'sicksenseweb'
             };
 
             var userURL, config = {};
