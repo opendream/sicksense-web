@@ -23,6 +23,10 @@
                     $scope.shared.loggedIn = false;
                     $scope.shared.state = 'logout';
 
+                    shared.setUUID(uuid.v4());
+                    $.cookie('accessToken', '');
+                    $.cookie('userId', '');
+
                     window.location = BASE_URL;
                 })
                 .error(function (resp) {
