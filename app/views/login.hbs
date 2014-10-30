@@ -8,11 +8,11 @@
       </div>
 
       <div class="row">
-        <div class="large-8 large-centered columns">
-          <div data-alert class=" alert-box alert radius" ng-show="invalidLogin">
+        <div class="large-6 large-centered columns">
+          <div data-alert class=" alert-box alert radius" ng-show="invalidLogin" ng-cloak>
             อีเมลและรหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง
           </div>
-          <div data-alert class=" alert-box alert radius" ng-show="unverifiedEmail">
+          <div data-alert class=" alert-box alert radius" ng-show="unverifiedEmail" ng-cloak>
             โปรดยืนยันอีเมลของคุณก่อนเข้าสู่ระบบ หากยังไม่ได้รับอีเมล
             <a href="/request-verify.html">สามารถขอลิ้งก์ได้ที่นี่</a>
           </div>
@@ -27,8 +27,8 @@
             </div>
             <div class="large-9 columns">
               <input type="text" ng-model="email" placeholder="mayom@sicksense.org" class="no-margin" />
-              <small class="error" ng-show="invalidEmail">รูปแบบอีเมลไม่ถูกต้อง</small>
-              <small class="error" ng-show="invalidDuplicateEmail">อีเมลนี้มีในระบบแล้ว กรุณาใช้อีเมลอื่น</small>
+              <small class="error" ng-show="invalidEmail" ng-cloak>รูปแบบอีเมลไม่ถูกต้อง</small>
+              <small class="error" ng-show="invalidDuplicateEmail" ng-cloak>อีเมลนี้มีในระบบแล้ว กรุณาใช้อีเมลอื่น</small>
             </div>
           </div>
         </div>
@@ -41,7 +41,7 @@
             </div>
             <div class="large-9 columns">
               <input type="password" ng-model="password" placeholder="********" class="no-margin" />
-              <small class="error" ng-show="invalidPassword">รหัสผ่านต้องไม่น้อยกว่า 8 ตัวอักษร</small>
+              <small class="error" ng-show="invalidPassword" ng-cloak>รหัสผ่านต้องไม่น้อยกว่า 8 ตัวอักษร</small>
             </div>
           </div>
         </div>

@@ -8,7 +8,7 @@
       </div>
       <div class="row">
        <div class="large-8 large-centered columns">
-        <div data-alert class=" alert-box alert radius" ng-show="unverifiedEmail">โปรดยืนยันอีเมลของคุณก่อนเข้าสู่ระบบ หากยังไม่ได้รับอีเมล <a href="/request-verify.html">สามารถขอลิ้งก์ได้ที่นี่</a></div>
+        <div data-alert class=" alert-box alert radius" ng-show="unverifiedEmail" ng-cloak>โปรดยืนยันอีเมลของคุณก่อนเข้าสู่ระบบ หากยังไม่ได้รับอีเมล <a href="/request-verify.html">สามารถขอลิ้งก์ได้ที่นี่</a></div>
         </div>
       </div>
       <div class="row">
@@ -19,8 +19,8 @@
             </div>
             <div class="large-9 columns">
               <input type="text" ng-model="email" placeholder="mayom@sicksense.org" class="no-margin" />
-              <small class="error" ng-show="invalidEmail">รูปแบบอีเมลไม่ถูกต้อง</small>
-              <small class="error" ng-show="invalidDuplicateEmail">อีเมลนี้มีในระบบแล้ว กรุณาใช้อีเมลอื่น</small>
+              <small class="error" ng-show="invalidEmail" ng-cloak>รูปแบบอีเมลไม่ถูกต้อง</small>
+              <small class="error" ng-show="invalidDuplicateEmail" ng-cloak>อีเมลนี้มีในระบบแล้ว กรุณาใช้อีเมลอื่น</small>
             </div>
           </div>
         </div>
@@ -33,7 +33,7 @@
             </div>
             <div class="large-9 columns">
               <input type="password" ng-model="password" placeholder="********" class="no-margin" />
-              <small class="error" ng-show="invalidPassword">รหัสผ่านต้องไม่น้อยกว่า 8 ตัวอักษร และไม่มากกว่า 64 ตัวอักษร</small>
+              <small class="error" ng-show="invalidPassword" ng-cloak>รหัสผ่านต้องไม่น้อยกว่า 8 ตัวอักษร และไม่มากกว่า 64 ตัวอักษร</small>
             </div>
           </div>
         </div>
@@ -46,7 +46,7 @@
             </div>
             <div class="large-9 columns">
               <input type="password" ng-model="repassword" placeholder="********" class="no-margin"/>
-              <small class="error" ng-show="invalidSamePassword">รหัสผ่านไม่ตรงกัน</small>
+              <small class="error" ng-show="invalidSamePassword" ng-cloak>รหัสผ่านไม่ตรงกัน</small>
             </div>
           </div>
         </div>
@@ -60,7 +60,7 @@
             <div class="large-9 columns">
               <input type="radio" ng-model="gender" value="male" id="edit-male"><label for="edit-male">ชาย</label>
               <input type="radio" ng-model="gender" value="female" id="edit-female"><label for="edit-female">หญิง</label>
-              <small class="error" ng-show="invalidGender">กรุณาเลือกเพศของคุณ</small>
+              <small class="error" ng-show="invalidGender" ng-cloak>กรุณาเลือกเพศของคุณ</small>
             </div>
           </div>
         </div>
@@ -73,7 +73,7 @@
             </div>
             <div class="large-9 columns">
               <select ng-model="year" ng-options="k as v for (k, v) in yearOptions" class="no-margin"></select>
-              <small class="error" ng-show="invalidYear">กรุณาเลือกปีเกิด</small>
+              <small class="error" ng-show="invalidYear" ng-cloak>กรุณาเลือกปีเกิด</small>
             </div>
           </div>
         </div>
@@ -85,10 +85,10 @@
               <label class="right-label inline">จังหวัด</label>
             </div>
             <div class="large-9 columns">
-              <select id="city" name="city" ng-model="city" class="no-margin">
+              <select id="city" name="city" ng-model="city" class="no-margin" ng-cloak>
                 <option ng-repeat="city in cityOptions" value="[[ city.key ]]">[[ city.value ]]</option>
               </select>
-              <small class="error" ng-show="invalidCity">กรุณาเลือกจังหวัด</small>
+              <small class="error" ng-show="invalidCity" ng-cloak>กรุณาเลือกจังหวัด</small>
             </div>
           </div>
         </div>
@@ -100,10 +100,10 @@
               <label class="right-label inline">อำเภอ</label>
             </div>
             <div class="large-9 columns">
-              <select id="district" name="district" ng-model="district" class="no-margin">
+              <select id="district" name="district" ng-model="district" class="no-margin" ng-cloak>
                 <option ng-repeat="district in districts" value="[[ district.key ]]">[[ district.value ]]</option>
               </select>
-              <small class="error" ng-show="invalidDistrict">กรุณาเลือกอำเภอ</small>
+              <small class="error" ng-show="invalidDistrict" ng-cloak>กรุณาเลือกอำเภอ</small>
             </div>
           </div>
         </div>
@@ -115,17 +115,17 @@
               <label class="right-label inline">ตำบล</label>
             </div>
             <div class="large-9 columns">
-              <select id="subdistrict" name="subdistrict" ng-model="subdistrict" class="no-margin">
+              <select id="subdistrict" name="subdistrict" ng-model="subdistrict" class="no-margin" ng-cloak>
                 <option ng-repeat="subdistrict in subdistricts" value="[[ subdistrict.key ]]">[[ subdistrict.value ]]</option>
               </select>
-              <small class="error" ng-show="invalidSubdistrict">กรุณาเลือกตำบล</small>
+              <small class="error" ng-show="invalidSubdistrict" ng-cloak>กรุณาเลือกตำบล</small>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="large-8 large-centered columns">
-          <input id="edit-subscribe" type="checkbox" ng-model="subscribe" class="no-margin" />
+          <input id="edit-subscribe" type="checkbox" ng-model="subscribe" class="" />
           <label for="edit-subscribe">แจ้งเตือนผ่านอีเมล</label>
         </div>
       </div>
@@ -144,7 +144,7 @@
     </form>
   </div>
 
-  <div class="large-12 columns" ng-show="submitSuccess">
+  <div class="large-12 columns" ng-show="submitSuccess" ng-cloak>
     <div class="panel radius container-block">
       <h2 class="text-center">ลงทะเบียนสำเร็จแล้ว</h2><br/>
       <div class="text-center">
