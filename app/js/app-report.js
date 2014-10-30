@@ -152,7 +152,7 @@
             $scope.invalidAnimalContact = $scope.animalContact ? false : true;
 
             if ($scope.shared.loggedIn) {
-                return (!$scope.invalidIsFine || !$scope.invalidSymptoms || !$scope.invalidAnimalContact)
+                return !($scope.invalidIsFine || $scope.invalidSymptoms || $scope.invalidAnimalContact)
             } else {
                 $scope.invalidGender = $scope.gender ? false : true;
                 $scope.invalidYear = $scope.year ? false : true;
@@ -160,7 +160,7 @@
                 $scope.invalidDistrict = $scope.district ? false : true;
                 $scope.invalidSubdistrict = $scope.subdistrict ? false : true;
 
-                return (!$scope.invalidIsFine || !$scope.invalidSymptoms || !$scope.invalidAnimalContact ||
+                return !($scope.invalidIsFine || $scope.invalidSymptoms || $scope.invalidAnimalContact ||
                     $scope.invalidGender || $scope.invalidYear || $scope.invalidCity ||
                     $scope.invalidDistrict || $scope.invalidSubdistrict)
             }
