@@ -3,7 +3,7 @@
     <form name="requestVerifyForm" novalidate class="register-form" ng-submit="submit()">
       <div class="row">
         <div class="large-8 large-centered columns">
-          <h1>ขอลิ้งก์เพื่อการยืนยันอีเมลของคุณ</h1>
+          <h1>ขอลิงก์เพื่อการยืนยันอีเมลของคุณ</h1>
         </div>
       </div>
 
@@ -15,7 +15,7 @@
           </div>
 
           <div data-alert class="alert-box success radius" ng-show="success" ng-cloak>
-            ได้ทำการส่งลิ้งก์ไปที่อีเมลที่คุณกรอกไว้เรียบร้อยแล้ว
+            ได้ทำการส่งลิงก์ไปที่อีเมลที่คุณกรอกไว้เรียบร้อยแล้ว
           </div>
 
           <div data-alert class="alert-box success radius" ng-show="alreadyVerified" ng-cloak>
@@ -29,7 +29,7 @@
             <div class="large-9 columns">
               <input type="email" name="email" required ng-model="email" placeholder="mayom@sicksense.org" class="no-margin" />
               <small class="error" ng-show="invalidEmail" ng-cloak>กรุณากรอกอีเมลให้ถูกต้อง</small>
-              <small class="error" ng-show="invalidUser" ng-cloak>ไม่พบอีเมลนี้ในระบบ</small>
+              <small class="error" ng-show="invalidUser" ng-cloak>ไม่พบอีเมลในระบบ</small>
             </div>
           </div>
         </div>
@@ -37,8 +37,8 @@
 
       <div class="row">
         <div class="large-8 large-centered columns">
-          <input type="submit" class="button ss-button ss-button-full-width radius" ng-class="{disabled:submitting}" value="ส่งลิ้งก์" ng-hide="success" ng-cloak />
-          <input type="submit" class="button ss-button ss-button-full-width radius" ng-class="{disabled:submitting}" value="ฉันไม่ได้รับอีเมล ส่งลิ้งก์อีกครั้ง" ng-show="success" ng-cloak />
+          <input type="submit" class="button ss-button ss-button-full-width radius" ng-class="{disabled:submitting}" value="ส่งลิงก์" ng-hide="success" ng-cloak />
+          <input type="submit" class="button ss-button ss-button-full-width radius" ng-class="{disabled:submitting}" value="ฉันไม่ได้รับอีเมล ส่งลิงก์อีกครั้ง" ng-show="success" ng-cloak />
         </div>
       </div>
     </form>

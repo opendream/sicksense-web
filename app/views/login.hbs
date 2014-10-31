@@ -13,8 +13,8 @@
             อีเมลหรือรหัสผ่านของคุณไม่ถูกต้อง
           </div>
           <div data-alert class=" alert-box alert radius" ng-show="unverifiedEmail" ng-cloak>
-            โปรดยืนยันอีเมลของคุณก่อนเข้าสู่ระบบ หากยังไม่ได้รับอีเมล
-            <a href="/request-verify.html">สามารถขอลิ้งก์ได้ที่นี่</a>
+            กรุณาตรวจสอบอีเมลเพื่อยืนยันการใช้งาน Sicksense ID หากยังไม่ได้รับอีเมล
+            <a href="/request-verify.html">สามารถขอลิงก์ได้ที่นี่</a>
           </div>
         </div>
       </div>
@@ -41,7 +41,7 @@
             </div>
             <div class="large-9 columns">
               <input type="password" ng-model="password" placeholder="********" class="no-margin" />
-              <small class="error" ng-show="invalidPassword" ng-cloak>รหัสผ่านต้องไม่น้อยกว่า 8 ตัวอักษร</small>
+              <small class="error" ng-show="invalidPassword" ng-cloak>รหัสผ่านต้องไม่น้อยกว่า 8 ตัวอักษร และไม่มากกว่า 64 ตัวอักษร</small>
             </div>
           </div>
         </div>
