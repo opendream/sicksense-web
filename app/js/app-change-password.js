@@ -82,6 +82,8 @@
                     $.cookie('accessToken', resp.response.accessToken);
                     $scope.submitStatus = 'completed';
                     $scope.submitting = false;
+
+                    window.location = window.location;
                 })
                 .error(function(resp) {
                     if (resp.meta && resp.meta.status == 403) {

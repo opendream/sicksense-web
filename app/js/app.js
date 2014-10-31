@@ -6,7 +6,7 @@ sickconsole = function(message) {
 
 $(document).foundation();
 
-var app = angular.module('sicksense', []);
+var app = angular.module('sicksense', [ 'angular-loading-bar' ]);
 
 app.config(function ($interpolateProvider) {
     $interpolateProvider.startSymbol('[[');
