@@ -11,20 +11,13 @@
             }
         });
 
-        $scope.isEmail = function(email) {
-            var re = new RegExp(/^(([^<>()\[\]\\.,;:\s@\"]+(\.[^<>()\[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-            if (!email.match(re)) {
-                return false;
-            }
-            return true;
-        };
-
         $scope.validate = function() {
             $scope.error = false;
             $scope.success = false;
 
-            $scope.invalidEmail = !$scope.isEmail($scope.email);
-            return !$scope.invalidEmail;
+            $scope.invalidEmail = $scope.requestVerifyForm.email.$invalid;
+
+            return $scope.requestVerifyForm.$valid;
         };
 
         $scope.submit = function() {
