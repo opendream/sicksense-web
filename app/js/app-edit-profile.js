@@ -1,6 +1,6 @@
 ;(function ($, window, document, undefined) {
 
-    app.controller('EditProfileController', [ '$scope', '$http', 'shared', function($scope, $http, shared) {
+    app.controller('EditProfileController', function($scope, $http, shared) {
         $scope.userURL = API_BASEPATH + '/users/' + $.cookie('userId');
         $scope.password = '';
         $scope.repassword = '';
@@ -124,6 +124,8 @@
                 .success(function(resp) {
                     $scope.submitStatus = 'completed';
                     $scope.submitting = false;
+
+                    window.location = window.location;
                 })
                 .error(function(resp) {
                     $scope.submitStatus = 'failed';
@@ -131,6 +133,6 @@
                 });
         };
 
-    }]);
+    });
 
 })(jQuery, this, this.document);
