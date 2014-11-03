@@ -5,7 +5,7 @@
         <h2 class="text-center">อีเมลของคุณได้รับการยืนยันแล้ว</h2>
         <div class="text-center">
           <p>คุณสามารถเข้าสู่ระบบเพื่อใช้งานได้แล้ว</p>
-          <a ng-show="isiOS" class="button ss-button radius" href="sicksense://confirmation-action" ng-cloak>เข้าใช้งานแอบพลิเคชั่นหมอชาวบ้าน</a>
+          <a ng-show="isiOS" class="button ss-button radius" href="sicksense://confirmation-action" ng-cloak><span class="doctorme-icon"></span>เข้าใช้งานแอบพลิเคชั่นหมอชาวบ้าน</a>
           <a ng-hide="isiOS" class="button ss-button radius" href="/">กลับหน้าแรก</a>
         </div>
     </div>
@@ -13,12 +13,14 @@
 
   <div class="large-8 columns large-centered" ng-show="verifyFail" ng-cloak>
     <div class="panel radius container-block">
-      <h2 class="">เกิดข้อผิดพลาดในการยืนยันอีเมล กรุณาลองใหม่อีกครั้ง</h2>
+      <h2 class="text-center">เกิดข้อผิดพลาดในการยืนยันอีเมล</h2>
       <ul class="info-list">
         <li>ตรวจสอบว่าลิงก์ที่คุณคลิกมานั้นถูกต้อง</li>
         <li>ทำการ refresh หน้าใหม่อีกครั้ง</li>
       </ul>
-      <a href="/request-verify.html" class="button ss-button ss-button-full-width radius">ขอลิงก์ยืนยันอีเมลใหม่</a>
+      <div class="text-center">
+          <a href="/request-verify.html" class="button ss-button radius">ขอลิงก์ยืนยันอีเมลใหม่</a>
+      </div>
     </div>
   </div>
 
