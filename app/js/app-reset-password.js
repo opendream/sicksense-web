@@ -7,6 +7,7 @@
         $scope.password = '';
         $scope.repassword = '';
         $scope.shared = shared;
+        $scope.isiOS = $.browser.ipad || $.browser.iphone;
 
         $scope.$watch('shared.loggedIn', function(newValue, oldValue) {
             if (newValue) {
@@ -67,7 +68,6 @@
             $http.post($scope.resetPasswordURL, params)
                 .success(function(resp) {
                     $scope.submitStatus = 'completed';
-                    $scope.submitting = false;
                 })
                 .error(function(resp) {
                     console.log(resp);

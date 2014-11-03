@@ -1,5 +1,16 @@
 <div class="row" ng-controller="RequestVerifyController">
-  <div class="large-12 columns">
+
+  <div class="large-8 columns large-centered" ng-show="success" ng-cloak>
+    <div class="panel radius container-block">
+        <h2 class="text-center">ขอลิงก์เพื่อการยืนยันอีเมลของคุณ</h2>
+        <div class="text-center">
+          <p>ได้ทำการส่งลิงก์ไปที่อีเมลที่คุณกรอกไว้เรียบร้อยแล้ว</p>
+          <a ng-show="isiOS" class="button ss-button radius" href="sicksense://finish-action" ng-cloak>เข้าใช้งานแอบพลิเคชั่นหมอชาวบ้าน</a>
+        </div>
+    </div>
+  </div>
+
+  <div class="large-12 columns" ng-hide="submitting && success" ng-cloak>
     <form name="requestVerifyForm" novalidate class="register-form" ng-submit="submit()">
       <div class="row">
         <div class="large-8 large-centered columns">
@@ -46,5 +57,6 @@
 </div>
 
 {{#content "js_footer"}}
+<script src="/bower_components/jquery.browser/dist/jquery.browser.min.js"></script>
 <script src="/js/app-request-verify.js"></script>
 {{/content}}

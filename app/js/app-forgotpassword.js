@@ -38,7 +38,6 @@
                 .success(function(resp) {
                     $scope.message = resp.response.message;
                     $scope.success = true;
-                    $scope.submitting = false;
                 })
                 .error(function(resp) {
                     $scope.showHTML5Validation = false;
