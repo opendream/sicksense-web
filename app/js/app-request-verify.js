@@ -11,23 +11,20 @@
             }
         });
 
-        $scope.isEmail = function(email) {
-            var re = new RegExp(/^(([^<>()\[\]\\.,;:\s@\"]+(\.[^<>()\[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-            if (!email.match(re)) {
-                return false;
-            }
-            return true;
-        };
-
         $scope.validate = function() {
-            $scope.invalidEmail = !$scope.isEmail($scope.email);
-            return !$scope.invalidEmail;
+            $scope.error = false;
+            $scope.success = false;
+
+            $scope.invalidEmail = $scope.requestVerifyForm.email.$invalid;
+
+            return $scope.requestVerifyForm.$valid;
         };
 
         $scope.submit = function() {
             $scope.message = '';
             $scope.error = false;
             $scope.invalidUser = false;
+            $scope.alreadyVerified = false;
 
             if (!$scope.validate()) return false;
             if ($scope.submitting) return false;
@@ -48,6 +45,11 @@
                          resp.meta.status == 400 &&
                          resp.meta.errorMessage.match(/(not found)|(ไม่พบ)/i) ) {
                         $scope.invalidUser = true;
+                    }
+                    else if ( resp.meta &&
+                         resp.meta.status == 400 &&
+                         resp.meta.errorSubType == 'email_is_already_verified' ) {
+                        $scope.alreadyVerified = true;
                     }
                     else {
                         $scope.error = true;

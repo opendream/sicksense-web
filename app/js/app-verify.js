@@ -14,9 +14,6 @@ app.controller('VerifyController', function ($scope, $http, shared) {
     })
     .success(function (resp) {
         $scope.verifySuccess = true;
-        $.cookie('accessToken', resp.response.accessToken);
-        $.cookie('userId', resp.response.id);
-        $scope.shared.loggedIn = true;
     })
     .error(function (resp) {
         $scope.verifyFail = true;

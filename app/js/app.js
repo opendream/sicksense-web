@@ -6,7 +6,7 @@ sickconsole = function(message) {
 
 $(document).foundation();
 
-var app = angular.module('sicksense', []);
+var app = angular.module('sicksense', [ 'angular-loading-bar' ]);
 
 app.config(function ($interpolateProvider) {
     $interpolateProvider.startSymbol('[[');
@@ -36,10 +36,3 @@ app.factory('shared', function() {
 app.run(function (shared) {
     shared.setUUID();
 });
-
-function getParameterByName(name) {
-    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-        results = regex.exec(location.search);
-    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-}

@@ -41,7 +41,7 @@
         }
 
         $scope.validate = function() {
-            if ($scope.password.length < 8) {
+            if ($scope.password.length < 8 || $scope.password.length > 64) {
                 $scope.invalidSamePassword = false;
                 $scope.invalidPassword = true;
             }
@@ -54,14 +54,17 @@
                 $scope.invalidPassword = false;
             }
 
-            $scope.invalidOldPassword = $scope.oldpassword.length < 8 ? true : false;
+            $scope.invalidOldPassword = $scope.oldpassword.length < 8 || $scope.oldpassword.length > 64 ? true : false;
 
             return !($scope.invalidOldPassword || $scope.invalidSamePassword || $scope.invalidPassword);
         };
 
         $scope.submit = function() {
-            if (!$scope.validate()) return false;
             if ($scope.submitting) return false;
+
+            $scope.submitStatus = '';
+            $scope.wrongOldPassword = false;
+            if (!$scope.validate()) return false;
 
             $scope.submitting = true;
 
@@ -79,9 +82,11 @@
                     $.cookie('accessToken', resp.response.accessToken);
                     $scope.submitStatus = 'completed';
                     $scope.submitting = false;
+
+                    window.location = window.location;
                 })
                 .error(function(resp) {
-                    if (resp.error.statusCode == 403) {
+                    if (resp.meta && resp.meta.status == 403) {
                        $scope.wrongOldPassword = true;
                     }
                     $scope.submitStatus = 'failed';

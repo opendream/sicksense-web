@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="/bower_components/typicons/src/font/typicons.min.css" />
   <link rel="stylesheet" href="/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css" />
   <link rel="stylesheet" href="/bower_components/jqueryui/themes/ui-lightness/jquery-ui.min.css" />
+  <link rel="stylesheet" href="/bower_components/angular-loading-bar/build/loading-bar.min.css" />
   <!-- endbuild -->
 
   {{#block "styles" }}
@@ -26,6 +27,21 @@
   <!-- build:css /css/app.min.css -->
   <link rel="stylesheet" href="/css/v1/app.css" />
   <!-- endbuild -->
+
+  <script>
+  function getParameterByName(name) {
+      name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+      var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+          results = regex.exec(location.search);
+      return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+  }
+  // Check if is webview.
+  (function () {
+    if (getParameterByName('webview')) {
+      document.getElementsByTagName('html')[0].className += ' webview ';
+    }
+  })();
+  </script>
 
   <!-- build:js /js/vendor-header.min.js -->
   <script src="/bower_components/modernizr/modernizr.js"></script>
@@ -46,6 +62,8 @@
 
 {{> about }}
 
+{{> report_modal }}
+
 <div ng-controller="CheckLoginController"></div>
 
 <!-- build:js /js/vendor-footer.min.js -->
@@ -54,6 +72,8 @@
 <script src="/bower_components/momentjs/moment.js"></script>
 <script src="/bower_components/momentjs/lang/th.js"></script>
 <script src="/bower_components/node-uuid/uuid.js"></script>
+
+<script src="/bower_components/angular-loading-bar/build/loading-bar.js"></script>
 
 <script src="/bower_components/jquery/dist/jquery.js"></script>
 <script src="/bower_components/jqueryui/jquery-ui.js"></script>

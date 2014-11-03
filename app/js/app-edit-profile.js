@@ -1,6 +1,6 @@
 ;(function ($, window, document, undefined) {
 
-    app.controller('EditProfileController', [ '$scope', '$http', 'shared', function($scope, $http, shared) {
+    app.controller('EditProfileController', function($scope, $http, shared) {
         $scope.userURL = API_BASEPATH + '/users/' + $.cookie('userId');
         $scope.password = '';
         $scope.repassword = '';
@@ -14,9 +14,10 @@
             var isFirstTime = newValue === undefined && newValue == oldValue;
 
             if (!isFirstTime && !newValue) {
-                var redirectURL = HOME_URL;
-                if ($scope.shared.state != 'logout') {
-                    redirectURL += '/login.html?redirect=edit-profile.html';
+                var redirectURL = HOME_URL + '/login.html?redirect=edit-profile.html';
+
+                if ($scope.shared.state == 'logout') {
+                    redirectURL = HOME_URL;
                 }
                 window.location = redirectURL;
             }
@@ -32,7 +33,7 @@
                     .success(function(resp) {
                         $scope.email = resp.response.email;
                         $scope.gender = resp.response.gender;
-                        $scope.year = resp.response.birthYear.toString();
+                        $scope.year = resp.response.birthYear ? resp.response.birthYear.toString() : '' ;
                         $scope.city = resp.response.address.city;
                         $scope.district = resp.response.address.district;
                         $scope.subdistrict = resp.response.address.subdistrict;
@@ -123,6 +124,8 @@
                 .success(function(resp) {
                     $scope.submitStatus = 'completed';
                     $scope.submitting = false;
+
+                    window.location = window.location;
                 })
                 .error(function(resp) {
                     $scope.submitStatus = 'failed';
@@ -130,6 +133,6 @@
                 });
         };
 
-    }]);
+    });
 
 })(jQuery, this, this.document);

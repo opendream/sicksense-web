@@ -123,7 +123,7 @@ module.exports = function(grunt) {
     },
 
     useminPrepare: {
-      html: [ 'app/*.html' ],
+      html: [ 'app/*.html', 'app/v2/*.html' ],
       options: {
         dest: 'build',
         flow: {

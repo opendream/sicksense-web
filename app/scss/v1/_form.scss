@@ -4,7 +4,8 @@
 .register-form,
 .reset-password-form,
 .change-password-form,
-.edit-profile-form {
+.edit-profile-form,
+.login-form{
     padding-top: 50px;
 
 	@media #{$medium-only}, #{$small-only} {

@@ -2,6 +2,7 @@
 
     app.controller('ReportController', [ '$scope', '$http', 'shared', function($scope, $http, shared) {
         $scope.reportURL = API_BASEPATH + '/reports/';
+        $scope.userURL = API_BASEPATH + '/users/';
         $scope.reportSuccess = false;
 
         $scope.isFine = getParameterByName('isFine');
@@ -96,18 +97,44 @@
 
         $scope.shared = shared;
 
-        $scope.$watch('shared.loggedIn', function(newValue, oldValue) {
-            var isFirstTime = newValue === undefined && newValue == oldValue;
+        var isSetAddress = false;
 
-            if (!isFirstTime && !newValue) {
-                var redirectURL = HOME_URL;
-                if ($scope.shared.state != 'logout') {
-                    redirectURL += '/login.html?redirect=report.html';
-                }
-                window.location = redirectURL;
+        if (!$scope.shared.loggedIn) {
+            $scope.yearOptions = {};
+            for (var i = 0; i < 100; i++) {
+                $scope.yearOptions[2014 - i] = 2557 - i;
             }
-        });
 
+            $scope.cityOptions = locations.provinces;
+
+            $scope.$watch('city', function(newValue, oldValue) {
+                if (newValue) {
+                    $scope.districts = locations[newValue].amphoes;
+
+                    if (isSetAddress) {
+                        $scope.district = '';
+                        $scope.subdistrict = '';
+                    }
+                }
+                else {
+                    $scope.districts = [];
+                }
+                $scope.subdistricts = [];
+            });
+
+            $scope.$watch('district', function(newValue, oldValue) {
+                if (newValue) {
+                    $scope.subdistricts = locations[$scope.city][newValue];
+
+                    if (isSetAddress) {
+                        $scope.subdistrict = '';
+                    }
+                }
+                else {
+                    $scope.subdistricts = [];
+                }
+            });
+        }
 
         $scope.toggleImage = function (symptom) {
             if ($scope.symptoms.indexOf(symptom) < 0) {
@@ -121,10 +148,22 @@
 
         $scope.validate = function() {
             $scope.invalidIsFine = $scope.isFine ? false : true;
-            $scope.invalidSymptoms = $scope.isFine == false && $scope.symptoms ? false : true;
+            $scope.invalidSymptoms = $scope.isFine == false && $scope.symptoms.length == 0 ? true : false;
             $scope.invalidAnimalContact = $scope.animalContact ? false : true;
 
-            return (!$scope.invalidIsFine || !$scope.invalidSymptoms || !$scope.invalidAnimalContact)
+            if ($scope.shared.loggedIn) {
+                return !($scope.invalidIsFine || $scope.invalidSymptoms || $scope.invalidAnimalContact)
+            } else {
+                $scope.invalidGender = $scope.gender ? false : true;
+                $scope.invalidYear = $scope.year ? false : true;
+                $scope.invalidCity = $scope.city ? false : true;
+                $scope.invalidDistrict = $scope.district ? false : true;
+                $scope.invalidSubdistrict = $scope.subdistrict ? false : true;
+
+                return !($scope.invalidIsFine || $scope.invalidSymptoms || $scope.invalidAnimalContact ||
+                    $scope.invalidGender || $scope.invalidYear || $scope.invalidCity ||
+                    $scope.invalidDistrict || $scope.invalidSubdistrict)
+            }
         };
 
         $scope.submit = function() {
@@ -147,8 +186,70 @@
                 platform: 'sicksenseweb'
             };
 
+            var registerData = {
+                email: $.cookie('uuid') + '@sicksense.com',
+                password: $.cookie('uuid'),
+                uuid: $.cookie('uuid'),
+                gender: $scope.gender,
+                birthYear: $scope.year,
+                address: {
+                    city: $scope.city,
+                    district: $scope.district,
+                    subdistrict: $scope.subdistrict
+                },
+                platform: 'sicksenseweb'
+            };
+
+            var userURL, config = {};
+            if ($.cookie('userId') && $.cookie('accessToken')) {
+                userURL = $scope.userURL + $.cookie('userId');
+                config = {
+                    params: {
+                        accessToken: $.cookie('accessToken')
+                    }
+                };
+            }
+            else {
+                if (!$.cookie('accessToken')) {
+                    shared.setUUID(uuid.v4());
+                }
+
+                userURL = $scope.userURL;
+            }
+
+            if (!$scope.shared.loggedIn) {
+                $.extend(data, {
+                    gender: $scope.gender,
+                    birthYear: $scope.year,
+                    address: {
+                        city: $scope.city,
+                        district: $scope.district,
+                        subdistrict: $scope.subdistrict
+                    }
+                });
+            }
+
+            if ($scope.shared.loggedIn) {
+                submitReport(data);
+            }
+            else {
+                $http.post(userURL, registerData, config)
+                    .success(function (resp) {
+                        $.cookie('accessToken', resp.response.accessToken);
+                        $.cookie('userId', resp.response.id);
+
+                        submitReport(data);
+                    })
+                    .error(function (resp) {
+                        console.log('error Register', resp);
+                        $scope.submitting = false;
+                    });
+            }
+        };
+
+        function submitReport(data) {
             $http.post($scope.reportURL, data, {
-                    'params': {
+                    params: {
                         accessToken: $.cookie('accessToken')
                     }
                 })
@@ -159,10 +260,38 @@
                     $scope.reportSuccess = true;
                 })
                 .error(function(resp) {
-                    console.log('errorr', resp);
+                    console.log('error Report', resp);
                     $scope.submitting = false;
                 });
         };
+
+        function getUser() {
+            var params = {
+                accessToken: $.cookie('accessToken'),
+            };
+            $http.get($scope.userURL + $.cookie('userId'), {params: params})
+                .success(function (resp) {
+                    $scope.gender = resp.response.gender;
+                    $scope.year = resp.response.birthYear ? resp.response.birthYear.toString() : '';
+                    $scope.city = resp.response.address.city;
+                    $scope.district = resp.response.address.district;
+                    $scope.subdistrict = resp.response.address.subdistrict;
+
+                    setTimeout(function () {
+                        isSetAddress = true;
+                    }, 1);
+
+                })
+                .error(function (resp) {
+                    console.log('Error get User', resp);
+                });
+        }
+
+        $scope.$watch('shared.loggedIn', function(newValue, oldValue) {
+            if (newValue != oldValue && !newValue && $.cookie('userId') && $.cookie('accessToken')) {
+                getUser();
+            }
+        });
 
     }]);
 

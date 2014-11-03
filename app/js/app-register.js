@@ -2,6 +2,7 @@
 
     app.controller('RegisterController', [ '$scope', '$http', 'shared', function($scope, $http, shared) {
         $scope.registerURL = API_BASEPATH + '/users/';
+
         $scope.email = '';
         $scope.password = '';
         $scope.repassword = '';
@@ -10,7 +11,7 @@
         $scope.shared = shared;
 
         $scope.$watch('shared.loggedIn', function(newValue, oldValue) {
-            if (newValue) {
+            if (newValue && !$scope.submitSuccess) {
                 window.location = HOME_URL + '/report.html';
             }
         });
@@ -44,18 +45,10 @@
             }
         });
 
-        $scope.isEmail = function(email) {
-            var re = new RegExp(/^(([^<>()\[\]\\.,;:\s@\"]+(\.[^<>()\[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-            if (!email.match(re)) {
-                return false;
-            }
-            return true;
-        };
-
         $scope.validate = function() {
-            $scope.invalidEmail = !$scope.isEmail($scope.email);
+            $scope.invalidEmail = $scope.registerForm.email.$invalid;
 
-            if ($scope.password.length < 8) {
+            if ($scope.password.length < 8 || $scope.password.length > 64) {
                 $scope.invalidSamePassword = false;
                 $scope.invalidPassword = true;
             }
@@ -80,13 +73,20 @@
         };
 
         $scope.submit = function() {
-            if (!$scope.validate()) return false;
             if ($scope.submitting) return false;
+
+            $scope.unverifiedEmail = false;
+            $scope.invalidDuplicateEmail = false;
+            if (!$scope.validate()) return false;
 
             $scope.submitting = true;
 
+            var endpoint = $scope.registerURL;
+
+            var tmpUUID = uuid.v4();
+
             var params = {
-                uuid: shared.uuid,
+                uuid: tmpUUID,
                 email: $scope.email,
                 password: $scope.password,
                 gender: $scope.gender,
@@ -100,12 +100,23 @@
                 platform: 'sicksenseweb'
             };
 
-            $http.post($scope.registerURL, params)
+            $http.post(endpoint, params)
                 .success(function(resp) {
                     $scope.submitSuccess = true;
+
+                    shared.setUUID(tmpUUID);
+                    $.cookie('accessToken', resp.response.accessToken);
+                    $.cookie('userId', resp.response.id);
+
+                    $scope.shared.loggedIn = true;
+                    $scope.shared.state = 'login';
                 })
                 .error(function(resp) {
-                    if (resp.meta.status == 409) {
+                    if (resp.meta.status == 403 && resp.meta.errorSubType == 'unverified_email') {
+                        $scope.unverifiedEmail = true;
+                    }
+                    // HOT FIX ON REGISTER WITH EXISTS EMAIL AND WRONG PASSWORD
+                    else if (resp.meta.status == 409 || resp.meta.status == 403) {
                         $scope.invalidDuplicateEmail = true;
                     }
                     $scope.submitting = false;

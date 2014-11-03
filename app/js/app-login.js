@@ -2,7 +2,7 @@
 
     app.controller('LoginController', [ '$scope', '$http', 'shared', function($scope, $http, shared) {
 
-        $scope.loginURL = API_BASEPATH + '/login/';
+        $scope.loginURL = API_BASEPATH + '/connect/';
         $scope.checkURL = API_BASEPATH + '/users/';
         $scope.email = '';
         $scope.password = '';
@@ -15,20 +15,12 @@
             }
         });
 
-        $scope.isEmail = function(email) {
-            var re = new RegExp(/^(([^<>()\[\]\\.,;:\s@\"]+(\.[^<>()\[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-            if (!email.match(re)) {
-                return false;
-            }
-            return true;
-        };
-
         $scope.validate = function() {
             var isValid = true;
 
             $scope.invalidLogin = false;
 
-            if (!$scope.isEmail($scope.email)) {
+            if ($scope.loginForm.email.$invalid) {
                 $scope.invalidEmail = true;
                 isValid = false;
             }
@@ -52,18 +44,44 @@
             if ($scope.submitting) return false;
 
             $scope.submitting = true;
+            $scope.invalidLogin = false;
+            $scope.unverifiedEmail = false;
+
+            // Regen UUID when accessToken lose. Existing UUID is trivial cuz
+            // no one can use this UUID unless he has accessToken. So regen
+            // is still ok.
+            if (!$.cookie('uuid') || !$.cookie('accessToken')) {
+                shared.setUUID(uuid.v4());
+            }
+
+            var tmpUUID = uuid.v4();
 
             var params = {
+                uuid: tmpUUID,
                 email: $scope.email,
                 password: $scope.password
             };
 
+            var config = {};
+            if ($.cookie('accessToken')) {
+                config.params = {
+                    accessToken: $.cookie('accessToken')
+                };
+            }
+
             $http.post($scope.loginURL, params)
                 .success(function(resp) {
+                    $scope.submitting = false;
+
+                    shared.setUUID(tmpUUID);
                     $.cookie('accessToken', resp.response.accessToken);
                     $.cookie('userId', resp.response.id);
-                    $scope.shared.loggedIn = true;
-                    $scope.submitting = false;
+
+                    if (resp.response.sicksenseId) {
+                        $scope.shared.loggedIn = true;
+                        $scope.shared.state = 'login';
+                    }
+
                     $scope.email = '';
                     $scope.password = '';
 
@@ -73,9 +91,14 @@
                 })
                 .error(function(resp) {
                     $scope.submitting = false;
-                    console.log(resp);
-                    if (resp.error && resp.error.statusCode == 403) {
-                        $scope.invalidLogin = true;
+                    if (resp.meta && resp.meta.status == 403) {
+
+                        if (resp.meta.errorSubType && resp.meta.errorSubType == 'unverified_email') {
+                            $scope.unverifiedEmail = true;
+                        }
+                        else {
+                            $scope.invalidLogin = true;
+                        }
                         $scope.invalidEmail = false;
                         $scope.invalidPassword = false;
                     }
@@ -96,5 +119,5 @@
         $scope.buildQuery();
 
     }]);
-    
+
 })(jQuery, this, this.document);

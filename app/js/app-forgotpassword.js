@@ -13,26 +13,21 @@
             }
         });
 
-        $scope.isEmail = function(email) {
-            var re = new RegExp(/^(([^<>()\[\]\\.,;:\s@\"]+(\.[^<>()\[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-            if (!email.match(re)) {
-                return false;
-            }
-            return true;
-        };
-
         $scope.validate = function() {
-            $scope.invalidEmail = !$scope.isEmail($scope.email);
-            return !$scope.invalidEmail;
+            $scope.invalidEmail = $scope.forgotPasswordForm.email.$invalid;
+
+            return $scope.forgotPasswordForm.$valid;
         };
 
         $scope.submit = function() {
+            if ($scope.submitting) return false;
+
             $scope.message = '';
             $scope.error = false;
             $scope.invalidUser = false;
+            $scope.invalidResetLink = false;
 
             if (!$scope.validate()) return false;
-            if ($scope.submitting) return false;
             $scope.submitting = true;
 
             var params = {
@@ -43,8 +38,11 @@
                 .success(function(resp) {
                     $scope.message = resp.response.message;
                     $scope.success = true;
+                    $scope.submitting = false;
                 })
                 .error(function(resp) {
+                    $scope.showHTML5Validation = false;
+
                     if (resp.meta && resp.meta.status == 403) {
                         $scope.invalidUser = true;
                     }

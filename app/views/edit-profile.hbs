@@ -1,20 +1,20 @@
 <div class="row" ng-controller="EditProfileController">
   <div ng-init="initial()"></div>
 
-  <div class="large-3 medium-3 columns">
+  <div class="large-3 medium-4 columns">
       {{> "profile-sidebar"}}
   </div>
-  <div class="large-9 medium-9 columns">
+  <div class="large-9 medium-8 columns">
     <form class="edit-profile-form" ng-submit="submit()">
       <h1>แก้ไขข้อมูลส่วนตัว</h1>
 
       <!-- ALERT COMPLETED -->
-      <div data-alert class=" alert-box success radius" ng-show="submitStatus == 'completed'">
+      <div data-alert class=" alert-box success radius" ng-show="submitStatus == 'completed'" ng-cloak>
       แก้ไขข้อมูลเรียบร้อยแล้ว
       </div>
 
       <!-- ALERT FAILED -->
-      <div data-alert class=" alert-box alert radius" ng-show="submitStatus == 'failed'">
+      <div data-alert class=" alert-box alert radius" ng-show="submitStatus == 'failed'" ng-cloak>
       เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง
       </div>
 
@@ -22,7 +22,7 @@
           <div class="large-3 small-3 columns">
               <label class="right-label inline">อีเมล</label>
           </div>
-          <div class="large-9 small-9 columns">
+          <div class="large-9 small-9 columns" ng-cloak>
               [[ email ]]
           </div>
       </div>
@@ -34,7 +34,7 @@
           <div class="large-9 small-9 columns">
               <input type="radio" ng-model="gender" value="male" id="edit-male"><label for="edit-male">ชาย</label>
               <input type="radio" ng-model="gender" value="female" id="edit-female"><label for="edit-female">หญิง</label>
-              <small class="error" ng-show="invalidGender">กรุณาเลือกเพศของคุณ</small>
+              <small class="error" ng-show="invalidGender" ng-cloak>กรุณาเลือกเพศของคุณ</small>
           </div>
       </div>
 
@@ -44,7 +44,7 @@
           </div>
           <div class="large-9 small-9 columns">
               <select ng-model="year" ng-options="k as v for (k, v) in yearOptions"  class="no-margin"></select>
-              <small class="error" ng-show="invalidYear">กรุณาเลือกปีเกิด</small>
+              <small class="error" ng-show="invalidYear" ng-cloak>กรุณาเลือกปีเกิด</small>
           </div>
       </div>
 
@@ -53,10 +53,10 @@
               <label class="right-label inline">จังหวัด</label>
           </div>
           <div class="large-9 small-9 columns">
-              <select id="city" name="city" ng-model="city" class="no-margin">
+              <select id="city" name="city" ng-model="city" class="no-margin" ng-cloak>
                 <option ng-repeat="city in cityOptions" value="[[ city.key ]]" class="no-margin">[[ city.value ]]</option>
               </select>
-              <small class="error" ng-show="invalidCity">กรุณาเลือกจังหวัด</small>
+              <small class="error" ng-show="invalidCity" ng-cloak>กรุณาเลือกจังหวัด</small>
           </div>
       </div>
 
@@ -65,10 +65,10 @@
               <label class="right-label inline">อำเภอ</label>
           </div>
           <div class="large-9 small-9 columns">
-              <select id="district" name="district" ng-model="district" class="no-margin">
+              <select id="district" name="district" ng-model="district" class="no-margin" ng-cloak>
                 <option ng-repeat="districtChoice in districts" value="[[ districtChoice.key ]]" ng-selected="district == districtChoice.key">[[ districtChoice.value ]]</option>
               </select>
-              <small class="error" ng-show="invalidDistrict">กรุณาเลือกอำเภอ</small>
+              <small class="error" ng-show="invalidDistrict" ng-cloak>กรุณาเลือกอำเภอ</small>
           </div>
       </div>
 
@@ -77,10 +77,10 @@
               <label class="right-label inline">ตำบล</label>
           </div>
           <div class="large-9 small-9 columns">
-              <select id="subdistrict" name="subdistrict" ng-model="subdistrict" class="no-margin">
+              <select id="subdistrict" name="subdistrict" ng-model="subdistrict" class="no-margin" ng-cloak>
                 <option ng-repeat="subdistrictChoice in subdistricts" value="[[ subdistrictChoice.key ]]" ng-selected="subdistrict == subdistrictChoice.key">[[ subdistrictChoice.value ]]</option>
               </select>
-              <small class="error" ng-show="invalidSubdistrict">กรุณาเลือกตำบล</small>
+              <small class="error" ng-show="invalidSubdistrict" ng-cloak>กรุณาเลือกตำบล</small>
           </div>
       </div>
 
@@ -93,13 +93,13 @@
 
       <div class="row">
         <div class="large-12 columns">
-          <div class="panel">Sicksenes จะส่งแบบสอบถามสุขภาพไปยังที่อยู่อีเมลที่คุณกำหนดไว้<strong>ทุกวัน</strong> แต่คุณสามารถยกเลิกการรับอีเมลนี้ได้</div>
+          <div class="panel">Sicksense จะส่งแบบสอบถามสุขภาพไปยังที่อยู่อีเมลที่คุณกำหนดไว้<strong>ทุกวัน</strong> แต่คุณสามารถยกเลิกการรับอีเมลนี้ได้</div>
         </div>
       </div>
 
       <div class="row">
         <div class="large-12 columns">
-          <input type="submit" class="button ss-button ss-button-full-width" value="ยืนยัน" />
+          <input type="submit" class="button ss-button ss-button-full-width radius" value="ยืนยัน" />
         </div>
       </div>
     </form>

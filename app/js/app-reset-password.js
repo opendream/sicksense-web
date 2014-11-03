@@ -35,7 +35,7 @@
         }
 
         $scope.validate = function() {
-            if ($scope.password.length < 8) {
+            if ($scope.password.length < 8 || $scope.password.length > 64) {
                 $scope.invalidSamePassword = false;
                 $scope.invalidPassword = true;
             }
@@ -52,8 +52,10 @@
         };
 
         $scope.submit = function() {
-            if (!$scope.validate()) return false;
             if ($scope.submitting) return false;
+
+            $scope.submitStatus = '';
+            if (!$scope.validate()) return false;
 
             $scope.submitting = true;
 
@@ -64,13 +66,12 @@
 
             $http.post($scope.resetPasswordURL, params)
                 .success(function(resp) {
-                    $.cookie('accessToken', resp.response.user.accessToken);
-                    $.cookie('userId', resp.response.user.id);
-                    $scope.shared.loggedIn = true;
-                    window.location = HOME_URL;
+                    $scope.submitStatus = 'completed';
+                    $scope.submitting = false;
                 })
                 .error(function(resp) {
                     console.log(resp);
+                    $scope.submitStatus = 'failed';
                     $scope.submitting = false;
                 });
         };

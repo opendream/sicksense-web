@@ -48,7 +48,24 @@
 	> a{
 		font-family: "Boon-0.6", sans-serif;
 		font-size: 16px;
+        
+        &:hover{
+            text-decoration: underline;
+        }
 	}
+
+    &:not(.has-form) a:not(.button){
+        
+    }
+}
+
+.top-bar-section li:not(.has-form) a:not(.button){
+    padding: 0 12px;
+    
+    @media #{$small-only} {
+        padding: 12px 0 12px 0;
+        padding-left: 17.33333px;
+    }
 }
 
 /*---------------------------------
