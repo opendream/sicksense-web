@@ -4,6 +4,7 @@
         $scope.forgotPasswordURL = API_BASEPATH + '/users/request-verify';
         $scope.email = '';
         $scope.shared = shared;
+        $scope.isiOS = $.browser.ipad || $.browser.iphone;
 
         $scope.$watch('shared.loggedIn', function(newValue, oldValue) {
             if (newValue) {
@@ -38,7 +39,6 @@
                 .success(function(resp) {
                     $scope.success = true;
                     $scope.error = false;
-                    $scope.submitting = false;
                 })
                 .error(function(resp) {
                     if ( resp.meta &&

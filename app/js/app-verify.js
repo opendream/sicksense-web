@@ -7,6 +7,7 @@ app.controller('VerifyController', function ($scope, $http, shared) {
     $scope.verifySuccess = false;
     $scope.verifyFail = false;
     $scope.shared = shared;
+    $scope.isiOS = $.browser.ipad || $.browser.iphone;
 
     $http.post($scope.verifyPasswordURL, {
         token: getParameterByName('token')
