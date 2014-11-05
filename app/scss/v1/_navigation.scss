@@ -1,0 +1,95 @@
+@import "settings";
+
+/*---------------------------------
+	DROPDOWN
+---------------------------------*/
+.dropdown-button{
+	display: block;
+	margin: 0 0 10px;
+	padding: 0 0 5px;
+	color: #000;
+	border-bottom: 2px solid #a0a0a0;
+	/*font: normal 2em/1.5em umpushbold;*/
+	font: normal 2em/1.5em "Boon-0.6", sans-serif;
+	
+	.typcn{
+		margin-top: 5px;
+	}
+}
+
+/*---------------------------------
+	TOP NAV
+---------------------------------*/
+
+/*--- Set Background-color for the top bar in
+ _setting.css $topbar-bg-color ---*/
+
+.top-nav-bar {
+	position: relative; 
+	z-index: 999;
+	padding: .5em 0em 0;
+	
+	.name{
+		padding-top: 3px;
+	}
+}
+.toggle-topbar{
+	span{
+		display: block ;
+		/*text-indent: -999em;*/
+	}
+}
+
+/*--- Divder ---*/
+.top-bar-section ul li{	
+	@media #{$small-only} { 
+		border-top: 1px solid #B12929;
+	}
+	> a{
+		font-family: "Boon-0.6", sans-serif;
+		font-size: 16px;
+        
+        &:hover{
+            text-decoration: underline;
+        }
+	}
+
+    &:not(.has-form) a:not(.button){
+        
+    }
+}
+
+.top-bar-section li:not(.has-form) a:not(.button){
+    padding: 0 12px;
+    
+    @media #{$small-only} {
+        padding: 12px 0 12px 0;
+        padding-left: 17.33333px;
+    }
+}
+
+/*---------------------------------
+	TOGGLE MENU
+---------------------------------*/
+
+/*--- I don't know why it doesn't work so I fix it---*/
+.top-bar .toggle-topbar.menu-icon {
+	top: 45%;
+
+	a span:after{
+		content: "";
+		position: absolute;
+		display: block;
+		width: 16px;
+		height: 0;
+		top: 50%;
+		left: -30px;
+		margin-top: -8px;
+		box-shadow: 0 0px 0 1px #fff, 0 7px 0 1px #fff, 0 14px 0 1px #fff;
+	}
+	a{
+		padding: 0 15px 0 5px;
+		font-family: "Boon-0.6", sans-serif;
+		font-size: 16px;
+	}
+}

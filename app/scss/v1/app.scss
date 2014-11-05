@@ -1,0 +1,122 @@
+@import "settings";
+@import "foundation";
+
+// Or selectively include components
+// @import
+//   "foundation/components/accordion",
+//   "foundation/components/alert-boxes",
+//   "foundation/components/block-grid",
+//   "foundation/components/breadcrumbs",
+//   "foundation/components/button-groups",
+//   "foundation/components/buttons",
+//   "foundation/components/clearing",
+//   "foundation/components/dropdown",
+//   "foundation/components/dropdown-buttons",
+//   "foundation/components/flex-video",
+//   "foundation/components/forms",
+//   "foundation/components/grid",
+//   "foundation/components/inline-lists",
+//   "foundation/components/joyride",
+//   "foundation/components/keystrokes",
+//   "foundation/components/labels",
+//   "foundation/components/magellan",
+//   "foundation/components/orbit",
+//   "foundation/components/pagination",
+//   "foundation/components/panels",
+//   "foundation/components/pricing-tables",
+//   "foundation/components/progress-bars",
+//   "foundation/components/reveal",
+//   "foundation/components/side-nav",
+//   "foundation/components/split-buttons",
+//   "foundation/components/sub-nav",
+//   "foundation/components/switch",
+//   "foundation/components/tables",
+//   "foundation/components/tabs",
+//   "foundation/components/thumbs",
+//   "foundation/components/tooltips",
+//   "foundation/components/top-bar",
+//   "foundation/components/type",
+//   "foundation/components/offcanvas",
+//   "foundation/components/visibility";
+
+@import "base";
+//@import "global_sicksense";
+@import "module";
+
+@import "layout";
+@import "modal";
+@import "../shared/font";
+@import "button";
+@import "form";
+@import "utility";
+@import "navigation";
+
+@import "header";
+@import "footer";
+
+@import "map";
+@import "provinces";
+@import "scrollbar";
+@import "timeline";
+@import "symptoms";
+@import "chart";
+
+@import "../shared/supported_browser";
+
+ng-cloak {
+  display: none !important;
+}
+
+/**/
+
+#ili-stat-ili-delta {
+  /*width: 30%;*/
+	.ili-stat_value{
+		&.still {
+			color: #333;
+		}
+		&.down {
+			color: #5b8196;
+			background: url(../images/ic-down.png) no-repeat left center;
+			padding: 0 0 0 20px
+		}
+		&.up {
+			color: #5b8196;
+			background: url(../images/ic-up.png) no-repeat left center;
+			padding: 0 0 0 20px
+		}
+	}
+}
+
+#ili-stat-ili-reporternumbers {
+  /*width: 45%;*/
+	.ili-stat_label {
+		background: url(../images/ic-report.png) no-repeat;
+		padding: 0 0 0 20px;
+	}
+}
+
+
+.weekTooltip {
+  position: absolute;
+  left: 0;
+  top: -30px;
+  width: 120px;
+  height: 24px;
+  background-color: black;
+  color: white;
+  border-radius: 4px;
+  opacity: 0;
+  text-align: center;
+
+  -o-transition: left 0.2s linear 0;
+  -webkit-transition: left 0.2s linear 0;
+  -moz-transition: left 0.2s linear 0;
+  transition: all 0.2s linear 0;
+
+  &.processed {
+    opacity: .8;
+  }
+}
+.weekNo {
+}

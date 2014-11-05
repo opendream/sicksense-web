@@ -1,0 +1,58 @@
+@import "settings";
+@import "mixin";
+
+
+/*--- Defualt Button Style ---*/
+.ss-button{
+    border-radius: 5px;
+    padding: 7px 20px;
+    font-family: "Boon-0.6", sans-serif;
+    background-color: #00aeae;
+    
+    &:hover{
+        background-color: #007C7C;
+    }
+    
+    form &{
+        margin-top: 20px;
+    }
+}
+.ss-button-full-width{
+    width: 100%;
+}
+
+.ss-button-modal{
+    
+    /*--- Make full width ---*/
+	@media #{$medium-only}, #{$small-only} {
+		margin-left: 0;
+        width: 100%;
+	}
+}
+
+.top-bar-section li:not(.has-form) a.ss-button-report{
+    background: #fdd167;
+    line-height: 34px;
+    border-radius: 30px;
+    color: #333;
+    margin-top: 6px;
+//    padding-left: 10px;
+//    padding-right: 10px;
+    
+    &:hover{
+        background: #f7c243;
+    }
+    
+    @media #{$small-only} {
+		margin: 0;
+        line-height: inherit;
+        color: #fff;
+        padding: 12px 0 12px 0;
+        padding-left: 17.33333px;
+        background: transparent;
+        
+        &:hover{
+            background: transparent;
+        }
+	}
+}

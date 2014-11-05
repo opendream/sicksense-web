@@ -1,9 +1,22 @@
+# OS temp files
 *.DS_Store
-/css/*
-/bower_components/*
-/node_modules/*
+
+# module dependencies
+/bower_components
+/app/bower_components
+/node_modules
+
+# generated files
+/css
+/app/css
+/app/data/*.min.json
+/app/*.html
+/app/v2
+/tmp
+/.tmp
+/dist
+/build
 
 # Config
 /js/config.js
-/tmp
-/dist
+/app/js/config.js

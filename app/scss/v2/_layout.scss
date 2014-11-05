@@ -1,0 +1,25 @@
+@import "settings";
+
+/*---------------------------------
+	BAR
+---------------------------------*/
+.secondnary-bar{
+    height: 45px;
+    padding: 10px 20px;
+    color: #fff;
+    background: #2a3b45;
+}
+
+
+/*---------------------------------
+	ILI
+---------------------------------*/
+.ili-stat{
+    p{
+        margin-bottom: 5px;
+    }
+}
+.ili-stat-value{
+    font-size: 24px;
+    font-weight: bold;
+}

@@ -1,0 +1,30 @@
+<div class="row page-report" ng-controller="VerifyController">
+
+  <div class="large-12 columns" ng-show="verifySuccess" ng-cloak>
+    <div class="panel radius container-block">
+        <h2 class="text-center">อีเมลของคุณได้รับการยืนยันแล้ว</h2>
+        <div class="text-center">
+          <p>เข้าสู่ระบบเรียบร้อยแล้ว</p>
+          <p><a class="button ss-button" href="/">กลับหน้าแรก</a></p>
+        </div>
+    </div>
+  </div>
+
+    <div class="row" ng-show="verifyFail" ng-cloak>
+        <div class="large-8 columns large-centered">
+            <div class="panel radius container-block">
+                <h2 class="">เกิดข้อผิดพลาดในการยืนยันอีเมล กรุณาลองใหม่อีกครั้ง</h2>
+                <ul class="info-list">
+                    <li>ตรวจสอบว่าลิงก์ที่คุณคลิกมานั้นถูกต้อง</li>
+                    <li>ทำการ refresh หน้าใหม่อีกครั้ง</li>
+                </ul>
+                <a href="/request-verify.html" class="button ss-button ss-button-full-width radius">ขอลิงก์ยืนยันอีเมลใหม่</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{{#content "js_footer"}}
+<script src="/js/app-verify.js"></script>
+{{/content}}

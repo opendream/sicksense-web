@@ -1,0 +1,29 @@
+@import "settings";
+
+/*---------------------------------
+	FIXED OFF CANVAS
+---------------------------------*/
+.off-canvas-wrap, .inner-wrap{
+    height: 100%;
+}
+
+
+/*---------------------------------
+	MAIN NAVIGATION
+---------------------------------*/
+.top-bar-section {
+    @media only screen and (max-width: 780px){
+        display: none;
+    }
+
+    ul li{	
+	@media #{$small-only} { 
+		border-top: 1px solid #B12929;
+	}
+	> a{
+		font-family: "Boon-0.6", sans-serif;
+		font-size: 18px;
+        background: #bb0023;
+	}
+}
+}
