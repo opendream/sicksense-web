@@ -4,43 +4,52 @@
 /*---------------------------------
 	FOOTER
 ---------------------------------*/
-.footer{
-	padding: 2em 0 1.5em;
-	margin: 2em 0 0;
-	color: #8e8e8e;
-	background-color: #ececec;
+.footer {
+  padding: 2em 0 1.5em;
+  margin: 2em 0 0;
+  color: #8e8e8e;
+  background-color: #ececec;
 
-	@media #{$small-only}{
-		text-align: center;
-	}
+  @media #{$small-only} {
+    text-align: center;
+  }
 }
 
 /*--- FOOTER LOGO ---*/
-.skoll-logo, .od-logo{
-	float: left;
-	width: 140px;
-	height: 45px;
-	overflow: hidden;
-	margin: 0 5px 0 0;
-	text-indent: -999em;
-	background: url('../../images/company-logo.png') no-repeat left top;
+.skoll-logo,
+.od-logo {
+  float: left;
+  width: 140px;
+  height: 45px;
+  overflow: hidden;
+  margin: 0 5px 0 0;
+  text-indent: -999em;
+  background: url("../../images/company-logo.png") no-repeat left top;
 
-	@media #{$small-only}{
-		float: none;
-		display: inline-block;
-	}
+  @media #{$small-only} {
+    float: none;
+    display: inline-block;
+  }
 }
-.od-logo{
-	margin-top: 10px;
-	height: 25px;
-	background-position: 0 -45px;
+.od-logo {
+  margin-top: 10px;
+  height: 25px;
+  background-position: 0 -45px;
 
-	@media #{$small-only}{
-		margin-bottom: 10px;
-	}
+  @media #{$small-only} {
+    margin-bottom: 10px;
+  }
 }
-.credit{
-	padding-top: 10px;
-	color: #8e8e8e;
-    font-size: 15px;
+.skoll-logo-new {
+  width: 140px;
+  height: 45px;
+  overflow: hidden;
+  margin: 0 5px 0 0;
+  text-indent: -999em;
+  background: url("../../images/skoll_logo.png") no-repeat;
+}
+.credit {
+  padding-top: 10px;
+  color: #8e8e8e;
+  font-size: 15px;
 }

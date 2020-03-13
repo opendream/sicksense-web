@@ -4,38 +4,41 @@
       <div class="map-control">
         <div ng-controller="CitySelector">
 
-            <!--Dropdown Button-->
+          <!--Dropdown Button-->
           <a ng-cloak class="dropdown-button" href="#" data-dropdown="city-drop" title="City">[[ city.properties.th ]]
-          <span class="typcn typcn-chevron-right rotate right"></span></a>
+            <span class="typcn typcn-chevron-right rotate right"></span></a>
 
           <!--Dropdown-->
           <div id="city-drop" class="city-dropdown f-dropdown" data-dropdown-content>
 
-              <!--Mobile-->
+            <!--Mobile-->
             <dl class="accordion provinces-for-mobile show-for-small-up hide-for-large-up" data-accordion>
               <dd ng-repeat="region in regions">
                 <a ng-cloak class="" href="#panel[[ $index ]]">[[ region.name ]]</a>
                 <div id="panel[[ $index ]]" class="content">
-                  <a class="province-name" ng-repeat="province in region.provinces | orderBy:province.properties.th" ng-click="setCity(province)">[[ province.properties.th ]]</a>
+                  <a class="province-name" ng-repeat="province in region.provinces | orderBy:province.properties.th"
+                    ng-click="setCity(province)">[[ province.properties.th ]]</a>
                 </div>
               </dd>
             </dl>
 
             <!--Web-->
             <ul class="provinces-list hide-for-medium-down row">
-                <li class="region-list large-2 columns" ng-repeat="region in regions">
-                  <h2 ng-clock>[[ region.name ]]</h2>
-                  <ul class="province-group">
-                    <li class="province-name" ng-repeat="province in region.provinces | orderBy:province.properties.th" ng-click="setCity(province)">
+              <li class="region-list large-2 columns" ng-repeat="region in regions">
+                <h2 ng-clock>[[ region.name ]]</h2>
+                <ul class="province-group">
+                  <li class="province-name" ng-repeat="province in region.provinces | orderBy:province.properties.th"
+                    ng-click="setCity(province)">
                     <a ng-cloak>[[ province.properties.th ]]</a>
                   </li>
-                  </ul>
-                </li>
+                </ul>
+              </li>
             </ul>
             <div class="provinces-all">
               <a ng-click="setCity('all')">แสดงทั้งประเทศ</a>
             </div>
-          </div> <!--End Dropdown-->
+          </div>
+          <!--End Dropdown-->
 
           <div class="ili-stat" ng-controller="ILIController">
             <div class="row">
@@ -46,8 +49,10 @@
               <div class="ili-stat-ili-delta ili-stat-row large-4 medium-4 small-4 columns">
                 <div class="ili-stat_label"><span class="typcn typcn-chart-bar"></span>อาทิตย์ที่ผ่านมา</div>
                 <div ng-cloak class="ili-stat_value">
-                <!--IF Condition-->
-                <span ng-class="{ 'typcn': 1, 'typcn-arrow-up-thick': (delta > 0), 'typcn-arrow-down-thick': (delta < 0) }"></span> [[ ((delta >= 0) ? delta : (delta * -1))  | number : 2 ]]%</div>
+                  <!--IF Condition-->
+                  <span
+                    ng-class="{ 'typcn': 1, 'typcn-arrow-up-thick': (delta > 0), 'typcn-arrow-down-thick': (delta < 0) }"></span>
+                  [[ ((delta >= 0) ? delta : (delta * -1)) | number : 2 ]]%</div>
               </div>
               <div class="ili-stat-ili-reporternumbers ili-stat-row large-5 medium-4 small-5 columns">
                 <div class="ili-stat_label"><span class="typcn typcn-clipboard"></span>จำนวนผู้รายงาน</div>
@@ -57,7 +62,8 @@
           </div>
 
         </div>
-      </div> <!--control-->
+      </div>
+      <!--control-->
 
       <div class="more-info hide-for-small-down">
         <p class="hidden">คำอธิบายเพิ่มเติม</p>
@@ -67,15 +73,20 @@
         </ul>
       </div>
 
-    </div> <!--col-->
-  </div> <!--row-->
-</div> <!--filter-->
+    </div>
+    <!--col-->
+  </div>
+  <!--row-->
+</div>
+<!--filter-->
 
-<div id="map"><!--MAP--></div>
+<div id="map">
+  <!--MAP-->
+</div>
 
 <div id="week-selector" class="contain-to-grid sticky timeline" ng-controller="WeekSelector">
   <div data-topbar data-options="sticky_on: large">
-      <div class="row" >
+    <div class="row">
 
 
       <div class="large-12 medium-10 columns timeline-columns">
@@ -86,8 +97,10 @@
 
         </div>
       </div>
-    </div> <!--row-->
-  </div> <!--sticky-->
+    </div>
+    <!--row-->
+  </div>
+  <!--sticky-->
 </div><!-- /#week-selector -->
 
 <div class="statistics">
@@ -97,10 +110,12 @@
         <h2 class="title-block">สถิติ ILI ของทั้งประเทศ</h2>
         <div id="chart">
         </div>
-          <ul class="block-list">
-              <li><span class="icon-round orange"></span> ข้อมูล ILI จากสำนักระบาดวิทยา</li>
-              <li><span class="icon-round light-gray"></span> ข้อมูล ILI จาก DoctorMe</li>
-          </ul>
+        <ul class="block-list">
+          <li><span class="icon-round orange"></span> ข้อมูล ILI จากสำนักระบาดวิทยา</li>
+          <li><span class="icon-round light-gray"></span> ข้อมูล ILI จาก DoctorMe และ <a
+              href="https://line.me/R/ti/p/%40sabaideebot">สบายดี</a></li>
+        </ul>
+        <div class="small text-gray">ILI = ผู้ป่วยเข้าข่ายสงสัยว่าเป็นโรคไข้หวัดใหญ่</div>
       </div>
     </div>
 
@@ -123,13 +138,16 @@
                   </div>
                   <span class="symptom-name">[[ symptom.name ]]</span>
                 </div>
-              </div> <!--row-->
+              </div>
+              <!--row-->
             </li>
           </ul>
         </div>
-      </div><!--symptoms-stat-->
+      </div>
+      <!--symptoms-stat-->
 
-    </div> <!--col-->
+    </div>
+    <!--col-->
   </div><!-- /#row -->
 </div><!-- statistics -->
 
