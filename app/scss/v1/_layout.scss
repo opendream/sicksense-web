@@ -51,12 +51,12 @@
 	li:last-child {
 		margin-right: 0px;
 	}
-	// z-index: 99;
-	// width: 186px;
-	// padding: 10px 15px;
-	// margin: 20px 0 0;
-	// border: 1px solid #ddd;
-	// background: rgba(255, 255, 255, 0.8);
+}
+
+@media only screen and (max-width: 340px) {
+	.more-info {
+		width: 65px;
+	}
 }
 
 

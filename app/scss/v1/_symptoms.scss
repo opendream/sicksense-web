@@ -24,7 +24,7 @@
     }
   }
   .ili-stat_value {
-    font-size: 1.3em;
+    font-size: 1.5em;
     font-weight: bold;
   }
 
@@ -71,9 +71,59 @@
   }
 }
 
+
+@media #{$medium-only}, #{$large-only} {
+  .stat-bar-wrapper {
+    margin-top: 60px;
+  }
+}
+
+@media #{$small-only} {
+  .no-symptoms-result {
+    text-align: center;
+  }
+}
+
 /*---------------------------------
 	SYMPTOMS STAT
 ---------------------------------*/
+.stat-graph-wrapper {
+  margin-top: 20px;
+
+  .ili-stat {
+    border-bottom: none;
+  }
+}
+
+.pie-wrapper {
+  max-width: 290px;
+}
+@media #{$small-only} {
+  .pie-wrapper {
+    margin: 0 auto;
+  }
+
+  .stat-graph-wrapper .title-block-stat {
+    text-align: center;
+  }
+}
+
+.title-block-stat {
+  margin-bottom: 15px;
+  font-size: 1.15em;
+}
+
+.pie {
+  width: 100%; 
+  padding-top: 100%;
+  border-radius: 50%;
+  background: #00aeae;
+}
+
+.row.stat-pie {
+  margin-bottom: 20px;
+}
+
 .symptoms-stat {
   .content {
     height: 320px;

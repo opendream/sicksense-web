@@ -452,18 +452,23 @@
   }]);
 
   app.controller('ILIController', [ '$scope', 'data', function($scope, data) {
+
     var response = data.response || {
       ILI: {
         thisWeek: 0,
         lastWeek: 0,
         delta: 0
       },
-      numberOfReporters: 0
+      numberOfReporters: 0,
+      percentOfFinePeople: 0,
+      percentOfSickPeople: 0
     };
 
     $scope.thisWeek = response.ILI.thisWeek;
     $scope.delta = response.ILI.delta;
     $scope.numberOfReporters = response.numberOfReporters;
+    $scope.percentOfFinePeople = response.percentOfFinePeople;
+    $scope.percentOfSickPeople = response.percentOfSickPeople;
 
     $scope.$on('data.refresh', function(event, data) {
       var response = data.response;
@@ -471,6 +476,10 @@
       $scope.thisWeek = response.ILI.thisWeek;
       $scope.delta = response.ILI.delta;
       $scope.numberOfReporters = response.numberOfReporters;
+      $scope.percentOfFinePeople = response.percentOfFinePeople;
+      $scope.percentOfSickPeople = response.percentOfSickPeople;
+
+      console.log('data.response', response)
 
       $scope.$digest();
     });
