@@ -136,8 +136,23 @@
 
 
 .pie-rotate {
+  z-index: 2;
   background: #00aeae;
   transform-origin: left;
+}
+
+.gt-half {
+  &.pie {
+    background: #dc0029;
+  }
+  .pie-half {
+    z-index: 2;
+    background: #dc0029;
+  }
+  .pie-half.pie-rotate {
+    z-index: 1;
+    background: #00aeae;
+  }
 }
 
 .row.stat-pie {
