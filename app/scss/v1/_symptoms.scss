@@ -5,11 +5,17 @@
 	ILI STAT
 ---------------------------------*/
 .ili-stat {
-	margin: 25px 0 0;
+	margin: 0 0 0 0;
+  border-bottom: solid 1px #cccccc;
+
+  @media #{$medium-only}, #{$small-only} {
+    border-bottom: none;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 
 	/*--- Set Text style of label, value ---*/
   .ili-stat_label {
-    margin-bottom: 0.8em;
     color: #666;
 
     .typcn{
@@ -18,7 +24,6 @@
     }
   }
   .ili-stat_value {
-	  margin: 0 0 10px;
     font-size: 1.3em;
     font-weight: bold;
   }
@@ -30,16 +35,32 @@
   	}
   }
 
+  .ili-stat-row:last-child {
+    text-align: right;
+  }
+
   /*--- Moblie Srceen ---*/
   .ili-stat-row{
-  	@media #{$small-only} {
-  		border-bottom: 1px dotted #ccc;
-  		margin: 0;
-  		padding: 0;
-  		border: none;
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+  	@media #{$medium-only}, #{$small-only} {
+      padding-left: 0;
+      padding-right: 0;
+      border-bottom: solid 1px #cccccc;
+      text-align: left;
+      &:last-child {
+        text-align: left;
+      }
+
+      display: flex;
+      justify-content: space-between;
   	}
   }
-  @media #{$small-only} {
+
+
+  @media #{$medium-only} {
   	text-align: center;
   }
 

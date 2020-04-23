@@ -159,12 +159,15 @@
 }
 
 #week-line{
+	display: inline-block;
+
 	.week-name{
-		font: 700 1.7em/1.5em "Boon-0.6";
+		font: 500 1.1em/1.1em "Boon-0.6";
 		color: #fff;
 
 		@media #{$small-only} {
-			text-align: center;
+			font: 500 0.8em "Boon-0.6";
+			line-height: 1.7em;
 		}
 	}
 	.typcn-calendar{
@@ -177,8 +180,8 @@
 	TIMELINE
 ---------------------------------*/
 .timeline {
-	margin: 0 0 50px;
-  background-color: #3a4e5a;
+	margin: 0 0 0;
+  background-color: #414140;
 
 	padding: 10px 0;
 
@@ -188,8 +191,8 @@
 }
 
 .timeline-columns{
-	padding-top: 10px;
-	padding-bottom: 10px;
+	display: flex;
+  justify-content: space-between;
 }
 
 

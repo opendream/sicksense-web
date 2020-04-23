@@ -6,7 +6,10 @@
 
           <!--Dropdown Button-->
           <a ng-cloak class="dropdown-button" href="#" data-dropdown="city-drop" title="City">[[ city.properties.th ]]
-            <span class="typcn typcn-chevron-right rotate right"></span></a>
+            <span class="typcn typcn-chevron-right rotate right"></span>
+          </a>
+          
+
 
           <!--Dropdown-->
           <div id="city-drop" class="city-dropdown f-dropdown" data-dropdown-content>
@@ -40,40 +43,11 @@
           </div>
           <!--End Dropdown-->
 
-          <div class="ili-stat" ng-controller="ILIController">
-            <div class="row">
-              <div class="ili-stat-ili-thisweek ili-stat-row large-3 medium-4 small-3 columns">
-                <div class="ili-stat_label"><span class="typcn typcn-heart-full-outline"></span>ILI</div>
-                <div ng-cloak class="ili-stat_value">[[ thisWeek | number : 2 ]]%</div>
-              </div>
-              <div class="ili-stat-ili-delta ili-stat-row large-4 medium-4 small-4 columns">
-                <div class="ili-stat_label"><span class="typcn typcn-chart-bar"></span>อาทิตย์ที่ผ่านมา</div>
-                <div ng-cloak class="ili-stat_value">
-                  <!--IF Condition-->
-                  <span
-                    ng-class="{ 'typcn': 1, 'typcn-arrow-up-thick': (delta > 0), 'typcn-arrow-down-thick': (delta < 0) }"></span>
-                  [[ ((delta >= 0) ? delta : (delta * -1)) | number : 2 ]]%</div>
-              </div>
-              <div class="ili-stat-ili-reporternumbers ili-stat-row large-5 medium-4 small-5 columns">
-                <div class="ili-stat_label"><span class="typcn typcn-clipboard"></span>จำนวนผู้รายงาน</div>
-                <div ng-cloak class="ili-stat_value">[[ numberOfReporters | number : 0 ]]</div>
-              </div>
-              <div class="help-text" style="text-align: center; clear: both;"><sup>*</sup>ILI =
-                ผู้ป่วยเข้าข่ายสงสัยว่าเป็นโรคไข้หวัดใหญ่</div>
-            </div>
-          </div>
-
         </div>
+
+
       </div>
       <!--control-->
-
-      <div class="more-info hide-for-small-down">
-        <p class="hidden">คำอธิบายเพิ่มเติม</p>
-        <ul class="inline-list">
-          <li><span class="icon-round gray"></span> สบายดี</li>
-          <li><span class="icon-round red"></span> มีอาการ</li>
-        </ul>
-      </div>
 
     </div>
     <!--col-->
@@ -91,19 +65,82 @@
     <div class="row">
 
 
-      <div class="large-12 medium-10 columns timeline-columns">
+      <div class="large-12 columns timeline-columns">
         <div id="week-line" class="timeline-week">
           <div class="week-name">
-            <span class="typcn typcn-calendar"></span> วันที่ [[ weekName ]]
+            วันที่ [[ weekName ]]
           </div>
 
         </div>
+
+        <div class="more-info">
+          <p class="hidden">คำอธิบายเพิ่มเติม</p>
+          <ul class="inline-list">
+            <li><span class="icon-round gray"></span> สบายดี</li>
+            <li><span class="icon-round red"></span> มีอาการ</li>
+          </ul>
+        </div>
+
       </div>
+
     </div>
     <!--row-->
   </div>
   <!--sticky-->
 </div><!-- /#week-selector -->
+
+
+<div class="stat-wrapper">
+
+  
+
+  <div class="ili-stat" ng-controller="ILIController">
+    <div class="row">
+
+
+      <div class="ili-stat-ili-reporternumbers ili-stat-row large-3 medium-12 small-12 columns">
+        <span class="ili-stat_label">
+          <!-- <span class="typcn typcn-clipboard"></span> -->
+          จำนวนผู้บันทึกสุขภาพ
+        </span>
+        <span ng-cloak class="ili-stat_value">
+          [[ numberOfReporters | number : 0 ]]
+        </span>
+      </div>
+
+      <div class="ili-stat-ili-thisweek ili-stat-row large-5 medium-12 small-12 columns">
+        <span class="ili-stat_label">
+          <!-- <span class="typcn typcn-heart-full-outline"></span> -->
+          สัดส่วนผู้บันทึกอาการคล้ายโควิด-19 จากผู้มีอากรป่วยทั้งหมด
+        </span>
+        <span ng-cloak class="ili-stat_value">
+          [[ thisWeek | number : 2 ]]%
+        </span>
+      </div>
+
+      <div class="ili-stat-ili-delta ili-stat-row large-4 medium-12 small-12 columns">
+        <span class="ili-stat_label">
+          <!-- <span class="typcn typcn-chart-bar"></span> -->
+          สัดส่วนผู้มีอาการป่วยเทียบกับสัปดาห์ก่อน
+        </span>
+        <span ng-cloak ng-class="{ 'ili-stat_value': 1, 'up': (delta > 0), 'down': (delta < 0) }">
+          <!--IF Condition-->
+          <!-- <span ng-class="{ 'typcn': 1, 'typcn-arrow-up-thick': (delta > 0), 'typcn-arrow-down-thick': (delta < 0) }"></span> -->
+          [[ (delta >= 0) ? '+' : '' ]][[delta| number : 2]]%
+          </span>
+      </div>
+
+
+      <!--
+      <div class="help-text" style="text-align: center; clear: both;"><sup>*</sup>ILI =
+        ผู้ป่วยเข้าข่ายสงสัยว่าเป็นโรคไข้หวัดใหญ่
+      </div>
+      -->
+
+    </div>
+  </div>
+  
+</div>
 
 <div class="statistics">
   <div class="row">

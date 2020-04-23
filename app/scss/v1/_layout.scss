@@ -26,7 +26,7 @@
 .map-control {
 	position: relative;
 	z-index: 999;
-	padding: 15px;
+	padding: 5px 15px 5px 15px;
 	border: 1px solid #ddd;
 	background: rgba(255, 255, 255, 0.75);
 
@@ -41,13 +41,22 @@
 }
 
 .more-info{
-	position: relative;
-	z-index: 99;
-	width: 186px;
-	padding: 10px 15px;
-	margin: 20px 0 0;
-	border: 1px solid #ddd;
-	background: rgba(255, 255, 255, 0.8);
+	color: #FFFFFF;
+	display: inline-block;
+
+	.icon-round {
+		margin-right: 2px;
+	}
+
+	li:last-child {
+		margin-right: 0px;
+	}
+	// z-index: 99;
+	// width: 186px;
+	// padding: 10px 15px;
+	// margin: 20px 0 0;
+	// border: 1px solid #ddd;
+	// background: rgba(255, 255, 255, 0.8);
 }
 
 
@@ -85,9 +94,16 @@
 }
 
 .ili-stat{
-    p{
-        margin-bottom: 5px;
-    }
+	font-size: 12px;
+	p{
+			margin-bottom: 5px;
+	}
+	.up {
+		color: #dc0029;
+	}
+	.down {
+		color: #00aeae;
+	}
 }
 .ili-stat-value{
     font-size: 24px;

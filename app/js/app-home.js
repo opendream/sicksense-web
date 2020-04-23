@@ -43,10 +43,10 @@
       });
 
       var mapOptions = {
-        dragging: false,
-        touchZoom: false,
+        dragging: true,
+        touchZoom: true,
         scrollWheelZoom: false,
-        doubleClickZoom: false,
+        doubleClickZoom: true,
         boxZoom: false,
         zoomControl: false
       };
