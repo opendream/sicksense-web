@@ -477,9 +477,7 @@
       $scope.delta = response.ILI.delta;
       $scope.numberOfReporters = response.numberOfReporters;
       $scope.percentOfFinePeople = response.percentOfFinePeople;
-      $scope.percentOfSickPeople = response.percentOfSickPeople;
-
-      console.log('data.response', response)
+      $scope.percentOfSickPeople = response.numberOfReporters? response.percentOfSickPeople: 0;
 
       $scope.$digest();
     });
