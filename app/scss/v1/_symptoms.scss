@@ -118,6 +118,26 @@
   padding-top: 100%;
   border-radius: 50%;
   background: #00aeae;
+  position: relative;
+}
+
+.pie-half {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: block;
+  margin-left: 50%;
+  height: 100%;
+  width: 50%;
+  border-radius: 0 100% 100% 0 / 50%;
+  background: #dc0029;
+  }
+
+
+.pie-rotate {
+  background: #00aeae;
+  transform-origin: left;
 }
 
 .row.stat-pie {
@@ -173,7 +193,7 @@
   border: none;
   .meter {
     position: relative;
-    background: #00e4e5;
+    background: #dc0029;
 
     .meter-number {
       display: block;

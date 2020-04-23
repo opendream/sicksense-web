@@ -169,7 +169,7 @@
               <span class="ili-stat_label">
                 สบายดี
               </span>
-              <span ng-cloak class="ili-stat_value">
+              <span ng-cloak class="ili-stat_value down">
                 [[ percentOfFinePeople | number : 0 ]]%
               </span>
             </div>
@@ -178,14 +178,21 @@
               <span class="ili-stat_label">
                 มีอาการ
               </span>
-              <span ng-cloak class="ili-stat_value">
+              <span ng-cloak class="ili-stat_value up">
                 [[ percentOfSickPeople | number : 0 ]]%
               </span>
             </div>
 
           </div>
 
-          <div class="pie"></div>
+
+
+          <div class="pie">
+            <div class="pie-half">
+            </div>
+            <div class="pie-half pie-rotate" style="transform: rotate([[ percentOfSickPeople/100 ]]turn);">
+            </div>
+          </div>
         </div>
       </div>
 
