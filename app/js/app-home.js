@@ -376,7 +376,7 @@
       $scope.$watch('city', function(newValue, oldValue) {
         $scope.$emit('city.changed', newValue);
       });
-      $scope.setCity( _.find(provinces, { properties: { en: DEFAULT_CITY } }) );
+      $scope.setCity( DEFAULT_CITY? _.find(provinces, { properties: { en: DEFAULT_CITY } }): 'all' );
 
       _.each(regions, function(region) {
         var regionData = {
