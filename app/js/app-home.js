@@ -435,10 +435,10 @@
 
       var paddingTopLeft;
       if (matchMedia(Foundation.media_queries['large']).matches) {
-        paddingTopLeft = [200, 0];
+        paddingTopLeft = [100, 0];
       }
       else {
-        paddingTopLeft = [0, 100];
+        paddingTopLeft = [0, 50];
       }
 
       dashboard.map.fitBounds(bounds, {

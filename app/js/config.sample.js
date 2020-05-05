@@ -11,7 +11,7 @@ var LANG = 'th';
 var MAP_DEFAULT_OPTIONS = {
   latitude: 13.751690,
   longitude: 100.491882,
-  zoom: 10
+  zoom: 11
 };
 
 var DEFAULT_CITY = "Bangkok";
